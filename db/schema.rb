@@ -11,14 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170212071605) do
+ActiveRecord::Schema.define(version: 20170212134438) do
 
   create_table "doctors", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "specialty",  limit: 255
-    t.string   "experience", limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",                    limit: 255
+    t.string   "specialty",               limit: 255
+    t.string   "experience",              limit: 255
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "doctor_img_file_name",    limit: 255
+    t.string   "doctor_img_content_type", limit: 255
+    t.integer  "doctor_img_file_size",    limit: 4
+    t.datetime "doctor_img_updated_at"
   end
 
 end
