@@ -2,6 +2,7 @@ class DoctorsController < ApplicationController
 	before_action :find_doctor, only: [:show,:edit, :update, :destroy]
 	
 	def index
+		@doctors = Doctor.all
 	end
 
 	def new
@@ -22,12 +23,17 @@ class DoctorsController < ApplicationController
 	end
 
 	def update
+		if @doctor.update(doctor_params)
+			redirect_to doctor_path(@doctor)
+		else
+			render 'edit'
+		end
 	end
 
 	private
 	
 	def doctor_params
-		params.require(:doctor).permit(:name, :specialty, :experience)
+		params.require(:doctor).permit(:name, :specialty, :experience, :doctor_img)
 	end
 
 	def find_doctor
