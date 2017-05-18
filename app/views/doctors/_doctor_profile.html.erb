@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="doctor-profile-card z-depth-0 ">
+		<div class="col s12 m4 l4">
+            <div class="doctor-profile-card-image center-block">
+                <%= image_tag @doctor.doctor_img.url, class: 'responsive-img' %>
+                <h5><%= @doctor.name %>  醫生 </h5>
+                <%= link_to "留言", new_doctor_post_path(@doctor), class: "btn" %>
+            </div>
+        </div>
+        <div class="col s12 m4 l4">
+        	<div class="doctor-profile-card-content">
+        		<ul>
+        		    <li> <h6>專長 </h6></li>
+        			<li><%= simple_format @doctor.specialty %></li>
+			    </ul>
+        	</div>
+        </div>
+        <div class="col s12 m4 l4">
+        	<div class="doctor-profile-card-content">
+        		<ul>
+        			<li><h6>經歷 </h6></li>
+        			<li><%= simple_format @doctor.experience %></li>
+        			<li><%#= link_to "留言", new_doctor_post_path(@doctor), class: "btn" %></li>
+			    </ul>
+        	</div>
+        </div>
+	</div>
+</div>
+

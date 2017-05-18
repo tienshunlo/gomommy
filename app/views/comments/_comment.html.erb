@@ -1,0 +1,15 @@
+<% @comments.each do |comment| %>
+<li class="collection-item avatar">
+    <img src="images/yuna.jpg" alt="" class="circle">
+	<div class="discussion-byline">
+	    <%= simple_format(comment.content) %>
+	</div>
+	<ul class="discussion-tags right-align">
+		<li>
+			<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_comment_path(@doctor, @post,comment), :confirm => "Are you sure?", :method => :delete, class:'purple-text text-lighten-4' %>
+			<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, edit_doctor_post_comment_path(@doctor, @post, comment), class:'purple-text text-lighten-4' %>
+		</li>
+	</ul>
+</li>
+
+<% end %>

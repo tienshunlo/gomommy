@@ -11,18 +11,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170212134438) do
+ActiveRecord::Schema.define(version: 20170406065430) do
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content",    limit: 65535
+    t.integer  "post_id",    limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "districts", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "city_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name",                    limit: 255
-    t.string   "specialty",               limit: 255
-    t.string   "experience",              limit: 255
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.text     "specialty",               limit: 65535
+    t.text     "experience",              limit: 65535
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.string   "doctor_img_file_name",    limit: 255
     t.string   "doctor_img_content_type", limit: 255
     t.integer  "doctor_img_file_size",    limit: 4
     t.datetime "doctor_img_updated_at"
+    t.integer  "hospital_id",             limit: 4
+    t.integer  "gender",                  limit: 1,     default: 0, null: false
+    t.integer  "city_id",                 limit: 4
+    t.integer  "district_id",             limit: 4
+  end
+
+  create_table "hospitals", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.integer  "city_id",     limit: 4
+    t.integer  "district_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.text     "description", limit: 65535
+    t.integer  "doctor_id",   limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "subject",     limit: 4
+    t.integer  "period",      limit: 4
+    t.integer  "kind",        limit: 4
   end
 
 end

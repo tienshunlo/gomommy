@@ -13,8 +13,383 @@
  *= require_tree .
  *= require_self
  */
+
 @import "materialize/components/icons-material-design";
 @import "materialize/components/color";
-$primary-color: color("purple", "base") !default;
-$secondary-color: color("yellow", "base") !default;
+$primary-color: color("pink", "lighten-1") !default;
+$secondary-color: color("light-green", "lighten-1") !default;
+//$dropdown-color: color("purple", "base") !default;
+
 @import 'materialize';
+@import "materialize/components/forms/forms";
+@import url(//fonts.googleapis.com/earlyaccess/cwtexfangsong.css);
+@import url(//fonts.googleapis.com/earlyaccess/cwtexhei.css);
+@import url(//fonts.googleapis.com/earlyaccess/cwtexkai.css);
+@import url(//fonts.googleapis.com/earlyaccess/cwtexming.css);
+@import url(//fonts.googleapis.com/earlyaccess/cwtexyen.css);
+
+//materializeCSS 改
+html {
+    //黑體
+    font-family: 'cwTeXHei', sans-serif;
+    //圓體
+    //font-family: 'cwTeXYen', sans-serif;
+  }
+
+header, main, footer {
+    padding-left: 300px;
+     @media #{$medium-and-down} {
+       padding-left: 0px;
+  }
+}
+
+
+
+ul.side-nav.fixed li.logo {
+    
+    margin-top: 32px;
+    margin-bottom: 40px;
+}
+
+
+.logo a:hover {
+    background-color: transparent;
+}
+
+body {
+    background-color: #fcfcfc;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+
+main {
+    flex: 1 0 auto;
+}
+      
+
+.container {
+    @media #{$large-and-up} {
+        width: 70%;
+    }
+  }
+  
+.collection {
+    border: 0px solid #e0e0e0;
+}  
+
+
+
+// 自己增加的
+
+//doctor-profile-card 醫生個人資料頁面
+
+.doctor-profile-card {
+    position: relative;
+    margin: 0.5rem 0 1rem 0;
+    background-color: #fff;
+    transition: box-shadow .25s;
+    border-radius: 2px;
+}
+
+.doctor-profile-card .doctor-profile-card-image {
+    position: relative;
+    height: 100%;
+    max-height: none;
+    overflow: visible;
+    text-align: center;
+    img { 
+            height: 100%;
+            width: 100%;
+        }
+}
+
+
+.doctor-profile-card .doctor-profile-card-content {
+    padding: 20px;
+    border-radius: 0 0 2px 2px;
+    
+}
+.doctor-profile-card .doctor-profile-card-action {
+    position: relative;
+    background-color: inherit;
+    border-top: 1px solid rgba(160, 160, 160, 0.2);
+    padding: 20px;
+}
+
+//討論區
+.discussion-container{
+    padding-top: 7.5px;  
+}
+
+.control-container {
+    //background-color: #f48fb1;
+    background-color: color("pink", "lighten-3");
+    box-shadow: 0 1px 0 0 #e8ebed; 
+    border-radius: 4px 4px 0 0; 
+    margin: 0px;
+    //border-top: 4px solid #f8bbd0;
+    //border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+    
+   // height: 70px;
+    //background-color: #f9fafa;
+    
+    //background-color: #f8bbd0;
+    //border-top: 4px solid #f48fb1;
+    
+}
+
+.search {
+    display: block;
+    position: relative;
+    padding: 15px 30px;
+    //background-color: #f48fb1;
+    @media #{$small-and-down} {
+        //padding: 5px 30px;
+    }
+}
+
+.dropdown-parent-label {
+    font-size: 16px; 
+    font-weight: 500; 
+    color: white ;
+    @media #{$small-and-down} {
+    padding: 0px;
+    }
+}
+
+.dropdown-parent-label:hover{
+    background: transparent;
+    font-weight: bold;
+}
+
+.control-page-items {
+    margin: 0px;
+    line-height: 40px;
+}
+
+.dropdown-parent {
+    position: relative;
+    display: inline-block;
+    
+    @media #{$small-and-down} {
+        padding: 10px 10px;
+        display: block;
+        //margin: 10px;
+        border-bottom: 1px solid #f8bbd0;
+    }
+  }
+
+.discussion-board{
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+    background-color: white;
+    border-top: 4px solid #f8bbd0;
+    
+}
+
+
+.discussion-form{
+    padding: 80px;
+    border: 1px solid #e0e0e0;
+    background-color: white;
+    border-top: 4px solid #f8bbd0;
+    
+}
+
+.filter-section{
+    border-top: 4px solid #f8bbd0;
+    //border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+    border-radius: 4px 4px 0 0;
+   // height: 70px;
+    background-color: #f9fafa;
+}
+
+
+.discussion-title {
+    font-weight: 500;
+    font-size: 16px;
+    padding: 4px 0;
+    line-height: 1.4;
+    margin-top: 0px;
+}
+
+
+.chip-normal {
+    height: inherit;
+    border-radius: 100px;
+    background: transparent;
+    //border: 2px solid white;
+    //margin: 0 10px 10px 0;
+    color: white;
+    font-weight: bold;
+    padding: 0 2rem; 
+    font-size: 16px;
+   
+}
+
+
+.chip-subject {
+    height: inherit;
+    border-radius: 100px;
+    background: transparent;
+    border: 2px solid #f48fb1;
+    margin: 0 10px 10px 0;
+    color: #f48fb1;
+    font-weight: bold;
+   
+}
+
+.chip-period {
+    height: inherit;
+    border-radius: 100px;
+    background: transparent;
+    border: 2px solid #A5D6A7;
+    margin: 0 10px 10px 0;
+    color: #A5D6A7;
+    font-weight: bold;
+    
+}
+
+
+.chip-kind {
+    height: inherit;
+    border-radius: 100px;
+    background: transparent;
+    border: 2px solid #ffab91;
+    margin: 0 10px 10px 0;
+    color: #ffab91;
+    font-weight: bold;
+}
+
+.chip-delete {
+    height: inherit;
+    border-radius: 100px;
+    background: #e1bee7;
+    border: 2px solid #e1bee7 ;
+    margin: 0 10px 10px 0;
+    
+}
+    
+
+.discussion-tags{
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 15px;
+}
+
+
+
+.discussion-byline {
+    font-size: 13px;
+    color: #7b8b8e;
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+//posts: show page
+
+.main-post-title.avatar .circle {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    left: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.main-post-title {
+    min-height: 70px;
+    padding-left: 72px;
+    position: relative;
+}
+
+.main-post-content .markdown-zone p {
+    color: #576366;
+    font-size: 14px;
+    margin-bottom: 15px;
+    padding-left: 72px;
+     @media #{$small-and-down} {
+        padding-left: 0px;
+    }
+}
+
+
+
+
+.main-post-tag  {
+    overflow: hidden; 
+    white-space: nowrap; 
+    margin-top: 30px;
+    padding-left: 70px;
+    @media #{$small-and-down} {
+        padding-left: 0px;
+    }
+}
+
+//will_paginate
+
+.pagination {
+    padding: 3px;
+    margin: 3px;
+    text-align: right;
+  }
+  .pagination a {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #f48fb1;
+    text-decoration: none;
+    color: #f48fb1;
+  }
+  .pagination a:hover, .pagination a:active {
+    border: 1px solid #f48fb1;
+    color:  #ec407a;
+    font-style: inherit; 
+  }
+  .pagination span.current {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid  #ec407a;
+    font-weight: bold;
+    background-color: #ec407a;
+    color: #FFF;
+    font-style: inherit; 
+    
+  }
+  .pagination span.disabled {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #eee;
+    color: #ddd;
+  }
+  
+  em.current{
+    
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: 0 10px;
+    line-height: 30px;
+    margin: 2px;
+    border: 1px solid #f48fb1;
+    text-decoration: none;
+    font-style: normal;
+    background-color: #f48fb1;
+    color: #fcfcfc;
+  }
+  
+  .pagination li a {
+    color: #f48fb1; 
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: 0 10px;
+    line-height: 30px;
+}
+
+//https://teamtreehouse.com/community
+//http://blog.plataformatec.com.br/

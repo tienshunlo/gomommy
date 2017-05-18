@@ -1,11 +1,76 @@
+<% content_for :showsidebar do %>
+	<ul class="collapsible" data-collapsible="accordion">
+    	<li class='bold'>
+      		<a class="collapsible-header" style='padding-left:30px'>其他在<span class="purple-text bold" style="font-weight: bold" ><%= @doctor.city.name %></span>的醫生</a>
+      		<% @doctor.city.doctor.each do |doctor| %>
+      			<div class="collapsible-body">
+      				<ul>
+      					<li><%= link_to doctor.name, doctor_path(doctor) %></li>
+      				</ul>
+      			</div>
+      		<% end %>
+    	</li>
+    </ul>
+<% end %>
 
-<div class='card'>
-	<div class="card-content">
-		<div><%= @doctor.name %></div>
-		<div><%= @doctor.specialty %></div>
-		<div><%= @doctor.experience %></div>
-		<a href='<%= edit_doctor_path(@doctor) %>' class='btn waves-effect eaves-light' name='action'>Edit</a>
+<div class="row">
+	<div class="section">
+		<%= render 'doctor_profile' %>
+	</div>
+	<div class='section'>
+		<ul class="control-container">
+			<ul class="control-page-items z-depth-0">
+				<li class="dropdown-parent"><%= link_to "全部留言", doctor_path(@doctor), class:"btn-flat dropdown-parent-label" %></li>
+				<li class="dropdown-parent">
+			    <!-- Dropdown Trigger lighten-3-->
+	    			<a class="dropdown-button btn-flat dropdown-parent-label" href="#!" data-activates="dropdown2">
+	        			<% if params[:subject] %>
+	        				<%= params[:subject][0] %>
+	        			<% else %>
+	        				主題
+	        			<% end %>
+	        			<i class="material-icons right">arrow_drop_down</i>
+	    			</a>
+	    	 	<!-- Dropdown Structure -->
+	    			<ul id="dropdown2" class="dropdown-content">
+	  					<% Post::SUBJECT.each_with_index do |item, index| %>
+							<li class="<%= 'active' if params[:subject] == item %>">
+								<%= link_to item[0], doctor_path(@doctor, subject: item ), class: "link" %>
+							</li>
+						<% end %>
+					</ul>
+				</li>
+			</ul>
+		</ul>
+		<div class="discussion-board">
+			<ul class="collection">
+				<% @posts.each do |post| %>
+					<li class="collection-item avatar">
+						<img src="images/yuna.jpg" alt="" class="circle">
+					    <span class="title"><%= link_to post.title, doctor_post_path(@doctor, post) %></span>
+					    <div class="discussion-byline ">
+					    	<div class="truncate">
+					    		<%= post.description %>
+					    	</div>
+					    </div>
+					    <ul class="discussion-tags">
+					      	<li class="col s12 m10 l10">
+					      		<div class="chip chip-subject"><%= Post::SUBJECT[post.subject][0] %></div>
+					      		<div class="chip chip-period"><%= Post::PERIOD[post.period][0] %></div>
+					      		<div class="chip chip-kind"><%= Post::KIND[post.kind][0] %></div>
+					      	</li>
+					      	<li class="col s12 m2 l2">
+					      		<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_path(@doctor, post), :confirm => "Are you sure?", :method => :delete, class:'purple-text text-lighten-4' %>
+					      		<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, edit_doctor_post_path(@doctor, post), class:'purple-text text-lighten-4' %>
+					      	</li>
+					     </ul>
+					</li>
+				<% end %>
+			</ul>
+		</div>
 	</div>
 </div>
 
 
+ 
+    

@@ -2,6 +2,74 @@ class DoctorsController < ApplicationController
 	before_action :find_doctor, only: [:show,:edit, :update, :destroy]
 	
 	def index
+		if params[:city].blank?
+			@doctors = Doctor.all
+			@doctors = @paginate = Doctor.paginate(:page => params[:page])
+		else
+			@city_id = City.find_by(name: params[:city]).id
+		#	#scope 用法
+			@doctors = @paginate = Doctor.doctor_city(@city_id).paginate(:page => params[:page])
+			
+			#也可以寫成這樣：
+			#@doctors = Doctor.where(:city_id => @city_id).order("created_at DESC")
+		end
+		
+		
+		
+		
+		#@filterrific = initialize_filterrific(
+		#	Doctor,
+		#	params[:filterrific],
+		#	select_options: {
+		#		sorted_by: Doctor.options_for_sorted_by,
+		#		with_city_id: City.options_for_select,
+		#		with_district_id: District.options_for_select,
+		#		with_hospital_id: Hospital.options_for_select
+		#	},
+    	#	persistence_id: 'shared_key',
+    	#	default_filter_params: {},
+    		#available_filters: [],
+    	#	) or return
+    	#	@doctors = @filterrific.find.page(params[:page])
+		#	respond_to do |format|
+		#		format.html
+		#		format.js
+		#	end
+	end
+	
+	def show
+		if params[:subject].blank?
+			@posts = @paginate = @doctor.post.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
+			#@posts = @paginate = Post.paginate(:page => params[:page], :per_page => 5).order('id DESC')
+		else
+		#	@subjects = Post::SUBJECT.find_by(id: params[:subject][1])
+		#	#scope 用法
+			@posts = @paginate = @doctor.post.where(:subject => params[:subject][1]).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+			#@posts = @paginate = Post.paginate(:page => params[:page], :per_page => 5)
+			#也可以寫成這樣：
+			#@doctors = Doctor.where(:city_id => @city_id).order("created_at DESC")
+		end
+		
+		
+	#		@filterrific = initialize_filterrific(
+	#		Doctor,
+	#		params[:filterrific],
+	#		select_options: {
+	#			sorted_by: @doctor.post.options_for_sorted_by,
+	#			with_subject:@doctor.post.subject.options_for_select,
+	#			with_period: @doctor.post.period.options_for_select,
+	#			with_kind: @doctor.post.kind.options_for_select
+	#		},
+    #		persistence_id: 'shared_key',
+    #		default_filter_params: {},
+    		#available_filters: [],
+    #		) or return
+    	#	@doctors = @filterrific.find.page(params[:page])
+	#		respond_to do |format|
+	#			format.html
+	#			format.js
+	#		end
+	
 	end
 
 	def new
@@ -22,12 +90,17 @@ class DoctorsController < ApplicationController
 	end
 
 	def update
+		if @doctor.update(doctor_params)
+			redirect_to doctor_path(@doctor)
+		else
+			render 'edit'
+		end
 	end
 
 	private
 	
 	def doctor_params
-		params.require(:doctor).permit(:name, :specialty, :experience)
+		params.require(:doctor).permit(:name, :specialty, :experience,:doctor_img, :gender, :hospital_id, :city_id, :district_id)
 	end
 
 	def find_doctor

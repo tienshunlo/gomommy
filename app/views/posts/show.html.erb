@@ -1,0 +1,65 @@
+<div class="container">
+	<div class="row">
+		<div class='section'>
+			<div class= "discussion-container">
+			<ul class="control-container">
+				<ul class="control-page-items z-depth-0">
+					<div class="chip chip-normal"><%= @post.title %></div>
+				</ul>
+			</ul>
+			<div class="discussion-board">
+				<ul class="collection">
+				    <li class="main-post-title avatar">
+				      	<img src="images/yuna.jpg" alt="" class="circle">
+				      	<span class="title"><%= @post.title %></span>
+				    </li> 
+				    <li class="main-post-content">
+				    	<div class="markdown-zone">
+				    		<p><%= simple_format(@post.description) %></p>
+				    	</div>
+				    </li>
+				    <li class="main-post-tag">
+				    	<ul>
+				      		<li class="col s12 m10 l10">
+				      			<div class="chip chip-subject"><%= Post::SUBJECT[@post.subject][0] %></div>
+				      			<div class="chip chip-period"><%= Post::PERIOD[@post.period][0] %></div>
+				      			<div class="chip chip-kind"><%= Post::KIND[@post.kind][0] %></div>
+				      		</li>
+				      	</ul>
+				    </li>  	
+				      	
+				    
+				</ul>
+				</div>
+			</div>
+		</div>
+	
+	<div class="section">
+		<ul class="control-container">
+			<ul class="control-page-items z-depth-0">
+				<div class="chip chip-normal">回覆</div>
+			</ul>
+		</ul>
+		<div class="discussion-board">
+			<ul class="collection">
+				
+				<%#= render 'comments/comment', :locals => { :comment => @comments }   %>
+				<%= render 'comments/comment', collection: @comments   %>
+				
+			</ul>
+		</div>
+	</div>
+	<div class="section">
+		<ul class="control-container">
+			<ul class="control-page-items z-depth-0">
+				<div class="chip chip-normal">參加討論</div>
+			</ul>
+		</ul>
+		<div class="discussion-form">
+			<%= render 'comments/form' %>
+		</div>
+	</div>
+	</div>
+</div>
+
+ 

@@ -1,7 +1,17 @@
-<h1>New Doctor</h1>
-<div class='card'>
-	<div class="card-content">
-		<%= render 'form' %>
-		<a href='<%= doctors_path %>' class='btn waves-effect eaves-light' name='action'>Back</a>
-	</div>
+<div class="container">
+	<div class="row">
+		<div class='section'>
+			<div class= "discussion-container">
+				<ul class="control-container">
+					<ul class="control-page-items z-depth-0">
+						<div class="chip chip-normal"><span>新增醫生資料</span></div>
+					</ul>
+				</ul>
+				<div class="discussion-form">
+					<%= render 'form' %>
+				</div>
+			</div>	
+		</div>
+		<a href='<%= doctors_path %>' class='btn waves-effect eaves-light' name='action'>回到上一頁</a>
+	 </div>
 </div>

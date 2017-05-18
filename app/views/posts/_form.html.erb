@@ -1,0 +1,35 @@
+<%= form_for ([@doctor, @doctor.post.build]) do |f| %>
+	<div class="row">
+        <div class="input-field col s12">
+     		<%= f.text_field :title, :placeholder => "標題" %>
+    	</div>
+      	
+      
+      	<div class="input-field col s12 m4">
+	        <%= label_tag "請選擇主題" %><br>
+	        <%= f.select :subject , Post::SUBJECT, {include_blank: false} %>
+    	</div>
+    	<div class="input-field col s12 m4">
+	        <%= label_tag "妊娠週數" %><br>
+	        <%= f.select :period , Post::PERIOD, {include_blank: false} %>
+    	</div>
+    	<div class="input-field col s12 m4">
+	        <%= label_tag "主要範圍" %><br>
+	        <%= f.select :kind , Post::KIND, {include_blank: false} %>
+    	</div>
+    	
+    	<div class="input-field col s12">
+      		<%= f.text_area :description, :placeholder => "內容", class:"materialize-textarea" %>
+      	</div>
+      	<div class="input-field col s12 right-align">
+	      	<button class="btn waves-effect waves-light" type="submit" name="action">
+				<span>送出</span>
+			</button>
+		</div>
+		
+	</div>
+<% end %>
+
+
+
+

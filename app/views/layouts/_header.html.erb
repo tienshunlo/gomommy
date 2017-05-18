@@ -1,0 +1,20 @@
+<nav class="top-nav">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <%= link_to "我想看看全台灣的醫生", doctors_path(city: nil) %>
+          </div>
+        </div>
+      </nav>
+      <ul id="mobile-demo" class="side-nav fixed"  >
+        <li class='logo'>
+          <a href=<%= root_path %> class="brand-logo"><i class="large material-icons pink-text text-lighten-3">favorite</i> 
+            <span class='pink-text text-darken-3 text-bold' ><h4>Mommy</h4></span> 
+          </a>
+        </li>
+        <li><a href="collapsible.html">討論區</a></li>
+        <li><a href="badges.html">最多人討論的醫生</a></li>
+        <li><a href="mobile.html">最多人瀏覽的文章</a></li>
+        <li><a href="mobile.html">最多人留言的文章</a></li>
+        <li><%= yield :showsidebar %></li>
+      </ul>
