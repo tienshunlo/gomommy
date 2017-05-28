@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
     
-    belongs_to :doctor
+    belongs_to :doctor, counter_cache: :post_count
     has_many :comment, dependent: :destroy
     
     #scope :with_subject, lambda { |subject|

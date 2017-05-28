@@ -1,29 +1,34 @@
 <div class="row">
-	<div class="doctor-profile-card z-depth-0 ">
-		<div class="col s12 m4 l4">
-            <div class="doctor-profile-card-image center-block">
-                <%= image_tag @doctor.doctor_img.url, class: 'responsive-img' %>
-                <h5><%= @doctor.name %>  醫生 </h5>
-                <%= link_to "留言", new_doctor_post_path(@doctor), class: "btn" %>
+    <div class="section">
+        <div class="doctor-container">
+    	    <div class="col s12">
+    		    <div class="card">
+    	           <div class="card-image">
+    	               <%= image_tag @doctor.doctor_img.url, class: 'responsive-img z-depth-1' %>
+    	               <span class="card-title doctor-profile-title"><%= @doctor.name %>&nbsp醫生</span>
+    	           </div>
+    	           <div class="card-action doctor-profile-action">
+    	               <%= link_to "發表新留言", "#modal1", class:"modal-trigger waves-effect waves-light" %>
+    	               <%= link_to "掛號", "#modal1", class:"modal-trigger waves-effect waves-light" %>
+    	           </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="card doctor-card grey lighten-5 z-depth-1">
+                    <div class="card-content doctor-card-content black-text">
+                        <span class="card-title">經歷</span>
+                        <p><%= simple_format @doctor.experience %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="card doctor-card grey lighten-5 z-depth-1">
+                    <div class="card-content doctor-card-content black-text">
+                        <span class="card-title">專長</span>
+                        <p><%= simple_format @doctor.specialty %></p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col s12 m4 l4">
-        	<div class="doctor-profile-card-content">
-        		<ul>
-        		    <li> <h5>專長 </h5></li>
-        			<li><%= simple_format @doctor.specialty %></li>
-			    </ul>
-        	</div>
-        </div>
-        <div class="col s12 m4 l4">
-        	<div class="doctor-profile-card-content">
-        		<ul>
-        			<li><h5>經歷 </h5></li>
-        			<li><%= simple_format @doctor.experience %></li>
-        			<li><%#= link_to "留言", new_doctor_post_path(@doctor), class: "btn" %></li>
-			    </ul>
-        	</div>
-        </div>
-	</div>
-</div>
-
+    </div>  
+</div>  

@@ -38,6 +38,7 @@ class DoctorsController < ApplicationController
 	end
 	
 	def show
+		#按主題 - 心得分享與求解
 		if params[:subject].blank?
 			@posts = @paginate = @doctor.post.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
 			#@posts = @paginate = Post.paginate(:page => params[:page], :per_page => 5).order('id DESC')
@@ -49,6 +50,22 @@ class DoctorsController < ApplicationController
 			#也可以寫成這樣：
 			#@doctors = Doctor.where(:city_id => @city_id).order("created_at DESC")
 		end
+		
+		#按主要範圍
+		if params[:kind].blank?
+			@posts = @paginate = @doctor.post.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
+		else
+			@posts = @paginate = @doctor.post.where(:kind => params[:kind][1]).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+		end
+		
+		#按孕期
+		if params[:period].blank?
+			@posts = @paginate = @doctor.post.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
+		else
+			@posts = @paginate = @doctor.post.where(:period => params[:period][1]).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+		end
+		
+		
 		
 		
 	#		@filterrific = initialize_filterrific(

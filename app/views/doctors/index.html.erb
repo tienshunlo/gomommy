@@ -3,7 +3,7 @@
         <div class="card-panel z-depth-0 pink lighten-3">
             <!-- Dropdown Trigger -->
     	    <span class="white-text text-darken-2 bold" style='margin:10px;'>我想找</span>
-            <a class="dropdown-button btn pink lighten-1" href="#!" data-activates="dropdown1">
+            <a class="dropdown-button btn pink lighten-1" href="#!" data-activates="dropdown-doctor">
                 <% if params[:city] %>
                     <%= params[:city] %>
                 <% else %>
@@ -13,7 +13,7 @@
             </a>
             <span class="white-text text-darken-2 bold"  style='margin:10px'>的醫生</span>  
             <!-- Dropdown Structure -->
-            <ul id="dropdown1" class="dropdown-content">
+            <ul id="dropdown-doctor" class="dropdown-content">
                 <% City.all.each do |city| %>
 			        <li class="<%= 'active' if params[:city] == city.name %>">
 					    <%= link_to city.name, doctors_path(city: city.name) %>

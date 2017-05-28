@@ -1,0 +1,12 @@
+<ul class="collapsible" data-collapsible="accordion">
+    <li class='bold'>
+        <a class="collapsible-header" style='padding-left:30px'>其他在<span class="purple-text bold" style="font-weight: bold" ><%= @doctor.city.name %></span>的醫生</a>
+      	<% @doctor.city.doctor.each do |doctor| %>
+      		<div class="collapsible-body">
+      			<ul>
+      				<li><%= link_to doctor.name, doctor_path(doctor) %></li>
+      			</ul>
+      		</div>
+      	<% end %>
+    </li>
+</ul>

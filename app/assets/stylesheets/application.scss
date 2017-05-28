@@ -18,6 +18,8 @@
 @import "materialize/components/color";
 $primary-color: color("pink", "lighten-1") !default;
 $secondary-color: color("light-green", "lighten-1") !default;
+$primary-border: color("pink", "lighten-4") !default;
+$will-paginate-color: color("pink", "lighten-3")!default;
 //$dropdown-color: color("purple", "base") !default;
 
 @import 'materialize';
@@ -36,28 +38,41 @@ html {
     //font-family: 'cwTeXYen', sans-serif;
   }
 
-header, main, footer {
-    padding-left: 300px;
-     @media #{$medium-and-down} {
-       padding-left: 0px;
-  }
-}
+//header, main, footer {
+    //padding-left: 300px;
+     //@media #{$medium-and-down} {
+       //padding-left: 0px;
+  //}
+//}
 
 
 
-ul.side-nav.fixed li.logo {
-    
-    margin-top: 32px;
-    margin-bottom: 40px;
-}
+//ul.side-nav.fixed li.logo {
+    //margin-top: 32px;
+    //margin-bottom: 40px;
+//}
 
 
-.logo a:hover {
+//.logo a:hover {
+    //background-color: transparent;
+//}
+//header
+.btn-flat-login{
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+    &:hover {
     background-color: transparent;
+    }
 }
+
+//.dropdown-content-custom {
+  //top: 50px !important;
+//}
 
 body {
     background-color: #fcfcfc;
+    //background-color: #f8bbd0
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -70,13 +85,24 @@ main {
       
 
 .container {
-    @media #{$large-and-up} {
-        width: 70%;
+    //@media only screen and (min-width: 1200px){
+        //width: 50%;
+    //}
+    @media only screen and (min-width: 993px){
+        width: 80%;
     }
+    
   }
   
 .collection {
     border: 0px solid #e0e0e0;
+    .collection-item {
+        background-color: transparent;
+        line-height: 1.5rem;
+        padding: 10px 20px;
+        margin: 0;
+        border-bottom: 0px solid #e0e0e0;
+        }
 }  
 
 
@@ -85,86 +111,105 @@ main {
 
 //doctor-profile-card 醫生個人資料頁面
 
-.doctor-profile-card {
+.doctor-profile{
     position: relative;
-    margin: 0.5rem 0 1rem 0;
-    background-color: #fff;
+    margin: 0rem 0 1rem 0;
+    //background-color: rgba(248, 187, 208, 0.52);
     transition: box-shadow .25s;
-    border-radius: 2px;
-}
-
-.doctor-profile-card .doctor-profile-card-image {
-    position: relative;
-    height: 100%;
-    max-height: none;
-    overflow: visible;
-    text-align: center;
-    img { 
-            height: 100%;
-            width: 100%;
-        }
-}
-
-
-.doctor-profile-card .doctor-profile-card-content {
-    padding: 20px;
-    border-radius: 0 0 2px 2px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     
+    .doctor-container {
+        width: 100%;
+        margin: 0 auto;
+        @media #{$large-and-up} {
+            width: 80%;
+            margin: 0 auto;
+        }
+    }
+    
+    .card-title.doctor-profile-title {
+        color: #fff;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.25);
+        padding: 10px 0px 10px 20px;    
+    }
+    
+    .doctor-profile-action {
+        position: relative;
+        background-color: $primary-color;
+        border-top: 1px solid rgba(160, 160, 160, 0.2);
+        padding: 20px;
+    }
+    .doctor-profile-experience, .doctor-profile-specialty {
+        padding: 0px 20px 20px 30px;
+    }
+    
+    .doctor-card{
+        border: 5px solid $primary-border;
+        border-radius: 10px;
+        
+    }
+    .doctor-card-content{
+        padding: 15px;
+    }
 }
-.doctor-profile-card .doctor-profile-card-action {
-    position: relative;
-    background-color: inherit;
-    border-top: 1px solid rgba(160, 160, 160, 0.2);
-    padding: 20px;
-}
+
+
+
+
 
 //討論區
+
+
+
+
 .discussion-container{
     padding-top: 7.5px;  
 }
 
 .control-container {
-    //background-color: #f48fb1;
-    background-color: color("pink", "lighten-3");
-    box-shadow: 0 1px 0 0 #e8ebed; 
-    border-radius: 4px 4px 0 0; 
+    //background-color: color("pink", "lighten-3");
+    //box-shadow: 0 1px 0 0 #e8ebed; 
+    //border-radius: 4px 4px 0 0; 
     margin: 0px;
     //border-top: 4px solid #f8bbd0;
     //border-bottom: 1px solid #e0e0e0;
-    border-right: 1px solid #e0e0e0;
-    border-left: 1px solid #e0e0e0;
-    
-   // height: 70px;
-    //background-color: #f9fafa;
-    
-    //background-color: #f8bbd0;
-    //border-top: 4px solid #f48fb1;
-    
-}
-
-.search {
-    display: block;
-    position: relative;
-    padding: 15px 30px;
-    //background-color: #f48fb1;
+    //border-right: 1px solid #e0e0e0;
+    //border-left: 1px solid #e0e0e0;
+    padding: 10px;
     @media #{$small-and-down} {
-        //padding: 5px 30px;
+        padding: 0px 10px 0px 10px;
     }
 }
+
+.control-footer {
+    //background-color: color("pink", "lighten-3");
+    //box-shadow: 0 1px 0 0 #e8ebed; 
+    //border-radius: 0 0 4px 4px; 
+    margin: 0px;
+    //border-right: 1px solid #e0e0e0;
+    //border-left: 1px solid #e0e0e0;
+    text-align: center;
+    padding: 10px;
+}
+
+
 
 .dropdown-parent-label {
     font-size: 16px; 
     font-weight: 500; 
-    color: white ;
+    color: black;
+    &:hover {
+        background: transparent;
+        font-weight: bold;
+    }
     @media #{$small-and-down} {
-    padding: 0px;
+        padding: 0px;
     }
 }
 
-.dropdown-parent-label:hover{
-    background: transparent;
-    font-weight: bold;
-}
+
 
 .control-page-items {
     margin: 0px;
@@ -174,33 +219,42 @@ main {
 .dropdown-parent {
     position: relative;
     display: inline-block;
-    
     @media #{$small-and-down} {
         padding: 10px 10px;
         display: block;
-        //margin: 10px;
-        border-bottom: 1px solid #f8bbd0;
+        border: 0px solid #e0e0e0;
+        border-radius: 10px;
     }
-  }
+    &.last-dropdown {
+        @media #{$small-and-down} {
+            border-bottom: none;
+        }
+    }
+}
 
-.discussion-board{
+
+    
+
+
+.discussion-board {
     padding: 30px;
     border: 1px solid #e0e0e0;
-    background-color: white;
-    border-top: 4px solid #f8bbd0;
-    
+    border-radius: 10px;
+    //background-color: white;
+    //border-top: 4px solid #f8bbd0;
+    //border-bottom: 4px solid #f8bbd0;
 }
 
 
-.discussion-form{
-    padding: 80px;
-    border: 1px solid #e0e0e0;
-    background-color: white;
-    border-top: 4px solid #f8bbd0;
+.discussion-form { 
+    //padding: 80px;
+    //border: 1px solid #e0e0e0;
+    background-color: transparent;
+    //border-top: 4px solid #f8bbd0;
     
 }
 
-.filter-section{
+.filter-section {
     border-top: 4px solid #f8bbd0;
     //border-bottom: 1px solid #e0e0e0;
     border-right: 1px solid #e0e0e0;
@@ -211,13 +265,26 @@ main {
 }
 
 
-.discussion-title {
-    font-weight: 500;
-    font-size: 16px;
-    padding: 4px 0;
-    line-height: 1.4;
-    margin-top: 0px;
+.collection .collection-item.avatar {
+    margin: 30px 0;
+    .discussion-title {
+        color: #f48fb1;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .title {
+        font-size: 20px;
+        line-height: 2.0;
+        a {
+            color: #384047;
+            font-weight: bold;
+        }
+    }
 }
+
+
+
+
 
 
 .chip-normal {
@@ -234,37 +301,30 @@ main {
 }
 
 
-.chip-subject {
+.chip-subject, .chip-period, .chip-kind {
+    @extend .chip;
     height: inherit;
     border-radius: 100px;
     background: transparent;
-    border: 2px solid #f48fb1;
     margin: 0 10px 10px 0;
-    color: #f48fb1;
     font-weight: bold;
    
 }
 
-.chip-period {
-    height: inherit;
-    border-radius: 100px;
-    background: transparent;
-    border: 2px solid #A5D6A7;
-    margin: 0 10px 10px 0;
-    color: #A5D6A7;
-    font-weight: bold;
-    
+.chip-subject{
+    border: 2px solid #f48fb1;
+    color: #f48fb1;
 }
 
+.chip-period {
+    border: 2px solid #A5D6A7;
+    color: #A5D6A7;
+
+}
 
 .chip-kind {
-    height: inherit;
-    border-radius: 100px;
-    background: transparent;
     border: 2px solid #ffab91;
-    margin: 0 10px 10px 0;
     color: #ffab91;
-    font-weight: bold;
 }
 
 .chip-delete {
@@ -320,9 +380,6 @@ main {
     }
 }
 
-
-
-
 .main-post-tag  {
     overflow: hidden; 
     white-space: nowrap; 
@@ -333,63 +390,65 @@ main {
     }
 }
 
+
+
+
+.modal {
+    &.new-post {
+        @media #{$large-and-up} {
+         width: 40%;
+        }
+    }
+}
+
 //will_paginate
 
 .pagination {
-    padding: 3px;
-    margin: 3px;
-    text-align: right;
-  }
-  .pagination a {
-    padding: 2px 5px 2px 5px;
-    margin: 2px;
-    border: 1px solid #f48fb1;
-    text-decoration: none;
-    color: #f48fb1;
-  }
-  .pagination a:hover, .pagination a:active {
-    border: 1px solid #f48fb1;
-    color:  #ec407a;
-    font-style: inherit; 
-  }
-  .pagination span.current {
-    padding: 2px 5px 2px 5px;
-    margin: 2px;
-    border: 1px solid  #ec407a;
-    font-weight: bold;
-    background-color: #ec407a;
-    color: #FFF;
-    font-style: inherit; 
-    
-  }
-  .pagination span.disabled {
-    padding: 2px 5px 2px 5px;
-    margin: 2px;
-    border: 1px solid #eee;
-    color: #ddd;
-  }
-  
-  em.current{
-    
-    display: inline-block;
-    font-size: 1.2rem;
-    padding: 0 10px;
-    line-height: 30px;
-    margin: 2px;
-    border: 1px solid #f48fb1;
-    text-decoration: none;
-    font-style: normal;
-    background-color: #f48fb1;
-    color: #fcfcfc;
-  }
-  
-  .pagination li a {
-    color: #f48fb1; 
-    display: inline-block;
-    font-size: 1.2rem;
-    padding: 0 10px;
-    line-height: 30px;
+    background: white;
+    cursor: default;
+    float: right;
+    a, span, em {
+        padding: 0.2em 0.5em;
+        display: block;
+        float: left;
+        margin-right: 1px;
+    }
+    .disabled {
+        color: grey;
+        border: 1px solid color("grey", "lighten-2");
+    }
+    .current {
+        font-style: normal;
+        font-weight: bold;
+        background: $will-paginate-color;
+        color: white;
+        border: 1px solid $primary-border;
+    }
+    a {
+        text-decoration: none;
+        color: $primary-border;
+        border: 1px solid $primary-border;
+        &:hover, &:focus {
+            color: $will-paginate-color;
+            border-color: $will-paginate-color;
+        }
+    }
+    .page_info {
+        background: #2e6ab1;
+        color: white;
+        padding: 0.4em 0.6em;
+        width: 22em;
+        margin-bottom: 0.3em;
+        text-align: center;
+    }
+    b {
+      color: #000033;
+      background: #2e6ab1 + 60;
+      padding: 0.1em 0.25em;
+    }
 }
+
+
 
 //https://teamtreehouse.com/community
 //http://blog.plataformatec.com.br/

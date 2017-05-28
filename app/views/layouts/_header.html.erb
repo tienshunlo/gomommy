@@ -1,20 +1,39 @@
 <nav class="top-nav">
-        <div class="container">
-          <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <%= link_to "我想看看全台灣的醫生", doctors_path(city: nil) %>
-          </div>
-        </div>
-      </nav>
-      <ul id="mobile-demo" class="side-nav fixed"  >
-        <li class='logo'>
-          <a href=<%= root_path %> class="brand-logo"><i class="large material-icons pink-text text-lighten-3">favorite</i> 
-            <span class='pink-text text-darken-3 text-bold' ><h4>Mommy</h4></span> 
-          </a>
-        </li>
-        <li><a href="collapsible.html">討論區</a></li>
-        <li><a href="badges.html">最多人討論的醫生</a></li>
-        <li><a href="mobile.html">最多人瀏覽的文章</a></li>
-        <li><a href="mobile.html">最多人留言的文章</a></li>
-        <li><%= yield :showsidebar %></li>
+  
+    <div class="nav-wrapper">
+      <a href=<%= root_path %> class="brand-logo"><i class="large material-icons">favorite</i>
+        <span class='text-bold'><h4>Mommy</h4></span>
+      </a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= link_to "全台醫生", doctors_path(city: nil) %></li>
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown-discussion">全站討論區分類<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><%= link_to "註冊", doctors_path(city: nil), class:"btn-flat btn-flat-login" %></li>
+        <li><%= link_to "登入", doctors_path(city: nil), class:"btn-flat btn-flat-login" %></li>
       </ul>
+      
+    </div>
+  
+</nav>
+<!-- 下拉選單 -->
+<!-- Dropdown Structure -->
+<ul id="dropdown-discussion" class="dropdown-content">
+  <li><%= link_to "總討論區", doctors_path(city: nil) %></li>
+  <li class="divider"></li>
+  <li><%= link_to "最多人討論的醫生", doctors_path(city: nil) %></li>
+  <li><%= link_to "最多人瀏覽的文章", doctors_path(city: nil) %></li>
+  <li><%= link_to "最多人留言的文章", doctors_path(city: nil) %></li>
+</ul>
+<!-- 側邊選單 -->
+<ul id="mobile-demo" class="side-nav" >
+  <li><%= link_to "註冊", doctors_path(city: nil) %></li>
+  <li><%= link_to "登入", doctors_path(city: nil) %></li>
+  <li class="divider"></li>
+  <li><%= link_to "總討論區", doctors_path(city: nil) %></li>
+  <li><%= link_to "最多人討論的醫生", doctors_path(city: nil) %></li>
+  <li><%= link_to "最多人瀏覽的文章", doctors_path(city: nil) %></li>
+  <li><%= link_to "最多人留言的文章", doctors_path(city: nil) %></li>
+  <li class="divider"></li>
+  <li><%= yield :show_sidebar %></li>
+</ul>

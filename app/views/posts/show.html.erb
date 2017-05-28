@@ -1,4 +1,6 @@
-<div class="container">
+<% content_for :doctor_profile do %>
+	<%= render 'doctors/doctor_profile' %>
+<% end %>
 	<div class="row">
 		<div class='section'>
 			<div class= "discussion-container">
@@ -21,14 +23,12 @@
 				    <li class="main-post-tag">
 				    	<ul>
 				      		<li class="col s12 m10 l10">
-				      			<div class="chip chip-subject"><%= Post::SUBJECT[@post.subject][0] %></div>
-				      			<div class="chip chip-period"><%= Post::PERIOD[@post.period][0] %></div>
-				      			<div class="chip chip-kind"><%= Post::KIND[@post.kind][0] %></div>
+				      			<div class="chip-subject"><%= Post::SUBJECT[@post.subject][0] %></div>
+				      			<div class="chip-period"><%= Post::PERIOD[@post.period][0] %></div>
+				      			<div class="chip-kind"><%= Post::KIND[@post.kind][0] %></div>
 				      		</li>
 				      	</ul>
 				    </li>  	
-				      	
-				    
 				</ul>
 				</div>
 			</div>
@@ -42,9 +42,14 @@
 		</ul>
 		<div class="discussion-board">
 			<ul class="collection">
+				<% if @comments.blank? %>
+					<h5> 有甚麼想分享、想問的嗎？</h5>
+				<% else %>
+					<%= render 'comments/comment', collection: @comments %>
+					<%#= render 'comments/comment', :locals => { :comment => @comments }   %>
+				<% end %>
 				
-				<%#= render 'comments/comment', :locals => { :comment => @comments }   %>
-				<%= render 'comments/comment', collection: @comments   %>
+				
 				
 			</ul>
 		</div>
@@ -60,6 +65,6 @@
 		</div>
 	</div>
 	</div>
-</div>
+
 
  
