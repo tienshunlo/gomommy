@@ -1,10 +1,12 @@
 class Doctor < ActiveRecord::Base
+	is_impressionable
 	has_attached_file :doctor_img, styles: { :original => ['200x200#' , :jpg], medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
 	validates_attachment_content_type :doctor_img, content_type: /\Aimage\/.*\z/
 	belongs_to :hospital
 	belongs_to :city
 	belongs_to :district
 	has_many :post, dependent: :destroy
+	
 	
 	GENDER = [['女性' , 0],['男性' , 1]]
 	scope :doctor_city, -> (city_id) { where city_id: city_id }

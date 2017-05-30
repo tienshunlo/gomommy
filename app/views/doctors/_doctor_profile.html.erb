@@ -8,8 +8,10 @@
     	               <span class="card-title doctor-profile-title"><%= @doctor.name %>&nbsp醫生</span>
     	           </div>
     	           <div class="card-action doctor-profile-action">
-    	               <%= link_to "發表新留言", "#modal1", class:"modal-trigger waves-effect waves-light" %>
+    	               <!-- New Post Modal Trigger -->
+    	               <%= link_to "發表新留言", "#modal-new-post", class:"modal-trigger waves-effect waves-light" %>
     	               <%= link_to "掛號", "#modal1", class:"modal-trigger waves-effect waves-light" %>
+    	               <%= @doctor.impressionist_count %> 人瀏覽
     	           </div>
                 </div>
             </div>

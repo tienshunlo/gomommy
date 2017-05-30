@@ -12,7 +12,8 @@
 	<div class='section'>
 		<div class="control-container">
 			<ul class="control-page-items z-depth-0">
-				<li class="dropdown-parent"><%= link_to "發表新留言", "#modal1", class:"modal-trigger waves-effect waves-light btn" %></li>
+				<!-- New Post Modal Trigger -->
+				<li class="dropdown-parent"><%= link_to "發表新留言", "#modal-new-post", class:"modal-trigger waves-effect waves-light btn" %></li>
 				<li class="dropdown-parent"><%= link_to "全部留言", doctor_path(@doctor), class:"btn-flat dropdown-parent-label" %></li>
 				<li class="dropdown-parent  last-dropdown">
 			    <!-- Dropdown Trigger lighten-3-->
@@ -38,13 +39,13 @@
 		<div class="discussion-board">
 			<ul class="collection">
 				<% if @posts.blank? %>
-					<h5> 有甚麼想分享、想問的嗎？</h5>
+					<h5> 有甚麼想分享、想問的嗎？ 成為第一個留言的人</h5>
 				<% else %>
 					<% @posts.each do |post| %>
 						<li class="collection-item avatar">
 							<img src="images/yuna.jpg" alt="" class="circle">
 						    <div class="discussion-title">
-						    	<%= "[" %> <%= Post::SUBJECT[post.subject][0] %> <%= "]" %> <%= post.comment.size %>
+						    	<%= "[" %> <%= Post::SUBJECT[post.subject][0] %> <%= "]" %> <%= post.comment.size %> 篇回覆
 						    </div>
 						    <span class="title">
 						    	<%= link_to post.title, doctor_post_path(@doctor, post) %>
@@ -59,7 +60,40 @@
 						      	</li>
 						      	<li class="col s12 m2 l2">
 						      		<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_path(@doctor, post), :confirm => "Are you sure?", :method => :delete, class:'purple-text text-lighten-4' %>
-						      		<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, edit_doctor_post_path(@doctor, post), class:'purple-text text-lighten-4' %>
+						      		<!-- New Post Modal Trigger -->
+						      		<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-post", class:'purple-text text-lighten-4' %>
+						      		<!-- New Post Modal Structure -->
+						      		<div id="modal-edit-post" class="modal modal-fixed-footer modal-post">
+						      			<div class="modal-content modal-content-post">
+							      			<%= form_for ([@doctor, post]) do |f| %>
+							      				<div class="row">
+							      					<div class="input-field col s12">
+							      						<%= f.text_field :title, :placeholder => "標題" %>
+							      					</div>
+									      			<div class="input-field col s12 m4">
+							        					<%= label_tag "請選擇主題" %><br>
+							        					<%= f.select :subject , Post::SUBJECT, {include_blank: false} %>
+						    						</div>
+						    						<div class="input-field col s12 m4">
+							        					<%= label_tag "妊娠週數" %><br>
+							        					<%= f.select :period , Post::PERIOD, {include_blank: false} %>
+						    						</div>
+						    						<div class="input-field col s12 m4">
+							        					<%= label_tag "主要範圍" %><br>
+							        					<%= f.select :kind , Post::KIND, {include_blank: false} %>
+						    						</div>
+									    			<div class="input-field col s12">
+						      							<%= f.text_area :description, :placeholder => "內文", class:"materialize-textarea" %>
+						      						</div>
+						      						<div class="input-field col s12 right-align">
+							      						<button class="btn waves-effect waves-light" type="submit" name="action">
+							      							<span>送出</span>
+														</button>
+													</div>
+												</div>
+											<% end %>
+										</div>
+						      		</div>
 						      	</li>
 						     </ul>
 						</li>
@@ -69,12 +103,12 @@
 		</div>
 		<ul class="control-footer">
 			<ul class="control-page-items">
-				<!-- Modal Trigger -->
-				<li><%= link_to "發表新留言", "#modal1", class:"modal-trigger waves-effect waves-light btn" %></li>
+				<!-- New Post Modal Trigger -->
+				<li><%= link_to "發表新留言", "#modal-new-post", class:"modal-trigger waves-effect waves-light btn" %></li>
 			</ul>
 		</ul>
-		<!-- Modal Structure -->
-		<div id="modal1" class="modal modal-fixed-footer new-post">
+		<!-- New Post Modal Structure -->
+		<div id="modal-new-post" class="modal modal-fixed-footer modal-post">
 			<%= render 'posts/form' %>
 		</div>
 	</div>

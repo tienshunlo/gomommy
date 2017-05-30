@@ -10,14 +10,13 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
         @post.doctor_id = @doctor.id
         if @post.save
-			redirect_to doctor_path(@doctor)
+			redirect_to doctor_post_path(@doctor, @post)
 		else
 			render 'new'
 		end
     end
     
     def show
-        
         @comments = @paginate = @post.comment.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
     end
     
@@ -26,7 +25,7 @@ class PostsController < ApplicationController
     
     def update
         if @post.update(post_params)
-            redirect_to doctor_path(@doctor)
+            redirect_to doctor_post_path(@doctor, @post)
         else
             render 'edit'
         end

@@ -293,7 +293,7 @@ main {
     background: transparent;
     //border: 2px solid white;
     //margin: 0 10px 10px 0;
-    color: white;
+    color: black;
     font-weight: bold;
     padding: 0 2rem; 
     font-size: 16px;
@@ -394,10 +394,13 @@ main {
 
 
 .modal {
-    &.new-post {
+    &.modal-post {
         @media #{$large-and-up} {
          width: 40%;
         }
+    }
+    .modal-content.modal-content-post {
+        padding: 40px;
     }
 }
 

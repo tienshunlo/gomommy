@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
 	before_action :find_doctor, only: [:show,:edit, :update, :destroy]
-	
+	impressionist only: [:show, :index]
 	def index
 		if params[:city].blank?
 			@doctors = Doctor.all
@@ -38,6 +38,7 @@ class DoctorsController < ApplicationController
 	end
 	
 	def show
+		impressionist(@doctor)
 		#按主題 - 心得分享與求解
 		if params[:subject].blank?
 			@posts = @paginate = @doctor.post.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)

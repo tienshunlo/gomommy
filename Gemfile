@@ -28,6 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'materialize-sass'
 gem "paperclip", "~> 5.0.0"
 gem 'spreadsheet', '~> 1.1', '>= 1.1.4'
+gem 'impressionist'
 
 
 # Use ActiveModel has_secure_password

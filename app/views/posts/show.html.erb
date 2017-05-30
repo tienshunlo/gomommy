@@ -1,70 +1,110 @@
 <% content_for :doctor_profile do %>
 	<%= render 'doctors/doctor_profile' %>
 <% end %>
-	<div class="row">
-		<div class='section'>
-			<div class= "discussion-container">
-			<ul class="control-container">
-				<ul class="control-page-items z-depth-0">
-					<div class="chip chip-normal"><%= @post.title %></div>
-				</ul>
-			</ul>
-			<div class="discussion-board">
-				<ul class="collection">
-				    <li class="main-post-title avatar">
-				      	<img src="images/yuna.jpg" alt="" class="circle">
-				      	<span class="title"><%= @post.title %></span>
-				    </li> 
-				    <li class="main-post-content">
-				    	<div class="markdown-zone">
-				    		<p><%= simple_format(@post.description) %></p>
-				    	</div>
-				    </li>
-				    <li class="main-post-tag">
-				    	<ul>
-				      		<li class="col s12 m10 l10">
-				      			<div class="chip-subject"><%= Post::SUBJECT[@post.subject][0] %></div>
-				      			<div class="chip-period"><%= Post::PERIOD[@post.period][0] %></div>
-				      			<div class="chip-kind"><%= Post::KIND[@post.kind][0] %></div>
-				      		</li>
-				      	</ul>
-				    </li>  	
-				</ul>
-				</div>
-			</div>
-		</div>
-	
-	<div class="section">
-		<ul class="control-container">
+<div class="row">
+	<div class='section'>
+		<div class="control-container">
 			<ul class="control-page-items z-depth-0">
-				<div class="chip chip-normal">回覆</div>
+				<li class="dropdown-parent"><%= link_to "回到上一頁", doctor_path(@doctor), class:"dropdown-parent-label" %></li>
 			</ul>
-		</ul>
+		</div>
 		<div class="discussion-board">
 			<ul class="collection">
-				<% if @comments.blank? %>
-					<h5> 有甚麼想分享、想問的嗎？</h5>
-				<% else %>
-					<%= render 'comments/comment', collection: @comments %>
-					<%#= render 'comments/comment', :locals => { :comment => @comments }   %>
-				<% end %>
-				
-				
-				
+				<li class="collection-item avatar">
+					<img src="images/yuna.jpg" alt="" class="circle">
+					<div class="discussion-title">
+						<%= "[" %> <%= Post::SUBJECT[@post.subject][0] %> <%= "]" %> <%= @post.comment.size %> 篇回覆
+					</div>
+					<span class="title">
+						<%= @post.title %>
+					</span>
+					<div class="discussion-byline ">
+						<%= simple_format(@post.description) %>
+					</div>
+					<ul class="discussion-tags">
+						<li class="col s12 m10 l10">
+							<div class="chip-period"><%= Post::PERIOD[@post.period][0] %></div>
+						    <div class="chip-kind"><%= Post::KIND[@post.kind][0] %></div>
+						</li>
+						<li class="col s12 m2 l2">
+							<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_path(@doctor, @post), :confirm => "Are you sure?", :method => :delete, class:'purple-text text-lighten-4' %>
+						    <!-- Edit Post Modal Trigger -->
+						    <%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-post", class:'purple-text text-lighten-4' %>
+						    <!-- Edit Post Modal Structure -->
+						    <div id="modal-edit-post" class="modal modal-fixed-footer modal-post">
+						    	<div class="modal-content modal-content-post">
+							    	<%= form_for ([@doctor, @post]) do |f| %>
+							      		<div class="row">
+							      			<div class="input-field col s12">
+							      				<%= f.text_field :title, :placeholder => "標題" %>
+							      			</div>
+									      	<div class="input-field col s12 m4">
+							        			<%= label_tag "請選擇主題" %><br>
+							        			<%= f.select :subject , Post::SUBJECT, {include_blank: false} %>
+						    				</div>
+						    				<div class="input-field col s12 m4">
+							        			<%= label_tag "妊娠週數" %><br>
+							        			<%= f.select :period , Post::PERIOD, {include_blank: false} %>
+						    				</div>
+						    				<div class="input-field col s12 m4">
+							        			<%= label_tag "主要範圍" %><br>
+							        			<%= f.select :kind , Post::KIND, {include_blank: false} %>
+						    				</div>
+									    	<div class="input-field col s12">
+						      					<%= f.text_area :description, :placeholder => "內文", class:"materialize-textarea" %>
+						      				</div>
+						      				<div class="input-field col s12 right-align">
+							      				<button class="btn waves-effect waves-light" type="submit" name="action">
+							      					<span>送出</span>
+												</button>
+											</div>
+										</div>
+									<% end %>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="collection">
+				<li class="collection-item avatar">
+					<div class="discussion-title">
+						<% if @comments.blank? %>
+							成為第一個回覆的人
+						<% else %>
+							參加討論
+						<% end %>
+					</div>
+					<div class="section">
+						<div class="discussion-form">
+							<%= render 'comments/form' %>
+						</div>
+					</div>
+				</li>
 			</ul>
 		</div>
 	</div>
+</div>
+
+<div class="row">
 	<div class="section">
-		<ul class="control-container">
-			<ul class="control-page-items z-depth-0">
-				<div class="chip chip-normal">參加討論</div>
+		<div class="discussion-board">
+			<ul class="collection">
+			
+					<% if @comments.blank? %>
+						<div class="discussion-title">
+							還沒有任何人回答喔
+						</div>
+					<% else %>
+						<%= render 'comments/comment', collection: @comments %>
+						<%#= render 'comments/comment', :locals => { :comment => @comments }   %>
+						
+					<% end %>
+				</li>
 			</ul>
-		</ul>
-		<div class="discussion-form">
-			<%= render 'comments/form' %>
 		</div>
 	</div>
-	</div>
+</div>
 
 
  
