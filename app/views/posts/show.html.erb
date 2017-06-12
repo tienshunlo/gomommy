@@ -1,11 +1,14 @@
-<% content_for :doctor_profile do %>
-	<%= render 'doctors/doctor_profile' %>
+
+<% content_for :sidebar do %>
+	<%= render 'doctors/sidebar_doctor_profile' %>
 <% end %>
+
+
 <div class="row">
 	<div class='section'>
 		<div class="control-container">
 			<ul class="control-page-items z-depth-0">
-				<li class="dropdown-parent"><%= link_to "回到上一頁", doctor_path(@doctor), class:"dropdown-parent-label" %></li>
+				<li class="dropdown-parent"><%= link_to "回到醫生討論區", doctor_path(@doctor), class:"dropdown-parent-label" %></li>
 			</ul>
 		</div>
 		<div class="discussion-board">

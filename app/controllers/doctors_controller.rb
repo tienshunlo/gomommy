@@ -3,8 +3,8 @@ class DoctorsController < ApplicationController
 	impressionist only: [:show, :index]
 	def index
 		if params[:city].blank?
-			@doctors = Doctor.all
-			@doctors = @paginate = Doctor.paginate(:page => params[:page])
+			@doctors = @paginate = Doctor.includes(:city).includes(:hospital).paginate(:page => params[:page])
+			#@doctors = @paginate = Doctor
 		else
 			@city_id = City.find_by(name: params[:city]).id
 		#	#scope 用法
@@ -17,25 +17,29 @@ class DoctorsController < ApplicationController
 		
 		
 		
-		#@filterrific = initialize_filterrific(
-		#	Doctor,
-		#	params[:filterrific],
-		#	select_options: {
-		#		sorted_by: Doctor.options_for_sorted_by,
-		#		with_city_id: City.options_for_select,
-		#		with_district_id: District.options_for_select,
-		#		with_hospital_id: Hospital.options_for_select
-		#	},
-    	#	persistence_id: 'shared_key',
-    	#	default_filter_params: {},
+		@filterrific = initialize_filterrific(
+			Doctor.includes(:city).includes(:hospital).includes(:post),
+			params[:filterrific],
+			select_options: {
+				sorted_by: Doctor.options_for_sorted_by,
+				with_city_id: City.options_for_select,
+				with_district_name: District.options_for_select,
+				with_hospital_id: Hospital.options_for_select
+			},
+    		persistence_id: 'shared_key',
+    		default_filter_params: {},
     		#available_filters: [],
-    	#	) or return
-    	#	@doctors = @filterrific.find.page(params[:page])
-		#	respond_to do |format|
-		#		format.html
-		#		format.js
-		#	end
+    		) or return
+    		@doctors = @filterrific.find.page(params[:page])
+			respond_to do |format|
+				format.html
+				format.js
+			end
 	end
+	
+	def most_posts
+         @doctors = @paginate = Doctor.all.order('post_count DESC').paginate(:page => params[:page], :per_page => 5)
+    end
 	
 	def show
 		impressionist(@doctor)

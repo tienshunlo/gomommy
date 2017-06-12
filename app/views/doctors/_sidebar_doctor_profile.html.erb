@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="section">
+        <div class="doctor-container">
+    	    <div class="col s12">
+    		    <div class="card card-doctor card-doctor-list z-depth-0">
+    	           <div class="card-image">
+    	               <%= image_tag @doctor.doctor_img.url, class: 'responsive-img' %>
+    	               <span class="card-title card-title-doctor"><%= @doctor.name %>&nbsp醫生</span>
+    	           </div>
+    	           <div class="card-action card-action-doctor">
+    	               <ul>
+    	                   <li  class="valign-wrapper">
+    	                       <!-- New Post Modal Trigger -->
+    	                       <div class="post-image center-align"><i class="material-icons">textsms</i></div>
+    	                       <div class="post-title"><%= link_to "留言", "#modal-new-post", class:"modal-trigger waves-effect waves-light" %></div>
+    	                   </li>
+    	                   <li  class="valign-wrapper">
+    	                       <div class="post-image center-align"><i class="material-icons">forum</i></div>
+    	                       <div class="post-title"><span class="title"><%= link_to "掛號", "#modal1", class:"modal-trigger waves-effect waves-light" %></span></div>
+    	                   </li>
+    	               </ul>
+    	               <%#= @doctor.impressions.count 人瀏覽%> 
+    	           </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="card card-doctor card-doctor-sidebar z-depth-0">
+                    <div class="card-content card-content-doctor index-sidebar">
+                        <div><span class="card-title">經歷</span></div>
+                    </div>
+                    <div class="row card-action card-action-doctor index-sidebar black-text">
+                        <ul>
+                            <li  class="valign-wrapper">
+                                <div class="post-title"><%= simple_format @doctor.experience %></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="card card-doctor card-doctor-sidebar z-depth-0">
+                    <div class="card-content card-content-doctor index-sidebar">
+                        <div><span class="card-title">專長</span></div>
+                    </div>
+                    <div class="row card-action card-action-doctor index-sidebar black-text">
+                        <ul>
+                            <li  class="valign-wrapper">
+                                <div class="post-title"><%= simple_format @doctor.specialty %></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>  

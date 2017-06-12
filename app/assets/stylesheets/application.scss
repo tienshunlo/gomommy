@@ -56,11 +56,20 @@ html {
 //.logo a:hover {
     //background-color: transparent;
 //}
+
 //header
-.btn-flat-login{
-    border: 1px solid white;
+
+.btn-flat-custom{
     border-radius: 10px;
     color: white;
+    
+    &.white-border {
+       border: 1px solid white; 
+    }
+    &.grey-border {
+       border: 1px solid #e0e0e0;
+       color: black;
+    }
     &:hover {
     background-color: transparent;
     }
@@ -109,51 +118,123 @@ main {
 
 // 自己增加的
 
+.material-icons.orange600 { color: #FB8C00; }
+
 //doctor-profile-card 醫生個人資料頁面
 
-.doctor-profile{
-    position: relative;
-    margin: 0rem 0 1rem 0;
-    //background-color: rgba(248, 187, 208, 0.52);
-    transition: box-shadow .25s;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    
-    .doctor-container {
-        width: 100%;
-        margin: 0 auto;
-        @media #{$large-and-up} {
-            width: 80%;
-            margin: 0 auto;
+
+//圖卡專用
+.card-doctor {
+    border: 1px solid #e0e0e0;
+    //background-color: #fafafa;
+    border-radius: 10px;
+    &.babygirl {
+        background-color: color("pink", "lighten-5");
+    }
+    &.babyboy {
+        background-color: color("blue", "lighten-5");
+    }
+    &.card-doctor-sidebar{
+        border-radius: 10px;
+    }
+    &.card-doctor-list{
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+    }
+    .card-image { 
+        .card-title-doctor {
+            color: #fff;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.25);
+            padding: 10px 0px 10px 20px;
+            font-size: 20px;
         }
     }
-    
-    .card-title.doctor-profile-title {
-        color: #fff;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.25);
-        padding: 10px 0px 10px 20px;    
+    .card-content-doctor {
+        margin-bottom: 0px;
+        padding: 0px 15px;
+        &.index-sidebar{
+            background-color: #fcfcfc;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .card-content-doctor-ul{
+            padding-left: 20px;
+            line-height: 35px;
+            margin: 0px;
+            a {
+                width: 100%;
+                display: block;
+                height: 3rem;
+                line-height: 3rem;
+            }
+            li{
+                margin: 15px 0px;
+                .select-wrapper input.select-dropdown {
+                    position: relative;
+                    cursor: pointer;
+                    background-color: transparent;
+                    border: none;
+                    border-bottom: 0px !important;   
+                    outline: none;
+                    height: 3rem;
+                    line-height: 3rem;
+                    width: 100%;
+                    font-size: 16px !important;
+                    margin: 0px !important; 
+                    padding: 0;
+                    display: block;
+                }
+            }
+        }
     }
-    
-    .doctor-profile-action {
-        position: relative;
-        background-color: $primary-color;
-        border-top: 1px solid rgba(160, 160, 160, 0.2);
-        padding: 20px;
-    }
-    .doctor-profile-experience, .doctor-profile-specialty {
-        padding: 0px 20px 20px 30px;
-    }
-    
-    .doctor-card{
-        border: 5px solid $primary-border;
-        border-radius: 10px;
-        
-    }
-    .doctor-card-content{
-        padding: 15px;
+    .card-action-doctor{
+        padding: 0px 20px 0px 5px;
+        margin: 0 auto;
+        background-color: transparent; 
+        border-top: 0px;
+        ul{
+            margin: 0px;
+            li{
+                a {
+                    width: 100%;
+                    display: block;
+                    height: 3rem;
+                    line-height: 3rem;
+                }
+                .post-image{
+                    display: inline-block;
+                    width: 15%;
+                    margin: 5px;
+                    padding-top: 10px; 
+                }
+                .post-title {
+                    display: inline-block;
+                    width: 80%;
+                    border: 0px;
+                    &.post-title-last{
+                        border-bottom: 0px;
+                    }
+                }
+                @media #{$small-and-down} {
+                    .post-title {
+                        //font-size: 20px;
+                        //padding: 10px;
+                        padding: 5px;
+                        border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+                    }
+                }
+            }
+        }
     }
 }
+
+
+
+
+
 
 
 

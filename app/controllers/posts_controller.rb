@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
-    before_action :find_doctor
+    before_action :find_doctor, except: [:index]
     before_action :find_post, only: [:show, :edit, :update, :destroy]
+    
+    def index
+        @posts = @paginate = Post.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
+    end
     
     def new
         @post = Post.new

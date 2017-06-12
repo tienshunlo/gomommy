@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="section">
+        <div class="container-doctor">
+            <div class="col s12">
+                <div class="card card-doctor z-depth-0">
+                    <div class="row card-content card-content-doctor ">
+                        <ul class="card-content-doctor-ul">
+                            <li class="col s12 m4"><span class="card-title red-text">按孕期尋找留言</span></li>
+                            <li class="col s12 m4">
+                                <!-- Dropdown Trigger lighten-3-->
+                                <a class="dropdown-button btn-flat dropdown-parent-label" href="#!" data-activates="dropdown2">
+				        		    <% if params[:period] %>
+				        			    <%= params[:period][0] %>
+				        		    <% else %>
+				        				孕期
+				        			<% end %>
+				        			<i class="material-icons right">arrow_drop_down</i>
+				    			</a>
+				    	 		<!-- Dropdown Structure -->
+				    			<ul id="dropdown2" class="dropdown-content">
+				  					<% Post::PERIOD.each_with_index do |item, index| %>
+										<li class="<%= 'active' if params[:period] == item %>">
+											<%= link_to item[0], doctor_path(@doctor, period: item ), class: "link" %>
+										</li>
+								    <% end %>
+							    </ul>
+                            </li>
+                            <li class="col s12 m4"><%= link_to "- 全部留言 -", doctor_path(@doctor), class:"btn-flat dropdown-parent-label" %></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>  

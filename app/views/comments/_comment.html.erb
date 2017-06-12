@@ -1,4 +1,4 @@
-<% @comments.each do |comment| %>
+<% @comments.each_with_index do |comment, comment_item_index| %>
 	<li class="collection-item avatar">
 	<img src="images/yuna.jpg" alt="" class="circle">
 	<div class="discussion-byline">
@@ -7,11 +7,10 @@
 	<ul class="discussion-tags right-align">
 		<li>
 			<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_comment_path(@doctor, @post,comment), :confirm => "Are you sure?", :method => :delete, class:'purple-text text-lighten-4' %>
-			<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, edit_doctor_post_comment_path(@doctor, @post, comment), class:'purple-text text-lighten-4' %>
 			<!-- Edit Comment Modal Trigger -->
-			<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-comment", class:'purple-text text-lighten-4' %>
+			<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-comment_#{comment_item_index}", class:'purple-text text-lighten-4' %>
 			<!-- Edit Comment Modal Structure -->
-			<div id="modal-edit-comment" class="modal modal-fixed-footer modal-post">
+			<div id="modal-edit-comment_<%= comment_item_index %>" class="modal modal-fixed-footer modal-post">
 				<div class="modal-content modal-content-post">
 					<%= form_for ([@doctor, @post, comment])  do |f| %>
     					<div class="row">

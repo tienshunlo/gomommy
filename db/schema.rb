@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528125926) do
+ActiveRecord::Schema.define(version: 20170605150312) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170528125926) do
     t.integer  "city_id",                 limit: 4
     t.integer  "district_id",             limit: 4
     t.integer  "post_count",              limit: 4,     default: 0
+    t.integer  "impressions_count",       limit: 4
   end
 
   create_table "hospitals", force: :cascade do |t|

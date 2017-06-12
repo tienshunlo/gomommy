@@ -1,17 +1,40 @@
-<div class="container">
-	<div class="row">
-		<div class='section'>
-			<div class= "discussion-container">
-				<ul class="control-container">
-					<ul class="control-page-items z-depth-0">
-						<div class="chip chip-normal"><span>新增留言</span></div>
-					</ul>
-				</ul>
-				<div class="discussion-form">
-					<%= render 'form' %>
-				</div>
-			</div>	
-		</div>
-		<a href='<%= doctor_path(@doctor) %>' class='btn waves-effect eaves-light' name='action'>回到上一頁</a>
-	 </div>
+<!-- New Post Modal Trigger -->
+<div class="post-image center-align"><i class="material-icons">textsms</i></div>
+	<div class="post-title">
+	<%= link_to "留言", "#modal-new-post_#{doctor.id}", class:"modal-trigger waves-effect waves-light" %>
+</div>
+               
+
+
+<!-- New Post Modal Structure -->
+<div id="modal-new-post_<%= doctor.id %>" class="modal modal-fixed-footer modal-post">
+    <%= form_for ([doctor, doctor.post.build]) do |f| %>
+    <div class="modal-content modal-content-post">
+        <div class="row">
+            <div class="input-field col s12">
+                <%= f.text_field :title, :placeholder => "標題" %>
+            </div>
+            <div class="input-field col s12 m4">
+                <%= label_tag "請選擇主題" %><br>
+                <%= f.select :subject , Post::SUBJECT, {include_blank: false} %>
+            </div>
+            <div class="input-field col s12 m4">
+                <%= label_tag "妊娠週數" %><br>
+                <%= f.select :period , Post::PERIOD, {include_blank: false} %>
+            </div>
+            <div class="input-field col s12 m4">
+                <%= label_tag "主要範圍" %><br>
+                <%= f.select :kind , Post::KIND, {include_blank: false} %>
+            </div>
+            <div class="input-field col s12">
+                <%= f.text_area :description, :placeholder => "內容", class:"materialize-textarea" %>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn waves-effect waves-light" type="submit" name="action">
+            <span>送出</span>
+        </button>
+    </div>
+    <% end %>
 </div>

@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="section">
+    <div class="container-doctor">
+      <div class="col s12">
+        <div class="card card-doctor z-depth-0">
+          <div class="row card-content card-content-doctor black-text">
+            <%= form_for_filterrific @filterrific do |f| %>
+            <ul class="card-content-doctor-ul">
+              <li class="col s12 m4"><span class="card-title red-text">按縣市尋找醫生</span></li>
+              <li class="col s12 m4"><%= f.select :with_city_id , @filterrific.select_options[:with_city_id], {include_blank: '- 全部城市 -'} %></li>
+              <li class="col s12 m4"><%= f.select :sorted_by, @filterrific.select_options[:sorted_by] %></li>
+            </ul>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render_filterrific_spinner %>
