@@ -1,11 +1,3 @@
-<!-- New Post Modal Trigger -->
-<div class="post-image center-align"><i class="material-icons">textsms</i></div>
-	<div class="post-title">
-	<%= link_to "留言", "#modal-new-post_#{doctor.id}", class:"modal-trigger waves-effect waves-light" %>
-</div>
-               
-
-
 <!-- New Post Modal Structure -->
 <div id="modal-new-post_<%= doctor.id %>" class="modal modal-fixed-footer modal-post">
     <%= form_for ([doctor, doctor.post.build]) do |f| %>
@@ -29,6 +21,24 @@
             <div class="input-field col s12">
                 <%= f.text_area :description, :placeholder => "內容", class:"materialize-textarea" %>
             </div>
+            <div class="input-field col s12">
+                <%= f.select :phase_id, Phase.all.collect {|p| [ p.title, p.id ] } %>
+            </div>
+             <div class="input-field col s12">
+                <%= f.select :issue_id, Issue.all.collect {|p| [ p.title, p.id ] } %>
+            </div>
+            
+            <div class="input-field col s6">
+    		    <%= f.collection_select(:phase_id, Phase.order(:id), :id, :title) %>
+    	    </div>
+    
+		
+			<div class="input-field col s12">
+    		    <%= f.grouped_collection_select(:issue_id, Phase.all, :issue, :title, :id, :title) %>
+    		</div>
+           
+            
+            
         </div>
     </div>
     <div class="modal-footer">
@@ -38,3 +48,26 @@
     </div>
     <% end %>
 </div>
+
+
+
+
+<% if false %>
+<div class="container">
+	<div class="row">
+		<div class='section'>
+			<div class= "discussion-container">
+				<ul class="control-container">
+					<ul class="control-page-items z-depth-0">
+						<div class="chip chip-normal"><span>新增留言</span></div>
+					</ul>
+				</ul>
+				<div class="discussion-form">
+					<%= render 'form' %>
+				</div>
+			</div>	
+		</div>
+		<a href='<%= doctor_path(@doctor) %>' class='btn waves-effect eaves-light' name='action'>回到上一頁</a>
+	 </div>
+</div>
+<% end %>

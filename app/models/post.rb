@@ -2,6 +2,8 @@ class Post < ActiveRecord::Base
     
     belongs_to :doctor, counter_cache: :post_count
     has_many :comment, dependent: :destroy
+    belongs_to :phase
+    belongs_to :issue
     
     #scope :with_subject, lambda { |subject|
     #where(:subject => [*subject])

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605150312) do
+ActiveRecord::Schema.define(version: 20170614083311) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -87,6 +87,19 @@ ActiveRecord::Schema.define(version: 20170605150312) do
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", length: {"impressionable_type"=>nil, "message"=>255, "impressionable_id"=>nil}, using: :btree
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
 
+  create_table "issues", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.integer  "phase_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "phases", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title",         limit: 255
     t.text     "description",   limit: 65535
@@ -97,6 +110,8 @@ ActiveRecord::Schema.define(version: 20170605150312) do
     t.integer  "period",        limit: 4
     t.integer  "kind",          limit: 4
     t.integer  "comment_count", limit: 4,     default: 0
+    t.integer  "phase_id",      limit: 4
+    t.integer  "issue_id",      limit: 4
   end
 
 end

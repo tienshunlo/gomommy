@@ -47,7 +47,7 @@ class PostsController < ApplicationController
     
     private
     def post_params
-        params.require(:post).permit(:title, :description, :doctor_id, :subject, :period, :kind)
+        params.require(:post).permit(:title, :description, :doctor_id, :subject, :period, :kind, :phase_id, :issue_id)
     end
     
 	def find_doctor

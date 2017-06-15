@@ -150,6 +150,21 @@ main {
             background-color: rgba(0, 0, 0, 0.25);
             padding: 10px 0px 10px 20px;
             font-size: 20px;
+            ul{
+                float: right;
+                width: 100%;
+                margin: 0 auto;
+                white-space: nowrap; //下一層的li不會斷斷行
+                overflow: hidden;
+                li{
+                    float: left;
+                     a{
+                         font-size: 20px;
+                         display: block;
+                         padding: 0 15px;
+                     }
+                }
+            }
         }
     }
     .card-content-doctor {

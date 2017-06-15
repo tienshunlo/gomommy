@@ -2,7 +2,13 @@
     <div class="card card-doctor card-doctor-list z-depth-0">
         <div class="card-image">
             <div><%= link_to image_tag("female"), doctor %></div>
-            <div><span class="card-title card-title-doctor"><%= doctor.name %>&nbsp醫生<%= link_to "留言", "#modal-new-post_#{doctor.id}", class:"modal-trigger btn-flat btn-flat-custom white-border" %></span></div>
+            <div class="card-title card-title-doctor valign-wrapper">
+                <ul>
+                    <li><%= link_to "#{doctor.name} 醫生", doctor, class:"btn-flat btn-flat-custom" %></li>
+                    <!-- New Post Modal Trigger -->
+                    <li><%= link_to "留言", "#modal-new-post_#{doctor.id}", class:"modal-trigger btn-flat btn-flat-custom white-border" %></li>
+                </ul>
+            </div>
         </div>       
         <div class="card-content">
             <div class="truncate"><%= doctor.hospital.name %></div>
@@ -10,13 +16,6 @@
         </div>
         <div class="card-action card-action-doctor">
             <ul>
-                <li  class="valign-wrapper">
-                    <!-- New Post Modal Trigger -->
-                    <div class="post-image center-align"><i class="material-icons">textsms</i></div>
-                    <div class="post-title">
-                        <%= link_to "留言", "#modal-new-post_#{doctor.id}", class:"modal-trigger waves-effect waves-light" %>
-                    </div>
-                </li>
                 <li  class="valign-wrapper">
                     <div class="post-image center-align"><i class="material-icons">forum</i></div>
                     <div class="post-title"><span class="title"><%= link_to "共有 #{doctor.post.size} 篇留言", doctor %></span></div>
@@ -37,3 +36,9 @@
     </div>
 </div>
 
+
+<%#= render 'posts/new', locals: { doctor: doctor }%>
+
+<%#= render(partial: 'posts/new',locals: { doctor: doctor }) %>
+
+<%= render 'posts/new', doctor: doctor %>

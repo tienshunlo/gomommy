@@ -42,9 +42,9 @@
 									      	</li>
 									      	<li class="col s12 m2 l2">
 									      		<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_path(@doctor, post), :confirm => "Are you sure?", :method => :delete, class:'purple-text text-lighten-4' %>
-									      		<!-- New Post Modal Trigger -->
+									      		<!-- New Edit Modal Trigger -->
 									      		<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-post_#{post_item_index}", class:'purple-text text-lighten-4' %>
-									      		<!-- New Post Modal Structure -->
+									      		<!-- New Edit Modal Structure -->
 									      		<div id="modal-edit-post_<%= post_item_index %>" class="modal modal-fixed-footer modal-post">
 									      			<div class="modal-content modal-content-post">
 										      			<%= form_for ([@doctor, post]) do |f| %>
@@ -91,11 +91,9 @@
 <ul class="control-footer">
 	<ul class="control-page-items">
 		<!-- New Post Modal Trigger -->
-		<li><%= link_to "發表留言", "#modal-new-post", class:"modal-trigger waves-effect waves-light btn" %></li>
+		<li><%= link_to "發表留言", "#modal-new-post_#{@doctor.id}", class:"modal-trigger waves-effect waves-light btn" %></li>
 		<!-- New Post Modal Structure -->
-		<div id="modal-new-post" class="modal modal-fixed-footer modal-post">
-			<%= render 'posts/form' %>
-		</div>
+		<%= render 'posts/new', doctor: @doctor %>
 	</ul>
 </ul>
 

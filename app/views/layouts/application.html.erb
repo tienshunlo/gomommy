@@ -82,9 +82,29 @@
         $('select').material_select();
       });
     }
+    
+    $(function(){
+        filterPhaseList()
+      })
+    function filterPhaseList(){
+      var issues = $('#post_issue_id').html();
+      
+      $('#post_phase_id').change(function(){
+        var selectedPhaseCategory = $('#post_phase_id :selected').text();
+        var optgroup = "optgroup[label='"+ selectedPhaseCategory + "']";
+        var issueOptions = $(issues).filter(optgroup).html();
+        if(selectedPhaseCategory != ''){
+          $('#post_issue_id').html(issueOptions);
+        }
+        $('select').material_select();
+      });
+    }
+    
+    
+    
      
     </script>
-  
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 
   </body>
