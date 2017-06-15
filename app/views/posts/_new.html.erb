@@ -21,12 +21,7 @@
             <div class="input-field col s12">
                 <%= f.text_area :description, :placeholder => "內容", class:"materialize-textarea" %>
             </div>
-            <div class="input-field col s12">
-                <%= f.select :phase_id, Phase.all.collect {|p| [ p.title, p.id ] } %>
-            </div>
-             <div class="input-field col s12">
-                <%= f.select :issue_id, Issue.all.collect {|p| [ p.title, p.id ] } %>
-            </div>
+            
             
             <div class="input-field col s6">
     		    <%= f.collection_select(:phase_id, Phase.order(:id), :id, :title) %>
