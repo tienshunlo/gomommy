@@ -2,6 +2,9 @@ class DoctorsController < ApplicationController
 	before_action :find_doctor, only: [:show,:edit, :update, :destroy]
 	impressionist only: [:show, :index]
 	def index
+		
+		@issue = Phase.includes(:issue).order(:id)
+		
 		if params[:city].blank?
 			@doctors = @paginate = Doctor.includes(:city).includes(:hospital).paginate(:page => params[:page])
 			#@doctors = @paginate = Doctor
@@ -35,6 +38,8 @@ class DoctorsController < ApplicationController
 				format.html
 				format.js
 			end
+	
+		
 	end
 	
 	def most_posts

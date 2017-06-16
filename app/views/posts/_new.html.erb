@@ -17,7 +17,7 @@
     	    </div>
 			<div class="input-field col s12">
 			    <%= label_tag "請選擇相關問題" %><br>
-    		    <%= f.grouped_collection_select(:issue_id, Phase.all, :issue, :title, :id, :title) %>
+    		    <%= f.grouped_collection_select(:issue_id, @issue, :issue, :title, :id, :title) %>
     		</div>
             <div class="input-field col s12">
                 <%= f.text_area :description, :placeholder => "內容", class:"materialize-textarea" %>
