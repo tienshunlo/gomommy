@@ -3,13 +3,27 @@
     <%= form_for ([doctor, doctor.post.build]) do |f| %>
     <div class="modal-content modal-content-post">
         <div class="row">
-            <div class="input-field col s12">
-                <%= f.text_field :title, :placeholder => "標題" %>
-            </div>
             <div class="input-field col s12 m4">
                 <%= label_tag "請選擇主題" %><br>
                 <%= f.select :subject , Post::SUBJECT, {include_blank: false} %>
             </div>
+            <div class="input-field col s12 m8">
+                <%= label_tag "請輸入標題" %><br>
+                <%= f.text_field :title %>
+            </div>
+             <div class="input-field col s6">
+                 <%= label_tag "請選擇懷孕週數" %><br>
+    		    <%= f.collection_select(:phase_id, Phase.order(:id), :id, :title) %>
+    	    </div>
+			<div class="input-field col s12">
+			    <%= label_tag "請選擇相關問題" %><br>
+    		    <%= f.grouped_collection_select(:issue_id, Phase.all, :issue, :title, :id, :title) %>
+    		</div>
+            <div class="input-field col s12">
+                <%= f.text_area :description, :placeholder => "內容", class:"materialize-textarea" %>
+            </div>
+            
+            <% if false %>
             <div class="input-field col s12 m4">
                 <%= label_tag "妊娠週數" %><br>
                 <%= f.select :period , Post::PERIOD, {include_blank: false} %>
@@ -18,19 +32,7 @@
                 <%= label_tag "主要範圍" %><br>
                 <%= f.select :kind , Post::KIND, {include_blank: false} %>
             </div>
-            <div class="input-field col s12">
-                <%= f.text_area :description, :placeholder => "內容", class:"materialize-textarea" %>
-            </div>
-            
-            
-            <div class="input-field col s6">
-    		    <%= f.collection_select(:phase_id, Phase.order(:id), :id, :title) %>
-    	    </div>
-    
-		
-			<div class="input-field col s12">
-    		    <%= f.grouped_collection_select(:issue_id, Phase.all, :issue, :title, :id, :title) %>
-    		</div>
+            <% end %>
            
             
             
