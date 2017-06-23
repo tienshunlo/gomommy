@@ -100,8 +100,17 @@ main {
     @media only screen and (min-width: 993px){
         width: 80%;
     }
+    @media only screen and (max-width: 993px){
+        width: 100%;
+    }
     
   }
+.container-doctor {
+    @media only screen and (max-width: 993px){
+        width: 95%;
+        margin: 0 auto;
+  }
+}  
   
 .collection {
     border: 0px solid #e0e0e0;
@@ -118,16 +127,21 @@ main {
 
 // 自己增加的
 
-.material-icons.orange600 { color: #FB8C00; }
+.new-post-label { 
+    color: black; 
+    font-size: 1.2rem;
+    line-height: 48px;
+}
 
 //doctor-profile-card 醫生個人資料頁面
 
 
 //圖卡專用
+
 .card-doctor {
     border: 1px solid #e0e0e0;
     //background-color: #fafafa;
-    border-radius: 10px;
+    border-radius: 0px;
     &.babygirl {
         background-color: color("pink", "lighten-5");
     }
@@ -135,13 +149,17 @@ main {
         background-color: color("blue", "lighten-5");
     }
     &.card-doctor-sidebar{
-        border-radius: 10px;
+        @media only screen and (max-width: 993px){
+        border-radius: 0px;
+        }
     }
     &.card-doctor-list{
-        border-bottom-right-radius: 10px;
-        border-bottom-left-radius: 10px;
-        border-top-right-radius: 0px;
-        border-top-left-radius: 0px;
+        //border-bottom-right-radius: 10px;
+        //border-bottom-left-radius: 10px;
+        //border-top-right-radius: 0px;
+        //border-top-left-radius: 0px;
+        background-color: transparent;
+        border: 0px solid #e0e0e0;
     }
     .card-image { 
         .card-title-doctor {
@@ -149,7 +167,31 @@ main {
             width: 100%;
             background-color: rgba(0, 0, 0, 0.25);
             padding: 10px 0px 10px 20px;
-            font-size: 20px;
+            
+            
+            &.card-title-doctor-index{
+                display: block;
+                padding: 10px 10px 10px 0px;
+                .doctor-index-name {
+                    display: block;
+                    float: left;
+                    font-size: 17px;
+                    @media only screen and (max-width: 993px){
+                font-size: 14px;
+            }
+                }
+                .doctor-index-post {
+                    display: block;
+                    float: right;
+                    font-size: 15px;
+                    @media only screen and (max-width: 993px){
+                font-size: 10px;
+            }
+                }
+                a{
+                    padding: 0 1rem;
+                }
+            }
             ul{
                 float: right;
                 width: 100%;
@@ -172,10 +214,19 @@ main {
         padding: 0px 15px;
         &.index-sidebar{
             background-color: #fcfcfc;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+            //border-top-left-radius: 10px;
+            //border-top-right-radius: 10px;
+            border-bottom: 1px solid #e0e0e0;
         }
-        .card-content-doctor-ul{
+        &.card-content-doctor-list{
+            padding: 15px 0 30px 0;
+            border: 1px solid #e0e0e0;
+            background-color: rgb(252, 252, 252);
+            a {
+                color: #7b8b8e;
+            }
+        }
+    .card-content-doctor-ul{
             padding-left: 20px;
             line-height: 35px;
             margin: 0px;
@@ -210,9 +261,27 @@ main {
         margin: 0 auto;
         background-color: transparent; 
         border-top: 0px;
+        &.card-action-doctor-list{
+            padding: 7px 15px;
+            .index-list-post-title{
+                background-color: #e0e0e0; 
+                padding: 5px 15px 5px 15px; 
+                border-radius: 5px; 
+                color: black; 
+                min-height: 55.5px;
+                a {
+                    margin-right: 0px;
+                    h6 {
+                        color: #373737;
+                    }
+                }
+            }
+            
+        }
         ul{
             margin: 0px;
             li{
+                min-height: 40px;
                 a {
                     width: 100%;
                     display: block;
@@ -246,6 +315,12 @@ main {
     }
 }
 
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+    color: #ffab40;
+    margin-right: 0px;
+    transition: color .3s ease;
+    text-transform: uppercase;
+}
 
 
 
@@ -254,10 +329,75 @@ main {
 
 
 
+//討論區 post-board
+
+.card-doctor-post-board{
+    border: 0px solid #e0e0e0;
+    background-color: transparent;
+    border-radius: 0px;
+    
+    .collection-item-doctor-post-board-list{
+        border-bottom: 1px solid #e0e0e0;
+        padding: 30px 0px 30px 0px;
+        
+    }
+}
+
+.post-pre-title{
+    color: #f48fb1;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+
+.post-board-post-title{
+    font-size: 20px;
+    line-height: 2.0;
+    a{
+        color: black;
+    }
+   
+}
+
+.post-byline {
+    font-size: 15px;
+    color: #7b8b8e;
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+.post-board-user-section{
+    padding-top: 10px!important;
+    display: flex;
+    width: 100%;
+}
+
+.post-board-user-pic{
+    display: block;
+    float: left;
+    padding-right: 10px!important;
+    .circle{
+     width: 42px;
+    height: 42px;   
+    }
+        
+}
+
+.post-board-user-name{
+    display: block;
+    float: left;
+    color: #7b8b8e;
+    .name{
+        color: rgba(0,0,0,.8)!important;
+    }
+}
+
+.post-chip{
+    margin-left: auto;
+}
 
 //討論區
-
-
 
 
 .discussion-container{
@@ -392,7 +532,7 @@ main {
     color: black;
     font-weight: bold;
     padding: 0 2rem; 
-    font-size: 16px;
+    font-size: 12px;
    
 }
 
@@ -403,31 +543,33 @@ main {
     border-radius: 100px;
     background: transparent;
     margin: 0 10px 10px 0;
-    font-weight: bold;
-   
+
 }
 
 .chip-subject{
-    border: 2px solid #f48fb1;
+    border: 1px solid #f48fb1;
     color: #f48fb1;
+    
 }
 
 .chip-period {
-    border: 2px solid #A5D6A7;
+    border: 1px solid #A5D6A7;
     color: #A5D6A7;
+    margin-left: auto;
 
 }
 
 .chip-kind {
-    border: 2px solid #ffab91;
+    border: 1px solid #ffab91;
     color: #ffab91;
+    
 }
 
 .chip-delete {
     height: inherit;
     border-radius: 100px;
     background: #e1bee7;
-    border: 2px solid #e1bee7 ;
+    border: 1px solid #e1bee7 ;
     margin: 0 10px 10px 0;
     
 }

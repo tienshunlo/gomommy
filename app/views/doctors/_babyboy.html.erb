@@ -1,40 +1,61 @@
 
-<div class="col s12 m4 l4 left-align">
+<div class="col s6 m4 l4 left-align">
     <div class="card card-doctor card-doctor-list z-depth-0">
         <div class="card-image">
             <div><%= link_to image_tag("male"), doctor %></div>
-            <div><span class="card-title card-title-doctor"><%= doctor.name %>&nbsp醫生</span></div>
-        </div>       
-        <div class="card-content">
-            <div class="truncate"><%= doctor.hospital.name %></div>
-            <div><%#= doctor.experience %></div>
+            <div class="card-title card-title-doctor card-title-doctor-index valign-wrapper">
+                <div class="doctor-index-name"><%= link_to "#{doctor.name} 醫生", doctor, class:"btn-flat btn-flat-custom" %></div>
+                <!-- New Post Modal Trigger -->
+                <div class="doctor-index-post"><%= link_to "留言", "#modal-new-post_#{doctor.id}", class:"modal-trigger btn-flat btn-flat-custom white-border" %></div>
+            </div>
+        </div>     
+        <div class="card-content card-content-doctor card-content-doctor-list">
+            <div class="col s4 center-align">
+                <%= link_to  doctor_path(doctor) do %> 
+				    <i class="material-icons tiny">favorite_border</i>
+				    <span> <%= doctor.post.size %></span>
+				<% end %>
+			</div>
+			<div class="col s4 center-align">
+                <%= link_to  doctor_path(doctor) do %> 
+				    <i class="material-icons tiny">chat_bubble_outline</i>
+				    <span> <%= doctor.post.size %></span>
+				<% end %>
+			</div>
+			<div class="col s4 center-align">
+                <%= link_to  doctor_path(doctor) do %> 
+				    <i class="material-icons tiny">bookmark_border</i>
+				    <span> <%= doctor.post.size %></span>
+				<% end %>
+			</div>
         </div>
-        <div class="card-action card-action-doctor">
-            <ul>
-                <li  class="valign-wrapper">
-                    <!-- New Post Modal Trigger -->
-                    <div class="post-image center-align"><i class="material-icons">textsms</i></div>
-                    <div class="post-title"><%= link_to "留言", "#modal-new-post_#{doctor.id}", class:"modal-trigger waves-effect waves-light" %></div>
-                </li>
-                <li  class="valign-wrapper">
-                    <div class="post-image center-align"><i class="material-icons">forum</i></div>
-                    <div class="post-title"><span class="title"><%= link_to "共有 #{doctor.post.size} 篇留言", doctor %></span></div>
-                </li>
-                <li class="valign-wrapper">
-                <% if !doctor.post.blank? %>        
-                    <div class="post-image center-align"><img src="images/yuna.jpg" alt="" class="circle"></div>
-                    <div class="post-title truncate post-title-last"><span class="title"><%= link_to doctor.post.last.title, doctor_post_path(doctor,doctor.post.last) %></span></div>
-                <% else %>
-                    <!-- New Post Modal Trigger -->
-                    <div class="post-image center-align"><i class="material-icons">textsms</i></div>
-                    <div class="post-title post-title-last"><%= link_to "成為第一個留言的人", "#modal-new-post_#{doctor.id}", class:"modal-trigger waves-effect waves-light" %></div>
-                    
+        <div class="card-action card-action-doctor card-action-doctor-list">
+            <% if !doctor.post.blank? %>
+			<div class="post-board-user-section valign-wrapper">
+			    <div class="post-board-user-pic">
+			        <%= image_tag "yuna.jpg", class:"circle" %>
+                </div>
+                <div class="post-board-user-name">
+                    <%= link_to "#{doctor.name}",doctor_path(doctor), {class:"name"} %><br>
+                    <%= time_ago_in_words(doctor.post.last.created_at) %> ago<br>
+                </div>
+            </div>
+            <div class="index-list-post-title valign-wrapper"> 
+                <%= link_to  doctor_post_path(doctor,doctor.post.last) do %>
+                    <h6 style="color: black;"><%= truncate("#{doctor.post.last.title}", length: 22) %></h6>
                 <% end %>
-                </li>
-			</ul>
+            </div>
+            <% else %>
+            <div class="valign-wrapper">
+                <!-- New Post Modal Trigger -->
+                <div class="post-image center-align"><i class="material-icons">textsms</i></div>
+                <div class="post-title post-title-last"><%= link_to "成為第一個留言的人", "#modal-new-post_#{doctor.id}", class:"modal-trigger waves-effect waves-light" %></div>
+            </div>   
+            <% end %>
         </div>
     </div>
 </div>
+
 <!-- New Post Modal Structure -->
 <div id="modal-new-post_<%= doctor.id %>" class="modal modal-fixed-footer modal-post">
     <%= form_for ([doctor, doctor.post.build]) do |f| %>

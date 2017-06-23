@@ -3,7 +3,8 @@ class DoctorsController < ApplicationController
 	impressionist only: [:show, :index]
 	def index
 		
-		@issue = Phase.includes(:issue).order(:id)
+		@phase = Phase.includes(:issue).order(:id)
+
 		
 		if params[:city].blank?
 			@doctors = @paginate = Doctor.includes(:city).includes(:hospital).paginate(:page => params[:page])
@@ -38,7 +39,7 @@ class DoctorsController < ApplicationController
 				format.html
 				format.js
 			end
-	
+		
 		
 	end
 	
@@ -47,6 +48,7 @@ class DoctorsController < ApplicationController
     end
 	
 	def show
+		@phase = Phase.includes(:issue).order(:id)
 		impressionist(@doctor)
 		#按主題 - 心得分享與求解
 		if params[:subject].blank?

@@ -3,24 +3,25 @@
     <%= form_for ([doctor, doctor.post.build]) do |f| %>
     <div class="modal-content modal-content-post">
         <div class="row">
-            <div class="input-field col s12 m4">
-                <%= label_tag "請選擇主題" %><br>
-                <%= f.select :subject , Post::SUBJECT, {include_blank: false} %>
-            </div>
-            <div class="input-field col s12 m8">
-                <%= label_tag "請輸入標題" %><br>
-                <%= f.text_field :title %>
-            </div>
-             <div class="input-field col s6">
-                 <%= label_tag "請選擇懷孕週數" %><br>
-    		    <%= f.collection_select(:phase_id, Phase.order(:id), :id, :title) %>
-    	    </div>
-			<div class="input-field col s12">
-			    <%= label_tag "請選擇相關問題" %><br>
-    		    <%= f.grouped_collection_select(:issue_id, @issue, :issue, :title, :id, :title) %>
-    		</div>
-            <div class="input-field col s12">
-                <%= f.text_area :description, :placeholder => "內容", class:"materialize-textarea" %>
+                <div class="col s12 m4">
+                    <%= f.label "請選擇主題:", class:"new-post-label" %>
+                    <%= f.select :subject , Post::SUBJECT, {include_blank: false}, {class:"browser-default"} %>
+                </div>
+                <div class="col s12 m8">
+                    <%= f.label "請輸入標題:", class:"new-post-label" %>
+                    <%= f.text_field :title %>
+                </div>
+                <div class="col s12">
+                    <%= f.label "請選擇懷孕週數:", class:"new-post-label" %>
+    		        <%= f.collection_select :phase_id, @phase, :id, :title, {}, {class:"browser-default"} %>
+                </div>
+			    <div class="col s12">
+			        <%= f.label "請選擇相關問題:", class:"new-post-label" %>
+    		        <%= f.grouped_collection_select :issue_id, @phase, :issue, :title, :id, :title, {}, {class:"browser-default"} %>
+                </div>
+            <div class="col s12">
+                <%= f.label "內容:", class:"new-post-label" %>
+                <%= f.text_area :description, class:"materialize-textarea" %>
             </div>
             
             <% if false %>

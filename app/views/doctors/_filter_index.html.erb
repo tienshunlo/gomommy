@@ -7,8 +7,8 @@
             <%= form_for_filterrific @filterrific do |f| %>
             <ul class="card-content-doctor-ul">
               <li class="col s12 m4"><span class="card-title red-text">按縣市尋找醫生</span></li>
-              <li class="col s12 m4"><%= f.select :with_city_id , @filterrific.select_options[:with_city_id], {include_blank: '- 全部城市 -'} %></li>
-              <li class="col s12 m4"><%= f.select :sorted_by, @filterrific.select_options[:sorted_by] %></li>
+              <li class="col s12 m4"><%= f.select :with_city_id , @filterrific.select_options[:with_city_id], {include_blank: '- 全部城市 -'}, class:"browser-default" %></li>
+              <li class="col s12 m4"><%= f.select :sorted_by, @filterrific.select_options[:sorted_by],{}, class:"browser-default" %></li>
             </ul>
             <% end %>
           </div>
