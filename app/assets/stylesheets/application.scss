@@ -107,7 +107,7 @@ main {
   }
 .container-doctor {
     @media only screen and (max-width: 993px){
-        width: 95%;
+        width: 100%;
         margin: 0 auto;
   }
 }  
@@ -335,21 +335,76 @@ main {
     border: 0px solid #e0e0e0;
     background-color: transparent;
     border-radius: 0px;
-    
+    .card-content-doctor-post-board{
+        padding: 0px;
+    }
     .collection-item-doctor-post-board-list{
-        border-bottom: 1px solid #e0e0e0;
-        padding: 30px 0px 30px 0px;
-        
+        margin-bottom: 5px;
+        border: 1px solid #e0e0e0 !important; 
+        //padding: 30px 0px 30px 0px;
+        .post-pre-title{
+            color: #f48fb1;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        h5{
+            color: black;
+        }
     }
 }
 
-.post-pre-title{
-    color: #f48fb1;
-    font-weight: bold;
-    font-size: 16px;
-}
+.collection-item-doctor-post-board-list{
+        margin-bottom: 5px;
+        border: 1px solid #e0e0e0 !important; 
+        //padding: 30px 0px 30px 0px;
+        .post-top{
+            border-bottom: 1px solid #e6e6e6;
+        }
+        .post-middle{
+            .post-pre-title{
+            color: #f48fb1;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        h5{
+            color: black;
+        }
+        }
+        
+    }
 
-
+.doctor-post-board-list{
+        margin-bottom: 5px;
+        border: 1px solid #e0e0e0 !important; 
+        padding: 0px;
+        .post-board-top{
+            border-bottom: 1px solid #e6e6e6;
+            padding: 15px 15px 5px 15px;
+            margin: 0px 15px;
+        }
+        
+        
+        .post-board-middle{
+            padding: 15px 30px;
+            
+            &.post-board-list-middle{
+                height: 130px;
+            }
+            .post-pre-title{
+                color: #f48fb1;
+                font-weight: bold;
+                font-size: 16px;
+            }
+            h5{
+            color: black;
+            }
+        }
+        .post-board-bottom{
+            border-top: 1px solid #e6e6e6;
+            padding: 15px 15px 0px 15px;
+        }
+        
+    }
 
 .post-board-post-title{
     font-size: 20px;
@@ -363,14 +418,18 @@ main {
 .post-byline {
     font-size: 15px;
     color: #7b8b8e;
-    margin: 10px 0;
+    //margin: 10px 0px 0px 0px;
     line-height: 1.4;
+    min-height: 100px;
 }
 
 .post-board-user-section{
-    padding-top: 10px!important;
     display: flex;
     width: 100%;
+    background-color: rgba(224, 224, 224, 0.2);
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
 }
 
 .post-board-user-pic{
@@ -474,8 +533,8 @@ main {
 
 .discussion-board {
     padding: 30px;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
+    //border: 1px solid #e0e0e0;
+    //border-radius: 10px;
     //background-color: white;
     //border-top: 4px solid #f8bbd0;
     //border-bottom: 4px solid #f8bbd0;

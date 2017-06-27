@@ -1,36 +1,17 @@
-<% content_for :doctor_profile do %>
-	<%= render 'doctors/index_sidebar' %>
+
+
+<% content_for :sidebar do %>
+	<%= render 'doctors/sidebar_index' %>
 <% end %>
+
 <div class="row">
-	<div class='section'>
-		<div class="control-container">
-			<ul class="control-page-items z-depth-0">
-				<li class="dropdown-parent"><%= link_to "總討論區", "#", class:"dropdown-parent-label" %></li>
-			</ul>
-		</div>
-		<div class="discussion-board">
-			<ul class="collection">
-					<% @posts.each do |post| %>
-						<li class="collection-item avatar">
-							<img src="images/yuna.jpg" alt="" class="circle">
-						    <div class="discussion-title">
-						    	<%= "[" %> <%= Post::SUBJECT[post.subject][0] %> <%= "]" %> <%= post.comment.size %> 篇回覆
-						    </div>
-						    <span class="title">
-						    	<%= link_to post.title, doctor_post_path(post.doctor, post) %>
-						    </span>
-						    <div class="discussion-byline ">
-						    	<%= post.description %>
-						    </div>
-						    <ul class="discussion-tags">
-						      	<li class="col s12 m10 l10">
-						      		<div class="chip-period"><%= Post::PERIOD[post.period][0] %></div>
-						      		<div class="chip-kind"><%= Post::KIND[post.kind][0] %></div>
-						      	</li>
-						     </ul>
-						</li>
-					<% end %>
-			</ul>
-	</div>	
+	<div class="control-container">
+		<ul class="control-page-items z-depth-0">
+			<li class="dropdown-parent"><%= link_to "總討論區", "#", class:"dropdown-parent-label" %></li>
+		</ul>
+	</div>
+		<% @posts.each do |post| %>
+			<%= render 'posts/list_posts_index', post: post  %>
+		<% end %>
 </div>
  

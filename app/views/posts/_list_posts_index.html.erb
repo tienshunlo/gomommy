@@ -1,0 +1,35 @@
+<div class="col s12 m6 l6">
+		<div class="doctor-post-board-list">
+			<div class="section post-board-top valign-wrapper">
+				<div class="post-board-user-pic">
+					<%= image_tag "yuna.jpg", class:"circle" %>
+				</div>
+				<div class="post-board-user-name">
+					<%= link_to "#{post.doctor.name}",doctor_path(post.doctor), {class:"name"} %><br>
+	      			<%= time_ago_in_words(post.created_at) %> ago
+				</div>
+				
+			</div>
+			<div class="section post-board-middle post-board-list-middle">
+				<div class="post-pre-title">
+					<%= "[" %> <%= Post::SUBJECT[post.subject][0] %> <%= "]" %> <%= post.comment.size %> 篇回覆
+				</div>
+				<%= link_to doctor_post_path(post.doctor, post) do %> 
+	    			<h5> <%= truncate("#{post.title}", length: 30)  %> </h5>
+	    		<% end %>
+	    		<% if false %>
+				<div class="section post-byline valign-wrapper">
+					<%= simple_format(post.description) %>
+				</div>
+				<% end %>
+			</div>
+			<div class="section post-board-bottom valign-wrapper">
+				<div class="post-chip chip-period truncate">
+					<%= Post::PERIOD[post.period][0] %>
+				</div>
+				<div class="post-chip chip-kind truncate">
+					<%= Post::KIND[post.kind][0] %>
+				</div>
+			</div>
+		</div>	
+	</div>

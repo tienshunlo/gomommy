@@ -13,95 +13,22 @@
 
 
 
-<div class="row">
-	<div class='section'>
-		<div class="container-doctor">
-			<div class="col s12">
-				<div class="card card-doctor card-doctor-post-board z-depth-0">
-					<div class="card-content card-content-doctor black-text">
-						<ul class="collection">
-							<% if @posts.blank? %>
-								<h5> 有甚麼想分享、想問的嗎？ 成為第一個留言的人</h5>
-							<% else %>
-								<% @posts.each_with_index do |post, post_item_index| %>
-									<li class="collection-item collection-item-doctor-post-board-list">
-										<div class="post-pre-title">
-											<%= "[" %> <%= Post::SUBJECT[post.subject][0] %> <%= "]" %> <%= post.comment.size %> 篇回覆
-										</div>
-									    <div class="post-board-post-title">
-									    	<%= link_to doctor_post_path(@doctor, post) do %> 
-									    		<h5> <%= "#{post.title}" %> </h5>
-									    	<% end %>
-									    <%#= link_to post.title, doctor_post_path(@doctor, post) %>
-									    </div>
-									    <div class="post-byline">
-									    	<%= post.description %>
-									    </div>
-									   
-									      	<div class="post-board-user-section valign-wrapper">
-									      		<div class="post-board-user-pic">
-									      			<%= image_tag "yuna.jpg", class:"circle" %>
-									      		</div>
-											    <div class="post-board-user-name">
-									      			<%= link_to "#{@doctor.name}",doctor_path(@doctor), {class:"name"} %><br>
-									      			<%= time_ago_in_words(post.created_at) %> ago
-									      		</div>
-											    <div class="post-chip chip-period truncate">
-									      			<%= Post::PERIOD[post.period][0] %>
-									      		</div>
-									      		<div class="post-chip chip-kind truncate">
-									      			<%= Post::KIND[post.kind][0] %>
-									      		</div>
-									      	</div>
-									    	<% if false %>
-									      	<div>
-									      		<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_path(@doctor, post), :confirm => "Are you sure?", :method => :delete, class:'purple-text text-lighten-4' %>
-									      		<!-- New Edit Modal Trigger -->
-									      		<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-post_#{post_item_index}", class:'purple-text text-lighten-4' %>
-									      		<!-- New Edit Modal Structure -->
-									      		<div id="modal-edit-post_<%= post_item_index %>" class="modal modal-fixed-footer modal-post">
-									      			<div class="modal-content modal-content-post">
-										      			<%= form_for ([@doctor, post]) do |f| %>
-										      				<div class="row">
-										      					<div class="input-field col s12">
-										      						<%= f.text_field :title, :placeholder => "標題" %>
-										      					</div>
-												      			<div class="input-field col s12 m4">
-										        					<%= label_tag "請選擇主題" %><br>
-										        					<%= f.select :subject , Post::SUBJECT, {include_blank: false} %>
-									    						</div>
-									    						<div class="input-field col s12 m4">
-										        					<%= label_tag "妊娠週數" %><br>
-										        					<%= f.select :period , Post::PERIOD, {include_blank: false} %>
-									    						</div>
-									    						<div class="input-field col s12 m4">
-										        					<%= label_tag "主要範圍" %><br>
-										        					<%= f.select :kind , Post::KIND, {include_blank: false} %>
-									    						</div>
-												    			<div class="input-field col s12">
-									      							<%= f.text_area :description, :placeholder => "內文", class:"materialize-textarea" %>
-									      						</div>
-									      						<div class="input-field col s12 right-align">
-										      						<button class="btn waves-effect waves-light" type="submit" name="action">
-										      							<span>送出</span>
-																	</button>
-																</div>
-															</div>
-														<% end %>
-													</div>
-									      		</div>
-									      	</div>
-									    <% end %>
-									</li>
-								<% end %>
-							<% end %>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>	
+
+<% if @posts.blank? %>
+	<h5> 有甚麼想分享、想問的嗎？ 成為第一個留言的人</h5>
+<% else %>
+
+<div class="row">	
+	<% @posts.each_with_index do |post, post_item_index| %>
+		<%= render 'posts/list_doctors_show', post: post  %>
+	<% end %>
+<% end %>
+</div>				
+
+
+
+
+
 <ul class="control-footer">
 	<ul class="control-page-items">
 		<!-- New Post Modal Trigger -->
@@ -115,4 +42,42 @@
 
 
  
-    
+<% if false %>
+  	<div>
+  		<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_path(@doctor, post), :confirm => "Are you sure?", :method => :delete, class:'purple-text text-lighten-4' %>
+  		<!-- New Edit Modal Trigger -->
+  		<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-post_#{post_item_index}", class:'purple-text text-lighten-4' %>
+  		<!-- New Edit Modal Structure -->
+  		<div id="modal-edit-post_<%= post_item_index %>" class="modal modal-fixed-footer modal-post">
+  			<div class="modal-content modal-content-post">
+      			<%= form_for ([@doctor, post]) do |f| %>
+      				<div class="row">
+      					<div class="input-field col s12">
+      						<%= f.text_field :title, :placeholder => "標題" %>
+      					</div>
+		      			<div class="input-field col s12 m4">
+        					<%= label_tag "請選擇主題" %><br>
+        					<%= f.select :subject , Post::SUBJECT, {include_blank: false} %>
+						</div>
+						<div class="input-field col s12 m4">
+        					<%= label_tag "妊娠週數" %><br>
+        					<%= f.select :period , Post::PERIOD, {include_blank: false} %>
+						</div>
+						<div class="input-field col s12 m4">
+        					<%= label_tag "主要範圍" %><br>
+        					<%= f.select :kind , Post::KIND, {include_blank: false} %>
+						</div>
+		    			<div class="input-field col s12">
+  							<%= f.text_area :description, :placeholder => "內文", class:"materialize-textarea" %>
+  						</div>
+  						<div class="input-field col s12 right-align">
+      						<button class="btn waves-effect waves-light" type="submit" name="action">
+      							<span>送出</span>
+							</button>
+						</div>
+					</div>
+				<% end %>
+			</div>
+  		</div>
+  	</div>
+<% end %>    
