@@ -1,0 +1,58 @@
+
+
+<% content_for :sidebar do %>
+	<%= render 'doctors/sidebar_index' %>
+<% end %>
+
+
+<div class="section">
+	<header class="posts_phase_section_header">
+		<span class="posts_phase_section_title">
+			<%= link_to "#{Phase.first.title}", "#" %>
+		</span>
+	</header>
+	<div class="row">
+		<% @posts_phase_one.each do |post| %>
+			<%= render 'layouts/list_posts_phase', post: post  %>
+		<% end %>
+	</div>
+</div>
+
+<div class="section">
+	<header class="posts_phase_section_header">
+		<span class="posts_phase_section_title">
+			<%= link_to "#{Phase.second.title}", "#" %>
+		</span>
+	</header>
+	<div class="row">
+		<% @posts_phase_two.each do |post| %>
+			<%= render 'layouts/list_posts_phase', post: post  %>
+		<% end %>
+	</div>
+</div>
+
+<div class="section">
+	<header class="posts_phase_section_header">
+		<span class="posts_phase_section_title">
+			<%= link_to "#{Phase.third.title}", "#" %>
+		</span>
+	</header>
+	<div class="row">
+		<% @posts_phase_three.each do |post| %>
+			<%= render 'layouts/list_posts_phase', post: post  %>
+		<% end %>
+	</div>
+</div>
+
+<div class="section">
+	<header class="posts_phase_section_header">
+		<span class="posts_phase_section_title">
+			<%= link_to "#{Phase.fourth.title}", "#" %>
+		</span>
+	</header>
+	<div class="row">
+		<% @posts_phase_four.each do |post| %>
+			<%= render 'layouts/list_posts_phase', post: post  %>
+		<% end %>
+	</div>
+</div>

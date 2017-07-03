@@ -11,11 +11,11 @@
 				
 			</div>
 			<div class="section post-board-middle post-board-list-middle">
-				<div class="post-pre-title">
+				<div>
 					<%= "[" %> <%= Post::SUBJECT[post.subject][0] %> <%= "]" %> <%= post.comment.size %> 篇回覆
 				</div>
 				<%= link_to doctor_post_path(post.doctor, post) do %> 
-	    			<h5> <%= truncate("#{post.title}", length: 30)  %> </h5>
+	    			<h6> <%= truncate("#{post.title}", length: 30)  %> </h6>
 	    		<% end %>
 	    		<% if false %>
 				<div class="section post-byline valign-wrapper">
@@ -25,10 +25,10 @@
 			</div>
 			<div class="section post-board-bottom valign-wrapper">
 				<div class="post-chip chip-period truncate">
-					<%= Post::PERIOD[post.period][0] %>
+					<%= post.phase.title %>
 				</div>
 				<div class="post-chip chip-kind truncate">
-					<%= Post::KIND[post.kind][0] %>
+					<%= post.issue.title %>
 				</div>
 			</div>
 		</div>	

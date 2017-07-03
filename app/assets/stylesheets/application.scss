@@ -85,6 +85,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    //overflow-x: hidden;
 }
 
 
@@ -93,24 +94,15 @@ main {
 }
       
 
-.container {
-    //@media only screen and (min-width: 1200px){
-        //width: 50%;
-    //}
-    @media only screen and (min-width: 993px){
-        width: 80%;
-    }
-    @media only screen and (max-width: 993px){
-        width: 100%;
-    }
-    
-  }
+
 .container-doctor {
     @media only screen and (max-width: 993px){
         width: 100%;
         margin: 0 auto;
   }
 }  
+
+
   
 .collection {
     border: 0px solid #e0e0e0;
@@ -262,13 +254,17 @@ main {
         background-color: transparent; 
         border-top: 0px;
         &.card-action-doctor-list{
-            padding: 7px 15px;
+            padding: 0px 15px;
+            border-bottom: 1px solid #e6e6e6;
+            border-right: 1px solid #e6e6e6;
+            border-left: 1px solid #e6e6e6;
+            height: 90px;
             .index-list-post-title{
-                background-color: #e0e0e0; 
-                padding: 5px 15px 5px 15px; 
-                border-radius: 5px; 
+                //background-color: #e0e0e0; 
+                //padding: 5px 15px 5px 15px; 
+                //border-radius: 5px; 
                 color: black; 
-                min-height: 55.5px;
+                height: 35px;
                 a {
                     margin-right: 0px;
                     h6 {
@@ -302,14 +298,7 @@ main {
                         border-bottom: 0px;
                     }
                 }
-                @media #{$small-and-down} {
-                    .post-title {
-                        //font-size: 20px;
-                        //padding: 10px;
-                        padding: 5px;
-                        border-bottom: 1px solid rgba(160, 160, 160, 0.2);
-                    }
-                }
+                
             }
         }
     }
@@ -374,37 +363,36 @@ main {
     }
 
 .doctor-post-board-list{
-        margin-bottom: 5px;
-        border: 1px solid #e0e0e0 !important; 
-        padding: 0px;
-        .post-board-top{
-            border-bottom: 1px solid #e6e6e6;
-            padding: 15px 15px 5px 15px;
-            margin: 0px 15px;
-        }
-        
-        
-        .post-board-middle{
-            padding: 15px 30px;
-            
-            &.post-board-list-middle{
-                height: 130px;
-            }
-            .post-pre-title{
-                color: #f48fb1;
-                font-weight: bold;
-                font-size: 16px;
-            }
-            h5{
-            color: black;
-            }
-        }
-        .post-board-bottom{
-            border-top: 1px solid #e6e6e6;
-            padding: 15px 15px 0px 15px;
-        }
-        
+    margin-bottom: 10px;
+    border: 1px solid #e0e0e0 !important;
+    /* padding: 0px; */
+    border-radius: 3px;
+    padding: 0px 10px;
+    background-color: white;
+    .post-board-top{
+        border-bottom: 1px solid #e6e6e6;
+        padding: 15px 5px 5px 5px;
+        //margin: 0px 15px;
     }
+    .post-board-middle{
+        padding: 15px 15px;
+        &.post-board-list-middle{
+            height: 130px;
+        }
+        .post-pre-title{
+            color: #f48fb1;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        h5{
+        color: black;
+        }
+    }
+    .post-board-bottom{
+        border-top: 1px solid #e6e6e6;
+        padding: 10px 5px 0px 5px;
+    }
+}
 
 .post-board-post-title{
     font-size: 20px;
@@ -455,6 +443,23 @@ main {
 .post-chip{
     margin-left: auto;
 }
+
+.posts_phase_section_header{
+    padding: 15px 0px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e6e6e6;
+    .posts_phase_section_title{
+        padding: 15px 15px 18px 15px;
+        border-bottom: 1px solid black;
+        font-size: 16px;
+        a{
+            color: black;
+        }
+    }
+}
+
+
+
 
 //討論區
 

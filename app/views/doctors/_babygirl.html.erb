@@ -1,5 +1,5 @@
 
-<div class="col s6 m4 l4 left-align">
+<div class="col s12 m4 l4 left-align">
     <div class="card card-doctor card-doctor-list z-depth-0">
         <div class="card-image">
             <div><%= link_to image_tag("female"), doctor %></div>
@@ -88,16 +88,12 @@
                 </div>
                 <div class="post-board-user-name">
                     <%= link_to "#{doctor.name}",doctor_path(doctor), {class:"name"} %><br>
-                    <%= time_ago_in_words(doctor.post.last.created_at) %> ago<br>
-                   
+                    <div class="index-list-post-title"> 
+                        <%= link_to  doctor_post_path(doctor,doctor.post.last) do %>
+                            <h6 style="color: black;"><%= truncate("#{doctor.post.last.title}", length: 22) %></h6>
+                        <% end %>
+                    </div>
                 </div>
-                
-                
-            </div>
-            <div class="index-list-post-title valign-wrapper"> 
-                <%= link_to  doctor_post_path(doctor,doctor.post.last) do %>
-                    <h6 style="color: black;"><%= truncate("#{doctor.post.last.title}", length: 22) %></h6>
-                <% end %>
             </div>
             <% else %>
             <div class="valign-wrapper">

@@ -6,10 +6,16 @@ Rails.application.routes.draw do
       resources :comments
     end
     collection do
-      get  :most_posts
+      get :most_posts
     end
   end
-  resources :posts
+  resources :posts do
+    collection do
+      get :posts_phase
+      get :posts_phase_one
+      get :posts_phase_two
+    end
+  end
   
   
     

@@ -4,14 +4,16 @@
 	<%= render 'doctors/sidebar_index' %>
 <% end %>
 
-<div class="row">
-	<div class="control-container">
-		<ul class="control-page-items z-depth-0">
-			<li class="dropdown-parent"><%= link_to "總討論區", "#", class:"dropdown-parent-label" %></li>
-		</ul>
-	</div>
+<div class="section">
+	<header class="posts_phase_section_header">
+		<span class="posts_phase_section_title">
+			總討論區
+		</span>
+	</header>
+	<div class="row">
 		<% @posts.each do |post| %>
 			<%= render 'posts/list_posts_index', post: post  %>
 		<% end %>
+	</div>
 </div>
  

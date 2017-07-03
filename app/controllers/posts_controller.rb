@@ -1,11 +1,20 @@
 class PostsController < ApplicationController
-    before_action :find_doctor, except: [:index]
+    before_action :find_doctor, except: [:index, :posts_phase]
     before_action :find_post, only: [:show, :edit, :update, :destroy]
    
     
     
     def index
-        @posts = @paginate = Post.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
+        @posts = @paginate = Post.all.order('id DESC').paginate(:page => params[:page], :per_page => 6)
+        #@posts_phase_one = Post.all.where(:phase_id => "1").order('id DESC').limit(3)
+        #@posts = @paginate = @doctor.post.where(:subject => params[:subject][1]).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+    end
+    
+    def posts_phase
+        @posts_phase_one = Post.includes(:issue).choose_phase(1)
+        @posts_phase_two = Post.includes(:issue).choose_phase(2)
+        @posts_phase_three = Post.includes(:issue).where(:phase_id => "3").order('id DESC').limit(3)
+        @posts_phase_four = Post.includes(:issue).where(:phase_id => "4").order('id DESC').limit(3)
     end
     
     def new

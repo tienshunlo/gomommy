@@ -1,14 +1,21 @@
 
 <% content_for :sidebar do %>
+<div class="hide-on-small-only">
 	<%= render 'doctors/sidebar_doctor_profile' %>
-<% end %>
+	</div>
+<% end %>	
+
+
 
 
 
 <div class="section">
-	<ul class="control-page-items z-depth-0">
-		<li class="dropdown-parent"><%= link_to "回到醫生討論區", doctor_path(@doctor), class:"dropdown-parent-label" %></li>
-	</ul>
+	<header class="posts_phase_section_header">
+		<span class="posts_phase_section_title">
+			<%= link_to "回到醫生討論區", doctor_path(@doctor) %>
+		</span>
+	</header>
+	
 </div>
 <div class="section doctor-post-board-list">
 	<div class="section post-board-top valign-wrapper">
@@ -27,7 +34,7 @@
 		</div>
 	</div>
 	<div class="section post-board-middle">
-		<div class="section post-pre-title">
+		<div>
 			<%= "[" %> <%= Post::SUBJECT[@post.subject][0] %> <%= "]" %> <%= @post.comment.size %> 篇回覆
 		</div>
 		<h5> <%= "#{@post.title}" %> </h5>

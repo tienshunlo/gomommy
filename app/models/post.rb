@@ -7,6 +7,13 @@ class Post < ActiveRecord::Base
     validates_length_of :title, :maximum => 90 
     validates_presence_of :title, :description, :message => "請記得輸入標題跟內文" 
     
+    
+    
+    def self.choose_phase(t)
+        where(["phase_id = ? ", t ]).order('id DESC').limit(3)
+    end
+    
+    
     #scope :with_subject, lambda { |subject|
     #where(:subject => [*subject])
   #}

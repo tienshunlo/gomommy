@@ -3,8 +3,12 @@ class DoctorsController < ApplicationController
 	impressionist only: [:show, :index]
 	def index
 		
+		# duol selection: phase and issue
 		@phase = Phase.includes(:issue).order(:id)
-
+		
+		#phase and issue分開
+		@phases = Phase.all
+		@issues = Issue.all
 		
 		if params[:city].blank?
 			@doctors = @paginate = Doctor.includes(:city).includes(:hospital).paginate(:page => params[:page])
