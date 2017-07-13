@@ -1,66 +1,95 @@
 <!-- New Post Modal Structure -->
 <div id="modal-new-post_<%= doctor.id %>" class="modal modal-fixed-footer modal-post">
     <%= form_for ([doctor, doctor.post.build]) do |f| %>
-    <div class="modal-content modal-content-post">
-        <div class="row">
-                <div class="col s12 m4">
-                    <%= f.label "請選擇主題:", class:"new-post-label" %>
+        <div class="modal-content modal-content-post">
+            <div class="row">
+                <div class="col s12 m12 left-align">
+                    <%= f.label "請選擇主題", class:"new-post-label" %>
+                </div>
+                <div class="col s12 m12">
                     <%= f.select :subject , Post::SUBJECT, {include_blank: false}, {class:"browser-default"} %>
                 </div>
-                <div class="col s12 m8">
-                    <%= f.label "請輸入標題:", class:"new-post-label" %>
+                <div class="col s12 m12 left-align">
+                    <%= f.label "請輸入標題", class:"new-post-label" %>
+                </div>
+                <div class="col s12 m12">
                     <%= f.text_field :title %>
                 </div>
-                
-                
-                <div class="col s12">
-                    <%= f.label "請選擇目前的懷孕週數:", class:"new-post-label" %><br>
-                    <%= f.select :period , Post::PERIOD, {include_blank: false} %>
+                 <div class="donate-now">
+                    <div class="col s12 m12 left-align">
+                        <%= f.label "請選擇目前的懷孕週數", class:"new-post-label" %>
+                    </div>
+                    <div class="col s12 m12">
+                        <div class="new-post-bar">懷孕期間</div>
+                        <% @phase_1.each do |phase| %>
+                            <div class="col s6 m3">
+                                <%= f.radio_button :phase_id, phase.id  %>
+                                <%= f.label "phase_id_#{phase.id}", phase.title, class:"new-post-chip" %>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="col s12 m12">
+                        <div class="new-post-bar">生產過後</div>
+                        <% @phase_2.each do |phase| %>
+                            <div class="col s6 m3">
+                                <%= f.radio_button :phase_id, phase.id  %>
+                                <%= f.label "phase_id_#{phase.id}", phase.title, class:"new-post-chip" %>
+                            </div>
+                        <% end %>
+                    </div>
                 </div>
-                <div class="col s12">
-                    <%= f.label "請選擇相關問題:", class:"new-post-label" %>
-                    <%= f.select :kind , Post::KIND, {include_blank: false} %>
+                <div class="donate-now">
+                    <div class="col s12 m12 left-align">
+                        <%= f.label "請選擇相關問題", class:"new-post-label" %>
+                    </div>
+                    <div class="col s12 m12">
+                        <div class="new-post-bar">檢查相關</div>
+                        <% @issue_1.each do |issue| %>
+                            <div class="col s12 m3">
+                                <%= f.radio_button :issue_id, issue.id  %>
+                                <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-chip" %>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="col s12 m12">
+                        <div class="new-post-bar">孕婦注意事項</div>
+                        <% @issue_2.each do |issue| %>
+                            <div class="col s12 m3">
+                                <%= f.radio_button :issue_id, issue.id  %>
+                                <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-chip" %>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="col s12 m12">
+                        <div class="new-post-bar">生產相關</div>
+                        <% @issue_3.each do |issue| %>
+                            <div class="col s12 m3">
+                                <%= f.radio_button :issue_id, issue.id  %>
+                                <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-chip" %>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="col s12 m12">
+                        <div class="new-post-bar">產後注意事項</div>
+                        <% @issue_4.each do |issue| %>
+                            <div class="col s12 m3">
+                                <%= f.radio_button :issue_id, issue.id  %>
+                                <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-chip" %>
+                            </div>
+                        <% end %>
+                    </div>
                 </div>
-                
-                <div class="col s12">
-                    <%= f.label "請選擇目前的懷孕週數:", class:"new-post-label" %>
-    		        <%= f.select :phase_id, Phase.all.collect{|p| [p.title, p.id]}, {include_blank: false} %>
+                <div class="col s12 left-align">
+                    <%= f.label "內容:", class:"new-post-label" %>
+                    <%= f.text_area :description, class:"materialize-textarea" %>
                 </div>
-			    <div class="col s12">
-			        <%= f.label "請選擇相關問題:", class:"new-post-label" %>
-    		        <%= f.select :issue_id, Issue.all.collect{|p| [p.title, p.id]}, {include_blank: false} %>
-                </div>
-                
-                
-                <% if false %>
-                <div class="col s12">
-                    <%= f.label "請選擇目前的懷孕週數:", class:"new-post-label" %>
-    		        <%= f.collection_select :phase_id, @phase, :id, :title, {}, {class:"browser-default"} %>
-                </div>
-			    <div class="col s12">
-			        <%= f.label "請選擇相關問題:", class:"new-post-label" %>
-    		        <%= f.grouped_collection_select :issue_id, @phase, :issue, :title, :id, :title, {}, {class:"browser-default"} %>
-                </div>
-                <% end %>
-                
-            <div class="col s12">
-                <%= f.label "內容:", class:"new-post-label" %>
-                <%= f.text_area :description, class:"materialize-textarea" %>
             </div>
-            
-           
-            
-           
-           
-            
-            
         </div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn waves-effect waves-light" type="submit" name="action">
-            <span>送出</span>
-        </button>
-    </div>
+        <div class="modal-footer">
+            <button class="btn waves-effect waves-light" type="submit" name="action">
+                <span>送出</span>
+            </button>
+        </div>
     <% end %>
 </div>
 

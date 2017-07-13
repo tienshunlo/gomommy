@@ -1,3 +1,4 @@
+<% if false %>
 <div class="row">
   <div class="section">
     <div class="container-doctor">
@@ -18,3 +19,19 @@
   </div>
 </div>
 <%= render_filterrific_spinner %>
+<% end %>
+
+<div class="section">
+    <div class="container-doctor">
+      <div class="col s12">
+          <header class="filter_section_header">
+
+         <div class="col s4 m2"><%= link_to "全部城市", doctors_path(city: nil), class:"new-post-chip" %></div>
+        <% City.all.each do |city| %>
+          <div class="col s4 m2"><%= link_to city.name, doctors_path(city: city.name), class:"new-post-chip" %></div>
+  		  <% end %>
+  		    </header>
+
+      </div>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 
 <% content_for :sidebar do %>
-<div class="hide-on-small-only">
-	<%= render 'doctors/sidebar_doctor_profile' %>
+	<div class="hide-on-small-only">
+		<%= render 'doctors/sidebar_doctor_profile' %>
 	</div>
 <% end %>	
 
@@ -15,7 +15,6 @@
 			<%= link_to "回到醫生討論區", doctor_path(@doctor) %>
 		</span>
 	</header>
-	
 </div>
 <div class="section doctor-post-board-list">
 	<div class="section post-board-top valign-wrapper">
@@ -27,10 +26,10 @@
 			<%= time_ago_in_words(@post.created_at) %> ago
 		</div>
 		<div class="post-chip chip-period truncate">
-			<%= Post::PERIOD[@post.period][0] %>
+			<%= @post.phase.title %>
 		</div>
 		<div class="post-chip chip-kind truncate">
-			<%= Post::KIND[@post.kind][0] %>
+			<%= @post.issue.title %>
 		</div>
 	</div>
 	<div class="section post-board-middle">
@@ -44,10 +43,10 @@
 	</div>
 	<div class="section post-board-bottom valign-wrapper">
 		<div class="post-chip chip-period truncate">
-			<%= Post::PERIOD[@post.period][0] %>
+			<%= @post.phase.title %>
 		</div>
 		<div class="post-chip chip-kind truncate">
-			<%= Post::KIND[@post.kind][0] %>
+			<%= @post.issue.title %>
 		</div>
 		<div>
 			<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_path(@doctor, @post), :confirm => "Are you sure?", :method => :delete, class:'purple-text text-lighten-4' %>

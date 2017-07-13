@@ -120,9 +120,13 @@ main {
 // 自己增加的
 
 .new-post-label { 
-    color: black; 
-    font-size: 1.2rem;
-    line-height: 48px;
+    color: black;
+    font-size: 16px;
+    line-height: 60px;
+    border-left: 5px solid #ec407a;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 //doctor-profile-card 醫生個人資料頁面
@@ -458,6 +462,10 @@ main {
     }
 }
 
+.filter_section_header{
+    padding: 15px 0px;
+    margin-bottom: 15px;
+}
 
 
 
@@ -637,6 +645,30 @@ main {
     margin: 0 10px 10px 0;
     
 }
+
+.new-post-chip {
+    display: inline-block;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 32px;
+    padding: 0 12px;
+    //border-radius: 16px;
+    background-color: transparent;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.new-post-bar{
+    padding: 5px;
+    background-color: #e6e6e6;
+    text-align: center;
+    margin: 10px;
+} 
     
 
 .discussion-tags{
@@ -752,6 +784,45 @@ main {
       padding: 0.1em 0.25em;
     }
 }
+
+
+
+
+
+.donate-now input[type="radio"]:checked + label,
+.Checked + label {
+    background: #ec407a;
+    color: white;
+}
+
+
+
+.donate-now label:hover {
+     background:#ec407a;
+     color: white;
+     //@media only screen and (max-width: 993px){
+        //pointer-events: none;
+  //}
+}
+
+[type="radio"] + label:before, [type="radio"] + label:after {
+    content: none;
+}
+
+[type="radio"]:not(:checked) + label, [type="radio"]:checked + label {
+    position: relative;
+    padding: 0 12px;
+    cursor: pointer;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    font-size: 13px;
+    transition: .28s ease;
+    -khtml-user-select: none;
+    user-select: none;
+    
+}
+
 
 
 

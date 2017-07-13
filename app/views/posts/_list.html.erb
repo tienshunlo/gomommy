@@ -1,20 +1,16 @@
-<div id="filterrific_results">
 
   
-  <table>
-    <tr>
-      <th>醫師</th>
-      <th>所在城市</th>
-      <th>所在區域</th>
-      <th>醫院名稱</th>
-    </tr>
-    <% doctors.each do |doctor| %>
-      <tr>
-        <td><%= link_to(doctor.name, doctor_path(doctor)) %></td>
-        <td><%= doctor.city.name %></td>
-        <td><%= doctor.district.name if doctor.district %></td>
-        <td><%= doctor.hospital.name %></td>
-      </tr>
-    <% end %>
-  </table>
+  
+<div id="filterrific_results">
+	<% if !posts.blank?%>
+	<div class="row">
+		<% posts.each do |post| %>
+			<%= render 'posts/list_posts_index', post: post  %>
+		<% end %>
+	</div>
+	<% else %>
+		搶先留言
+	<% end %>
 </div>
+
+

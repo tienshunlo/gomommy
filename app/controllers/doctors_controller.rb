@@ -10,13 +10,26 @@ class DoctorsController < ApplicationController
 		@phases = Phase.all
 		@issues = Issue.all
 		
+		
+        @issue_1 = @issues.select{|t| t.phase_id == 1} #檢查相關
+        @issue_2 = @issues.select{|t| t.phase_id == 2} #孕婦注意事項
+        @issue_3 = @issues.select{|t| t.phase_id == 3} #生產相關
+        @issue_4 = @issues.select{|t| t.phase_id == 4} #產後注意事項
+        
+        
+        @phase_1 = @phases.where(:id => (1..4)) #懷孕期間
+        @phase_2 = @phases.where(:id => (5..7)) #生產過後
+		
+		
 		if params[:city].blank?
 			@doctors = @paginate = Doctor.includes(:city).includes(:hospital).paginate(:page => params[:page])
+			@title = "全部城市"
 			#@doctors = @paginate = Doctor
 		else
 			@city_id = City.find_by(name: params[:city]).id
-		#	#scope 用法
+			#scope 用法
 			@doctors = @paginate = Doctor.doctor_city(@city_id).paginate(:page => params[:page])
+			@title = params[:city]
 			
 			#也可以寫成這樣：
 			#@doctors = Doctor.where(:city_id => @city_id).order("created_at DESC")
@@ -24,25 +37,25 @@ class DoctorsController < ApplicationController
 		
 		
 		
-		
-		@filterrific = initialize_filterrific(
-			Doctor.includes(:city).includes(:hospital).includes(:post),
-			params[:filterrific],
-			select_options: {
-				sorted_by: Doctor.options_for_sorted_by,
-				with_city_id: City.options_for_select,
-				with_district_name: District.options_for_select,
-				with_hospital_id: Hospital.options_for_select
-			},
-    		persistence_id: 'shared_key',
-    		default_filter_params: {},
-    		#available_filters: [],
-    		) or return
-    		@doctors = @filterrific.find.page(params[:page])
-			respond_to do |format|
-				format.html
-				format.js
-			end
+		# 這邊是正確的，先助解掉
+		#@filterrific = initialize_filterrific(
+		#	Doctor.includes(:city).includes(:hospital).includes(:post),
+		#	params[:filterrific],
+		#	select_options: {
+		#		sorted_by: Doctor.options_for_sorted_by,
+		#		with_city_id: City.options_for_select,
+		#		with_district_name: District.options_for_select,
+		#		with_hospital_id: Hospital.options_for_select
+		#	},
+    	#	persistence_id: 'shared_key',
+    	#	default_filter_params: {},
+    	#	#available_filters: [],
+    	#	) or return
+    	#	@doctors = @filterrific.find.page(params[:page])
+		#	respond_to do |format|
+		#		format.html
+		#		format.js
+		#	end
 		
 		
 	end
@@ -82,6 +95,18 @@ class DoctorsController < ApplicationController
 		end
 		
 		
+		
+		
+		@issues = Issue.all
+        @issue_1 = @issues.where(:id => (1..13)) #檢查相關
+        @issue_2 = @issues.where(:id => (14..25)) #孕婦注意事項
+        @issue_3 = @issues.where(:id => (26..30)) #生產相關
+        @issue_4 = @issues.where(:id => (31..40)) #產後注意事項
+        
+        
+        @phases = Phase.all
+        @phase_1 = @phases.where(:id => (1..4)) #懷孕期間
+        @phase_2 = @phases.where(:id => (5..7)) #生產過後
 		
 		
 	#		@filterrific = initialize_filterrific(

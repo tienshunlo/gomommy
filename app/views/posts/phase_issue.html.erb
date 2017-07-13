@@ -2,18 +2,12 @@
 	<%= render 'doctors/sidebar_index' %>
 <% end %>
 
-
+<% if false %>
 <% content_for :headbar do %>
 	<%= render 'posts/filter_index' %>
 <% end %>
+<% end %>
 
-<div class="section">
-	<%= render(partial: 'posts/list',locals: { posts: @posts }) %>
-</div>    
- 
-
-
-<% if false %>
 <div class="section">
 	<header class="posts_phase_section_header">
 		<span class="posts_phase_section_title">
@@ -26,4 +20,4 @@
 		<% end %>
 	</div>
 </div>
-<% end %>
+ 

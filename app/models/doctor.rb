@@ -49,16 +49,15 @@ class Doctor < ActiveRecord::Base
       # Joining on other tables is quite common in Filterrific, and almost
       # every ActiveRecord table has a 'created_at' column.
       order("doctors.created_at #{ direction }")
-    when /^name_/
+    when /^title_/
       # Simple sort on the name colums
-      order("LOWER(doctors.name) #{ direction }, LOWER(doctors.name) #{ direction }")
-    when /^city_name_/
+      order("LOWER(posts.title) #{ direction }, LOWER(posts.title) #{ direction }")
+    when /^phase_title_/
       # This sorts by a student's country name, so we need to include
       # the country. We can't use JOIN since not all students might have
       # a country.
-      order("LOWER(city.name) #{ direction }").includes(:city)
-    when /^doctor_post_count_/
-     order("doctors.post_count #{ direction }")
+      order("LOWER(phase.title) #{ direction }").includes(:issue)
+   
     else
       raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
     end

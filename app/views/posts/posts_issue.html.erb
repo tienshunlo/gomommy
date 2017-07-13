@@ -1,0 +1,21 @@
+
+
+<% content_for :sidebar do %>
+	<%= render 'doctors/sidebar_index' %>
+<% end %>
+
+<div class="section">
+	<% @issues.each do |issue| %>
+		<header class="posts_phase_section_header">
+			<span class="posts_phase_section_title">
+				<%= link_to "#{issue.title}", phase_issue_posts_path(issue: issue) %>
+			</span>
+		</header>
+		<div class="row">
+			<% @posts_tag.select{|t| t.issue_id == issue.id}.first(3).each do |post| %>
+				<%= render 'posts/list_posts_cate', post: post  %>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+

@@ -13,6 +13,47 @@ class Post < ActiveRecord::Base
         where(["phase_id = ? ", t ]).order('id DESC').limit(3)
     end
     
+    filterrific(
+    default_filter_params: { sorted_by: 'created_at_desc' },
+		available_filters: [
+    		:sorted_by,
+    		:search_query,
+    		:with_phase_id,
+    		:with_issue_id,
+    		]
+    )
+	
+	scope :with_phase_id, lambda { |phase_ids|
+    where(:phase_id => [*phase_ids])
+  }
+  
+  scope :with_issue_id, lambda { |issue_ids|
+    where(:issue_id => [*issue_ids])
+  }
+  
+  scope :sorted_by, lambda { |sort_option|
+    # extract the sort direction from the param value.
+    direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
+    case sort_option.to_s
+    when /^created_at_/
+      order("posts.created_at #{ direction }")
+    else
+      raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
+    end
+  }
+  
+  def self.options_for_sorted_by
+    [
+      #['Name (a-z)', 'name_asc'],
+      #['Registration date (newest first)', 'created_at_desc'],
+      #['Registration date (oldest first)', 'created_at_asc'],
+      #['City (a-z)', 'city_name_asc'],
+      ['依照留言時間( 新 -> 舊 )', 'created_at_desc'],
+      ['依照留言時間( 舊 -> 新 )', 'created_at_asc']
+    ]
+    end
+  
+  
     
     #scope :with_subject, lambda { |subject|
     #where(:subject => [*subject])

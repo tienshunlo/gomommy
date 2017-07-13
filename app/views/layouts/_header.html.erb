@@ -21,11 +21,14 @@
 <!-- 下拉選單 -->
 <!-- Dropdown Structure -->
 <ul id="dropdown-discussion" class="dropdown-content">
-  <li><%= link_to "總討論區", posts_path %></li>
-  <li class="divider"></li>
+  
   <li><%= link_to "最多人討論的醫生", doctors_path(city: nil) %></li>
   <li><%= link_to "最多人瀏覽的文章", doctors_path(city: nil) %></li>
   <li><%= link_to "最多人留言的文章", doctors_path(city: nil) %></li>
+  <li class="divider"></li>
+  <li><%= link_to "總討論區", posts_path %></li>
+  <li><%= link_to "按孕期分類", posts_phase_posts_path %></li>
+  <li><%= link_to "按症狀分類", posts_issue_posts_path %></li>
 </ul>
 <!-- 側邊選單 -->
 <ul id="mobile-demo" class="side-nav" >
@@ -37,5 +40,9 @@
   <li><%= link_to "最多人瀏覽的文章", doctors_path(city: nil) %></li>
   <li><%= link_to "最多人留言的文章", doctors_path(city: nil) %></li>
   <li class="divider"></li>
+  <li><%= link_to "按孕期分類", posts_phase_posts_path %></li>
+  <li><%= link_to "按症狀分類", posts_issue_posts_path %></li>
+ 
   <li><%= yield :show_sidebar %></li>
+  
 </ul>

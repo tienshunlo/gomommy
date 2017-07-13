@@ -17,17 +17,13 @@
 <% if @posts.blank? %>
 	<h5> 有甚麼想分享、想問的嗎？ 成為第一個留言的人</h5>
 <% else %>
-
-<div class="row">	
-	<% @posts.each_with_index do |post, post_item_index| %>
-		<%= render 'posts/list_doctors_show', post: post  %>
-	<% end %>
+	<div class="row">	
+		<% @posts.each_with_index do |post, post_item_index| %>
+			<%= render 'posts/list_doctors_show', post: post  %>
+		<% end %>
+	</div>
 <% end %>
-</div>				
-
-
-
-
+			
 
 <ul class="control-footer">
 	<ul class="control-page-items">

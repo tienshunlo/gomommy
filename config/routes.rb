@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       get :posts_phase
       get :posts_phase_one
       get :posts_phase_two
+      get :posts_issue
+      get :phase_issue
     end
   end
   
