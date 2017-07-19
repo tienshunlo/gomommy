@@ -13,8 +13,10 @@
  *= require_tree .
  *= require_self
  */
-
+@import 'materialize';
+@import "materialize/components/forms/forms";
 @import "materialize/components/icons-material-design";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "materialize/components/color";
 $primary-color: color("pink", "lighten-1") !default;
 $secondary-color: color("light-green", "lighten-1") !default;
@@ -22,8 +24,7 @@ $primary-border: color("pink", "lighten-4") !default;
 $will-paginate-color: color("pink", "lighten-3")!default;
 //$dropdown-color: color("purple", "base") !default;
 
-@import 'materialize';
-@import "materialize/components/forms/forms";
+
 @import url(//fonts.googleapis.com/earlyaccess/cwtexfangsong.css);
 @import url(//fonts.googleapis.com/earlyaccess/cwtexhei.css);
 @import url(//fonts.googleapis.com/earlyaccess/cwtexkai.css);
@@ -463,8 +464,19 @@ main {
 }
 
 .filter_section_header{
+    display: flex;
+    flex-wrap: wrap;
     padding: 15px 0px;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
+    border: 1px solid #e6e6e6;
+    background-color: white;
+    margin: 0.5rem 0 1rem 0;
+    a{
+        &:hover, &:focus {
+            background: #ec407a;
+            color: white;
+        }
+    }
 }
 
 

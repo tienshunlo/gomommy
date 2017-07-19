@@ -47,6 +47,11 @@ class PostsController < ApplicationController
     def posts_phase
         #按孕期的大項分類
         @phases = Phase.all
+        @phases = Phase.all
+        @phase_1 = @phases.select{|t| t.phasecate_id == 1} #懷孕期間
+        @phase_2 = @phases.select{|t| t.phasecate_id == 2} #生產過後後
+        
+        
         @posts_tag = Post.all.includes(:phase).includes(:issue).includes(:doctor).order('id DESC')
         
         #@posts_phase_one = Post.includes(:issue).choose_phase(1)
@@ -71,6 +76,7 @@ class PostsController < ApplicationController
     
     def phase_issue
         #按孕期與症狀的細項分類
+        @phases = Phase.all
         if params[:phase]
             @posts = Post.all.includes(:phase).includes(:issue).includes(:doctor).where(:phase_id => params[:phase]).order('id DESC')
             @title = Phase.find_by(:id => params[:phase]).title
@@ -87,13 +93,13 @@ class PostsController < ApplicationController
         
         @issues = Issue.all
         @issue_1 = @issues.select{|t| t.phase_id == 1}  #檢查相關
-        @issue_2 = @issues.where(:id => (14..25)) #孕婦注意事項
-        @issue_3 = @issues.where(:id => (26..30)) #生產相關
-        @issue_4 = @issues.where(:id => (31..40)) #產後注意事項
+        @issue_2 = @issues.select{|t| t.phase_id == 2} #孕婦注意事項
+        @issue_3 = @issues.select{|t| t.phase_id == 3} #生產相關
+        @issue_4 = @issues.select{|t| t.phase_id == 4} #產後注意事項
         
         @phases = Phase.all
-        @phase_1 = @phases.where(:id => (1..4)) #懷孕期間
-        @phase_2 = @phases.where(:id => (5..7)) #生產過後
+        @phase_1 = @phases.select{|t| t.phasecate_id == 1} #懷孕期間
+        @phase_2 = @phases.select{|t| t.phasecate_id == 2} #生產過後後
     end
     
     def create

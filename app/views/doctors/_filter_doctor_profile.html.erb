@@ -9,6 +9,26 @@
                             <li class="col s12 m4">
                                 <!-- Dropdown Trigger lighten-3-->
                                 <a class="dropdown-button btn-flat dropdown-parent-label" href="#!" data-activates="dropdown2">
+				        		    <% if params[:phase] %>
+				        			    <%= @phases.find_by(:id => params[:phase]).title %>
+				        		    <% else %>
+				        				孕期
+				        			<% end %>
+				        			<i class="material-icons right">arrow_drop_down</i>
+				    			</a>
+				    	 		<!-- Dropdown Structure -->
+				    			<ul id="dropdown2" class="dropdown-content browser-default">
+				  					<% @phases.each do |phase| %>
+										<li class=<%= 'active' if params[:phase] == phase.title %>">
+											<%= link_to phase.title, doctor_path(@doctor, phase: phase ), class: "link" %>
+										</li>
+								    <% end %>
+							    </ul>
+                            </li>
+                            <% if false %>
+                            <li class="col s12 m4">
+                                <!-- Dropdown Trigger lighten-3-->
+                                <a class="dropdown-button btn-flat dropdown-parent-label" href="#!" data-activates="dropdown2">
 				        		    <% if params[:period] %>
 				        			    <%= params[:period][0] %>
 				        		    <% else %>
@@ -25,6 +45,7 @@
 								    <% end %>
 							    </ul>
                             </li>
+                            <% end %>
                             <li class="col s12 m4"><%= link_to "- 全部留言 -", doctor_path(@doctor), class:"btn-flat dropdown-parent-label" %></li>
                         </ul>
                     </div>

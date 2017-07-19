@@ -3,12 +3,27 @@
 <% content_for :sidebar do %>
 	<%= render 'doctors/sidebar_index' %>
 <% end %>
+<div class="row">
+	<div class="section">
+		<div class="container-doctor">
+	    	<div class="col s12">
+	        	<header class="filter_section_header">
+	          		<% @issues.each do |issue| %>
+	          			 <div class="col s6 m3"><%= link_to issue.title, posts_issue_posts_path(anchor: issue.title), { class:"new-post-chip"} %></div>
+	  		  		<% end %>
+	  		   </header>
+	    	</div>
+	    </div>
+	</div>
+</div>
 
 <div class="section">
 	<% @issues.each do |issue| %>
 		<header class="posts_phase_section_header">
 			<span class="posts_phase_section_title">
-				<%= link_to "#{issue.title}", phase_issue_posts_path(issue: issue) %>
+				<%= link_to phase_issue_posts_path(issue: issue) do %>
+					<span id="<%= issue.title %>"><%= issue.title %></span>
+				<% end %>
 			</span>
 		</header>
 		<div class="row">

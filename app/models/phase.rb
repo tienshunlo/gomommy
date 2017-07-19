@@ -1,4 +1,5 @@
 class Phase < ActiveRecord::Base
+  belongs_to :phasecate
   has_many :post
   has_many :issue
   

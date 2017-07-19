@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614083311) do
+ActiveRecord::Schema.define(version: 20170717042527) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -94,10 +94,17 @@ ActiveRecord::Schema.define(version: 20170614083311) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "phases", force: :cascade do |t|
+  create_table "phasecates", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "phases", force: :cascade do |t|
+    t.string   "title",        limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "phasecate_id", limit: 4
   end
 
   create_table "posts", force: :cascade do |t|

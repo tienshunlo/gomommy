@@ -7,8 +7,10 @@ class DoctorsController < ApplicationController
 		@phase = Phase.includes(:issue).order(:id)
 		
 		#phase and issue分開
+		
 		@phases = Phase.all
 		@issues = Issue.all
+		
 		
 		
         @issue_1 = @issues.select{|t| t.phase_id == 1} #檢查相關
@@ -16,9 +18,11 @@ class DoctorsController < ApplicationController
         @issue_3 = @issues.select{|t| t.phase_id == 3} #生產相關
         @issue_4 = @issues.select{|t| t.phase_id == 4} #產後注意事項
         
+        @phase_1 = @phases.select{|t| t.phasecate_id == 1} #懷孕期間
+        @phase_2 = @phases.select{|t| t.phasecate_id == 2} #生產過後
         
-        @phase_1 = @phases.where(:id => (1..4)) #懷孕期間
-        @phase_2 = @phases.where(:id => (5..7)) #生產過後
+        #@phase_1 = @phases.where(:id => (1..4)) #懷孕期間
+        #@phase_2 = @phases.where(:id => (5..7)) #生產過後
 		
 		
 		if params[:city].blank?
@@ -94,19 +98,31 @@ class DoctorsController < ApplicationController
 			@posts = @paginate = @doctor.post.where(:period => params[:period][1]).order('id DESC').paginate(:page => params[:page], :per_page => 5)
 		end
 		
+		#按孕期
+		if params[:phase].blank?
+			@posts = @paginate = @doctor.post.includes(:phase).includes(:issue).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+		else
+			@posts = @paginate = @doctor.post.includes(:phase).includes(:issue).where(:phase => params[:phase]).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+		end
 		
 		
 		
+		
+		@phases = Phase.all
 		@issues = Issue.all
-        @issue_1 = @issues.where(:id => (1..13)) #檢查相關
-        @issue_2 = @issues.where(:id => (14..25)) #孕婦注意事項
-        @issue_3 = @issues.where(:id => (26..30)) #生產相關
-        @issue_4 = @issues.where(:id => (31..40)) #產後注意事項
+		
+		
+		
+        @issue_1 = @issues.select{|t| t.phase_id == 1} #檢查相關
+        @issue_2 = @issues.select{|t| t.phase_id == 2} #孕婦注意事項
+        @issue_3 = @issues.select{|t| t.phase_id == 3} #生產相關
+        @issue_4 = @issues.select{|t| t.phase_id == 4} #產後注意事項
         
+        @phase_1 = @phases.select{|t| t.phasecate_id == 1} #懷孕期間
+        @phase_2 = @phases.select{|t| t.phasecate_id == 2} #生產過後
         
-        @phases = Phase.all
-        @phase_1 = @phases.where(:id => (1..4)) #懷孕期間
-        @phase_2 = @phases.where(:id => (5..7)) #生產過後
+        #@phase_1 = @phases.where(:id => (1..4)) #懷孕期間
+        #@phase_2 = @phases.where(:id => (5..7)) #生產過後
 		
 		
 	#		@filterrific = initialize_filterrific(
