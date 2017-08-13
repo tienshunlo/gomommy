@@ -3,6 +3,8 @@ class DoctorsController < ApplicationController
 	impressionist only: [:show, :index]
 	def index
 		
+		@citys = City.all
+		
 		# duol selection: phase and issue
 		@phase = Phase.includes(:issue).order(:id)
 		

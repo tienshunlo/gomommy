@@ -1,38 +1,61 @@
 <% content_for :show_sidebar do %>
+	<!-- 看同縣市的醫生 -->
 	<%= render 'doctors/side_bar' %>
 <% end %>
 
 <% content_for :sidebar do %>
+	<!-- 醫生資訊 -->
 	<%= render 'doctors/sidebar_doctor_profile' %>
 <% end %>
 
 <% content_for :headbar do %>
+	<!-- 個別醫生的留言篩選 -->
 	<%= render 'doctors/filter_doctor_profile' %>
 <% end %>
 
-
-
-
+<% content_for :profile_headbar do %>
+	<!-- 個別醫生的照片 -->
+	<%= render 'doctors/doctor_profile_image' %>
+<% end %>
 
 <% if @posts.blank? %>
 	<h5> 有甚麼想分享、想問的嗎？ 成為第一個留言的人</h5>
 <% else %>
-	<div class="row">	
-		<% @posts.each_with_index do |post, post_item_index| %>
-			<%= render 'posts/list_doctors_show', post: post  %>
+	<div class="row">
+		<div class="flex-post-box-wrap">
+			<% @posts.each do |post| %>
+				<div class="flex-post-box flex-post-box-medium">
+					<%= render 'posts/posts_box', post: post  %>
+				</div>	
+			<% end %>
+		</div>
+		<% if false %>
+		<!-- 舊版 -->
+			<% @posts.each_with_index do |post, post_item_index| %>
+				<%= render 'posts/list_doctors_show', post: post  %>
+			<% end %>
 		<% end %>
 	</div>
 <% end %>
+
+
 			
 
-<ul class="control-footer">
-	<ul class="control-page-items">
-		<!-- New Post Modal Trigger -->
-		<li><%= link_to "發表留言", "#modal-new-post_#{@doctor.id}", class:"modal-trigger waves-effect waves-light btn" %></li>
-		<!-- New Post Modal Structure -->
-		<%= render 'posts/new', doctor: @doctor %>
-	</ul>
-</ul>
+<div class="row">
+	<div class="flex-post-box-btn">
+		<ul>
+			<li>
+				<!-- New Post Modal Trigger -->
+				<%= link_to "#modal-new-post_#{@doctor.id}", class:"btn-custom btn-custom-primary" do %> 
+					<i class="material-icons">mode_edit</i>
+					<span><%= "留言" %></span>
+				<% end %>
+			</li>
+			<!-- New Post Modal Structure -->
+			<%= render 'posts/new', doctor: @doctor %>
+		</ul>	
+	</div>
+</div>
 
 
 

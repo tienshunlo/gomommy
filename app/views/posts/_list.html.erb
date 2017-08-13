@@ -1,11 +1,18 @@
-
-  
-  
 <div id="filterrific_results">
 	<% if !posts.blank?%>
 	<div class="row">
-		<% posts.each do |post| %>
-			<%= render 'posts/list_posts_index', post: post  %>
+		<div class="flex-post-box-wrap">
+			<% posts.each do |post| %>
+				<div class="flex-post-box flex-post-box-medium">
+					<%= render 'posts/posts_box', post: post  %>
+				</div>	
+			<% end %>
+		</div>
+		<% if false %>
+			<!-- 這邊有寫孕期跟徵狀的chip -->
+			<% posts.each do |post| %>
+				<%= render 'posts/list_posts_index', post: post  %>
+			<% end %>
 		<% end %>
 	</div>
 	<% else %>

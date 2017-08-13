@@ -1,0 +1,1569 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+//Since materialize color scheme are declared in color.scss you should import the color.scss first. then you can override color variable
+@import "materialize/components/color";
+$primary-color: color("pink", "lighten-1") !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$secondary-color: color("light-green", "lighten-1") !default;
+$primary-border: color("pink", "lighten-4") !default;
+$will-paginate-color: color("pink", "lighten-3")!default;
+//$dropdown-color: color("purple", "base") !default;
+@import 'materialize';
+
+@import "materialize/components/forms/forms";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import url(//fonts.googleapis.com/earlyaccess/cwtexfangsong.css);
+@import url(//fonts.googleapis.com/earlyaccess/cwtexhei.css);
+@import url(//fonts.googleapis.com/earlyaccess/cwtexkai.css);
+@import url(//fonts.googleapis.com/earlyaccess/cwtexming.css);
+@import url(//fonts.googleapis.com/earlyaccess/cwtexyen.css);
+
+
+
+
+//materializeCSS 改
+html {
+    //黑體
+    font-family: 'cwTeXHei', sans-serif;
+    //圓體
+    //font-family: 'cwTeXYen', sans-serif;
+  }
+
+//header, main, footer {
+    //padding-left: 300px;
+     //@media #{$medium-and-down} {
+       //padding-left: 0px;
+  //}
+//}
+
+
+
+//ul.side-nav.fixed li.logo {
+    //margin-top: 32px;
+    //margin-bottom: 40px;
+//}
+
+
+//.logo a:hover {
+    //background-color: transparent;
+//}
+
+//header
+
+.btn-flat-custom{
+    border-radius: 10px;
+    color: white;
+    
+    &.white-border {
+       border: 1px solid white; 
+    }
+    &.grey-border {
+       border: 1px solid #e0e0e0;
+       color: black;
+    }
+    &:hover {
+    background-color: transparent;
+    }
+}
+
+//.dropdown-content-custom {
+  //top: 50px !important;
+//}
+
+body {
+    background-color: #fcfcfc;
+    //background-color: #f8bbd0
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    //overflow-x: hidden;
+}
+
+
+main {
+    flex: 1 0 auto;
+}
+      
+
+
+.container-doctor {
+    @media only screen and (max-width: 993px){
+        width: 100%;
+        margin: 0 auto;
+  }
+}  
+
+
+  
+.collection {
+    border: 0px solid #e0e0e0;
+    .collection-item {
+        background-color: transparent;
+        line-height: 1.5rem;
+        padding: 10px 20px;
+        margin: 0;
+        border-bottom: 0px solid #e0e0e0;
+        }
+}  
+
+
+
+// 自己增加的
+
+.new-post-label { 
+    color: black;
+    font-size: 16px;
+    line-height: 60px;
+    border-left: 5px solid $primary-color;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+//doctor-profile-card 醫生個人資料頁面
+
+
+//圖卡專用
+
+.card-doctor {
+    border: 1px solid #e0e0e0;
+    //background-color: #fafafa;
+    border-radius: 0px;
+    &.babygirl {
+        background-color: color("pink", "lighten-5");
+    }
+    &.babyboy {
+        background-color: color("blue", "lighten-5");
+    }
+    &.card-doctor-sidebar{
+        @media only screen and (max-width: 993px){
+        border-radius: 0px;
+        }
+    }
+    &.card-doctor-list{
+        background-color: transparent;
+        border: 0px solid #e0e0e0;
+    }
+    .card-image { 
+        .card-title-doctor {
+            color: #fff;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.25);
+            padding: 10px 0px 10px 20px;
+            
+            
+            &.card-title-doctor-index{
+                display: block;
+                padding: 10px 10px 10px 0px;
+                .doctor-index-name {
+                    display: block;
+                    float: left;
+                    font-size: 17px;
+                    @media only screen and (max-width: 1200px){
+                        font-size: 14px !important;
+                    }
+                }
+                .doctor-index-post {
+                    display: block;
+                    float: right;
+                    font-size: 15px;
+                    @media only screen and (max-width: 1200px){
+                        font-size: 10px;
+                    }
+                }
+                a{
+                    padding: 0 1rem;
+                }
+            }
+            ul{
+                float: right;
+                width: 100%;
+                margin: 0 auto;
+                white-space: nowrap; //下一層的li不會斷斷行
+                overflow: hidden;
+                li{
+                    float: left;
+                     a{
+                         font-size: 20px;
+                         display: block;
+                         padding: 0 15px;
+                     }
+                }
+            }
+        }
+    }
+    .card-content-doctor {
+        margin-bottom: 0px;
+        padding: 0px 15px;
+        &.index-sidebar{
+            background-color: #fcfcfc;
+            //border-top-left-radius: 10px;
+            //border-top-right-radius: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        &.card-content-doctor-list{
+            padding: 15px 0 30px 0;
+            border: 1px solid #e0e0e0;
+            background-color: rgb(252, 252, 252);
+            a {
+                color: #7b8b8e;
+            }
+        }
+    .card-content-doctor-ul{
+            padding-left: 20px;
+            line-height: 35px;
+            margin: 0px;
+            a {
+                width: 100%;
+                display: block;
+                height: 3rem;
+                line-height: 3rem;
+            }
+            li{
+                margin: 15px 0px;
+                .select-wrapper input.select-dropdown {
+                    position: relative;
+                    cursor: pointer;
+                    background-color: transparent;
+                    border: none;
+                    border-bottom: 0px !important;   
+                    outline: none;
+                    height: 3rem;
+                    line-height: 3rem;
+                    width: 100%;
+                    font-size: 16px !important;
+                    margin: 0px !important; 
+                    padding: 0;
+                    display: block;
+                }
+            }
+        }
+    }
+    .card-action-doctor{
+        padding: 0px 20px 0px 5px;
+        margin: 0 auto;
+        background-color: transparent; 
+        border-top: 0px;
+        &.card-action-doctor-list{
+            padding: 0px 15px;
+            border-bottom: 1px solid #e6e6e6;
+            border-right: 1px solid #e6e6e6;
+            border-left: 1px solid #e6e6e6;
+            height: 90px;
+            .index-list-post-title{
+                //background-color: #e0e0e0; 
+                //padding: 5px 15px 5px 15px; 
+                //border-radius: 5px; 
+                color: black; 
+                height: 35px;
+                a {
+                    margin-right: 0px;
+                    h6 {
+                        color: #373737;
+                    }
+                }
+            }
+            
+        }
+        ul{
+            margin: 0px;
+            li{
+                min-height: 40px;
+                a {
+                    width: 100%;
+                    display: block;
+                    height: 3rem;
+                    line-height: 3rem;
+                }
+                .post-image{
+                    display: inline-block;
+                    width: 15%;
+                    margin: 5px;
+                    padding-top: 10px; 
+                }
+                .post-title {
+                    display: inline-block;
+                    width: 80%;
+                    border: 0px;
+                    &.post-title-last{
+                        border-bottom: 0px;
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+    color: #ffab40;
+    margin-right: 0px;
+    transition: color .3s ease;
+    text-transform: uppercase;
+}
+
+
+
+
+
+
+
+
+//討論區 post-board
+
+.card-doctor-post-board{
+    border: 0px solid #e0e0e0;
+    background-color: transparent;
+    border-radius: 0px;
+    .card-content-doctor-post-board{
+        padding: 0px;
+    }
+    .collection-item-doctor-post-board-list{
+        margin-bottom: 5px;
+        border: 1px solid #e0e0e0 !important; 
+        //padding: 30px 0px 30px 0px;
+        .post-pre-title{
+            color: #f48fb1;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        h5{
+            color: black;
+        }
+    }
+}
+
+.collection-item-doctor-post-board-list{
+        margin-bottom: 5px;
+        border: 1px solid #e0e0e0 !important; 
+        //padding: 30px 0px 30px 0px;
+        .post-top{
+            border-bottom: 1px solid #e6e6e6;
+        }
+        .post-middle{
+            .post-pre-title{
+            color: #f48fb1;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        h5{
+            color: black;
+        }
+        }
+        
+    }
+
+.doctor-post-board-list{
+    margin-bottom: 10px;
+    border: 1px solid #e0e0e0 !important;
+    /* padding: 0px; */
+    border-radius: 3px;
+    padding: 0px 10px;
+    background-color: white;
+    .post-board-top{
+        border-bottom: 1px solid #e6e6e6;
+        padding: 15px 5px 5px 5px;
+        //margin: 0px 15px;
+    }
+    .post-board-middle{
+        padding: 15px 15px;
+        &.post-board-list-middle{
+            height: 130px;
+        }
+        .post-pre-title{
+            color: #f48fb1;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        h5{
+        color: black;
+        }
+    }
+    .post-board-bottom{
+        border-top: 1px solid #e6e6e6;
+        padding: 10px 5px 0px 5px;
+    }
+}
+
+.post-board-post-title{
+    font-size: 20px;
+    line-height: 2.0;
+    a{
+        color: black;
+    }
+   
+}
+
+.post-byline {
+    font-size: 15px;
+    color: #7b8b8e;
+    //margin: 10px 0px 0px 0px;
+    line-height: 1.4;
+    min-height: 100px;
+}
+
+.post-board-user-section{
+    display: flex;
+    width: 100%;
+    background-color: rgba(224, 224, 224, 0.2);
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+.post-board-user-pic{
+    display: block;
+    float: left;
+    padding-right: 10px!important;
+    .circle{
+     width: 42px;
+    height: 42px;   
+    }
+        
+}
+
+.post-board-user-name{
+    display: block;
+    float: left;
+    color: #7b8b8e;
+    .name{
+        color: rgba(0,0,0,.8)!important;
+    }
+}
+
+.filter_section_header{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px 0px;
+    /* margin-bottom: 15px; */
+    border: 1px solid #e6e6e6;
+    //background-color: white;
+    margin: 0.5rem 0 1rem 0;
+    a{
+        &:hover, &:focus {
+            background: $primary-color-light;
+            color: white;
+        }
+    }
+}
+
+
+
+//討論區
+
+
+.discussion-container{
+    padding-top: 7.5px;  
+}
+
+.control-container {
+    //background-color: color("pink", "lighten-3");
+    //box-shadow: 0 1px 0 0 #e8ebed; 
+    //border-radius: 4px 4px 0 0; 
+    margin: 0px;
+    //border-top: 4px solid #f8bbd0;
+    //border-bottom: 1px solid #e0e0e0;
+    //border-right: 1px solid #e0e0e0;
+    //border-left: 1px solid #e0e0e0;
+    padding: 10px;
+    @media #{$small-and-down} {
+        padding: 0px 10px 0px 10px;
+    }
+}
+
+.control-footer {
+    //background-color: color("pink", "lighten-3");
+    //box-shadow: 0 1px 0 0 #e8ebed; 
+    //border-radius: 0 0 4px 4px; 
+    margin: 0px;
+    //border-right: 1px solid #e0e0e0;
+    //border-left: 1px solid #e0e0e0;
+    text-align: center;
+    padding: 10px;
+}
+
+
+
+.dropdown-parent-label {
+    font-size: 16px; 
+    font-weight: 500; 
+    color: black;
+    &:hover {
+        background: transparent;
+        font-weight: bold;
+    }
+    @media #{$small-and-down} {
+        padding: 0px;
+    }
+}
+
+
+
+.control-page-items {
+    margin: 0px;
+    line-height: 40px;
+}
+
+.dropdown-parent {
+    position: relative;
+    display: inline-block;
+    @media #{$small-and-down} {
+        padding: 10px 10px;
+        display: block;
+        border: 0px solid #e0e0e0;
+        border-radius: 10px;
+    }
+    &.last-dropdown {
+        @media #{$small-and-down} {
+            border-bottom: none;
+        }
+    }
+}
+
+
+    
+
+
+.discussion-board {
+    padding: 30px;
+    //border: 1px solid #e0e0e0;
+    //border-radius: 10px;
+    //background-color: white;
+    //border-top: 4px solid #f8bbd0;
+    //border-bottom: 4px solid #f8bbd0;
+}
+
+
+.discussion-form { 
+    //padding: 80px;
+    //border: 1px solid #e0e0e0;
+    background-color: transparent;
+    //border-top: 4px solid #f8bbd0;
+    
+}
+
+.filter-section {
+    border-top: 4px solid #f8bbd0;
+    //border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+    border-radius: 4px 4px 0 0;
+   // height: 70px;
+    background-color: #f9fafa;
+}
+
+
+.collection .collection-item.avatar {
+    margin: 30px 0;
+    .discussion-title {
+        color: #f48fb1;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .title {
+        font-size: 20px;
+        line-height: 2.0;
+        a {
+            color: #384047;
+            font-weight: bold;
+        }
+    }
+}
+
+
+
+
+//chip 區域 從.chip extend來的
+
+
+//materialize-sass https://github.com/mkhairi/materialize-sass/blob/master/app/assets/stylesheets/materialize/components/_chips.scss
+.chip {
+    display: inline-block;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0,0,0,.6);
+    line-height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    background-color: $chip-bg-color;
+    margin-bottom: $chip-margin;
+    margin-right: $chip-margin;
+}
+
+//主題，孕期，徵狀
+.chip-subject, .chip-period, .chip-kind, .chip-delete {
+    @extend .chip;
+    height: inherit;
+    background-color: transparent;
+    margin: 0px;
+}
+
+.chip-subject{
+    border: 1px solid #f48fb1;
+    color: #f48fb1;
+}
+
+.chip-period {
+    border: 1px solid #A5D6A7;
+    color: #A5D6A7;
+}
+
+.chip-kind {
+    border: 1px solid #ffab91;
+    color: #ffab91;
+}
+
+.chip-delete {
+    border: 1px solid #e1bee7 ;
+    color: #e1bee7;
+    background-color: #e1bee7;
+}
+
+// 新增留言 篩選器(城市 + 孕期 + 徵狀)
+.new-post-chip {
+    display: inline-block;
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+    padding: 0 12px;
+    //margin: 5px 5px;
+    //border-radius: 16px;
+    background-color: white;
+    border: 1px solid #e6e6e6;
+    //margin-right: 5px;
+    text-align: center;
+}
+
+.new-post-bar{
+    padding: 5px;
+    background-color: #e6e6e6;
+    text-align: center;
+    //margin: 10px;
+} 
+    
+
+.discussion-tags{
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 15px;
+}
+
+
+
+.discussion-byline {
+    font-size: 13px;
+    color: #7b8b8e;
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+//posts: show page
+
+.main-post-title.avatar .circle {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    left: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.main-post-title {
+    min-height: 70px;
+    padding-left: 72px;
+    position: relative;
+}
+
+.main-post-content .markdown-zone p {
+    color: #576366;
+    font-size: 14px;
+    margin-bottom: 15px;
+    padding-left: 72px;
+     @media #{$small-and-down} {
+        padding-left: 0px;
+    }
+}
+
+.main-post-tag  {
+    overflow: hidden; 
+    white-space: nowrap; 
+    margin-top: 30px;
+    padding-left: 70px;
+    @media #{$small-and-down} {
+        padding-left: 0px;
+    }
+}
+
+
+
+
+.modal {
+    &.modal-post {
+        @media #{$large-and-up} {
+         width: 40%;
+        }
+    }
+    .modal-content.modal-content-post {
+        padding: 40px;
+    }
+}
+
+//will_paginate
+
+.pagination {
+    cursor: default;
+    margin: 20px 0 80px 0 ;
+    display: flex;
+    justify-content: center;
+    a, span, em {
+        padding: 0.2em 0.5em;
+        display: block;
+        float: left;
+        margin-right: 1px;
+    }
+    .disabled {
+        color: grey;
+        border: 1px solid color("grey", "lighten-2");
+    }
+    .current {
+        font-style: normal;
+        font-weight: bold;
+        background: $will-paginate-color;
+        color: white;
+        border: 1px solid $primary-border;
+    }
+    a {
+        text-decoration: none;
+        color: $primary-border;
+        border: 1px solid $primary-border;
+        &:hover, &:focus {
+            color: $will-paginate-color;
+            border-color: $will-paginate-color;
+        }
+    }
+    .page_info {
+        background: #2e6ab1;
+        color: white;
+        padding: 0.4em 0.6em;
+        width: 22em;
+        margin-bottom: 0.3em;
+        text-align: center;
+    }
+    b {
+      color: #000033;
+      background: #2e6ab1 + 60;
+      padding: 0.1em 0.25em;
+    }
+}
+
+
+
+
+
+.donate-now input[type="radio"]:checked + label,
+.Checked + label {
+    background: $primary-color-light;
+    color: white;
+}
+
+
+
+.donate-now label:hover {
+     background: $primary-color-light;
+     color: white;
+     //@media only screen and (max-width: 993px){
+        //pointer-events: none;
+  //}
+}
+
+
+// Navagation 區域//
+// 小螢幕會出現的瀏覽條 bottom-nav
+.flex-bottom-nav ul{
+    display: flex !important;
+    margin: 0px;
+    padding: 0px;
+    line-height: 32px;
+    border-top: 1px solid #e6e6e6;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 1;
+}
+
+.flex-bottom-nav li{
+    flex: 1 1 50%;
+    text-align: center;
+    display: flex !important;
+    flex-direction: column;
+    font-size: 12px;
+    .horizontal-icon{
+        height: 0px;
+        margin: 10px 0px 14px 0px;
+    }
+}
+
+// 篩選器 區域//
+//孕期跟徵狀的篩選器
+
+.flex-filter-section {
+    border: 1px solid #e6e6e6;
+}
+
+.flex-filter-section ul{
+    display: flex;
+    flex-wrap: wrap;
+    //justify-content: space-around;
+    //width: 100%;
+    justify-content: space-between;
+    //border: 1px solid #e6e6e6;
+    padding: 15px 15px;
+    margin: 0;
+    a{
+        &:hover, &:focus {
+            background: $primary-color-light;
+            color: white;
+        }
+    }
+}
+
+.flex-filter-section li{
+    //width: 200px;
+    //margin: 3px;
+    flex: 0 1 calc(25% - 12px);
+    @media only screen and (max-width: 600px){
+        margin: 3px;
+        flex: 0 1 calc(50% - 16px)
+  }
+}
+
+.flex-filter-title{
+    display: flex;
+    align-items: center;
+    color: white;
+    margin: 5px 0px;
+    /* flex: 0 1 28%; */
+    /* padding: 5px; */
+    background-color: #e6e6e6;
+    text-align: center;
+    /* display: inline-block; */
+    height: 40px;
+    width: 135px;
+    line-height: 40px;
+    font-size: 13px;
+    font-weight: 500;
+    /* color: rgba(0, 0, 0, 0.6); */
+    padding: 0 12px;
+    /* margin: 5px 5px; */
+    background-color: #ec407a;
+    border: 1px solid #e6e6e6;
+    text-align: center;
+    span{
+        width: 75px;
+    }
+}
+
+//Doctor Profile (show page)的篩選器 (基本上應該跟“孕期跟徵狀的篩選器”差不多，可是大小介於993以下的話會變成horizontal menu)
+
+.profile-flex-filter-section {
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.profile-flex-filter-section ul{
+    display: flex;
+    flex-wrap: wrap;
+    //justify-content: space-around;
+    //width: 100%;
+    justify-content: flex-start;
+    //border: 1px solid #e6e6e6;
+    //padding: 15px 15px;
+    margin: 0;
+    a{
+        &:hover, &:focus {
+            background: $primary-color-light;
+            color: white;
+        }
+    }
+    @media only screen and (max-width: 1199px){
+        flex-wrap: nowrap;
+        overflow-x: auto;
+  }
+}
+
+.profile-flex-filter-section li{
+    //width: 200px;
+    //margin: 3px;
+    //flex: 0 1 calc(25% - 12px);
+    display: flex;
+    margin: 5px;
+    justify-content: center;
+    text-align: center;
+    @media only screen and (max-width: 1199px){
+        margin: 3px;
+        flex: 0 0 auto;
+  }
+}
+
+.profile-flex-filter-title{
+    padding: 5px;
+    background-color: #e6e6e6;
+    text-align: center;
+}
+
+//https://teamtreehouse.com/community
+//http://blog.plataformatec.com.br/
+
+
+// 留言區  區域 //
+
+//留言盒子 - POSTS_BOX
+
+.flex-post-box-wrap{
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2px 15px;
+}
+
+.flex-post-box{
+    margin: 5px 4px;
+    border: 1px solid #e6e6e6;
+    background-color: white;
+    padding: 0 15px;
+}
+
+.flex-post-box-small{
+    flex: 1 1 calc(33% - 8px);
+    
+}
+
+.flex-post-box-medium{
+    flex: 1 1 calc(50% - 8px);
+}
+
+.flex-post-box-large{
+    flex: 1 1 calc(100% - 8px);
+}
+
+.post-user > * {
+    margin: 0 6px;
+    //flex: 0 1 calc(50% - 12px);
+}
+
+.post-user{
+    display: flex;
+    padding: 15px 0px;
+    border-bottom: 1px solid #e6e6e6;
+    align-items: center;
+    //justify-content: space-between;
+    .post-user-avatar{
+        width: 50px;
+        height: 50px;
+        .user-avatar-image{
+            width: 50px !important;
+            height: 50px !important;
+        }
+    }
+    .post-user-name{
+        flex-grow: 1;
+    }
+}
+
+.post-content{
+    padding: 15px 15px 15px 15px;
+    min-height: 150px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.post-tag{
+    padding: 15px 15px 15px 15px;
+    min-height: 50px;
+    display: flex;
+    //justify-content: flex-end;
+    justify-content: space-around;
+}
+
+.action-chip{
+    background-color: $primary-color;
+    color: white;
+    width: 30px;
+    height: 30px;
+    padding: 3px 1px 3px 3px;
+}
+.chip-same{
+    border: 1px solid #A5D6A7;
+    color: #A5D6A7;
+    border-radius: 100px;
+    background: transparent;
+    display: inline-block;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 32px;
+    padding: 0 12px;
+}
+
+//留言區 分類標題 - cate
+
+.header_cate{
+    display: flex;
+    //padding: 15px 0px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e6e6e6;
+    justify-content: space-between;
+    .header_cate_title{
+        padding: 15px;
+        border-bottom: 1px solid black;
+        font-size: 24px;
+        a{
+            color: black;
+        }
+    }
+    .header_cate_more{
+        padding: 15px 15px 18px 15px;
+        //border-bottom: 1px solid black;
+        font-size: 16px;
+        a{
+            color: black;
+        }
+    }
+}
+
+
+//留言區下方的留言鈕
+.flex-post-box-btn ul{
+    display: flex;
+    justify-content: center;
+    li{
+    display: flex;
+    }
+}
+
+
+
+
+
+
+// 留言區 - Post Show Page 的 New Comment
+.flex-new-comment-box-wrap{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+}
+
+// 側邊欄 區域 //
+// 側邊欄 - 首頁 的 BOX
+
+.flex-sidebar-box-wrap{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-sidebar-box{
+    border: 1px solid #e0e0e0;
+    margin-bottom: 15px;
+    //padding: 15px;
+    
+    .sidebar-box-title{
+        border-bottom: 1px solid #e0e0e0;
+        padding: 5px 20px;
+        font-size: 24px;
+    }
+    .sidebar-box-link-wrap ul{
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        padding: 12px 20px;
+        margin: 0px;
+        li{
+            display: flex;
+        height: 50px;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        a{
+            flex: 1;
+            color: #272727;
+        }
+        i{
+            //flex-basis: 25px;
+            margin-right: 10px;
+        }
+        
+    }
+        }
+        
+    }
+    
+    
+
+
+
+
+// 側邊欄 -  Doctor Show Page 醫生個人頁面 - 左側欄的個人照片，留言，掛號 
+.doctor-profile{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border:1px solid #e6e6e6;
+    width: 300px;
+    img {
+        border: 0;
+        display: block;
+        border-radius: 2px 2px 0 0;
+        position: relative;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        //width: 300px;
+    }
+}
+
+
+
+.doctor-profile-name{
+    font-size: 20px;
+}
+
+.doctor-profile-avatar{
+    position: relative;
+}
+
+.doctor-profile-avatar ul{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 10px 0px;
+    margin: 0px;
+    align-items: center
+    //font-size: 24px;
+    //font-weight: 300;
+}
+
+.doctor-profile-avatar li{
+    display: flex;
+    flex: 1 1 50%;
+    justify-content: center;
+    
+}
+
+.profile-action ul{
+    display: flex;
+    background-color: white;
+    //padding: 4px;
+    margin: 0px;
+    //border:1px solid #e6e6e6;
+}
+
+.profile-action li{
+    margin: 5px;
+    display: flex;
+    height: 40px;
+    align-items: center;
+    flex: 1 1 50%;
+    border-right: 1px solid #e6e6e6;
+    &:last-child {
+            border-right: none !important;
+        }
+    a {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        color: black;
+        align-items: center;
+        justify-content: center;
+        
+        i{
+            //flex-basis: 25px;
+            margin-right: 10px;
+        }
+    }
+}
+
+
+
+
+
+//改內建的CSS
+//1.表單
+textarea {
+    width: 100%;
+    height: 10rem;
+    background-color: transparent;
+    border: 1px solid rgb(224, 224, 224);
+    font-size: 18px;
+    padding: 5px;
+}
+
+//2. Radio Button 改成 Button。按下不會直接送出
+[type="radio"] + label:before, [type="radio"] + label:after {
+    content: none;
+}
+
+[type="radio"]:not(:checked) + label, [type="radio"]:checked + label {
+    position: relative;
+    padding: 0 12px;
+    cursor: pointer;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    font-size: 13px;
+    transition: .28s ease;
+    -khtml-user-select: none;
+    user-select: none;
+    
+}
+
+//3.重新設定按鈕(留言)
+.btn-custom{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 10px;
+    //display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    //height: 100% !important;
+    //width: 100%;
+    padding: 0 2rem;
+    
+    
+    box-shadow: none;
+    cursor: pointer;
+    transition: background-color .2s;
+    text-transform: uppercase;
+    //vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+    i {
+        margin-right: 10px;
+    }
+}
+
+.btn-custom-primary{
+    color: $primary-color;
+    border: 1px solid $primary-color;
+}
+
+.btn-custom-white{
+    color: white;
+    border: 1px solid white;
+}
+
+
+//按螢幕尺寸調整
+
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+    .sidebar-box-link-wrap ul{
+        padding: 7px !important;
+    }
+}
+
+
+@media only screen and (max-width: 993px){
+    //留言盒子 - POSTS_BOX
+    .flex-post-box{
+        //border: none;
+    }
+    .flex-post-box-small{
+        //flex: 1 1 calc(100% - 8px) !important;
+    }
+    .flex-post-box-medium{
+        flex: 1 1 calc(100% - 8px) !important;
+    }
+    .flex-post-box-large{
+        flex: 0 1 100% !important;
+    }
+    // 首頁側邊欄的BOX - 由直轉橫
+    .sidebar-box-link-wrap ul{
+        display: flex;
+        flex-direction: row !important;
+        background-color: white;
+        padding: 15px;
+        margin: 0px;
+        
+    }
+    .sidebar-box-link-wrap li{
+        display: flex;
+        align-items: center;
+        flex: 1;
+        padding: 0px 0px 0px 30px;
+        border-right: 1px solid #e6e6e6;
+         &:last-child {
+            border-right: none !important;
+        }
+        
+    }
+  }
+  
+  
+@media only screen and (max-width: 600px){
+    //留言盒子 - POSTS_BOX
+    .flex-post-box{
+        //border: none;
+    }
+    .flex-post-box-small{
+        //flex: 1 1 calc(100% - 8px) !important;
+    }
+    .flex-post-box-medium{
+        flex: 1 1 100% !important;
+    }
+    .flex-post-box-large{
+        flex: 1 1 100% !important;
+    }
+    // 首頁側邊欄的BOX - 由直轉橫
+    .sidebar-box-link-wrap ul{
+        display: flex;
+        flex-direction: row !important;
+        background-color: white;
+        padding: 15px 0px !important;
+        margin: 0px;
+    }
+    .sidebar-box-link-wrap li{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        padding: 0px 0px 0px 0px;
+        border-right: 1px solid #e6e6e6;
+        &:last-child {
+            border-right: none !important;
+        }
+         i{
+            flex-basis: 24px !important;
+        }
+    }
+    // doctor show page image
+    .doctor-profile{
+        width: 100%;
+        img{
+            width: 100%;
+        }
+    }
+}
+
+//暫定：全部頁面都可以使用的container
+.container-custom{
+    margin: 0 auto;
+    max-width: 1280px;
+    @media only screen and (max-width: 600px){
+        width: 100%;
+    }
+    @media only screen and (min-width: 600px) and (max-width: 992px){
+        width: 85%;
+    }
+    @media only screen and (min-width: 993px) and (max-width: 1199px){
+        width: 70%;
+    }
+    @media only screen and (min-width: 1200px){
+        width: 70%;
+    }
+}
+
+//暫定：DOCTOR SHOW PAGE可以使用的container
+.container-custom-doctor-profile{
+    
+    display: flex;
+    margin: 30px auto;
+    max-width: 1280px;
+    
+    @media only screen and (max-width: 600px){
+        margin: 0 auto;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    @media only screen and (min-width: 600px) and (max-width: 992px){
+        width: 85%;
+        flex-wrap: wrap;
+    }
+    @media only screen and (min-width: 993px) and (max-width: 1199px){
+        width: 70%;
+        flex-wrap: wrap;
+    }
+    @media only screen and (min-width: 1200px){
+        width: 70%;
+    }
+}
+
+
+    .container-custom-doctor-profile{
+        justify-content: space-between;
+    }
+        
+        .profile-header-left{
+            display: flex;
+            @media only screen and (max-width: 1199px){
+            flex: 1 1 100%;
+            justify-content: center !important;
+            }
+        }
+        .profile-header-right{
+            flex: 0 1 calc(100% - 325px);
+            display: flex;
+            flex-direction: column;
+            //max-width: 935px;
+            align-self: flex-end;
+            overflow: hidden;
+            @media only screen and (max-width: 1199px){
+            flex: 1 1 100%;
+            margin-top: 30px;
+            flex-direction: row;
+            }
+            .flex-filter{
+                display: flex;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                white-space: nowrap;
+                height: 50px;
+                width: 90%;
+                margin: 0 auto;
+                padding: 0px 20px;
+                border-bottom: 1px solid #e6e6e6;
+                border-top: 1px solid #e6e6e6;
+                -webkit-overflow-scrolling: touch;
+                .filter-items{
+                    margin: 2px;
+                    max-height: 50px;
+                    cursor: pointer;
+                    display: inline-block;
+                    display: inline;
+                    zoom: 1;
+                    vertical-align: top;
+                }
+                
+            }
+        }
+    
+
+
+.flex-filter::-webkit-scrollbar {
+    display: none;
+}
+                
+
+
+.profile-header{
+    display: flex;
+    flex-wrap: wrap;
+    /* position: fixed; */
+    /* height: 300px; */
+    //width: 100%;
+    /* background-color: rgba(236, 64, 122, 0.44); */
+    /* border-bottom: 1px solid #e6e6e6; */
+    //z-index: 990;
+    padding: 15px 0px;
+    @media only screen and (max-width: 993px){
+       flex-direction: column;
+  }
+    .profile-header-left{
+        display: flex;
+        width: 300px;
+        @media only screen and (max-width: 993px){
+        justify-content: center ;
+        }  
+    }
+    .profile-header-right{
+        flex: 1;
+        display: flex;
+    }
+    
+    .doctor-profile{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border:1px solid #e6e6e6;
+    //width: 100%;
+    @media only screen and (max-width: 600px){
+        width: 100%;
+        }  
+    img {
+        border: 0;
+        display: block;
+        border-radius: 2px 2px 0 0;
+        position: relative;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        //width: 100%;
+        width: 300px;
+        //border-radius: 50%;
+        @media only screen and (max-width: 600px){
+        width: 100%;
+        }  
+    }
+}
+}
+
+.filter-bar {
+    display: flex;
+    flex: 1;
+    padding: 0 0 0 30px;
+    align-self: flex-end;
+    //background-color: white;
+    //height: 50px;
+    //margin-top: 30px;
+    @media only screen and (max-width: 600px){
+         padding: 0;
+         margin-top: 0px;
+        } 
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        flex: 1;
+        border: 1px solid #e6e6e6;
+        /* padding: 30px; */
+        margin: 0;
+        //align-items: center;
+        justify-content: space-around;
+        li{
+            display: flex;
+            align-items: center;
+            width: 200px;
+            //flex: 1;
+            //height: 100%;
+            border: 1px solid #e6e6e6;
+            background-color: white;
+            justify-content: center;
+            margin-bottom: 15px;
+            height: 50px;
+            &:last-child {
+                //border-right: none !important;
+            }
+            &:first-child {
+                width: 100%;
+                background-color: #e6e6e6;
+            }
+    }
+    }
+    
+}
+    
+

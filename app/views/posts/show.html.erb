@@ -1,110 +1,38 @@
 
 <% content_for :sidebar do %>
+	<!-- 小螢幕會消失的醫生個人資訊區 -->
 	<div class="hide-on-small-only">
 		<%= render 'doctors/sidebar_doctor_profile' %>
 	</div>
 <% end %>	
 
-
-
-
-
 <div class="section">
-	<header class="posts_phase_section_header">
-		<span class="posts_phase_section_title">
+		<header class="header_cate">
+			<span class="header_cate_title">
 			<%= link_to "回到醫生討論區", doctor_path(@doctor) %>
 		</span>
 	</header>
 </div>
-<div class="section doctor-post-board-list">
-	<div class="section post-board-top valign-wrapper">
-		<div class="post-board-user-pic">
-			<%= image_tag "yuna.jpg", class:"circle" %>
-		</div>
-		<div class="post-board-user-name">
-			<%= link_to "#{@doctor.name}",doctor_path(@doctor), {class:"name"} %><br>
-			<%= time_ago_in_words(@post.created_at) %> ago
-		</div>
-		<div class="post-chip chip-period truncate">
-			<%= @post.phase.title %>
-		</div>
-		<div class="post-chip chip-kind truncate">
-			<%= @post.issue.title %>
-		</div>
-	</div>
-	<div class="section post-board-middle">
-		<div>
-			<%= "[" %> <%= Post::SUBJECT[@post.subject][0] %> <%= "]" %> <%= @post.comment.size %> 篇回覆
-		</div>
-		<h5> <%= "#{@post.title}" %> </h5>
-		<div class="section post-byline valign-wrapper">
-			<%= simple_format(@post.description) %>
-		</div>
-	</div>
-	<div class="section post-board-bottom valign-wrapper">
-		<div class="post-chip chip-period truncate">
-			<%= @post.phase.title %>
-		</div>
-		<div class="post-chip chip-kind truncate">
-			<%= @post.issue.title %>
-		</div>
-		<div>
-			<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_path(@doctor, @post), :confirm => "Are you sure?", :method => :delete, class:'purple-text text-lighten-4' %>
-		</div>	
-		<div>
-			<!-- Edit Post Modal Trigger -->
-			<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-post", class:'purple-text text-lighten-4' %>
-		</div>
-	    <!-- Edit Post Modal Structure -->
-	    <div id="modal-edit-post" class="modal modal-fixed-footer modal-post">
-	    	<div class="modal-content modal-content-post">
-		    	<%= form_for ([@doctor, @post]) do |f| %>
-		      		<div class="row">
-		      			<div class="input-field col s12">
-		      				<%= f.text_field :title, :placeholder => "標題" %>
-		      			</div>
-				      	<div class="input-field col s12 m4">
-		        			<%= label_tag "請選擇主題" %><br>
-		        			<%= f.select :subject , Post::SUBJECT, {include_blank: false} %>
-	    				</div>
-	    				<div class="input-field col s12 m4">
-		        			<%= label_tag "妊娠週數" %><br>
-		        			<%= f.select :period , Post::PERIOD, {include_blank: false} %>
-	    				</div>
-	    				<div class="input-field col s12 m4">
-		        			<%= label_tag "主要範圍" %><br>
-		        			<%= f.select :kind , Post::KIND, {include_blank: false} %>
-	    				</div>
-				    	<div class="input-field col s12">
-	      					<%= f.text_area :description, :placeholder => "內文", class:"materialize-textarea" %>
-	      				</div>
-	      				<div class="input-field col s12 right-align">
-		      				<button class="btn waves-effect waves-light" type="submit" name="action">
-		      					<span>送出</span>
-							</button>
-						</div>
-					</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
+<div class="flex-post-box flex-post-box-large">
+	<%= render 'posts/posts_box_showpage', post: @post  %>
 </div>
 
-<div class="discussion-board">
-	<div class="section doctor-post-board-list">
-		<div class="section post-board-top valign-wrapper">
-			<% if @comments.blank? %>
-				成為第一個回覆的人
-			<% else %>
-				參加討論
-			<% end %>
-		</div>
-		<div class="section post-board-middle">
-			<div class="discussion-form">
-				<%= render 'comments/form' %>
-			</div>
-		</div>
+<div class="section">
+	<div class="flex-new-comment-box-wrap">
+		<header class="header_cate">
+			<span class="header_cate_title">
+				<% if @comments.blank? %>
+					成為第一個回覆的人
+				<% else %>
+					參加討論
+				<% end %>
+			</span>
+		</header>
+		<div>
+			<%= render 'comments/form' %>
+		</div>	
 	</div>
+	
 	<ul class="collection">
 		<li>
 			<% if !@comments.blank? %>
@@ -117,6 +45,29 @@
 
 
 
-
-
- 
+<% if false %>
+	<div class="discussion-board">
+		<div class="section doctor-post-board-list">
+			<div class="section post-board-top valign-wrapper">
+				<% if @comments.blank? %>
+					成為第一個回覆的人
+				<% else %>
+					參加討論
+				<% end %>
+			</div>
+			<div class="section post-board-middle">
+				<div class="discussion-form">
+					<%= render 'comments/form' %>
+				</div>
+			</div>
+		</div>
+		<ul class="collection">
+			<li>
+				<% if !@comments.blank? %>
+					<%= render 'comments/comment', collection: @comments %>
+					<%#= render 'comments/comment', :locals => { :comment => @comments }   %>
+				<% end %>
+			</li>
+		</ul>
+	</div>
+<% end %> 

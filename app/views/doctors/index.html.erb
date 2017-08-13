@@ -1,5 +1,5 @@
 <% content_for :sidebar do %>
-	<%= render 'doctors/sidebar_index' %>
+	<%= render 'layouts/sidebar_index' %>
 <% end %>
 
  
@@ -20,19 +20,19 @@
 <% end %>
 
 <div class="section">
-	<header class="posts_phase_section_header">
-		<span class="posts_phase_section_title">
-			<%= @title %>
+  <header class="header_cate">
+		<span class="header_cate_title">
+				<%= @title %>
 		</span>
 	</header>
 	<div class="row">
 		<% @doctors.each do |doctor| %>  
-              <% if doctor.gender == 1 %>
-                  <%= render partial: 'babyboy', :locals => { :doctor => doctor } %>
-              <% else %>
-                  <%= render partial: 'babygirl', :locals => { :doctor => doctor } %>
-              <% end %>
-          <% end %> 
+		  <% if doctor.gender == 1 %>
+		    <%= render partial: 'babyboy', :locals => { :doctor => doctor } %>
+		  <% else %>
+        <%= render partial: 'babygirl', :locals => { :doctor => doctor } %>
+      <% end %>
+    <% end %> 
 	</div>
 </div>
 

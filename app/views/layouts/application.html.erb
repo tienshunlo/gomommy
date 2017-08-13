@@ -16,24 +16,25 @@
     </header>  
 
     <main>
-      
+      <%= yield :profile_headbar %>
       <div class="container">
         <div class="row">
-          <div class="col s12 m3 l3">
+          <div class="col s12 m12 l3 xl3">
             <%= yield :sidebar %>
           </div>
-          <div class="col s12 m9 l9">
+          <div class="col s12 m12 l9 xl9">
             <%= yield :headbar %>
             <%= yield %>
+            <%= will_paginate @paginate if @paginate %>
+            
           </div>
         </div>
       </div>
-      <div class="container">
-          <%= will_paginate @paginate if @paginate %>
-      </div>
-    </main>  
-
-    <footer class="page-footer">
+    </main> 
+    <div class="flex-bottom-nav show-on-small hide-on-med-and-up">
+      <%= render 'layouts/bottom_nav' %>
+    </div>
+    <footer class="page-footer hide-on-small-only">
        <%= render 'layouts/footer' %>
     </footer>
 

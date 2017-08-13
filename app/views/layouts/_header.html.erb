@@ -15,8 +15,7 @@
       </ul>
       </div>
     </div>
-  
-</nav>
+  </nav>
 </div>
 <!-- 下拉選單 -->
 <!-- Dropdown Structure -->
@@ -35,14 +34,29 @@
   <li><%= link_to "註冊", doctors_path(city: nil) %></li>
   <li><%= link_to "登入", doctors_path(city: nil) %></li>
   <li class="divider"></li>
-  <li><%= link_to "總討論區", doctors_path(city: nil) %></li>
+  
   <li><%= link_to "最多人討論的醫生", doctors_path(city: nil) %></li>
   <li><%= link_to "最多人瀏覽的文章", doctors_path(city: nil) %></li>
   <li><%= link_to "最多人留言的文章", doctors_path(city: nil) %></li>
   <li class="divider"></li>
-  <li><%= link_to "按孕期分類", posts_phase_posts_path %></li>
-  <li><%= link_to "按症狀分類", posts_issue_posts_path %></li>
- 
+  <li>
+    <%= link_to  posts_path do %> 
+		  <i class="material-icons">face</i>
+			<span> <%= "總討論區" %></span>
+		<% end %>
+	</li>
+	 <li>
+    <%= link_to  posts_phase_posts_path do %> 
+		  <i class="material-icons">pregnant_woman</i>
+			<span> <%= "按孕期分類" %></span>
+		<% end %>
+	</li>
+	 <li>
+    <%= link_to  posts_issue_posts_path do %> 
+		  <i class="material-icons">child_care</i>
+			<span> <%= "按症狀分類" %></span>
+		<% end %>
+	</li>
   <li><%= yield :show_sidebar %></li>
   
 </ul>

@@ -1,22 +1,31 @@
 <% content_for :sidebar do %>
-	<%= render 'doctors/sidebar_index' %>
+	<%= render 'layouts/sidebar_index' %>
 <% end %>
 
 <% if false %>
-<% content_for :headbar do %>
-	<%= render 'posts/filter_index' %>
-<% end %>
+	<% content_for :headbar do %>
+		<%= render 'posts/filter_index' %>
+	<% end %>
 <% end %>
 
 <div class="section">
-	<header class="posts_phase_section_header">
-		<span class="posts_phase_section_title">
+	<header class="header_cate">
+		<span class="header_cate_title">
 			<%= @title %>
 		</span>
 	</header>
 	<div class="row">
-		<% @posts.each do |post| %>
-			<%= render 'posts/list_posts_index', post: post  %>
+		<div class="flex-post-box-wrap">
+			<% @posts.each do |post| %>
+				<div class="flex-post-box flex-post-box-medium">
+					<%= render 'posts/posts_box', post: post  %>
+				</div>	
+			<% end %>
+		</div>
+		<% if false %>
+			<% @posts.each do |post| %>
+				<%= render 'posts/list_posts_index', post: post  %>
+			<% end %>
 		<% end %>
 	</div>
 </div>

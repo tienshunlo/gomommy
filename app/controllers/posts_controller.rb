@@ -47,9 +47,8 @@ class PostsController < ApplicationController
     def posts_phase
         #按孕期的大項分類
         @phases = Phase.all
-        @phases = Phase.all
         @phase_1 = @phases.select{|t| t.phasecate_id == 1} #懷孕期間
-        @phase_2 = @phases.select{|t| t.phasecate_id == 2} #生產過後後
+        @phase_2 = @phases.select{|t| t.phasecate_id == 2} #生產過後
         
         
         @posts_tag = Post.all.includes(:phase).includes(:issue).includes(:doctor).order('id DESC')

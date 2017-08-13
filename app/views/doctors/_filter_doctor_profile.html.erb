@@ -39,7 +39,7 @@
 				    	 		<!-- Dropdown Structure -->
 				    			<ul id="dropdown2" class="dropdown-content">
 				  					<% Post::PERIOD.each_with_index do |item, index| %>
-										<li class="<%= 'active' if params[:period] == item %>">
+										<li class="<%= 'active' if params[:period] == item %>>
 											<%= link_to item[0], doctor_path(@doctor, period: item ), class: "link" %>
 										</li>
 								    <% end %>

@@ -1,3 +1,16 @@
+<div class="section">
+	<div class="flex-filter-section">
+		<ul>
+		  	<li><%= link_to "全部城市", doctors_path(city: nil), class:"new-post-chip" %></li>
+			  <% @citys.each do |city| %>
+				  <li><%= link_to city.name, doctors_path(city: city.name), { class:"new-post-chip"} %></li>
+		  	<% end %>
+		</ul>
+	</div>
+</div>
+
+
+
 <% if false %>
 <div class="row">
   <div class="section">
@@ -21,6 +34,7 @@
 <%= render_filterrific_spinner %>
 <% end %>
 
+<% if false %>
 <div class="row">
 <div class="section">
     <div class="container-doctor">
@@ -37,3 +51,4 @@
     </div>
 </div>
 </div>
+<% end %>

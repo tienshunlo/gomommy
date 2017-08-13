@@ -1,27 +1,32 @@
 
-
+<div class="flex-post-box-wrap">
 <% @comments.each_with_index do |comment, comment_item_index| %>
-	<div class="section doctor-post-board-list">
-		<div class="section post-board-top valign-wrapper">
-			<div class="post-board-user-pic">
-				<%= image_tag "yuna.jpg", class:"circle" %>
+	<div class="flex-post-box flex-post-box-large">
+		
+		<div class="post-user">
+			<div class="post-user-avatar">
+				<%= image_tag "yuna.jpg", class:"user-avatar-image circle" %>
 			</div>
-			<div class="post-board-user-name">
+			<div class="post-user-name">
 				<%= link_to "#{@doctor.name}",doctor_path(@doctor), {class:"name"} %><br>
 				<%= time_ago_in_words(@post.created_at) %> ago
 			</div>
 		</div>
-		<div class="section post-board-middle">
-			<div class="section post-byline valign-wrapper">
+		<div class="post-content">
+			<div class="section">
 				<%= simple_format(comment.content) %>
 			</div>
 		</div>
-		<div class="section post-board-bottom">
-			<ul class="discussion-tags">
-				<li>
-				<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_comment_path(@doctor, @post,comment), :confirm => "Are you sure?", :method => :delete, class:'purple-text text-lighten-4' %>
+		
+		
+		<div class="post-tag">
+			<div  class="circle action-chip">
+				<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_comment_path(@doctor, @post,comment), :confirm => "Are you sure?", :method => :delete, class:'white-text' %>
+			</div>	
+			<div  class="circle action-chip">
 				<!-- Edit Comment Modal Trigger -->
-				<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-comment_#{comment_item_index}", class:'purple-text text-lighten-4' %>
+				<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-comment_#{comment_item_index}", class:'white-text' %>			
+			</div>
 				<!-- Edit Comment Modal Structure -->
 				<div id="modal-edit-comment_<%= comment_item_index %>" class="modal modal-fixed-footer modal-post">
 					<div class="modal-content modal-content-post">
@@ -39,8 +44,8 @@
 				    	<% end %>
 					</div>
 				</div>
-			</li>
-			</ul>
+			
 		</div>
 	</div>
 <% end %>
+</div>

@@ -1,17 +1,17 @@
 <% content_for :sidebar do %>
-	<%= render 'doctors/sidebar_index' %>
+	<!-- 側邊欄 留言區 主選單 -->
+	<%= render 'layouts/sidebar_index' %>
 <% end %>
 
-
 <% content_for :headbar do %>
+	<!-- 總留言區 篩選器 filterrefic -->
 	<%= render 'posts/filter_index' %>
 <% end %>
 
 <div class="section">
+	<!-- 總留言區 -->
 	<%= render(partial: 'posts/list',locals: { posts: @posts }) %>
 </div>    
- 
-
 
 <% if false %>
 <div class="section">
