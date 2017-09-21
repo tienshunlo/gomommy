@@ -7,7 +7,6 @@
 
 
 <div class="section">
-	<%#= render 'posts/filter_cate' %>
 	<%= render 'shared/flex_filterbar' %>
 </div>
 
@@ -33,42 +32,7 @@
 					</div>	
 				<% end %>
 			</div>
-			
-			<% if false %>
-				<% @posts_tag.select{|t| t.issue_id == issue.id}.first(3).each do |post| %>
-					<%= render 'posts/list_posts_cate', post: post  %>
-				<% end %>
-			<% end %>
 		</div>
 	<% end %>
 </div>
 
-
-
-<% if false %>
-<div class="row">
-	<div class="section">
-		<div class="container-doctor">
-	    	<div class="col s12">
-	        	<header class="filter_section_header">
-	          		<% @issues.each do |issue| %>
-	          			 <div class="col s6 m3"><%= link_to issue.title, posts_issue_posts_path(anchor: issue.title), { class:"new-post-chip"} %></div>
-	  		  		<% end %>
-	  		   </header>
-	    	</div>
-	    </div>
-	</div>
-</div>
-<% end %>
-
-<% if false %>
-	<div class="section">
-		<div class="flex-filter-section">
-			<ul>
-				<% @issues.each do |issue| %>
-					<li><%= link_to issue.title, posts_issue_posts_path(anchor: issue.title), { class:"new-post-chip"} %></li>
-			  	<% end %>
-			</ul>
-		</div>
-	</div>
-<% end %>

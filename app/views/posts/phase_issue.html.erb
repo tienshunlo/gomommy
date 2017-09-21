@@ -1,13 +1,6 @@
 <% content_for :sidebar do %>
 	<%= render 'shared/sidebar_index' %>
 <% end %>
-
-<% if false %>
-	<% content_for :headbar do %>
-		<%= render 'posts/filter_index' %>
-	<% end %>
-<% end %>
-
 <div class="section">
 	<header class="header_cate">
 		<span class="header_cate_title">
@@ -22,11 +15,6 @@
 				</div>	
 			<% end %>
 		</div>
-		<% if false %>
-			<% @posts.each do |post| %>
-				<%= render 'posts/list_posts_index', post: post  %>
-			<% end %>
-		<% end %>
 	</div>
 </div>
  

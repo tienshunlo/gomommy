@@ -43,31 +43,3 @@
 	</ul>
 </div>
 
-
-
-<% if false %>
-	<div class="discussion-board">
-		<div class="section doctor-post-board-list">
-			<div class="section post-board-top valign-wrapper">
-				<% if @comments.blank? %>
-					成為第一個回覆的人
-				<% else %>
-					參加討論
-				<% end %>
-			</div>
-			<div class="section post-board-middle">
-				<div class="discussion-form">
-					<%= render 'comments/form' %>
-				</div>
-			</div>
-		</div>
-		<ul class="collection">
-			<li>
-				<% if !@comments.blank? %>
-					<%= render 'comments/comment', collection: @comments %>
-					<%#= render 'comments/comment', :locals => { :comment => @comments }   %>
-				<% end %>
-			</li>
-		</ul>
-	</div>
-<% end %> 

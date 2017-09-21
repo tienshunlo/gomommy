@@ -39,32 +39,3 @@
 		</div>
 	<% end %>
 </div>
-
-
-<% if false %>
-	<div class="row">
-		<div class="section">
-			<div class="container-doctor">
-		    	<div class="col s12">
-		        	<header class="filter_section_header">
-		          		<% @phases.each do |phase| %>
-		          			 <div class="col s6 m2"><%= link_to phase.title, posts_phase_posts_path(anchor: phase.title), { class:"new-post-chip"} %></div>
-		  		  		<% end %>
-		  		   </header>
-		    	</div>
-		    </div>
-		</div>
-	</div>
-<% end %>
-
-<% if false %>
-	<div class="section">
-		<div class="flex-filter-section">
-			<ul>
-			<% @phases.each do |phase| %>
-				<li><%= link_to phase.title, posts_phase_posts_path(anchor: phase.title), { class:"new-post-chip"} %></li>
-		  	<% end %>
-			</ul>
-		</div>
-	</div>
-<% end %>

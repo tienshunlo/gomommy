@@ -12,18 +12,3 @@
 	<!-- 總留言區 -->
 	<%= render(partial: 'posts/list',locals: { posts: @posts }) %>
 </div>    
-
-<% if false %>
-<div class="section">
-	<header class="posts_phase_section_header">
-		<span class="posts_phase_section_title">
-			<%= @title %>
-		</span>
-	</header>
-	<div class="row">
-		<% @posts.each do |post| %>
-			<%= render 'posts/list_posts_index', post: post  %>
-		<% end %>
-	</div>
-</div>
-<% end %>
