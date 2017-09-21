@@ -1,0 +1,23 @@
+<div class="profile-action">
+  <ul>
+     <li>
+         <!-- New Post Modal Trigger -->
+         <%= link_to "#modal-new-post_#{doctor.id}", {class:"modal-trigger"} do %> 
+             <i class="material-icons">mode_edit</i>
+             <span>留言</span>
+         <% end %>
+         <% if false %>
+             <i class="material-icons">textsms</i>
+             <%= link_to "留言", "#modal-new-post", class:"modal-trigger" %>
+         <% end %>
+     </li>
+     <li>
+         <%#= 先連去首頁 %>
+         <%= link_to root_path do %> 
+             <i class="material-icons">call</i>
+             <span>掛號</span>
+         <% end %>
+     </li>
+  </ul>
+  <%#= @doctor.impressions.count 人瀏覽%> 
+</div>

@@ -1,0 +1,62 @@
+<div class="navbar-fixed">
+  <nav class="top-nav">
+    <div class="container">
+    <div class="nav-wrapper">
+      <a href=<%= root_path %> class="brand-logo"><i class="large material-icons">favorite</i>
+        <span class='text-bold'><h4>Mommy</h4></span>
+      </a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= link_to "全台醫生", doctors_path(city: nil) %></li>
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown-discussion">全站討論區分類<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><%= link_to "註冊", doctors_path(city: nil), class:"btn-flat btn-flat-custom white-border" %></li>
+        <li><%= link_to "登入", doctors_path(city: nil), class:"btn-flat btn-flat-custom white-border" %></li>
+      </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- 下拉選單 -->
+<!-- Dropdown Structure -->
+<ul id="dropdown-discussion" class="dropdown-content">
+  
+  <li><%= link_to "最多人討論的醫生", doctors_path(city: nil) %></li>
+  <li><%= link_to "最多人瀏覽的文章", doctors_path(city: nil) %></li>
+  <li><%= link_to "最多人留言的文章", doctors_path(city: nil) %></li>
+  <li class="divider"></li>
+  <li><%= link_to "總討論區", posts_path %></li>
+  <li><%= link_to "按孕期分類", posts_phase_posts_path %></li>
+  <li><%= link_to "按症狀分類", posts_issue_posts_path %></li>
+</ul>
+<!-- 側邊選單 -->
+<ul id="mobile-demo" class="side-nav" >
+  <li><%= link_to "註冊", doctors_path(city: nil) %></li>
+  <li><%= link_to "登入", doctors_path(city: nil) %></li>
+  <li class="divider"></li>
+  
+  <li><%= link_to "最多人討論的醫生", doctors_path(city: nil) %></li>
+  <li><%= link_to "最多人瀏覽的文章", doctors_path(city: nil) %></li>
+  <li><%= link_to "最多人留言的文章", doctors_path(city: nil) %></li>
+  <li class="divider"></li>
+  <li>
+    <%= link_to  posts_path do %> 
+		  <i class="material-icons">face</i>
+			<span> <%= "總討論區" %></span>
+		<% end %>
+	</li>
+	 <li>
+    <%= link_to  posts_phase_posts_path do %> 
+		  <i class="material-icons">pregnant_woman</i>
+			<span> <%= "按孕期分類" %></span>
+		<% end %>
+	</li>
+	 <li>
+    <%= link_to  posts_issue_posts_path do %> 
+		  <i class="material-icons">child_care</i>
+			<span> <%= "按症狀分類" %></span>
+		<% end %>
+	</li>
+  <li><%= yield :show_sidebar %></li>
+  
+</ul>

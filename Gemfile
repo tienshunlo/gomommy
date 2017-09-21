@@ -13,7 +13,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+gem 'filterrific'
+gem 'will_paginate', '~> 3.1.0'
+gem 'ckeditor'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -23,8 +25,12 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 #gem 'nokogiri', '~> 1.6', '>= 1.6.8'
-gem 'materialize-sass'
+gem 'materialize-sass', '~> 0.97.8'
 gem "paperclip", "~> 5.0.0"
+gem 'spreadsheet', '~> 1.1', '>= 1.1.4'
+gem 'impressionist'
+gem 'pry', '~> 0.10.4'
+gem 'hirb', '~> 0.7.3'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

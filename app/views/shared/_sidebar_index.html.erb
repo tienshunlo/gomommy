@@ -1,0 +1,103 @@
+
+<div class="section">
+    <div class="flex-sidebar-box-wrap">
+        <div class="flex-sidebar-box">
+            <div class="sidebar-box-title">
+                醫生
+            </div>
+            <div class="sidebar-box-link-wrap">
+                <ul>
+                    <li  class="sidebar-box-link">
+                        <i class="material-icons">local_hospital</i>
+                        <%= link_to "全台婦產科醫生", doctors_path(city: nil) %>
+                    </li>
+                    <li  class="sidebar-box-link">
+                        <i class="material-icons">face</i>
+                        <%= link_to "最多瀏覽的醫生", doctors_path(city: nil) %>
+                    </li>
+                    <li  class="sidebar-box-link">
+                        <i class="material-icons">&#xE242;</i>
+                        <%= link_to "按留言多寡排序", most_posts_doctors_path %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="flex-sidebar-box-wrap">
+        <div class="flex-sidebar-box">
+            <div class="sidebar-box-title">
+                全站討論區
+            </div>
+            <div class="sidebar-box-link-wrap">
+                <ul>
+                    <li  class="sidebar-box-link">
+                        <i class="material-icons">forum</i>
+                        <%= link_to "總討論區", posts_path %>
+                    </li>
+                    <li  class="sidebar-box-link">
+                        <i class="material-icons">pregnant_woman</i>
+                        <%= link_to "按孕期分類", posts_phase_posts_path %>
+                    </li>
+                    <li  class="sidebar-box-link">
+                        <i class="material-icons">child_care</i>
+                        <%= link_to "按症狀分類", posts_issue_posts_path %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% if false %>
+<div class="row">
+    <div class="section">
+        <div class="col s12">
+            <div class="card card-doctor card-doctor-sidebar z-depth-0">
+                <div class="card-content card-content-doctor index-sidebar">
+                    <span class="card-title">醫生</span>
+                </div>
+                <div class="row card-action card-action-doctor index-sidebar black-text">
+                    <ul>
+                        <li  class="valign-wrapper">
+                            <div class="post-image center-align"><i class="material-icons">perm_identity</i></div>
+                            <div class="post-title"><%= link_to "全台婦產科醫生", doctors_path(city: nil) %></div>
+                        </li>
+                        <li  class="valign-wrapper">
+                            <div class="post-image center-align"><i class="material-icons">thumb_up</i></div>
+                            <div class="post-title"><%= link_to "最多瀏覽的醫生", doctors_path(city: nil) %></div>
+                        </li>
+                        <li  class="valign-wrapper">
+                            <div class="post-image center-align"><i class="material-icons">&#xE242;</i></div>
+                            <div class="post-title post-title-last"><%= link_to "按留言多寡排序", most_posts_doctors_path %></div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="card card-doctor z-depth-0">
+                <div class="card-content card-content-doctor index-sidebar">
+                    <div><span class="card-title">全站討論區</span></div>
+                </div>
+                <div class="row card-action card-action-doctor index-sidebar black-text">
+                    <ul>
+                        <li  class="valign-wrapper">
+                            <div class="post-image center-align"><i class="material-icons">face</i></div>
+                            <div class="post-title"><%= link_to "總討論區", posts_path %></div>
+                        </li>
+                        <li  class="valign-wrapper">
+                            <div class="post-image center-align"><i class="material-icons">pregnant_woman</i></div>
+                            <div class="post-title"><%= link_to "按孕期分類", posts_phase_posts_path %></div>
+                        </li>
+                        <li  class="valign-wrapper">
+                            <div class="post-image center-align"><i class="material-icons">child_care</i></div>
+                            <div class="post-title"><%= link_to "按症狀分類", posts_issue_posts_path %></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div> 
+<% end %>

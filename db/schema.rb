@@ -11,19 +11,114 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170217134337) do
+ActiveRecord::Schema.define(version: 20170717042527) do
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content",    limit: 65535
+    t.integer  "post_id",    limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "districts", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "city_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name",                    limit: 255
-    t.string   "specialty",               limit: 255
-    t.string   "experience",              limit: 255
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.text     "specialty",               limit: 65535
+    t.text     "experience",              limit: 65535
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.string   "doctor_img_file_name",    limit: 255
     t.string   "doctor_img_content_type", limit: 255
     t.integer  "doctor_img_file_size",    limit: 4
     t.datetime "doctor_img_updated_at"
-    t.integer  "gender",                  limit: 1,   default: 0, null: false
+    t.integer  "hospital_id",             limit: 4
+    t.integer  "gender",                  limit: 1,     default: 0, null: false
+    t.integer  "city_id",                 limit: 4
+    t.integer  "district_id",             limit: 4
+    t.integer  "post_count",              limit: 4,     default: 0
+    t.integer  "impressions_count",       limit: 4
+  end
+
+  create_table "hospitals", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.integer  "city_id",     limit: 4
+    t.integer  "district_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "impressions", force: :cascade do |t|
+    t.string   "impressionable_type", limit: 255
+    t.integer  "impressionable_id",   limit: 4
+    t.integer  "user_id",             limit: 4
+    t.string   "controller_name",     limit: 255
+    t.string   "action_name",         limit: 255
+    t.string   "view_name",           limit: 255
+    t.string   "request_hash",        limit: 255
+    t.string   "ip_address",          limit: 255
+    t.string   "session_hash",        limit: 255
+    t.text     "message",             limit: 65535
+    t.text     "referrer",            limit: 65535
+    t.text     "params",              limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree
+  add_index "impressions", ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index", using: :btree
+  add_index "impressions", ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "params"], name: "poly_params_request_index", length: {"impressionable_type"=>nil, "impressionable_id"=>nil, "params"=>255}, using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index", using: :btree
+  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", length: {"impressionable_type"=>nil, "message"=>255, "impressionable_id"=>nil}, using: :btree
+  add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
+
+  create_table "issues", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.integer  "phase_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "phasecates", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "phases", force: :cascade do |t|
+    t.string   "title",        limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "phasecate_id", limit: 4
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title",         limit: 255
+    t.text     "description",   limit: 65535
+    t.integer  "doctor_id",     limit: 4
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "subject",       limit: 4
+    t.integer  "period",        limit: 4
+    t.integer  "kind",          limit: 4
+    t.integer  "comment_count", limit: 4,     default: 0
+    t.integer  "phase_id",      limit: 4
+    t.integer  "issue_id",      limit: 4
   end
 
 end

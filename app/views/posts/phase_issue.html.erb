@@ -1,0 +1,20 @@
+<% content_for :sidebar do %>
+	<%= render 'shared/sidebar_index' %>
+<% end %>
+<div class="section">
+	<header class="header_cate">
+		<span class="header_cate_title">
+			<%= @title %>
+		</span>
+	</header>
+	<div class="row">
+		<div class="flex-post-box-wrap">
+			<% @posts.each do |post| %>
+				<div class="flex-post-box flex-post-box-medium">
+					<%= render 'posts/posts_box', post: post  %>
+				</div>	
+			<% end %>
+		</div>
+	</div>
+</div>
+ 

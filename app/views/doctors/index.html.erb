@@ -1,20 +1,29 @@
-<div class="row">
-<% @doctors.each do |doctor|%>
-        <div class="col s12 m4 l3">
-          <div class="card">
-            <div class="card-image">
-              <%= image_tag doctor.doctor_img.url %>
-              <span class="card-title"><%= doctor.name %></span>
-            </div>
-            <div class="card-content">
-              <div><%= doctor.specialty.truncate(12) %></div>
-              <div><%= doctor.experience.truncate(12) %></div>
-            </div>
-            <div class="card-action">
-              <a href='<%= edit_doctor_path(doctor) %>' class='btn waves-effect eaves-light' name='action'>Edit</a>
-            </div>
-          </div>
-        </div>
-        <% end %>
-      </div>
+<% content_for :sidebar do %>
+	<%= render 'shared/sidebar_index' %>
+<% end %>
 
+<div class="section">
+	<%= render 'shared/flex_filterbar' %>
+</div>
+
+<div class="section">
+  <header class="header_cate">
+		<span class="header_cate_title">
+				<%= @city_name %>
+		</span>
+	</header>
+	<div class="row">
+	  <div class="container-custom-list-profile">
+  		<% @doctors.each do |doctor| %>
+    		<div class="profile-header-left">
+    		  <div class="profile-box">
+    				<%= render partial: "doctors/profile_avatar", locals: {doctor: doctor} %>
+    				<%= render partial: "doctors/profile_action_index", locals: {doctor: doctor} %>
+    				<%= render partial: "doctors/profile_poster", locals: {doctor: doctor} %>
+    			</div>
+    		    <%= render 'posts/new_post_modal', doctor: doctor %>
+        </div>
+      <% end %> 
+    </div>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="row">
+		<div class='section'>
+			<div class= "discussion-container">
+			<ul class="control-container">
+				<ul class="control-page-items z-depth-0">
+					<div class="chip normal-normal"><span>編輯回覆</span></div>
+				</ul>
+			</ul>
+			<div class="discussion-board">
+				<ul class="collection">
+				<%= form_for ([@doctor, @post, @comment]) do |f| %>
+    				<div class="row">
+    			    	<div class="input-field col s12">
+          					<%= f.text_area :content, :placeholder => "回覆", class:"materialize-textarea" %>
+          				</div>
+          				<div class="input-field col s12 right-align">
+    	      				<button class="btn waves-effect waves-light" type="submit" name="action">
+    	      					<span>送出</span>
+    						</button>
+    					</div>
+    				</div>
+			    <% end %>
+				</ul>
+			</div>
+			</div>
+		</div>
+			<a href='<%= doctor_post_path(@doctor,@post) %>' class='btn waves-effect eaves-light' name='action'>回到上一頁</a>
+	 </div>
+</div>

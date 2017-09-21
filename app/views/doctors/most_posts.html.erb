@@ -1,0 +1,37 @@
+<% content_for :doctor_profile do %>
+	<%= render 'doctors/index_sidebar' %>
+<% end %>
+<div class="row">   
+    <div class='section'>
+        <div class="card-panel z-depth-0 pink lighten-3">
+            <!-- Dropdown Trigger -->
+    	    <span class="white-text text-darken-2 bold" style='margin:10px;'>我想找</span>
+            <a class="dropdown-button btn pink lighten-1" href="#!" data-activates="dropdown-doctor">
+                <% if params[:city] %>
+                    <%= params[:city] %>
+                <% else %>
+                    其他縣市
+                <% end %>
+                <i class="material-icons right">arrow_drop_down</i>
+            </a>
+            <span class="white-text text-darken-2 bold"  style='margin:10px'>的醫生</span>  
+            <!-- Dropdown Structure -->
+            <ul id="dropdown-doctor" class="dropdown-content">
+                <% City.all.each do |city| %>
+			        <li class="<%= 'active' if params[:city] == city.name %>">
+					    <%= link_to city.name, doctors_path(city: city.name) %>
+				    </li>
+				<% end %>
+            </ul>
+        </div>
+    </div>
+    <div class='row'>
+        <% @doctors.each do |doctor| %>  
+            <% if doctor.gender == 1 %>
+                <%= render partial: 'babyboy', :locals => { :doctor => doctor } %>
+            <% else %>
+                <%= render partial: 'babygirl', :locals => { :doctor => doctor } %>
+            <% end %>
+        <% end %> 
+    </div>
+</div>  

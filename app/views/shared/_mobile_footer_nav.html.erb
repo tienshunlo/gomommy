@@ -1,0 +1,27 @@
+<ul>
+  <li>
+    <%= link_to root_path do %> 
+      <div class='horizontal-icon'><i class="material-icons">home</i></div>
+      <span>首頁</span>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to doctors_path(city: nil) do %> 
+      <div class='horizontal-icon'><i class="material-icons">local_hospital</i></div>
+      <span>醫生</span>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to posts_phase_posts_path do %> 
+      <div class='horizontal-icon'><i class="material-icons">pregnant_woman</i></div>
+      <span>孕期</span>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to posts_issue_posts_path do %> 
+      <div class='horizontal-icon'><i class="material-icons">child_care</i></div>
+      <span>症狀</span>
+    <% end %>
+  </li>
+</ul>
+      

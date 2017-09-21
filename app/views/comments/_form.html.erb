@@ -1,0 +1,17 @@
+<%= form_for ([@doctor, @post, @post.comment.build]) do |f| %>
+	<div class="row">
+    	<div class="input-field col s12 ">
+      		<%= f.text_area :content, :placeholder => "回覆" %>
+      	</div>
+      	<div class="input-field col s12 right-align">
+	      	<button class="btn waves-effect waves-light" type="submit" name="action">
+				<span>送出</span>
+			</button>
+		</div>
+		
+	</div>
+<% end %>
+
+
+
+

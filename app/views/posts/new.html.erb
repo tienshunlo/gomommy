@@ -1,0 +1,25 @@
+<!-- New Post Modal Structure -->
+<% content_for :sidebar do %>
+	<%= render 'doctors/sidebar_doctor_profile' %>
+<% end %>
+
+<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<div class="section">
+    <header class="header_cate">
+    	<span class="header_cate_title">留言</span>
+    </header>
+    </div>
+<div class="section">    
+	<%= render 'posts/new', doctor: @doctor %>
+</div>

@@ -1,0 +1,41 @@
+<% content_for :sidebar do %>
+	<!-- 側邊欄 留言區 主選單 -->
+	<%= render 'shared/sidebar_index' %>
+<% end %>
+
+
+
+<div class="section">
+	<%= render 'shared/flex_filterbar' %>
+</div>
+
+<div class="section">
+	<% @phases.each do |phase| %>
+		<header class="header_cate">
+			<span class="header_cate_title">
+				<%= link_to phase_issue_posts_path(phase: phase) do %>
+					<span id="<%= phase.title %>"><%= phase.title %></span>
+				<% end %>
+			</span>
+			<span class="header_cate_more">
+				<%= link_to phase_issue_posts_path(phase: phase) do %>
+					<span id="<%= phase.title %>">More ></span>
+				<% end %>
+			</span>
+		</header>
+		<div class="row">
+			<div class="flex-post-box-wrap">
+				<% @posts_tag.select{|t| t.phase_id == phase.id}.first(3).each do |post| %>
+					<div class="flex-post-box flex-post-box-small">
+						<%= render 'posts/posts_box', post: post  %>
+					</div>	
+				<% end %>
+			</div>
+			<% if false %>
+				<% @posts_tag.select{|t| t.phase_id == phase.id}.first(3).each do |post| %>
+					<%= render 'posts/list_posts_cate', post: post  %>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+</div>

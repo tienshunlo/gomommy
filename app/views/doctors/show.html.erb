@@ -1,12 +1,96 @@
+<% content_for :show_sidebar do %>
+	<!-- 看同縣市的醫生 -->
+	<%= render 'doctors/side_bar' %>
+<% end %>
 
-<div class='card'>
-	<div class="card-content">
-		<div class='circle'><%= image_tag @doctor.doctor_img.url(:medium) %></div>
-		<div><%= @doctor.name %></div>
-		<div><%= @doctor.specialty %></div>
-		<div><%= @doctor.experience %></div>
-		<a href='<%= edit_doctor_path(@doctor) %>' class='btn waves-effect eaves-light' name='action'>Edit</a>
+<% content_for :sidebar do %>
+	<!-- 醫生資訊 -->
+	<%= render 'doctors/sidebar_doctor_profile' %>
+<% end %>
+
+
+<% content_for :profile_headbar do %>
+	<!-- 個別醫生的照片與孕期篩選器 -->
+	<%= render 'doctors/profile_headbar' %>
+<% end %>
+
+
+
+<div class="section">
+	<header class="header_cate">
+		<span class="header_cate_title">
+			<%= @post_cate %>
+		</span>
+	</header>
+	<div class="flex-post-box-wrap">
+		<% if @posts.blank? %>
+			<h5> 有甚麼想分享、想問的嗎？ 成為第一個留言的人</h5>
+		<% else %>
+			<% @posts.each do |post| %>
+				<div class="flex-post-box flex-post-box-medium">
+					<%= render 'posts/posts_box', post: post  %>
+				</div>	
+			<% end %>
+		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="flex-post-box-btn">
+		<ul>
+			<li>
+				<!-- New Post Modal Trigger -->
+				<%= link_to "#modal-new-post_#{@doctor.id}", class:"btn-custom btn-custom-primary" do %> 
+					<i class="material-icons">mode_edit</i>
+					<span><%= "留言" %></span>
+				<% end %>
+			</li>
+			<!-- New Post Modal Structure -->
+			<%= render 'posts/new_post_modal', doctor: @doctor %>
+		</ul>	
 	</div>
 </div>
 
 
+
+
+ 
+<% if false %>
+  	<div>
+  		<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_path(@doctor, post), :confirm => "Are you sure?", :method => :delete, class:'purple-text text-lighten-4' %>
+  		<!-- New Edit Modal Trigger -->
+  		<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-post_#{post_item_index}", class:'purple-text text-lighten-4' %>
+  		<!-- New Edit Modal Structure -->
+  		<div id="modal-edit-post_<%= post_item_index %>" class="modal modal-fixed-footer modal-post">
+  			<div class="modal-content modal-content-post">
+      			<%= form_for ([@doctor, post]) do |f| %>
+      				<div class="row">
+      					<div class="input-field col s12">
+      						<%= f.text_field :title, :placeholder => "標題" %>
+      					</div>
+		      			<div class="input-field col s12 m4">
+        					<%= label_tag "請選擇主題" %><br>
+        					<%= f.select :subject , Post::SUBJECT, {include_blank: false} %>
+						</div>
+						<div class="input-field col s12 m4">
+        					<%= label_tag "妊娠週數" %><br>
+        					<%= f.select :period , Post::PERIOD, {include_blank: false} %>
+						</div>
+						<div class="input-field col s12 m4">
+        					<%= label_tag "主要範圍" %><br>
+        					<%= f.select :kind , Post::KIND, {include_blank: false} %>
+						</div>
+		    			<div class="input-field col s12">
+  							<%= f.text_area :description, :placeholder => "內文", class:"materialize-textarea" %>
+  						</div>
+  						<div class="input-field col s12 right-align">
+      						<button class="btn waves-effect waves-light" type="submit" name="action">
+      							<span>送出</span>
+							</button>
+						</div>
+					</div>
+				<% end %>
+			</div>
+  		</div>
+  	</div>
+<% end %>    

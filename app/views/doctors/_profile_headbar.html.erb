@@ -1,0 +1,69 @@
+<div class="profile-headbar-wrapper">
+	<div class="container-custom-doctor-profile">
+		<div class="profile-header-left">
+			<div class="profile-box">
+				<%= render partial: "doctors/profile_avatar", locals: {doctor: @doctor} %>
+				<%= render partial: "doctors/profile_action_show", locals: {doctor: @doctor} %>
+				<%#= render 'layouts/profile_box' %>
+				<%#= render partial: "layouts/profile_box", locals: {doctor: @doctor} %>
+			</div>
+		</div>
+		<div class="profile-header-right">
+			<%#= render 'doctors/profile_headbar_filter' %>
+			<%= render 'shared/flex_filterbar' %>
+		</div>
+	</div>
+</div>
+
+<% if false %>
+	<div class="profile-header-wrapper">
+        <div class="container profile-header">
+            <div class="profile-header-left">
+            <div class="doctor-profile">
+                <div class="doctor-profile-avatar">
+                     <%= image_tag @doctor.doctor_img.url, class: 'responsive-img' %>
+                    <ul>
+                        <li>
+                           
+                            <span class="doctor-profile-name"><%= @doctor.name %>&nbsp醫生</span>
+                        </li>
+                        <li>
+				        <!-- New Post Modal Trigger -->
+				            <%= link_to "#modal-new-post_#{@doctor.id}", class:"btn-custom btn-custom-white" do %> 
+					            <i class="material-icons">mode_edit</i>
+					            <span><%= "留言" %></span>
+				            <% end %>
+				        </li>
+				    </ul>
+	           </div>
+	           <div class="profile-action">
+	               <ul>
+	                   <li>
+	                       <!-- New Post Modal Trigger -->
+	                       <%= link_to "#modal-new-post_#{@doctor.id}", {class:"modal-trigger"} do %> 
+	                           <i class="material-icons">mode_edit</i>
+	                           <span>留言</span>
+	                       <% end %>
+	                       <% if false %>
+	                           <i class="material-icons">textsms</i>
+	                           <%= link_to "留言", "#modal-new-post", class:"modal-trigger" %>
+	                       <% end %>
+	                   </li>
+	                   <li>
+	                       <%#= 先連去首頁 %>
+	                       <%= link_to root_path do %> 
+	                           <i class="material-icons">call</i>
+	                           <span>掛號</span>
+	                       <% end %>
+	                   </li>
+	               </ul>
+	               <%#= @doctor.impressions.count 人瀏覽%> 
+	           </div>
+            </div>
+            </div>
+            <div class="profile-header-right">
+            <%= render 'doctors/filter_doctor_profile_1' %>
+            </div>
+        </div>
+	</div>
+<% end %>

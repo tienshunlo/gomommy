@@ -1,7 +1,26 @@
 Rails.application.routes.draw do
   root 'doctors#index'
 
-  resources :doctors
+  resources :doctors do
+    resources :posts do 
+      resources :comments
+    end
+    collection do
+      get :most_posts
+    end
+  end
+  resources :posts do
+    collection do
+      get :posts_phase
+      get :posts_phase_one
+      get :posts_phase_two
+      get :posts_issue
+      get :phase_issue
+    end
+  end
+  
+  
+    
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

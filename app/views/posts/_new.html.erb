@@ -1,0 +1,132 @@
+<!-- New Post Modal Structure -->
+    <%= form_for ([doctor, doctor.post.build]) do |f| %>
+        <div class="modal-content modal-content-post">
+                <div class="section new-post-section">
+                    <div>
+                        <span class="new-post-label">請選擇主題</span>
+                    </div>
+                    <div>
+                        <%= f.select :subject , Post::SUBJECT, {include_blank: false}, {class:"browser-default"} %>
+                    </div>
+                </div>
+                <div class="section new-post-section">
+                    <div>
+                        <span class="new-post-label">請輸入標題</span>
+                    </div>
+                    <div>
+                        <%= f.text_field :title %>
+                    </div>
+                </div>
+                
+                
+                <div class="section new-post-section">
+                    <div>
+                        <span class="new-post-label">請選擇目前所處階段</span>
+                    </div>
+                    <div>
+                        <div class="new-post-bar">懷孕期間</div>
+                        <ul>
+                            <% @phase_1.each do |phase| %>
+                                <li>
+                                    <%= f.radio_button :phase_id, phase.id  %>
+                                    <%= f.label "phase_id_#{phase.id}", phase.title, class:"new-post-select" %>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="new-post-bar">生產過後</div>
+                        <ul>
+                            <% @phase_2.each do |phase| %>
+                                <li>
+                                    <%= f.radio_button :phase_id, phase.id  %>
+                                    <%= f.label "phase_id_#{phase.id}", phase.title, class:"new-post-select" %>
+                                </li>
+                            <% end %>
+                        </ul>
+                        
+                    </div>
+                </div>
+                <div class="section new-post-section">
+                    <div>
+                        <span class="new-post-label">請選擇相關徵狀</span>
+                    </div>
+                    <div>
+                        <div class="new-post-bar">檢查相關</div>
+                        <ul>
+                            <% @issue_1.each do |issue| %>
+                                <li>
+                                    <%= f.radio_button :issue_id, issue.id  %>
+                                    <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-select" %>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="new-post-bar">孕婦注意事項</div>
+                        <ul>
+                            <% @issue_2.each do |issue| %>
+                                <li>
+                                    <%= f.radio_button :issue_id, issue.id  %>
+                                    <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-select" %>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="new-post-bar">生產相關</div>
+                        <ul>
+                            <% @issue_3.each do |issue| %>
+                                <li>
+                                    <%= f.radio_button :issue_id, issue.id  %>
+                                    <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-select" %>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="new-post-bar">產後注意事項</div>
+                        <ul>
+                            <% @issue_4.each do |issue| %>
+                                <li>
+                                    <%= f.radio_button :issue_id, issue.id  %>
+                                    <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-select" %>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <%= f.label "內容:", class:"new-post-label" %>
+                    <%= f.text_area :description, class:"materialize-textarea" %>
+                </div>
+        </div>
+        <div class="modal-footer new-post-modal-footer">
+            <button class="modal-action modal-close new-post-submit" type="submit" name="action">
+                <span>送出</span>
+            </button>
+        </div>
+    <% end %>
+
+
+
+
+<% if false %>
+<div class="container">
+	<div class="row">
+		<div class='section'>
+			<div class= "discussion-container">
+				<ul class="control-container">
+					<ul class="control-page-items z-depth-0">
+						<div class="chip chip-normal"><span>新增留言</span></div>
+					</ul>
+				</ul>
+				<div class="discussion-form">
+					<%= render 'form' %>
+				</div>
+			</div>	
+		</div>
+		<a href='<%= doctor_path(@doctor) %>' class='btn waves-effect waves-light' name='action'>回到上一頁</a>
+	 </div>
+</div>
+<% end %>

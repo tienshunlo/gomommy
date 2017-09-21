@@ -1,0 +1,30 @@
+<div id="filterrific_results">
+  <% doctors.each do |doctor| %>
+    <% if doctor.gender == 1 %>
+      <%= render partial: 'babyboy', :locals => { :doctor => doctor } %>
+    <% else %>
+      <%= render partial: 'babygirl', :locals => { :doctor => doctor } %>
+    <% end %>
+  <% end %> 
+</div>
+
+<% if false %>
+  <div id="filterrific_results">
+    <table>
+      <tr>
+        <th>醫師</th>
+        <th>所在城市</th>
+        <th>所在區域</th>
+        <th>醫院名稱</th>
+      </tr>
+      <% doctors.each do |doctor| %>
+        <tr>
+          <td><%= link_to(doctor.name, doctor_path(doctor)) %></td>
+          <td><%= doctor.city.name %></td>
+          <td><%= doctor.district.name if doctor.district %></td>
+          <td><%= doctor.hospital.name %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>
