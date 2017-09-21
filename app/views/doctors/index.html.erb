@@ -3,20 +3,6 @@
 	<%= render 'shared/sidebar_index' %>
 <% end %>
 
-<% if false %> 
-舊版的首頁filter
-  <% content_for :headbar do %>
-  	<%= render 'doctors/filter_index' %>
-  <% end %>
-<% end %>
-
-<% if false %>
-新版的首頁filter，但是需要有section才可以與nav留有margin
-  <% content_for :headbar do %>
-  	<%= render 'layouts/flex_filterbar' %>
-  <% end %>
-<% end %>
-
 <div class="section">
 	<%= render 'shared/flex_filterbar' %>
 </div>
@@ -36,140 +22,9 @@
     				<%= render partial: "doctors/profile_action_index", locals: {doctor: doctor} %>
     				<%= render partial: "doctors/profile_poster", locals: {doctor: doctor} %>
     			</div>
-    		  
-    		  <%= render 'posts/new_post_modal', doctor: doctor %>
-    		  
-    		  <% if false %>
-      		  <% if doctor.gender == 1 %>
-      		    <%= render partial: 'babyboy', :locals => { :doctor => doctor } %>
-      		  <% else %>
-              <%= render partial: 'babygirl', :locals => { :doctor => doctor } %>
-            <% end %>
-          <% end %>
-          
+    		    <%= render 'posts/new_post_modal', doctor: doctor %>
         </div>
       <% end %> 
     </div>
 	</div>
 </div>
-
-
-
-<% if false %>
-  <div class='row'>
-    <div class='section'>
-      <div class="container-doctor">
-        <%= render(partial: 'doctors/list',locals: { doctors: @doctors }) %>
-      </div>  
-    </div> 
-  </div> 
-<% end %>
-
-
-<% if false %>
-  <div class="row">   
-      <div class='section'>
-          <div class="card-panel z-depth-0 pink lighten-3">
-              <!-- Dropdown Trigger -->
-      	    <span class="white-text text-darken-2 bold" style='margin:10px;'>我想找</span>
-              <a class="dropdown-button btn pink lighten-1" href="#!" data-activates="dropdown-doctor">
-                  <% if params[:city] %>
-                      <%= params[:city] %>
-                  <% else %>
-                      其他縣市
-                  <% end %>
-                  <i class="material-icons right">arrow_drop_down</i>
-              </a>
-              <span class="white-text text-darken-2 bold"  style='margin:10px'>的醫生</span>  
-              <!-- Dropdown Structure -->
-              <ul id="dropdown-doctor" class="dropdown-content">
-                  <% City.all.each do |city| %>
-  			        <li class="<%= 'active' if params[:city] == city.name %>">
-  					    <%= link_to city.name, doctors_path(city: city.name) %>
-  				    </li>
-  				<% end %>
-              </ul>
-          </div>
-      </div>
-      <div class='row'>
-          <% @doctors.each do |doctor| %>  
-              <% if doctor.gender == 1 %>
-                  <%= render partial: 'babyboy', :locals => { :doctor => doctor } %>
-              <% else %>
-                  <%= render partial: 'babygirl', :locals => { :doctor => doctor } %>
-              <% end %>
-          <% end %> 
-      </div>
-  </div>  
-<% end %>
-
-
-<% if false %>
-  <%= form_for_filterrific @filterrific do |f| %>
-    <div>
-      Search
-      <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
-      <%= f.text_field(
-        :search_query,
-        class: 'filterrific-periodically-observed'
-      ) %>
-    </div>
-    <div>
-      Country
-      <%= f.select(
-        :with_city_id,
-        @filterrific.select_options[:with_city_id],
-        { include_blank: '- Any -' }
-      ) %>
-    </div>
-    <div>
-      Sorted by
-      <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
-    </div>
-    <div>
-      <%= link_to(
-        'Reset filters',
-        reset_filterrific_url,
-      ) %>
-    </div>
-    <%# add an automated spinner to your form when the list is refreshed %>
-    <%= render_filterrific_spinner %>
-  <% end %>
-<% end %>
-
-<% if false %>
-  <%= form_for_filterrific @filterrific do |f| %>
-    <div class="row">
-      <div class="section">
-        <div class="doctor-container">
-          <div class="col s12"> 
-            <div class="col s12 card doctor-card grey lighten-5 z-depth-0">
-              <div class="card-content">
-                <ul>
-                  <li class="input-field col s12 m4">
-  			            <%#= label_tag "搜尋", nil, class:"white-text" %><br>	
-  				          <%= f.text_field :search_query %>
-  			          </li>
-          			  <li class="input-field col s12 m4">
-          				  <%#= label_tag "全部城市", nil, class:"white-text" %><br>
-          				  <%= f.select :with_city_id , @filterrific.select_options[:with_city_id], {include_blank: '- 全部城市 -'} %>
-          			  </li>
-          			  <li class="input-field col s12 m4">
-          				  <%#= label_tag "排序", nil, class:"white-text" %><br>
-          				  <%= f.select :sorted_by, @filterrific.select_options[:sorted_by] %>
-          			  </li>
-          			  <li class="input-field col s12 right-align">
-          			    <%= link_to '重新篩選', reset_filterrific_url, class:"btn-flat" %>
-          		    </li>
-  		          </ul>
-  		        </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>    
-    <%= render_filterrific_spinner %>
-  <% end %>
-<% end %>
-
-
