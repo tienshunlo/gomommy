@@ -1,42 +1,69 @@
+
 <% content_for :sidebar do %>
-	<%= render 'layouts/sidebar_index' %>
+	<%= render 'shared/sidebar_index' %>
 <% end %>
 
- 
-<% content_for :headbar do %>
-	<%= render 'doctors/filter_index' %>
+<% if false %> 
+舊版的首頁filter
+  <% content_for :headbar do %>
+  	<%= render 'doctors/filter_index' %>
+  <% end %>
 <% end %>
-
-
 
 <% if false %>
-<div class='row'>
-  <div class='section'>
-    <div class="container-doctor">
-      <%= render(partial: 'doctors/list',locals: { doctors: @doctors }) %>
-    </div>  
-  </div> 
-</div> 
+新版的首頁filter，但是需要有section才可以與nav留有margin
+  <% content_for :headbar do %>
+  	<%= render 'layouts/flex_filterbar' %>
+  <% end %>
 <% end %>
+
+<div class="section">
+	<%= render 'shared/flex_filterbar' %>
+</div>
 
 <div class="section">
   <header class="header_cate">
 		<span class="header_cate_title">
-				<%= @title %>
+				<%= @city_name %>
 		</span>
 	</header>
 	<div class="row">
-		<% @doctors.each do |doctor| %>  
-		  <% if doctor.gender == 1 %>
-		    <%= render partial: 'babyboy', :locals => { :doctor => doctor } %>
-		  <% else %>
-        <%= render partial: 'babygirl', :locals => { :doctor => doctor } %>
-      <% end %>
-    <% end %> 
+	  <div class="container-custom-list-profile">
+  		<% @doctors.each do |doctor| %>
+    		<div class="profile-header-left">
+    		  <div class="profile-box">
+    				<%= render partial: "doctors/profile_avatar", locals: {doctor: doctor} %>
+    				<%= render partial: "doctors/profile_action_index", locals: {doctor: doctor} %>
+    				<%= render partial: "doctors/profile_poster", locals: {doctor: doctor} %>
+    			</div>
+    		  
+    		  <%= render 'posts/new_post_modal', doctor: doctor %>
+    		  
+    		  <% if false %>
+      		  <% if doctor.gender == 1 %>
+      		    <%= render partial: 'babyboy', :locals => { :doctor => doctor } %>
+      		  <% else %>
+              <%= render partial: 'babygirl', :locals => { :doctor => doctor } %>
+            <% end %>
+          <% end %>
+          
+        </div>
+      <% end %> 
+    </div>
 	</div>
 </div>
 
 
+
+<% if false %>
+  <div class='row'>
+    <div class='section'>
+      <div class="container-doctor">
+        <%= render(partial: 'doctors/list',locals: { doctors: @doctors }) %>
+      </div>  
+    </div> 
+  </div> 
+<% end %>
 
 
 <% if false %>

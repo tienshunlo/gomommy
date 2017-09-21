@@ -12,7 +12,7 @@
   <body>
     <%#= yield :postbar %>
     <header>
-      <%= render 'layouts/header' %>
+      <%= render 'shared/header' %>
     </header>  
 
     <main>
@@ -32,10 +32,10 @@
       </div>
     </main> 
     <div class="flex-bottom-nav show-on-small hide-on-med-and-up">
-      <%= render 'layouts/bottom_nav' %>
+      <%= render 'shared/mobile_footer_nav' %>
     </div>
     <footer class="page-footer hide-on-small-only">
-       <%= render 'layouts/footer' %>
+       <%= render 'shared/footer' %>
     </footer>
 
   <script>

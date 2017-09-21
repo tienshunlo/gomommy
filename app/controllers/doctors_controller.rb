@@ -13,7 +13,8 @@ class DoctorsController < ApplicationController
 		@phases = Phase.all
 		@issues = Issue.all
 		
-		
+		@flex_filter_title = "按城市排序"
+        @flex_filter_icon ="local_hospital"
 		
         @issue_1 = @issues.select{|t| t.phase_id == 1} #檢查相關
         @issue_2 = @issues.select{|t| t.phase_id == 2} #孕婦注意事項
@@ -29,13 +30,13 @@ class DoctorsController < ApplicationController
 		
 		if params[:city].blank?
 			@doctors = @paginate = Doctor.includes(:city).includes(:hospital).paginate(:page => params[:page])
-			@title = "全部城市"
+			@city_name = "全部城市"
 			#@doctors = @paginate = Doctor
 		else
 			@city_id = City.find_by(name: params[:city]).id
 			#scope 用法
 			@doctors = @paginate = Doctor.doctor_city(@city_id).paginate(:page => params[:page])
-			@title = params[:city]
+			@city_name = params[:city]
 			
 			#也可以寫成這樣：
 			#@doctors = Doctor.where(:city_id => @city_id).order("created_at DESC")
@@ -67,10 +68,20 @@ class DoctorsController < ApplicationController
 	end
 	
 	def most_posts
-         @doctors = @paginate = Doctor.all.order('post_count DESC').paginate(:page => params[:page], :per_page => 5)
+		@doctors = @paginate = Doctor.all.order('post_count DESC').paginate(:page => params[:page], :per_page => 5)
     end
 	
 	def show
+		@flex_filter_title = "按孕期排序"
+        @flex_filter_icon = "pregnant_woman"
+        
+        
+        if params[:phase].blank?
+        	@post_cate = "全部留言"
+        else
+        	@post_cate = Phase.find_by(:id => params[:phase]).title
+		end 
+		
 		@phase = Phase.includes(:issue).order(:id)
 		impressionist(@doctor)
 		#按主題 - 心得分享與求解

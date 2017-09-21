@@ -3,36 +3,11 @@
 	<%= render 'layouts/sidebar_index' %>
 <% end %>
 
-<% if false %>
-<div class="section">
-	<div class="flex-filter-section">
-		<ul>
-		<% @phases.each do |phase| %>
-			<li><%= link_to phase.title, posts_phase_posts_path(anchor: phase.title), { class:"new-post-chip"} %></li>
-	  	<% end %>
-		</ul>
-	</div>
-</div>
-<% end %>
+
 
 <div class="section">
-	<div class="profile-header-right">
-		<div class='flex-filter-title'>
-			<i class="material-icons">pregnant_woman</i>
-			<span>按孕期排序</span>
-		</div>
-		<div class="profile-flex-filter-section">
-	    	<ul>
-	  			<% @phases.each do |phase| %>
-					<li class=<%= 'active' if params[:phase] == phase.title %>>
-						<%= link_to phase.title, posts_phase_posts_path(anchor: phase.title), class: "new-post-chip" %>
-					</li>
-		    	<% end %>
-	    	</ul>
-		</div>
-	</div>
+	<%= render 'layouts/flex_filterbar' %>
 </div>
-
 
 <div class="section">
 	<% @phases.each do |phase| %>
@@ -61,24 +36,35 @@
 					<%= render 'posts/list_posts_cate', post: post  %>
 				<% end %>
 			<% end %>
-			
 		</div>
 	<% end %>
 </div>
 
 
 <% if false %>
-<div class="row">
-	<div class="section">
-		<div class="container-doctor">
-	    	<div class="col s12">
-	        	<header class="filter_section_header">
-	          		<% @phases.each do |phase| %>
-	          			 <div class="col s6 m2"><%= link_to phase.title, posts_phase_posts_path(anchor: phase.title), { class:"new-post-chip"} %></div>
-	  		  		<% end %>
-	  		   </header>
-	    	</div>
-	    </div>
+	<div class="row">
+		<div class="section">
+			<div class="container-doctor">
+		    	<div class="col s12">
+		        	<header class="filter_section_header">
+		          		<% @phases.each do |phase| %>
+		          			 <div class="col s6 m2"><%= link_to phase.title, posts_phase_posts_path(anchor: phase.title), { class:"new-post-chip"} %></div>
+		  		  		<% end %>
+		  		   </header>
+		    	</div>
+		    </div>
+		</div>
 	</div>
-</div>
+<% end %>
+
+<% if false %>
+	<div class="section">
+		<div class="flex-filter-section">
+			<ul>
+			<% @phases.each do |phase| %>
+				<li><%= link_to phase.title, posts_phase_posts_path(anchor: phase.title), { class:"new-post-chip"} %></li>
+		  	<% end %>
+			</ul>
+		</div>
+	</div>
 <% end %>

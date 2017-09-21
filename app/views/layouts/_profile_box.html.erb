@@ -1,0 +1,18 @@
+<div class="profile-box">
+    <div class="profile-avatar">
+        <%= image_tag doctor.doctor_img.url, class: 'responsive-img' %>
+        <ul>
+            <li>
+                <span class="profile-name"><%= doctor.name %>&nbsp醫生</span>
+            </li>
+            <li>
+	            <!-- New Post Modal Trigger -->
+	            <%= link_to "#modal-new-post_#{doctor.id}", class:"btn-custom btn-custom-white" do %> 
+		            <i class="material-icons">mode_edit</i>
+		            <span><%= "留言" %></span>
+	            <% end %>
+	        </li>
+	    </ul>
+   </div>
+</div>
+

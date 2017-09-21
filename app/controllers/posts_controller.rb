@@ -46,7 +46,9 @@ class PostsController < ApplicationController
     
     def posts_phase
         #按孕期的大項分類
-        @phases = Phase.all
+        @flex_filter_title = "按孕期排序"
+        @flex_filter_icon ="pregnant_woman"
+        @filter_anchor = @post_cates = @phases = Phase.all
         @phase_1 = @phases.select{|t| t.phasecate_id == 1} #懷孕期間
         @phase_2 = @phases.select{|t| t.phasecate_id == 2} #生產過後
         
@@ -69,7 +71,9 @@ class PostsController < ApplicationController
     
     def posts_issue
         #按症狀的大項分類
-        @issues = Issue.all
+        @flex_filter_title = "按症狀排序"
+        @flex_filter_icon ="child_care"
+        @filter_anchor =  @post_cates = @issues = Issue.all
         @posts_tag = Post.all.includes(:phase).includes(:issue).includes(:doctor).order('id DESC')
     end
     

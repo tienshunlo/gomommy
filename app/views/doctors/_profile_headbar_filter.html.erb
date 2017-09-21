@@ -6,7 +6,7 @@
     <ul>
         <li><%= link_to "全部留言", doctor_path(@doctor), class:"new-post-chip" %></li>
   		<% @phases.each do |phase| %>
-			<li class=<%= 'active' if params[:phase] == phase.title %>>
+			<li>
 				<%= link_to phase.title, doctor_path(@doctor, phase: phase ), class: "new-post-chip" %>
 			</li>
 	    <% end %>
@@ -16,19 +16,18 @@
 
 
 <% if false %>
-<div class="flex-filter">
-	<% @phases.each do |phase| %>
-		<%= link_to phase.title, doctor_path(@doctor, phase: phase ), class: "new-post-chip" %>
-	<% end %>
-</div>
+	<div class="flex-filter">
+		<% @phases.each do |phase| %>
+			<%= link_to phase.title, doctor_path(@doctor, phase: phase ), class: "new-post-chip" %>
+		<% end %>
+	</div>
 <% end %>
 
 
 <% if false %>
 <div class="flex-filter-section">
- <div class='flex-filter-title'>按孕期排序</div>
+	<div class='flex-filter-title'>按孕期排序</div>
     <ul>
-        
   		<% @phases.each do |phase| %>
 			<li class=<%= 'active' if params[:phase] == phase.title %>>
 				<%= link_to phase.title, doctor_path(@doctor, phase: phase ), class: "new-post-chip" %>
@@ -36,6 +35,5 @@
 	    <% end %>
 	    <li><%= link_to "全部留言", doctor_path(@doctor), class:"new-post-chip" %></li>
     </ul>
-    
 </div>
 <% end %>

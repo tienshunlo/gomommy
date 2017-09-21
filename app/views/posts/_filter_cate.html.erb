@@ -1,0 +1,15 @@
+<div class="profile-header-right">
+	<div class='flex-filter-title'>
+		<i class="material-icons"><%= @cate_icon %></i>
+		<span><%= @cate_title %></span>
+	</div>
+	<div class="profile-flex-filter-section">
+    	<ul>
+  			<% @post_cates.each do |post_cate| %>
+				<li>
+					<%= link_to post_cate.title, {:anchor => post_cate.title},{class:"chip-new-post"} %>
+				</li>
+	    	<% end %>
+    	</ul>
+	</div>
+</div>

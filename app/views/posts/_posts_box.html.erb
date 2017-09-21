@@ -1,8 +1,8 @@
-<div class="post-user">
-	<div class="post-user-avatar">
-		<%= image_tag "yuna.jpg", class:"user-avatar-image circle" %>
+<div class="post-poster">
+	<div class="poster-avatar">
+		<%= image_tag "yuna.jpg", class:"poster-avatar-img responsive-img" %>
 	</div>
-	<div class="post-user-name">
+	<div class="poster-name">
 		<%= link_to "#{post.doctor.name}",doctor_path(post.doctor), {class:"name"} %><br>
   		<%= time_ago_in_words(post.created_at) %> ago
 	</div>
@@ -21,13 +21,13 @@
 	<% end %>
 </div>
 <div class="post-tag">
-	<div class="chip-period truncate">
+	<div class="chip-phase truncate">
 		<%= post.phase.title %>
 	</div>
-	<div class="chip-kind truncate">
+	<div class="chip-issue truncate">
 		<%= post.issue.title %>
 	</div>
-	<div class="circle action-chip">
+	<div class="circle chip-action">
 		<i class="material-icons" title="我也遇過">exposure_plus_1</i>
 	</div>
 </div>

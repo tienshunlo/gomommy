@@ -13,97 +13,15 @@
   </div>
 <% end %>
 
+
+
 <div class="section">
-    <header class="posts_phase_section_header">
-		<span class="posts_phase_section_title">
-				留言
-		</span>
-	</header>
-    <%= form_for ([@doctor, @doctor.post.build]) do |f| %>
-            <div class="row">
-                <div class="col s12 m4">
-                    <%= f.label "請選擇主題", class:"new-post-label" %>
-                    <%= f.select :subject , Post::SUBJECT, {include_blank: false}, {class:"browser-default"} %>
-                </div>
-                <div class="col s12 m8">
-                    <%= f.label "請輸入標題", class:"new-post-label" %>
-                    <%= f.text_field :title %>
-                </div>
-                <div class="donate-now">
-                    <div class="col s12 m12">
-                        <%= f.label "請選擇目前的懷孕週數", class:"new-post-label" %>
-                    </div>
-                    <div class="col s12">
-                        <div class="new-post-bar">懷孕期間</div>
-                        <% @phase_1.each do |phase| %>
-                            <div class="col s6 m3">
-                                <%= f.radio_button :phase_id, phase.id  %>
-                                <%= f.label "phase_id_#{phase.id}", phase.title, class:"new-post-chip" %>
-                            </div>
-                        <% end %>
-                    </div>
-                    <div class="col s12">
-                        <div class="new-post-bar">生產過後</div>
-                        <% @phase_2.each do |phase| %>
-                            <div class="col s6 m3">
-                                <%= f.radio_button :phase_id, phase.id  %>
-                                <%= f.label "phase_id_#{phase.id}", phase.title, class:"new-post-chip" %>
-                            </div>
-                        <% end %>
-                    </div>
-                </div>
-                <div class="donate-now">
-                    <div class="col s12 m12">
-                        <%= f.label "請選擇相關問題", class:"new-post-label" %>
-                    </div>
-                    <div class="col s12">
-                        <div class="new-post-bar">檢查相關</div>
-                        <% @issue_1.each do |issue| %>
-                            <div class="col s6 m3">
-                                <%= f.radio_button :issue_id, issue.id  %>
-                                <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-chip" %>
-                            </div>
-                        <% end %>
-                    </div>
-                    <div class="col s12">
-                        <div class="new-post-bar">孕婦注意事項</div>
-                        <% @issue_2.each do |issue| %>
-                            <div class="col s6 m3">
-                                <%= f.radio_button :issue_id, issue.id  %>
-                                <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-chip" %>
-                            </div>
-                        <% end %>
-                    </div>
-                    <div class="col s12">
-                        <div class="new-post-bar">生產相關</div>
-                        <% @issue_3.each do |issue| %>
-                            <div class="col s6 m3">
-                                <%= f.radio_button :issue_id, issue.id  %>
-                                <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-chip" %>
-                            </div>
-                        <% end %>
-                    </div>
-                    <div class="col s12">
-                        <div class="new-post-bar">產後注意事項</div>
-                        <% @issue_4.each do |issue| %>
-                            <div class="col s6 m3">
-                                <%= f.radio_button :issue_id, issue.id  %>
-                                <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-chip" %>
-                            </div>
-                        <% end %>
-                    </div>
-                    <div class="col s12">
-                        <%= f.label "內容", class:"new-post-label" %>
-                        <%= f.text_area :description, class:"materialize-textarea" %>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <button class="btn waves-effect waves-light" type="submit" name="action">
-                <span>送出</span>
-            </button>
-    <% end %>
+    <header class="header_cate">
+    	<span class="header_cate_title">留言</span>
+    </header>
+    </div>
+<div class="section">    
+	<%= render 'posts/new', doctor: @doctor %>
 </div>
 
 

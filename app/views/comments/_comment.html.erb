@@ -1,32 +1,29 @@
 
 <div class="flex-post-box-wrap">
-<% @comments.each_with_index do |comment, comment_item_index| %>
-	<div class="flex-post-box flex-post-box-large">
-		
-		<div class="post-user">
-			<div class="post-user-avatar">
-				<%= image_tag "yuna.jpg", class:"user-avatar-image circle" %>
+	<% @comments.each_with_index do |comment, comment_item_index| %>
+		<div class="flex-post-box flex-post-box-large">
+			<div class="post-user">
+				<div class="post-user-avatar">
+					<%= image_tag "yuna.jpg", class:"user-avatar-image circle" %>
+				</div>
+				<div class="post-user-name">
+					<%= link_to "#{@doctor.name}",doctor_path(@doctor), {class:"name"} %><br>
+					<%= time_ago_in_words(@post.created_at) %> ago
+				</div>
 			</div>
-			<div class="post-user-name">
-				<%= link_to "#{@doctor.name}",doctor_path(@doctor), {class:"name"} %><br>
-				<%= time_ago_in_words(@post.created_at) %> ago
+			<div class="post-content">
+				<div class="section">
+					<%= simple_format(comment.content) %>
+				</div>
 			</div>
-		</div>
-		<div class="post-content">
-			<div class="section">
-				<%= simple_format(comment.content) %>
-			</div>
-		</div>
-		
-		
-		<div class="post-tag">
-			<div  class="circle action-chip">
-				<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_comment_path(@doctor, @post,comment), :confirm => "Are you sure?", :method => :delete, class:'white-text' %>
-			</div>	
-			<div  class="circle action-chip">
-				<!-- Edit Comment Modal Trigger -->
-				<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-comment_#{comment_item_index}", class:'white-text' %>			
-			</div>
+			<div class="post-tag">
+				<div  class="circle chip-action">
+					<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_comment_path(@doctor, @post,comment), :confirm => "Are you sure?", :method => :delete, class:'white-text' %>
+				</div>	
+				<div  class="circle chip-action">
+					<!-- Edit Comment Modal Trigger -->
+					<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-comment_#{comment_item_index}", class:'white-text' %>			
+				</div>
 				<!-- Edit Comment Modal Structure -->
 				<div id="modal-edit-comment_<%= comment_item_index %>" class="modal modal-fixed-footer modal-post">
 					<div class="modal-content modal-content-post">
@@ -44,8 +41,7 @@
 				    	<% end %>
 					</div>
 				</div>
-			
+			</div>
 		</div>
-	</div>
-<% end %>
+	<% end %>
 </div>

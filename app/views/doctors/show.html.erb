@@ -8,38 +8,44 @@
 	<%= render 'doctors/sidebar_doctor_profile' %>
 <% end %>
 
-<% content_for :headbar do %>
-	<!-- 個別醫生的留言篩選 -->
-	<%= render 'doctors/filter_doctor_profile' %>
+<% if false %>
+	<% content_for :headbar do %>
+		<!-- 個別醫生的留言篩選 -->
+		<%= render 'doctors/filter_doctor_profile' %>
+	<% end %>
 <% end %>
 
 <% content_for :profile_headbar do %>
-	<!-- 個別醫生的照片 -->
-	<%= render 'doctors/doctor_profile_image' %>
+	<!-- 個別醫生的照片與孕期篩選器 -->
+	<%= render 'doctors/profile_headbar' %>
 <% end %>
 
-<% if @posts.blank? %>
-	<h5> 有甚麼想分享、想問的嗎？ 成為第一個留言的人</h5>
-<% else %>
-	<div class="row">
-		<div class="flex-post-box-wrap">
+
+
+<div class="section">
+	<header class="header_cate">
+		<span class="header_cate_title">
+			<%= @post_cate %>
+		</span>
+	</header>
+	<div class="flex-post-box-wrap">
+		<% if @posts.blank? %>
+			<h5> 有甚麼想分享、想問的嗎？ 成為第一個留言的人</h5>
+		<% else %>
 			<% @posts.each do |post| %>
 				<div class="flex-post-box flex-post-box-medium">
 					<%= render 'posts/posts_box', post: post  %>
 				</div>	
 			<% end %>
-		</div>
-		<% if false %>
-		<!-- 舊版 -->
-			<% @posts.each_with_index do |post, post_item_index| %>
-				<%= render 'posts/list_doctors_show', post: post  %>
-			<% end %>
 		<% end %>
 	</div>
-<% end %>
-
-
-			
+	<% if false %>
+	<!-- 舊版 -->
+		<% @posts.each_with_index do |post, post_item_index| %>
+			<%= render 'posts/list_doctors_show', post: post  %>
+		<% end %>
+	<% end %>
+</div>
 
 <div class="row">
 	<div class="flex-post-box-btn">
@@ -52,7 +58,7 @@
 				<% end %>
 			</li>
 			<!-- New Post Modal Structure -->
-			<%= render 'posts/new', doctor: @doctor %>
+			<%= render 'posts/new_post_modal', doctor: @doctor %>
 		</ul>	
 	</div>
 </div>

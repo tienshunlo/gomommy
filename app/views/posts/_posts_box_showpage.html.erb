@@ -1,17 +1,19 @@
-<div class="post-user">
-	<div class="post-user-avatar">
-		<%= image_tag "yuna.jpg", class:"user-avatar-image circle" %>
+<div class="post-poster">
+	<div class="poster-avatar">
+		<%= image_tag "yuna.jpg", class:"poster-avatar-img  responsive-img" %>
 	</div>
-	<div class="post-user-name">
+	<div class="poster-name">
 		<%= link_to "#{post.doctor.name}",doctor_path(post.doctor), {class:"name"} %><br>
   		<%= time_ago_in_words(post.created_at) %> ago
 	</div>
-	<div class="chip-period truncate">
-			<%= @post.phase.title %>
-		</div>
-		<div class="chip-kind truncate">
-			<%= @post.issue.title %>
-		</div>
+	<% if false %>
+	<div class="chip-phase truncate">
+		<%= @post.phase.title %>
+	</div>
+	<div class="chip-issue truncate">
+		<%= @post.issue.title %>
+	</div>
+	<% end %>
 </div>
 <div class="post-content">
 	<div>
@@ -25,19 +27,19 @@
 	</div>
 </div>
 <div class="post-tag">
-	<div class="chip-period truncate">
+	<div class="chip-phase truncate">
 			<%= post.phase.title %>
 		</div>
-		<div class="chip-kind truncate">
+		<div class="chip-issue truncate">
 			<%= post.issue.title %>
 		</div>
-	<div class="circle action-chip">
+	<div class="circle chip-action">
 		<i class="material-icons" title="我也遇過">exposure_plus_1</i>
 	</div>
-	<div  class="circle action-chip">
+	<div  class="circle chip-action">
 		<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_path(@doctor, @post), :confirm => "Are you sure?", :method => :delete, class:'white-text' %>
 	</div>	
-	<div  class="circle action-chip">
+	<div  class="circle chip-action">
 		<!-- Edit Post Modal Trigger -->
 		<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-post", class:'white-text' %>
 	</div>

@@ -1,0 +1,22 @@
+<div class="profile-action">
+    <ul>
+        <li>
+            <%= link_to  doctor_path(doctor) do %> 
+			    <i class="material-icons tiny">favorite_border</i>
+			    <span> <%= doctor.post.size %></span>
+			<% end %>
+        </li>
+        <li>
+            <%= link_to  doctor_path(doctor) do %> 
+			    <i class="material-icons tiny">chat_bubble_outline</i>
+			    <span> <%= doctor.post.size %></span>
+			<% end %>
+        </li>
+        <li>
+            <%= link_to  doctor_path(doctor) do %> 
+			    <i class="material-icons tiny">bookmark_border</i>
+			    <span> <%= doctor.post.size %></span>
+			<% end %>
+        </li>
+    </ul>
+</div>
