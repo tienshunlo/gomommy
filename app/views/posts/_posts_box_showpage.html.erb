@@ -1,8 +1,9 @@
+
 <div class="post-poster">
-	<div class="poster-avatar">
+	<div class="poster-avatar poster-avatar-show ">
 		<%= image_tag "yuna.jpg", class:"poster-avatar-img  responsive-img" %>
 	</div>
-	<div class="poster-name">
+	<div class="poster-name poster-name-show">
 		<%= link_to "#{post.doctor.name}",doctor_path(post.doctor), {class:"name"} %><br>
   		<%= time_ago_in_words(post.created_at) %> ago
 	</div>
@@ -15,18 +16,8 @@
 	</div>
 	<% end %>
 </div>
-<div class="post-content">
-	<div>
-		<%= "[" %> <%= Post::SUBJECT[post.subject][0] %> <%= "]" %> <%= post.comment.size %> 篇回覆
-	</div>
-	<h5> 
-		<%= post.title %> 
-	</h5>
-	<div class="section">
-		<%= simple_format(post.description) %>
-	</div>
-</div>
-<div class="post-tag">
+<% if false %>
+	<div class="post-tag">
 	<div class="chip-phase truncate">
 			<%= post.phase.title %>
 		</div>
@@ -76,5 +67,20 @@
 		</div>
 	</div>
 </div>
+<% end %>
+<div class="post-content">
+	<% if false %>
+		<div>
+			<%= "[" %> <%= Post::SUBJECT[post.subject][0] %> <%= "]" %> <%= post.comment.size %> 篇回覆
+		</div>
+	<% end %>
+	<h1 class="medium-post-title"> 
+		<%= post.title %> 
+	</h1>
+	<div class="medium-post-content">
+		<%= simple_format post.description %>
+	</div>
+</div>
+
 
 

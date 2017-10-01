@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="section">
+        <div class="col s12">
+            <div class="card card-doctor card-doctor-sidebar z-depth-0">
+                <div class="card-content card-content-doctor index-sidebar">
+                    <span class="card-title">經歷</span>
+                </div>
+                <div class="row card-action card-action-doctor index-sidebar black-text">
+                    <ul>
+                        <li  class="valign-wrapper">
+                            <div class="post-title"><%= simple_format @doctor.experience %></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="card card-doctor card-doctor-sidebar z-depth-0">
+                <div class="card-content card-content-doctor index-sidebar">
+                    <div><span class="card-title">專長</span></div>
+                </div>
+                <div class="row card-action card-action-doctor index-sidebar black-text">
+                    <ul>
+                        <li  class="valign-wrapper">
+                            <div class="post-title"><%= simple_format @doctor.specialty %></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>  
+
+<% if false %>
+<%#= 這邊還沒弄好，因為爬蟲的資料不知道怎麼整理 %>
+<div class="flex-sidebar-box-wrap">
+    <div class="flex-sidebar-box">
+        <div class="sidebar-box-title">
+            專長
+        </div>
+        <div class="sidebar-box-link-wrap">
+            <ul>
+                <li  class="sidebar-box-link">
+                    <%= simple_format @doctor.specialty %>
+                </li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+<% end %>
+

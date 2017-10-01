@@ -8,8 +8,7 @@
 					</ul>
 				</ul>
 				<div class="discussion-form">
-					
-						<%= form_for ([@doctor, @post]) do |f| %>
+					<%= form_for ([@doctor, @post]) do |f| %>
 						<div class="row">
         					<div class="input-field col s12">
      							<%= f.text_field :title, :placeholder => "標題" %>
@@ -36,8 +35,7 @@
 							</div>
 		
 						</div>
-						<% end %>
-				
+					<% end %>
 				</div>
 			</div>
 		</div>
