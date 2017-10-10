@@ -31,6 +31,8 @@ gem 'spreadsheet', '~> 1.1', '>= 1.1.4'
 gem 'impressionist'
 gem 'pry', '~> 0.10.4'
 gem 'hirb', '~> 0.7.3'
+gem 'friendly_id', '~> 5.1'
+gem 'babosa', '~> 1.0', '>= 1.0.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

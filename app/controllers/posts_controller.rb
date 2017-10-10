@@ -146,7 +146,7 @@ class PostsController < ApplicationController
     end
     
 	def find_doctor
-		@doctor = Doctor.find(params[:doctor_id])
+		@doctor = Doctor.friendly.find(params[:doctor_id])
 	end
 	def find_post
 	    @post = Post.find(params[:id])
