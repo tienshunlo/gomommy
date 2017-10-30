@@ -1,4 +1,5 @@
 
+
 .section__poster-post-show{
     @extend .section__poster;
     height: 10rem;
@@ -72,7 +73,7 @@
 
 
 
-/* End of BOX區 - 醫生圖卡 */ 
+
 
 .section__description{
     display: flex;
@@ -93,13 +94,13 @@
 
 
 /* Beginning of SideMenu */
+
 .section__title{
     border-bottom: 1px solid #e0e0e0;
     padding: 5px 20px;
     font-size: 1.5rem;
     background-color: #fcfcfc;
 }
-
 
 .section__link {
     padding: 12px 20px; 
@@ -110,6 +111,14 @@
         margin: 0px;
     }
     li {
+        display: flex;
+        //height: 50px;
+        padding: 10px 5px;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        p {
+            margin: 0px;
+        }
         a {
             flex: 1;
             color: #272727;
@@ -119,4 +128,4 @@
         }
     }
 }
-/* Edd of SideMenu */
+/* End of SideMenu */
