@@ -1,30 +1,38 @@
 <div class="row">
     <div class="section">
         <div class="col s12">
-            <div class="card card-doctor card-doctor-sidebar z-depth-0">
-                <div class="card-content card-content-doctor index-sidebar">
-                    <span class="card-title">經歷</span>
-                </div>
-                <div class="row card-action card-action-doctor index-sidebar black-text">
-                    <ul>
-                        <li  class="valign-wrapper">
-                            <div class="post-title"><%= simple_format @doctor.experience %></div>
-                        </li>
-                    </ul>
+            <div class="wrapper__box--300Max">
+                <div class="wrapper__box--inner">
+                    <div class="box__sidemenu">
+                        <div class="section__title">
+                            <span>經歷</span>
+                        </div>
+                        <div class="section__link">
+                            <ul>
+                                <li>
+                                    <span class="post-title"><%= simple_format @doctor.experience %></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col s12">
-            <div class="card card-doctor card-doctor-sidebar z-depth-0">
-                <div class="card-content card-content-doctor index-sidebar">
-                    <div><span class="card-title">專長</span></div>
-                </div>
-                <div class="row card-action card-action-doctor index-sidebar black-text">
-                    <ul>
-                        <li  class="valign-wrapper">
-                            <div class="post-title"><%= simple_format @doctor.specialty %></div>
-                        </li>
-                    </ul>
+            <div class="wrapper__box--300Max">
+                <div class="wrapper__box--inner">
+                    <div class="box__sidemenu">
+                        <div class="section__title">
+                            <span>專長</span>
+                        </div>
+                        <div class="section__link">
+                            <ul>
+                                <li class="post-title">
+                                    <%= simple_format @doctor.specialty %>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

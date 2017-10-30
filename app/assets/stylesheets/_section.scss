@@ -1,0 +1,122 @@
+
+.section__poster-post-show{
+    @extend .section__poster;
+    height: 10rem;
+}
+
+// 醫生圖卡 - 圖片區
+
+.section__avatar, .section_action{
+    position: relative;
+}
+
+.section__avatar {
+    ul {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        color: #fff;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.25);
+        padding: 0.5rem 0rem;
+        margin: 0px;
+    }
+    li {
+        display: flex;
+        flex: 1 1 50%;
+        justify-content: center;
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            a {
+                color: white;
+            }
+        }
+    }
+}
+
+
+.section__action{
+    ul {
+        display: flex;
+        background-color: white;
+        margin: 0px;
+        border-bottom: $basic-border;
+    }
+    li {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        height: 40px;
+        border-right: $basic-border;
+        margin: 5px;
+        &:last-child {
+            border-right: none !important;
+        }
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            color: black;
+            i {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+
+
+
+/* End of BOX區 - 醫生圖卡 */ 
+
+.section__description{
+    display: flex;
+    text-align: justify;
+    align-items: flex-start;
+    min-height: 4rem;
+}
+
+
+.section__content{
+    padding-bottom: 1.5rem;
+}
+
+
+.section__tag{
+    display: flex;
+}
+
+
+/* Beginning of SideMenu */
+.section__title{
+    border-bottom: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    font-size: 1.5rem;
+    background-color: #fcfcfc;
+}
+
+
+.section__link {
+    padding: 12px 20px; 
+    ul {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        margin: 0px;
+    }
+    li {
+        a {
+            flex: 1;
+            color: #272727;
+        }
+        i {
+            margin-right: 10px;
+        }
+    }
+}
+/* Edd of SideMenu */

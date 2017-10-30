@@ -1,0 +1,8 @@
+
+	<div class="poster-avatar">
+		<%= image_tag "yuna.jpg", class:"poster-avatar-img size3125x3125" %>
+	</div>
+	<div class="poster-name">
+		<%= link_to "#{post.doctor.name}",doctor_path(post.doctor), {class:"name"} %><br>
+  		<span class="time-ago-in-words"><%= time_ago_in_words(post.created_at) %> ago</span>
+	</div>

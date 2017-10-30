@@ -30,14 +30,12 @@
 				<% end %>
 			</span>
 		</header>
-		<div class="row">
-			<div class="flex-post-box-wrap">
-				<% @posts_tag.select{|t| t.issue_id == issue.id}.first(3).each do |post| %>
-					<div class="flex-post-box flex-post-box-small">
-						<%= render 'posts/posts_box', post: post  %>
-					</div>	
-				<% end %>
-			</div>
+		<div class="wrapper-post-index">
+			<% @posts_tag.select{|t| t.issue_id == issue.id}.first(3).each do |post| %>
+				<div class="wrapper__box--small">
+					<%= render 'posts/posts_box', post: post  %>
+				</div>
+			<% end %>
 		</div>
 	<% end %>
 </div>

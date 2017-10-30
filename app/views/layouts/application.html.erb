@@ -10,23 +10,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   </head>
   <body>
-    <%#= yield :postbar %>
     <header>
       <%= render 'shared/application_header' %>
     </header>  
-
     <main>
       <%= yield :profile_headbar %>
-      <div class="container">
-        <div class="row">
-          <div class="col s12 m12 l3 xl3">
-            <%= yield :sidebar %>
-          </div>
-          <div class="col s12 m12 l9 xl9">
-            <%= yield :headbar %>
-            <%= yield %>
-            <%= will_paginate @paginate if @paginate %>
-            
+      <div class="container-doctor">
+        <div class="container">
+          <div class="row">
+            <div class="col s12 m12 l3 xl3">
+              <%= yield :sidebar %>
+            </div>
+            <div class="col s12 m12 l9 xl9">
+              <%= yield %>
+              <%= will_paginate @paginate if @paginate %>
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,9 @@
+
+<% if false %>
+	<div>
+		<%= "[" %> <%= Post::SUBJECT[post.subject][0] %> <%= "]" %> <%= post.comment.size %> 篇回覆
+	</div>
+<% end %>
+<%= link_to doctor_post_path(post.doctor, post) do %> 
+	<p class="post-description"> <%= truncate("#{post.description}", length: 30)  %> </p>
+<% end %>

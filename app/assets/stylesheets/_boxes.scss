@@ -1,0 +1,24 @@
+//https://teamtreehouse.com/community
+//http://blog.plataformatec.com.br/
+
+
+
+.box__post {
+    @extend .flex-box;
+    padding: 1rem 1rem;
+}
+
+.box__doctor {
+    @extend .flex-box;
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+    }
+}
+
+.box__sidemenu {
+    @extend .flex-box;
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+    }
+}
+

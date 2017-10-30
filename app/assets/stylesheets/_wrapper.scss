@@ -1,0 +1,164 @@
+
+
+
+
+/* Beginning of Post View */  
+
+.wrapper-post-index {
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+.wrapper__post{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0rem;
+    margin: 0 auto;
+    width: 100%;
+}
+
+
+/* End of Post View */
+
+/* Beginning of Doctor View */
+
+.wrapper-doctor-index{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wrapper__doctor{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem 0rem;
+    margin: 0px auto;
+    width: 100%;
+    @media only screen and (max-width: 600px) {
+        margin: 0 auto;
+        padding: 0px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    @media only screen and (min-width: 600px) and (max-width: 992px) {
+        width: 85%;
+        flex-wrap: wrap;
+    }
+    @media only screen and (min-width: 993px) and (max-width: 1199px) {
+        width: 70%;
+        flex-wrap: wrap;
+    }
+    @media only screen and (min-width: 1200px) {
+        width: 70%;
+    }
+}
+
+.wrapper__header--right {
+    flex: 0 1 calc(100% - 325px);
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    overflow: hidden;
+    margin-bottom: 30px;
+    @media only screen and (max-width: 1199px) {
+        flex: 1 1 100%;
+        flex-direction: row;
+    }
+}
+
+
+
+/* Edn of Doctor View */
+
+
+/* Beginning of Filter */
+
+.wrapper__filter {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    width: 95%;
+    /* overflow-x: scroll; */
+    /* overflow-y: hidden; */
+    /* height: 50px; */
+    /* margin: 0 auto; */
+    -webkit-overflow-scrolling: touch;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    @media only screen and (max-width: 1199px) {
+        flex: 1 1 100%;
+        //margin-top: 30px;
+        flex-direction: row;
+    }
+}
+
+/* End of Filter */
+
+
+
+/* Beginning of Box */
+
+.wrapper__box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    @media only screen and (max-width: 1199px) {
+        flex: 1 1 100%;
+        justify-content: center !important;
+    }
+}
+
+.wrapper__box--inner {
+    display: flex;
+    flex-direction: column;
+    border: $basic-border;
+    border-radius: 4px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.wrapper__box--300Max {
+    @extend .wrapper__box;
+    width: 100%;
+    max-width: 300px;
+    padding: 0.5rem 0.5rem;
+    @media only screen and (max-width: 600px) {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+.wrapper__box--small {
+    @extend .wrapper__box;
+    width: 33.3333%;
+    padding: 0.5rem 0.5rem;
+    //flex: 0 1 calc(33% - 8px);
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+    }
+}
+
+
+.wrapper__box--medium {
+    @extend .wrapper__box;
+    width: 50%;
+    padding: 0.5rem 0.625rem;
+    //flex: 0 1 calc(50% - 8px);
+    @media only screen and (max-width: 600px) {
+        flex: 1 1 100%;
+    }
+}
+
+.wrapper__box--large {
+    @extend .wrapper__box;
+    width: 100%;
+    padding: 0rem 1.5rem;
+    //flex: 0 1 calc(33% - 8px);
+    margin: 0 auto 30px;
+    @media only screen and (max-width: 600px) {
+        flex: 1 1 100%;
+    }
+}
+
+/* End of Box */

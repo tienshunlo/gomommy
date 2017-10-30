@@ -1,0 +1,16 @@
+$primary-color: color("pink", "lighten-1") !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$secondary-color: color("light-green", "lighten-1") !default;
+$primary-border: color("pink", "lighten-4") !default;
+$will-paginate-color: color("pink", "lighten-3")!default;
+
+
+$basic-border: 1px solid #e6e6e6;
+$none-border: 0px;
+
+
+
+
+
+$primary-bg: white;
+$secondary-bg: #fcfcfc;

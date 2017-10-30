@@ -1,0 +1,29 @@
+
+.dropdown-parent-label {
+    font-size: 16px; 
+    font-weight: 500; 
+    color: black;
+    &:hover {
+        background: transparent;
+        font-weight: bold;
+    }
+    @media #{$small-and-down} {
+        padding: 0px;
+    }
+}
+
+.dropdown-parent {
+    position: relative;
+    display: inline-block;
+    @media #{$small-and-down} {
+        padding: 10px 10px;
+        display: block;
+        border: 0px solid #e0e0e0;
+        border-radius: 10px;
+    }
+    &.last-dropdown {
+        @media #{$small-and-down} {
+            border-bottom: none;
+        }
+    }
+}

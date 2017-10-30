@@ -7,23 +7,26 @@
 </div>
 
 <div class="section">
-  <header class="header_cate">
+	<header class="header_cate">
 		<span class="header_cate_title">
-				<%= @city_name %>
+			<%= @city_name %>
 		</span>
 	</header>
 	<div class="row">
-	  <div class="container-custom-list-profile">
+		<div class="wrapper-doctor-index">
   		<% @doctors.each do |doctor| %>
-    		<div class="profile-header-left">
-    		  <div class="profile-box">
-    				<%= render partial: "doctors/profile_avatar", locals: {doctor: doctor} %>
-    				<%= render partial: "doctors/profile_action_index", locals: {doctor: doctor} %>
-    				<%= render partial: "doctors/profile_poster", locals: {doctor: doctor} %>
-    			</div>
-    		    <%= render 'posts/new_post_modal', doctor: doctor %>
-        </div>
-      <% end %> 
-    </div>
+    		<div class="wrapper__box--small">
+    			<div class="wrapper__box--inner">
+	    			<div class="box__doctor">
+	    				<%= render partial: "doctors/profile_box", locals: {doctor: doctor} %>
+	    			</div>
+	    			<div class="box__post BoxHeight10">
+	    				<%= render partial: "doctors/post_box", locals: {doctor: doctor} %>
+	    			</div>
+	    		    <%= render 'posts/new_post_modal', doctor: doctor %>
+    		    </div>
+			</div>
+		<% end %> 
+    	</div>
 	</div>
 </div>
