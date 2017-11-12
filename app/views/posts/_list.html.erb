@@ -1,22 +1,22 @@
 <div id="filterrific_results">
 	<% if !posts.blank?%>
-	<div class="row">
-		<div class="wrapper-post-index">
-			<% posts.each do |post| %>
-				<div class="wrapper__box--small">
-					<%= render 'posts/posts_box', post: post  %>
-				</div>	
+		<div class="row">
+			<div class="wrapper-post-index">
+				<% posts.each do |post| %>
+					<div class="wrapper__box--small">
+						<%= render 'posts/posts_box', post: post  %>
+					</div>	
+				<% end %>
+			</div>
+			<% if false %>
+				<!-- 這邊有寫孕期跟徵狀的chip -->
+				<% posts.each do |post| %>
+					<%= render 'posts/list_posts_index', post: post  %>
+				<% end %>
 			<% end %>
 		</div>
-		<% if false %>
-			<!-- 這邊有寫孕期跟徵狀的chip -->
-			<% posts.each do |post| %>
-				<%= render 'posts/list_posts_index', post: post  %>
-			<% end %>
-		<% end %>
-	</div>
 	<% else %>
-		搶先留言
+		<span>搶先留言</span>
 	<% end %>
 </div>
 

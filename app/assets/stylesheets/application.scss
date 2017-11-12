@@ -22,6 +22,7 @@
 
 
 //component
+@import "image";
 @import "boxes";
 @import "section";
 @import "chips";
@@ -124,14 +125,14 @@ main {
   
 @media only screen and (max-width: 600px) {
     // 首頁側邊欄的BOX - 由直轉橫
-    .sidebar-box-link-wrap ul {
+    .section__link ul {
         display: flex;
         flex-direction: row !important;
         background-color: white;
         padding: 15px 0px !important;
         margin: 0px;
     }
-    .sidebar-box-link-wrap li {
+    .section__link li {
         display: flex;
         flex-direction: column;
         align-items: center;

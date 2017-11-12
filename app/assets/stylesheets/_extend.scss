@@ -13,23 +13,21 @@
     flex-direction: column;
     position: relative;
 }
+
+.box--basic {
+    display: flex;
+    position: relative;
+}
+
+.section--basic {
+    display: flex;
+}
+
 /* End of flexbox */ 
 
 /* Beginning of BOX區 - 包含醫生圖卡與留言圖卡 (留言標題區、留言者區、TAG區) */ 
 
 
 
-
-
-
-
-.section__poster{
-    display: flex;
-    padding: 0;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    height: 4.0rem;
-}
 
 /* End of BOX區 - 包含醫生圖卡與留言圖卡 (留言標題區、留言者區、TAG區) */ 

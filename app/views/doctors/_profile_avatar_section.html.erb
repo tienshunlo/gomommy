@@ -1,5 +1,5 @@
 <div class="section__avatar">
-    <%= link_to image_tag(doctor.doctor_img.url, class: 'profile-avatar-img'), doctor %>
+    <%= link_to image_tag(doctor.doctor_img.url(:medium), class: 'profile-avatar-img'), doctor %>
     <ul>
         <li>
             <span class="profile-name"><%= link_to "#{doctor.name} 醫生", doctor %></span>

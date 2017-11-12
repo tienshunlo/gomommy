@@ -1,0 +1,47 @@
+<div class="container-doctor primary-bg">
+	<div class="wrapper__doctor flex-colunm MaxWidth1000">
+		<div class="wrapper__box--inner no-border">
+			<div class="box__post flex-row">
+				<div class="section__poster flex-colunm">
+					<div class="poster-avatar">
+						<%= link_to image_tag(@doctor.doctor_img.url(:thumb), class: 'poster-avatar-img size10x10'), @doctor %>
+					</div>
+				</div>
+				<div class="section__content flex-colunm Width100 padding-l1">
+					<div class="section__content flex-colunm"> 
+						<h2 class="profile-name MarginTop05 MarginBottom05"><%= link_to "#{@doctor.name} 醫生", @doctor, class:"name" %></h2> 
+						<% if @doctor.post.any? %>
+							<span>留言：<%= @doctor.post.count  %>  篇</span>
+						<% else %>
+							<span> 沒有留言</span>
+						<% end %>
+					</div>
+						<div class="post-title MarginTop05 FontSize11">經歷</div>
+						<div class="section__content post-description MarginTop05">
+							 
+							<%= simple_format @doctor.experience %>
+						</div>
+						<div class="post-title MarginTop05 FontSize11">專長</div>
+						<div class="section__content post-description MarginTop05"> 
+							
+							<%= simple_format @doctor.specialty %>
+						</div>
+				</div>
+			</div>
+		</div>
+		<div class="section__action">
+		  <ul class="no-border">
+		     <li>
+		     	<%= link_to @doctor.status.capitalize, toggle_status_dashboard_mamabook_doctor_path(@doctor), class:"button" %>
+		        
+		     </li>
+		     <li>
+		         <%=link_to "Edit", edit_dashboard_mamabook_doctor_path(@doctor), class:"button" %>
+		     </li>
+		     <li>
+		         <%=link_to "Delete", dashboard_mamabook_doctor_path(@doctor), method: :delete, data: {confirm: 'Are You sure?'}, class:"button"  %>
+		     </li>
+		  </ul>
+		</div>
+	</div>
+</div>

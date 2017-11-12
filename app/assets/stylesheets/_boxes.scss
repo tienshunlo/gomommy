@@ -22,3 +22,17 @@
     }
 }
 
+
+
+.test-box {
+    display: flex;
+    position: relative;
+}
+
+@media only screen and (max-width: 767px) {
+    .test-box{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+}

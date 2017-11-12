@@ -29,13 +29,13 @@ class DoctorsController < ApplicationController
 		
 		
 		if params[:city].blank?
-			@doctors = @paginate = Doctor.includes(:city).includes(:hospital).paginate(:page => params[:page])
+			@doctors = @paginate = Doctor.published.includes(:city, :hospital).paginate(:page => params[:page])
 			@city_name = "全部城市"
 			#@doctors = @paginate = Doctor
 		else
 			@city_id = City.find_by(name: params[:city]).id
 			#scope 用法
-			@doctors = @paginate = Doctor.doctor_city(@city_id).paginate(:page => params[:page])
+			@doctors = @paginate = Doctor.published.doctor_city(@city_id).paginate(:page => params[:page])
 			@city_name = params[:city]
 			
 			#也可以寫成這樣：
@@ -44,7 +44,7 @@ class DoctorsController < ApplicationController
 		
 		
 		
-		# 這邊是正確的，先助解掉
+		# 這邊是正確的，先註解掉
 		#@filterrific = initialize_filterrific(
 		#	Doctor.includes(:city).includes(:hospital).includes(:post),
 		#	params[:filterrific],
@@ -115,9 +115,9 @@ class DoctorsController < ApplicationController
 		
 		#按孕期
 		if params[:phase].blank?
-			@posts = @paginate = @doctor.post.includes(:phase).includes(:issue).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+			@posts = @paginate = @doctor.post.includes(:phase, :issue).order('id DESC').paginate(:page => params[:page], :per_page => 5)
 		else
-			@posts = @paginate = @doctor.post.includes(:phase).includes(:issue).where(:phase => params[:phase]).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+			@posts = @paginate = @doctor.post.includes(:phase, :issue).where(:phase => params[:phase]).order('id DESC').paginate(:page => params[:page], :per_page => 5)
 		end
 		
 		

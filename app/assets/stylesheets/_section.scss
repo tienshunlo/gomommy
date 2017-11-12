@@ -1,4 +1,8 @@
-
+.section__poster {
+    @extend .section--basic;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .section__poster-post-show{
     @extend .section__poster;
@@ -6,11 +10,9 @@
 }
 
 // 醫生圖卡 - 圖片區
-
 .section__avatar, .section_action{
     position: relative;
 }
-
 .section__avatar {
     ul {
         display: flex;
@@ -37,8 +39,6 @@
         }
     }
 }
-
-
 .section__action{
     ul {
         display: flex;
@@ -71,9 +71,26 @@
 }
 
 
-
-
-
+.section__content {
+    @extend .section--basic;
+    ol {
+        -webkit-padding-start: 25px;
+        -webkit-padding-end: 20px;
+        -webkit-margin-before: 0em;
+        -webkit-margin-after: 0em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        br {
+            display: none; 
+        }
+    }
+    p {
+        display: none;
+    }
+    p.post-description {
+        display: block;
+    }
+}
 
 .section__description{
     display: flex;
@@ -81,12 +98,6 @@
     align-items: flex-start;
     min-height: 4rem;
 }
-
-
-.section__content{
-    padding-bottom: 1.5rem;
-}
-
 
 .section__tag{
     display: flex;
@@ -101,7 +112,6 @@
     font-size: 1.5rem;
     background-color: #fcfcfc;
 }
-
 .section__link {
     padding: 12px 20px; 
     ul {

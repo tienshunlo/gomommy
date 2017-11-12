@@ -24,7 +24,7 @@ class PostsController < ApplicationController
          
         #filterrific版本
 		@filterrific = initialize_filterrific(
-			Post.includes(:phase).includes(:issue),
+			Post.includes(:phase, :issue),
 			params[:filterrific],
 			select_options: {
 				sorted_by: Post.options_for_sorted_by,
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
         @phase_2 = @phases.select{|t| t.phasecate_id == 2} #生產過後
         
         
-        @posts_tag = Post.all.includes(:phase).includes(:issue).includes(:doctor).order('id DESC')
+        @posts_tag = Post.all.includes(:phase, :issue).includes(:doctor).order('id DESC')
         
         #@posts_phase_one = Post.includes(:issue).choose_phase(1)
         #@posts_phase_two = Post.includes(:issue).choose_phase(2)
@@ -74,17 +74,17 @@ class PostsController < ApplicationController
         @flex_filter_title = "按症狀排序"
         @flex_filter_icon ="child_care"
         @filter_anchor =  @post_cates = @issues = Issue.all
-        @posts_tag = Post.all.includes(:phase).includes(:issue).includes(:doctor).order('id DESC')
+        @posts_tag = Post.all.includes(:phase, :issue, :doctor).order('id DESC')
     end
     
     def phase_issue
         #按孕期與症狀的細項分類
         @phases = Phase.all
         if params[:phase]
-            @posts = Post.all.includes(:phase).includes(:issue).includes(:doctor).where(:phase_id => params[:phase]).order('id DESC')
+            @posts = Post.all.includes(:phase, :issue, :doctor).where(:phase_id => params[:phase]).order('id DESC')
             @title = Phase.find_by(:id => params[:phase]).title
         elsif params[:issue]
-            @posts = Post.all.includes(:phase).includes(:issue).includes(:doctor).where(:issue_id => params[:issue]).order('id DESC')
+            @posts = Post.all.includes(:phase, :issue, :doctor).where(:issue_id => params[:issue]).order('id DESC')
             @title = Issue.find_by(:id => params[:issue]).title
         else
             render 'index'
@@ -116,7 +116,7 @@ class PostsController < ApplicationController
     end
     
     def show
-        @comments = @paginate = @post.comment.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
+        @comments =  @post.comment.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
     end
     
     def edit

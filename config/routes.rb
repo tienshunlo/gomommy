@@ -1,6 +1,21 @@
 Rails.application.routes.draw do
-  root 'doctors#index'
 
+  root 'doctors#index'
+  
+  namespace :dashboard do
+    get "posts", to: "dashboard#posts"
+    get "doctors", to: "dashboard#doctors"
+    namespace :mamabook do
+      resources :posts
+      resources :doctors do
+        member do
+          get :toggle_status
+        end
+      end
+      #get "posts", to: "mamabook#posts"
+    end
+  end
+  
   resources :doctors do
     resources :posts do 
       resources :comments

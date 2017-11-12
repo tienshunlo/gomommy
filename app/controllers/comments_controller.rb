@@ -35,7 +35,10 @@ class CommentsController < ApplicationController
     end
     
     def destroy
+        @comment.destroy
+        redirect_to doctor_post_path(@doctor, @post), notice: 'Comment was removed.'
     end
+    
     private
     
     def comment_params
