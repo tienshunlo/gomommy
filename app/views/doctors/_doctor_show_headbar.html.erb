@@ -1,12 +1,14 @@
-<div class="profile-headbar-wrapper">
-	<div class="container-custom-doctor-profile">
-		<div class="profile-header-left">
-			<div class="profile-box">
-				<%= render partial: "doctors/profile_avatar", locals: {doctor: @doctor} %>
-				<%= render partial: "doctors/profile_action_show", locals: {doctor: @doctor} %>
+<div class="container-doctor">
+	<div class="wrapper__doctor MaxWidth1000">
+		<div class="wrapper__box--300Max">
+			<div class="wrapper__box--inner">
+				<div class="box__doctor">
+					<%= render partial: "doctors/profile_avatar_section", locals: {doctor: @doctor} %>
+					<%= render partial: "doctors/profile_action_show_section", locals: {doctor: @doctor} %>
+				</div>
 			</div>
 		</div>
-		<div class="profile-header-right">
+		<div class="wrapper__header--right">
 			<%= render 'shared/flex_filterbar' %>
 		</div>
 	</div>

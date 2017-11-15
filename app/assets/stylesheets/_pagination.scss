@@ -1,0 +1,47 @@
+//will_paginate
+
+.pagination {
+    cursor: default;
+    margin: 20px 0 80px 0 ;
+    display: flex;
+    justify-content: center;
+    a, span, em {
+        padding: 0.2em 0.5em;
+        display: block;
+        float: left;
+        margin-right: 1px;
+    }
+    .disabled {
+        color: grey;
+        border: 1px solid color("grey", "lighten-2");
+    }
+    .current {
+        font-style: normal;
+        font-weight: bold;
+        background: $will-paginate-color;
+        color: white;
+        border: 1px solid $primary-border;
+    }
+    a {
+        text-decoration: none;
+        color: $primary-border;
+        border: 1px solid $primary-border;
+        &:hover, &:focus {
+            color: $will-paginate-color;
+            border-color: $will-paginate-color;
+        }
+    }
+    .page_info {
+        background: #2e6ab1;
+        color: white;
+        padding: 0.4em 0.6em;
+        width: 22em;
+        margin-bottom: 0.3em;
+        text-align: center;
+    }
+    b {
+      color: #000033;
+      background: #2e6ab1 + 60;
+      padding: 0.1em 0.25em;
+    }
+}

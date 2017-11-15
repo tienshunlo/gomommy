@@ -1,0 +1,65 @@
+//chip 區域 從.chip extend來的
+
+
+//materialize-sass 
+.chip {
+    display: inline-block;
+    color: rgba(0,0,0,.6);
+    font-size: 0.8rem;
+    font-weight: 500;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    padding: 0 0.5rem;
+    border-radius: 16px;
+    margin-bottom: 0rem !important;
+    margin-right: 0.5rem !important;
+}
+
+
+.chip-delete {
+    @extend .chip;
+    margin: 0px;
+    border: 1px solid #e1bee7 ;
+    color: #e1bee7 !important;
+    background-color: #e1bee7;
+}
+//我也遇過
+.chip-action {
+    background-color: $primary-color;
+    color: white !important;
+    width: 30px;
+    height: 30px;
+    padding: 3px 1px 3px 3px;
+}
+
+//我也遇過
+.chip-same {
+    border: 1px solid #A5D6A7;
+    color: #A5D6A7 !important;
+    border-radius: 100px;
+    background: transparent;
+    display: inline-block;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 32px;
+    padding: 0 12px;
+}
+
+
+// 篩選器(城市 + 孕期 + 徵狀) //這邊應該要改
+.chip-filter {
+    display: inline-block;
+    height: 40px;
+    width: 100%;
+    padding: 0 12px;
+    line-height: 40px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+    background-color: white;
+    border: $basic-border;
+    border-radius: 5px;
+    text-align: center;
+}
+

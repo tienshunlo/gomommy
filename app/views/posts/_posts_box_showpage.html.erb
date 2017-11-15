@@ -1,86 +1,20 @@
-
-<div class="post-poster">
-	<div class="poster-avatar poster-avatar-show ">
-		<%= image_tag "yuna.jpg", class:"poster-avatar-img  responsive-img" %>
+<div class="box__post">
+<div class="section__poster">
+	<div class="poster-avatar">
+		<%= image_tag "yuna.jpg", class:"poster-avatar-img  size375x375" %>
 	</div>
-	<div class="poster-name poster-name-show">
+	<div class="poster-name  flex80px">
 		<%= link_to "#{post.doctor.name}",doctor_path(post.doctor), {class:"name"} %><br>
-  		<%= time_ago_in_words(post.created_at) %> ago
-	</div>
-	<% if false %>
-	<div class="chip-phase truncate">
-		<%= @post.phase.title %>
-	</div>
-	<div class="chip-issue truncate">
-		<%= @post.issue.title %>
-	</div>
-	<% end %>
-</div>
-<% if false %>
-	<div class="post-tag">
-	<div class="chip-phase truncate">
-			<%= post.phase.title %>
-		</div>
-		<div class="chip-issue truncate">
-			<%= post.issue.title %>
-		</div>
-	<div class="circle chip-action">
-		<i class="material-icons" title="我也遇過">exposure_plus_1</i>
-	</div>
-	<div  class="circle chip-action">
-		<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_path(@doctor, @post), :confirm => "Are you sure?", :method => :delete, class:'white-text' %>
-	</div>	
-	<div  class="circle chip-action">
-		<!-- Edit Post Modal Trigger -->
-		<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-post", class:'white-text' %>
-	</div>
-    <!-- Edit Post Modal Structure -->
-    <div id="modal-edit-post" class="modal modal-fixed-footer modal-post">
-    	<div class="modal-content modal-content-post">
-	    	<%= form_for ([@doctor, @post]) do |f| %>
-	      		<div class="row">
-	      			<div class="input-field col s12">
-	      				<%= f.text_field :title, :placeholder => "標題" %>
-	      			</div>
-			      	<div class="input-field col s12 m4">
-	        			<%= label_tag "請選擇主題" %><br>
-	        			<%= f.select :subject , Post::SUBJECT, {include_blank: false} %>
-    				</div>
-    				<div class="input-field col s12 m4">
-	        			<%= label_tag "妊娠週數" %><br>
-	        			<%= f.select :period , Post::PERIOD, {include_blank: false} %>
-    				</div>
-    				<div class="input-field col s12 m4">
-	        			<%= label_tag "主要範圍" %><br>
-	        			<%= f.select :kind , Post::KIND, {include_blank: false} %>
-    				</div>
-			    	<div class="input-field col s12">
-      					<%= f.text_area :description, :placeholder => "內文", class:"materialize-textarea" %>
-      				</div>
-      				<div class="input-field col s12 right-align">
-	      				<button class="btn waves-effect waves-light" type="submit" name="action">
-	      					<span>送出</span>
-						</button>
-					</div>
-				</div>
-			<% end %>
-		</div>
+  		<span class="time-ago-in-words"><%= time_ago_in_words(post.created_at) %> ago</span>
 	</div>
 </div>
-<% end %>
-<div class="post-content">
-	<% if false %>
-		<div>
-			<%= "[" %> <%= Post::SUBJECT[post.subject][0] %> <%= "]" %> <%= post.comment.size %> 篇回覆
-		</div>
-	<% end %>
-	<h1 class="medium-post-title"> 
+<div class="section__content"> 
+	<h1 class="post-title FontSize2 MarginTop1"> 
 		<%= post.title %> 
 	</h1>
-	<div class="medium-post-content">
-		<%= simple_format post.description %>
-	</div>
-</div>
 
+	<%= simple_format post.description, class:"post-description FontSize12 MarginTop15"%>
+</div>
+</div>
 
 

@@ -1,0 +1,76 @@
+
+.filter-section {
+    border-top: 4px solid #f8bbd0;
+    border-right: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+    border-radius: 4px 4px 0 0;
+    background-color: #f9fafa;
+}
+
+
+
+// 篩選器 區域//
+//flex-filter：地區、Doctor Profile (show page)、孕期、徵狀的篩選器
+
+.flex-filter-title {
+    display: flex;
+    align-items: center;
+    color: white;
+    margin: 5px 0px;
+    background-color: #e6e6e6;
+    text-align: center;
+    height: 40px;
+    width: 135px;
+    line-height: 40px;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0 12px;
+    background-color: #ec407a;
+    border: $basic-border;
+    text-align: center;
+    span {
+        width: 75px;
+    }
+}
+
+.flex-filter-section {
+    border-top: $basic-border;
+    border-bottom: $basic-border;
+    overflow-x: hidden;
+}
+
+.flex-filter-section ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0;
+    
+    @media only screen and (max-width: 1199px) {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        ::-webkit-scrollbar {
+            display: none;
+        }
+  }
+}
+
+.flex-filter-section li {
+    display: flex;
+    margin: 5px;
+    justify-content: center;
+    text-align: center;
+    a {
+        &:hover, &:focus {
+            background: $primary-color-light;
+            color: white;
+        }
+    }
+    @media only screen and (max-width: 1199px) {
+        margin: 3px;
+        flex: 0 0 auto;
+    }
+}
+
+
+

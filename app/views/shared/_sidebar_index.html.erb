@@ -1,48 +1,52 @@
 
 <div class="section">
-    <div class="flex-sidebar-box-wrap">
-        <div class="flex-sidebar-box">
-            <div class="sidebar-box-title">
-                醫生
-            </div>
-            <div class="sidebar-box-link-wrap">
-                <ul>
-                    <li  class="sidebar-box-link">
-                        <i class="material-icons">local_hospital</i>
-                        <%= link_to "全台婦產科醫生", doctors_path(city: nil) %>
-                    </li>
-                    <li  class="sidebar-box-link">
-                        <i class="material-icons">face</i>
-                        <%= link_to "最多瀏覽的醫生", doctors_path(city: nil) %>
-                    </li>
-                    <li  class="sidebar-box-link">
-                        <i class="material-icons">&#xE242;</i>
-                        <%= link_to "按留言多寡排序", most_posts_doctors_path %>
-                    </li>
-                </ul>
+    <div class="wrapper__box--300Max">
+        <div class="wrapper__box--inner">
+            <div class="box__sidemenu">
+                <div class="section__title">
+                    <span>醫生</span>
+                </div>
+                <div class="section__link">
+                    <ul>
+                        <li>
+                            <i class="material-icons">local_hospital</i>
+                            <%= link_to "全台婦產科醫生", doctors_path(city: nil) %>
+                        </li>
+                        <li>
+                            <i class="material-icons">face</i>
+                            <%= link_to "最多瀏覽的醫生", doctors_path(city: nil) %>
+                        </li>
+                        <li>
+                            <i class="material-icons">&#xE242;</i>
+                            <%= link_to "按留言多寡排序", most_posts_doctors_path %>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <div class="flex-sidebar-box-wrap">
-        <div class="flex-sidebar-box">
-            <div class="sidebar-box-title">
-                全站討論區
-            </div>
-            <div class="sidebar-box-link-wrap">
-                <ul>
-                    <li  class="sidebar-box-link">
-                        <i class="material-icons">forum</i>
-                        <%= link_to "總討論區", posts_path %>
-                    </li>
-                    <li  class="sidebar-box-link">
-                        <i class="material-icons">pregnant_woman</i>
-                        <%= link_to "按孕期分類", posts_phase_posts_path %>
-                    </li>
-                    <li  class="sidebar-box-link">
-                        <i class="material-icons">child_care</i>
-                        <%= link_to "按症狀分類", posts_issue_posts_path %>
-                    </li>
-                </ul>
+    <div class="wrapper__box--300Max">
+        <div class="wrapper__box--inner">
+            <div class="box__sidemenu">
+                <div class="section__title">
+                    <span>全站討論區</span>
+                </div>
+                <div class="section__link">
+                    <ul>
+                        <li>
+                            <i class="material-icons">forum</i>
+                            <%= link_to "總討論區", posts_path %>
+                        </li>
+                        <li>
+                            <i class="material-icons">pregnant_woman</i>
+                            <%= link_to "按孕期分類", posts_phase_posts_path %>
+                        </li>
+                        <li>
+                            <i class="material-icons">child_care</i>
+                            <%= link_to "按症狀分類", posts_issue_posts_path %>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

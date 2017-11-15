@@ -1,6 +1,6 @@
 <% if @filter_anchor %><%#= 孕期 徵狀 篩選器 %>
     <div class="profile-header-right">
-        <div class='flex-filter'>
+        <div class='wrapper__filter'>
         	<div class='flex-filter-title'>
         		<i class="material-icons"><%= @flex_filter_icon %></i>
         		<span><%= @flex_filter_title %></span>
@@ -17,7 +17,7 @@
     	</div>
     </div>
 <% elsif @citys %><%#= 首頁醫生 篩選器 %>
-    <div class='flex-filter'>
+    <div class='wrapper__filter'>
         <div class='flex-filter-title'>
         	<i class="material-icons"><%= @flex_filter_icon %></i>
         	<span><%= @flex_filter_title %></span>
@@ -34,7 +34,7 @@
         </div>
     </div> 
 <% else %><%#= 醫生show page/profile 孕期 篩選器 %>
-    <div class='flex-filter'>
+    <div class='wrapper__filter'>
         <div class='flex-filter-title'>
         	<i class="material-icons"><%= @flex_filter_icon %></i>
         	<span><%= @flex_filter_title %></span>

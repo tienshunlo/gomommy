@@ -1,9 +1,10 @@
-<div class="profile-avatar">
-     <%= link_to image_tag(doctor.doctor_img.url, class: 'profile-avatar-img responsive-img'), doctor %>
+<div class="section__avatar">
+    <%= link_to image_tag(doctor.doctor_img.url, class: 'profile-avatar-img'), doctor %>
     <ul>
         <li>
             <span class="profile-name"><%= link_to "#{doctor.name} 醫生", doctor %></span>
         </li>
+        <% if false %>
         <li>
             <!-- New Post Modal Trigger -->
             <%= link_to "#modal-new-post_#{doctor.id}", class:"btn-custom btn-custom-white" do %> 
@@ -11,6 +12,7 @@
 	            <span><%= "留言" %></span>
             <% end %>
         </li>
+         <% end %>
     </ul>
 </div>
 

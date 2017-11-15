@@ -8,9 +8,9 @@
 		</span>
 	</header>
 	<div class="row">
-		<div class="flex-post-box-wrap">
+		<div class="wrapper-post-index">
 			<% @posts.each do |post| %>
-				<div class="flex-post-box flex-post-box-medium">
+				<div class="wrapper__box--small">
 					<%= render 'posts/posts_box', post: post  %>
 				</div>	
 			<% end %>

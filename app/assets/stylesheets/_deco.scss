@@ -1,0 +1,174 @@
+/** Beginning of 背景色 相關 */
+
+    
+.primary-bg {
+    background-color: $primary-bg;
+}
+
+.secondary-bg {
+    background-color: $secondary-bg;
+}
+
+
+/** End of 背景色 相關 */
+
+
+
+/** Beginning of Border 相關 */
+.basic-border {
+    border: $basic-border;
+}
+
+.no-border {
+    border: none;
+}
+.basic-shadow {
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+
+/** End of Border 相關 */
+
+
+/** Beginning of 文字 相關 */
+.post-title {
+    color: rgba(0,0,0,.84)!important;
+    margin: 0;
+    font-size: 1.3125rem;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.1em !important;
+}
+
+.post-description{
+    color: rgba(0,0,0,.54)!important;
+    margin: 0;
+    font-size: 1.0rem;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.1em!important;
+}
+
+.poster-name {
+    flex: 0 1 calc(100% - 60px);
+    font-size: 1.0rem;
+    a.name {
+        color: rgba(0,0,0,.84)!important;
+        font-weight: 700;
+    }
+    .time-ago-in-words{
+        color: rgba(0,0,0,.54)!important;
+        font-size: 0.8rem;
+    }
+}
+//字體的大小
+.FontSize2{
+    font-size: 2rem;
+}
+
+.FontSize12{
+    font-size: 1.2rem;
+}
+
+/** End of 文字 相關 */
+
+/** Beginning of 圖片 相關 */
+
+.profile-avatar-img {
+    display: block;
+    position: relative;
+    border: none;
+    width: 100%;
+}
+
+.poster-avatar {
+    flex: 0 0 auto;
+    
+}
+
+.poster-avatar-img {
+    border-radius: 100%;
+}
+
+
+.size3x3 {
+    width: 3rem!important;
+    height: 3rem!important;
+}
+
+.size3125x3125 {
+    width: 3.125rem!important;
+    height: 3.125rem!important;
+}
+
+.size375x375 {
+    width: 3.75rem!important;
+    height: 3.75rem!important;
+}
+    
+/** End of 圖片 相關 */
+
+
+
+/** Beginning of 大小、邊距等 相關 */
+
+//寬度
+.MaxWidth1000{
+    max-width: 1000px !important;
+}
+
+.MaxWidth740{
+    max-width: 740px !important;
+}
+
+.MaxWidth640{
+    max-width: 640px !important;
+}
+//高度
+
+.BoxHeight9{
+    height: 9rem;
+}
+
+.BoxHeight10{
+    height: 10rem;
+}
+.BoxHeight16{
+    height: 16rem;
+}
+.MinHeight4{
+    min-height: 4rem;
+}
+
+.FixedBottom05{
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0;
+    width: calc(100% - 1rem);
+}
+
+//邊距
+.oneRemMargin{
+    margin: 0.2rem;
+}
+
+.MarginTop05{
+    margin-top: 0.5rem;
+}
+
+
+.MarginTop1{
+    margin-top: 1rem;
+}
+
+.MarginTop15{
+    margin-top: 1.5rem;
+}
+.MarginTop2{
+    margin-top: 2rem;
+}
+
+.flex80px{
+    flex: 0 1 calc(100% - 80px);
+}
+
+/** End of 大小、邊距等 相關 */

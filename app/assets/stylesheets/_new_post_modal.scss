@@ -1,0 +1,120 @@
+//posts: show page
+
+.modal {
+    &.modal-post {
+        @media #{$large-and-up} {
+         width: 40%;
+        }
+    }
+    .modal-content.modal-content-post {
+        padding: 40px;
+    }
+}
+
+
+// New Post Modals 相關
+
+.new-post-section ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px 20px;
+    @media only screen and (max-width: 600px) {
+        padding: 0px;
+    }
+}
+
+.new-post-section li {
+    border: $basic-border;
+    border-radius: 5px;
+    margin: 5px 5px;
+    flex: 1 1 30%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    @media only screen and (max-width: 600px) {
+        margin: 5px 3px;
+        flex: 1 1 40%;
+        white-space: nowrap;
+    }
+}
+
+.new-post-bar {
+    padding: 5px;
+    background-color: #e6e6e6;
+    text-align: center;
+    font-size: 1.2rem;
+} 
+
+.new-post-select {
+    width: 100px;
+    line-height: 50px;
+    border-radius: 5px;
+    :hover {
+        background: black;
+        color: white;
+    }
+}
+
+
+
+.new-post-label { 
+    color: black;
+    font-size: 16px;
+    line-height: 60px;
+    border-left: 5px solid $primary-color;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 1.4rem;
+}  
+
+.new-post-modal-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+
+
+.new-post-submit {
+    width: 40%;
+    border: 1px solid #ec407a;
+    border-radius: 5px;
+    background-color: rgba(236, 64, 122, 0.15);
+    color: #ec407a; 
+    height: 36px;
+    line-height: 36px;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    &:hover, &:active, &:focus {
+        background-color: #ec407a;
+        box-shadow: none;
+        color: white;
+    }
+}
+
+
+.new-post-section input[type="radio"]:checked + label,
+.Checked + label {
+    background: $primary-color-light;
+    color: white;
+   
+}
+
+
+.donate-now input[type="radio"]:checked + label,
+.Checked + label {
+    background: $primary-color-light;
+    color: white;
+}
+
+
+
+.donate-now label:hover {
+     background: $primary-color-light;
+     color: white;
+     //@media only screen and (max-width: 993px){
+        //pointer-events: none;
+  //}
+}

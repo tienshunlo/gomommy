@@ -1,0 +1,33 @@
+
+// Navagation 區域//
+// 小螢幕會出現的瀏覽條 bottom-nav
+
+.flex-bottom-nav{
+   // margin-top: 25px;
+}
+
+.flex-bottom-nav ul {
+    display: flex !important;
+    margin: 0px;
+    padding: 0px;
+    line-height: 32px;
+    border-top: $basic-border;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 1;
+}
+
+.flex-bottom-nav li {
+    flex: 1 1 50%;
+    text-align: center;
+    display: flex !important;
+    flex-direction: column;
+    font-size: 12px;
+    .horizontal-icon {
+        height: 0px;
+        margin: 10px 0px 14px 0px;
+    }
+}
