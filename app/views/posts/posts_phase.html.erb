@@ -9,6 +9,12 @@
 	<%= render 'shared/flex_filterbar' %>
 </div>
 
+<% if false %>
+<div class="section">
+	<%= flex_filterbar(@filter_anchor) %>
+</div>
+<% end %>
+
 <div class="section">
 	<% @phases.each do |phase| %>
 		<header class="header_cate">

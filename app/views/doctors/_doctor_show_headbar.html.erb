@@ -1,0 +1,13 @@
+<div class="profile-headbar-wrapper">
+	<div class="container-custom-doctor-profile">
+		<div class="profile-header-left">
+			<div class="profile-box">
+				<%= render partial: "doctors/profile_avatar", locals: {doctor: @doctor} %>
+				<%= render partial: "doctors/profile_action_show", locals: {doctor: @doctor} %>
+			</div>
+		</div>
+		<div class="profile-header-right">
+			<%= render 'shared/flex_filterbar' %>
+		</div>
+	</div>
+</div>

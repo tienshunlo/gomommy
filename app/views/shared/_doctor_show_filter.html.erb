@@ -1,0 +1,16 @@
+<div class='flex-filter'>
+        <div class='flex-filter-title'>
+        	<i class="material-icons"><%= @flex_filter_icon %></i>
+        	<span><%= @flex_filter_title %></span>
+        </div>
+        <div class="flex-filter-section">
+            <ul>
+                <li><%= link_to "ALL", doctor_path(@doctor), {class:"chip-filter"} %></li>
+          		<% @phases.each do |phase| %>
+        		    <li>
+        				<%= link_to phase.title, doctor_path(@doctor, phase: phase ), class: "chip-filter" %>
+        			</li>
+        	    <% end %>
+            </ul>
+        </div>
+    </div>

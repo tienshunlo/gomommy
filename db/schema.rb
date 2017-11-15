@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717042527) do
+ActiveRecord::Schema.define(version: 20171009095315) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -50,7 +50,23 @@ ActiveRecord::Schema.define(version: 20170717042527) do
     t.integer  "district_id",             limit: 4
     t.integer  "post_count",              limit: 4,     default: 0
     t.integer  "impressions_count",       limit: 4
+    t.string   "slug",                    limit: 255
   end
+
+  add_index "doctors", ["slug"], name: "index_doctors_on_slug", unique: true, using: :btree
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",           limit: 255, null: false
+    t.integer  "sluggable_id",   limit: 4,   null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope",          limit: 255
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, length: {"slug"=>70, "sluggable_type"=>nil, "scope"=>70}, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", length: {"slug"=>140, "sluggable_type"=>nil}, using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "hospitals", force: :cascade do |t|
     t.string   "name",        limit: 255

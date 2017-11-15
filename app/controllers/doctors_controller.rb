@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
-	before_action :find_doctor, only: [:show,:edit, :update, :destroy]
-	impressionist only: [:show, :index]
+	before_action :find_doctor, only: [:edit, :update, :destroy]
+	#impressionist only: [:show, :index]
 	def index
 		
 		@citys = City.all
@@ -72,6 +72,7 @@ class DoctorsController < ApplicationController
     end
 	
 	def show
+		@doctor = Doctor.friendly.includes(:post).find(params[:id])
 		@flex_filter_title = "按孕期排序"
         @flex_filter_icon = "pregnant_woman"
         
@@ -83,7 +84,8 @@ class DoctorsController < ApplicationController
 		end 
 		
 		@phase = Phase.includes(:issue).order(:id)
-		impressionist(@doctor)
+		#impressionist(@doctor)
+		
 		#按主題 - 心得分享與求解
 		if params[:subject].blank?
 			@posts = @paginate = @doctor.post.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
@@ -191,6 +193,6 @@ class DoctorsController < ApplicationController
 	end
 
 	def find_doctor
-		@doctor = Doctor.find(params[:id])
+		@doctor = Doctor.friendly.find(params[:id])
 	end
 end

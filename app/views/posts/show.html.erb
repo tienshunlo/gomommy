@@ -1,45 +1,26 @@
-
-<% content_for :sidebar do %>
-	<!-- 小螢幕會消失的醫生個人資訊區 -->
-	<div class="hide-on-small-only">
-		<%= render 'doctors/sidebar_doctor_profile' %>
-	</div>
-<% end %>	
-
-<div class="section">
-		<header class="header_cate">
-			<span class="header_cate_title">
-			<%= link_to "回到醫生討論區", doctor_path(@doctor) %>
-		</span>
-	</header>
-</div>
 <div class="flex-post-box flex-post-box-large">
 	<%= render 'posts/posts_box_showpage', post: @post  %>
 </div>
 
-<div class="section">
-	<div class="flex-new-comment-box-wrap">
-		<header class="header_cate">
-			<span class="header_cate_title">
-				<% if @comments.blank? %>
-					成為第一個回覆的人
-				<% else %>
-					參加討論
-				<% end %>
-			</span>
-		</header>
-		<div>
-			<%= render 'comments/form' %>
-		</div>	
-	</div>
-	
+
+<div class="flex-new-comment-box-wrap">
+	<header class="header_cate">
+		<span class="header_cate_title">
+			<% if @comments.blank? %>
+				成為第一個回覆的人
+			<% else %>
+				參加討論
+			<% end %>
+		</span>
+	</header>
+	<div>
+		<%= render 'comments/form' %>
+	</div>	
+</div>
+<% if !@comments.blank? %>
 	<ul class="collection">
 		<li>
-			<% if !@comments.blank? %>
-				<%= render 'comments/comment', collection: @comments %>
-				<%#= render 'comments/comment', :locals => { :comment => @comments }   %>
-			<% end %>
+			<%= render 'comments/comment', collection: @comments %>
 		</li>
 	</ul>
-</div>
-
+<% end %>

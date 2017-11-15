@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     before_action :find_doctor, except: [:index, :posts_phase, :posts_issue, :phase_issue]
     before_action :find_post, only: [:show, :edit, :update, :destroy]
    
-    
+    layout "posts"
     
     def index
         
@@ -146,7 +146,7 @@ class PostsController < ApplicationController
     end
     
 	def find_doctor
-		@doctor = Doctor.find(params[:doctor_id])
+		@doctor = Doctor.friendly.find(params[:doctor_id])
 	end
 	def find_post
 	    @post = Post.find(params[:id])
