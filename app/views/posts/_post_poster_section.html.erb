@@ -1,5 +1,13 @@
 <div class="poster-avatar">
-	<%= image_tag "yuna.jpg", class:"poster-avatar-img size3125x3125" %>
+	<%= background_img_helper("small-poster", @doctor) %>
+	<% if false %>
+		<%= link_to doctor_path(@doctor) do %>
+	        <%= background_image_helper("div", @doctor, "medium", "50px", "50px", "100%") %>
+	    <% end %>
+    <% end %>
+    <% if false %>
+		<%= image_tag "yuna.jpg", class:"poster-avatar-img size3125x3125" %>
+	<% end %>
 </div>
 <div class="poster-name">
 	<%= link_to "#{post.doctor.name}",doctor_path(post.doctor), {class:"name"} %><br>

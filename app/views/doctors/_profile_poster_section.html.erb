@@ -1,6 +1,9 @@
 <% if !doctor.post.blank? %>
   <div class="poster-avatar">
-    <%= image_tag "yuna.jpg", class:"poster-avatar-img size3x3" %>
+    <%= background_img_helper("small-poster", doctor) %>
+    <% if false %>
+      <%= image_tag "yuna.jpg", class:"poster-avatar-img size3x3" %>
+    <% end %>
   </div>
   <div class="poster-name">
 	  <%= link_to "#{doctor.name}",doctor_path(doctor), {class:"name"} %><br>

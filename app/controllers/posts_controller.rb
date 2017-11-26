@@ -6,22 +6,6 @@ class PostsController < ApplicationController
     
     def index
         
-        #共用index.html.erb版本
-        #if params[:phase]
-        #    @posts = Post.all.includes(:phase).includes(:issue).includes(:doctor).where(:phase_id => params[:phase]).order('id DESC')
-        #    @title = Phase.find_by(:id => params[:phase]).title
-        #elsif params[:issue]
-        #    @posts = Post.all.includes(:phase).includes(:issue).includes(:doctor).where(:issue_id => params[:issue]).order('id DESC')
-        #    @title = Issue.find_by(:id => params[:issue]).title
-        #else
-            #@posts = @paginate = Post.all.order('id DESC').paginate(:page => params[:page], :per_page => 6)
-            #@title = "總討論區"
-        #end
-        
-       
-        
-        
-         
         #filterrific版本
 		@filterrific = initialize_filterrific(
 			Post.includes(:phase, :issue),
@@ -49,23 +33,7 @@ class PostsController < ApplicationController
         @flex_filter_title = "按孕期排序"
         @flex_filter_icon ="pregnant_woman"
         @filter_anchor = @post_cates = @phases = Phase.all
-        @phase_1 = @phases.select{|t| t.phasecate_id == 1} #懷孕期間
-        @phase_2 = @phases.select{|t| t.phasecate_id == 2} #生產過後
-        
-        
         @posts_tag = Post.all.includes(:phase, :issue).includes(:doctor).order('id DESC')
-        
-        #@posts_phase_one = Post.includes(:issue).choose_phase(1)
-        #@posts_phase_two = Post.includes(:issue).choose_phase(2)
-        #@posts_phase_three = Post.includes(:issue).where(:phase_id => "3").order('id DESC').limit(3)
-        #@posts_phase_four = Post.includes(:issue).where(:phase_id => "4").order('id DESC').limit(3)
-            
-        #@posts_phase = Post.all.includes(:phase).includes(:issue).order('id DESC')
-        #@posts_phase_one = @posts_phase.select{|t| t.phase_id == 1}.first(3)
-        #@posts_phase_two = @posts_phase.select{|t| t.phase_id == 2}.first(3)
-        #@posts_phase_three = @posts_phase.select{|t| t.phase_id == 3}.first(3)
-        #@posts_phase_four = @posts_phase.select{|t| t.phase_id == 4}.first(3)
-
     end
     
     
@@ -128,10 +96,7 @@ class PostsController < ApplicationController
         else
             render 'edit'
         end
-        
     end
-    
-   
     
 	def destroy
 	    @doctor = Doctor.find(params[:doctor_id])
@@ -139,6 +104,8 @@ class PostsController < ApplicationController
 		@post.destroy
 		redirect_to doctor_path(@doctor)
 	end
+	
+	
     
     private
     def post_params
@@ -151,7 +118,4 @@ class PostsController < ApplicationController
 	def find_post
 	    @post = Post.find(params[:id])
 	end
-	
-    
-    
 end

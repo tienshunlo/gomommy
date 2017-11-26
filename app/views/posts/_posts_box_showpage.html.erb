@@ -1,6 +1,9 @@
 <div class="section__poster Height4">
 	<div class="poster-avatar">
+		<%= background_img_helper("big-poster", @doctor) %>
+		<% if false %>
 		<%= image_tag "yuna.jpg", class:"poster-avatar-img  size375x375" %>
+		<% end %>
 	</div>
 	<div class="poster-name flex80px">
 		<%= link_to "#{post.doctor.name}",doctor_path(post.doctor), {class:"name"} %><br>

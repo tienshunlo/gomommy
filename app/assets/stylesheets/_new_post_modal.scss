@@ -103,18 +103,27 @@
 }
 
 
-.donate-now input[type="radio"]:checked + label,
-.Checked + label {
-    background: $primary-color-light;
-    color: white;
-}
 
-
-
-.donate-now label:hover {
+.new-post-section label:hover {
      background: $primary-color-light;
      color: white;
      //@media only screen and (max-width: 993px){
         //pointer-events: none;
   //}
 }
+
+[type="radio"] + label:before, [type="radio"] + label:after {
+ content: none !important;
+ }
+ 
+ [type="radio"]:not(:checked) + label, [type="radio"]:checked + label {
+    position: relative;
+    padding: 0 12px;
+    cursor: pointer;
+     display: inline-block;
+    line-height: 32px;
+    font-size: 13px;
+    transition: .28s ease;
+    -khtml-user-select: none;
+    user-select: none;
+ }
