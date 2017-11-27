@@ -72,10 +72,14 @@ class DoctorsController < ApplicationController
     end
 	
 	def show
+
 		
 
 		@page_title = @doctor.name
 		
+
+		@doctor = Doctor.friendly.includes(:post).find(params[:id])
+
 		@flex_filter_title = "按孕期排序"
         @flex_filter_icon = "pregnant_woman"
         
@@ -168,6 +172,6 @@ class DoctorsController < ApplicationController
 	private
 	
 	def find_doctor
-		@doctor = Doctor.find(params[:id])
+		@doctor = Doctor.friendly.find(params[:id])
 	end
 end
