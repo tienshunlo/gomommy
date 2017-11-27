@@ -1,21 +1,6 @@
-<% content_for :sidebar do %>
-	<!-- 側邊欄 留言區 主選單 -->
-	<%= render 'shared/sidebar_index' %>
-<% end %>
-
-
-
-
 <div class="section">
 	<%= render 'shared/flex_filterbar' %>
 </div>
-
-<% if false %>
-<div class="section">
-	<%= flex_filterbar(@filter_anchor) %>
-</div>
-<% end %>
-
 <div class="section">
 	<% @issues.each do |issue| %>
 		<header class="header_cate">

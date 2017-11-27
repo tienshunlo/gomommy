@@ -1,7 +1,3 @@
-<% content_for :sidebar do %>
-	<%= render 'shared/sidebar_index' %>
-<% end %>
-
 <div class="section">
 	<%= render 'shared/flex_filterbar' %>
 </div>
@@ -21,7 +17,11 @@
 	    				<%= render partial: "doctors/profile_box", locals: {doctor: doctor} %>
 	    			</div>
 	    			<div class="box__post BoxHeight10">
-	    				<%= render partial: "doctors/post_box", locals: {doctor: doctor} %>
+	    				<% if doctor.post.last %>
+	    					<%= render partial: "doctors/post_box", locals: {doctor: doctor} %>
+	    				<% else %>
+	    					<h2 class="post-title"> 有甚麼想分享、想問的嗎？ 成為第一個留言的人</h5>
+	    				<% end %>
 	    			</div>
 	    		    <%= render 'posts/new_post_modal', doctor: doctor %>
     		    </div>

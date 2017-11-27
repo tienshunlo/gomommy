@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009095315) do
+
+ActiveRecord::Schema.define(version: 20171031031639) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 20171009095315) do
     t.integer  "post_count",              limit: 4,     default: 0
     t.integer  "impressions_count",       limit: 4
     t.string   "slug",                    limit: 255
+    t.integer  "status",                  limit: 4,     default: 0
   end
 
   add_index "doctors", ["slug"], name: "index_doctors_on_slug", unique: true, using: :btree

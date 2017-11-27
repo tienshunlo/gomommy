@@ -1,5 +1,16 @@
 <div class="section__avatar">
-    <%= link_to image_tag(doctor.doctor_img.url, class: 'profile-avatar-img'), doctor %>
+    <%= background_img_helper("index", doctor) %>
+    <% if false %>
+        <%= link_to doctor_path(doctor) do %>
+            <%= background_image_helper("div", doctor, "medium","100%", "180px", "0px") %>
+        <% end %>
+    <% end %>
+    <% if false %>
+    <%= link_to doctor_path(doctor) do %>
+        <div style="background-image: url('<%= doctor.doctor_img.url%>'); height: 180px; background-size: cover; background-position: 50% 50% !important;"> 
+        </div>
+    <% end %>
+    <% end %>
     <ul>
         <li>
             <span class="profile-name"><%= link_to "#{doctor.name} 醫生", doctor %></span>

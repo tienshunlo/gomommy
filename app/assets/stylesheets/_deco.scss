@@ -1,12 +1,33 @@
+/** Beginning of 方向 相關 */
+
+    
+.flex-colunm {
+    flex-direction: column !important;
+}
+
+.flex-row {
+    flex-direction: row !important;
+}
+
+
+
+/** End of 方向 相關 */
+
+
+
 /** Beginning of 背景色 相關 */
 
     
 .primary-bg {
-    background-color: $primary-bg;
+    background-color: $primary-bg !important;
 }
 
 .secondary-bg {
-    background-color: $secondary-bg;
+    background-color: $secondary-bg !important;
+}
+
+.transparent-bg {
+    background-color: transparent !important;
 }
 
 
@@ -20,7 +41,11 @@
 }
 
 .no-border {
-    border: none;
+    border: none !important;
+}
+
+.radius100{
+    border-radius: 100%;
 }
 .basic-shadow {
     box-shadow: 0 1px 4px rgba(0,0,0,.04);
@@ -31,7 +56,7 @@
 
 /** Beginning of 文字 相關 */
 .post-title {
-    color: rgba(0,0,0,.84)!important;
+    color: rgba(0,0,0,.84) !important;
     margin: 0;
     font-size: 1.3125rem;
     font-weight: 600 !important;
@@ -45,67 +70,56 @@
     font-size: 1.0rem;
     font-weight: 500 !important;
     line-height: 1.2 !important;
-    letter-spacing: 0.1em!important;
+    letter-spacing: 0.1em !important;
+    p {
+        display: block !important;
+        -webkit-margin-before: -0.5em;
+        -webkit-margin-after: 0.5em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+    }
 }
 
 .poster-name {
     flex: 0 1 calc(100% - 60px);
     font-size: 1.0rem;
-    a.name {
-        color: rgba(0,0,0,.84)!important;
-        font-weight: 700;
-    }
-    .time-ago-in-words{
-        color: rgba(0,0,0,.54)!important;
-        font-size: 0.8rem;
-    }
-}
-//字體的大小
-.FontSize2{
-    font-size: 2rem;
 }
 
+.profile-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+a.name {
+    color: rgba(0,0,0,.84)!important;
+    font-weight: 700;
+}
+.time-ago-in-words{
+    color: rgba(0,0,0,.54)!important;
+    font-size: 0.8rem;
+}
+//字體的大小
+
+.FontSize1{
+    font-size: 1.0rem;
+}
+.FontSize11{
+    font-size: 1.1rem;
+}
 .FontSize12{
     font-size: 1.2rem;
 }
+.FontSize2{
+    font-size: 2.0rem;
+}
+.FontSize3{
+    font-size: 3.0rem;
+}
+
+
 
 /** End of 文字 相關 */
 
-/** Beginning of 圖片 相關 */
-
-.profile-avatar-img {
-    display: block;
-    position: relative;
-    border: none;
-    width: 100%;
-}
-
-.poster-avatar {
-    flex: 0 0 auto;
-    
-}
-
-.poster-avatar-img {
-    border-radius: 100%;
-}
-
-
-.size3x3 {
-    width: 3rem!important;
-    height: 3rem!important;
-}
-
-.size3125x3125 {
-    width: 3.125rem!important;
-    height: 3.125rem!important;
-}
-
-.size375x375 {
-    width: 3.75rem!important;
-    height: 3.75rem!important;
-}
-    
-/** End of 圖片 相關 */
 
 
 
@@ -123,7 +137,24 @@
 .MaxWidth640{
     max-width: 640px !important;
 }
+
+.Width100px{
+    width: 100px !important;
+}
+
+
+.Width100{
+    width: 100% !important;
+}
 //高度
+
+.Height4 {
+    height: 4.0rem;
+} 
+
+.Height100{
+    height: 100%;
+}
 
 .BoxHeight9{
     height: 9rem;
@@ -147,19 +178,23 @@
 }
 
 //邊距
+.margin0{
+    margin: 0 auto !important;
+}
 .oneRemMargin{
     margin: 0.2rem;
+}
+
+.MarginTop00{
+    margin-top: 0.0rem;
 }
 
 .MarginTop05{
     margin-top: 0.5rem;
 }
-
-
 .MarginTop1{
     margin-top: 1rem;
 }
-
 .MarginTop15{
     margin-top: 1.5rem;
 }
@@ -167,8 +202,28 @@
     margin-top: 2rem;
 }
 
+.MarginBottom05{
+    margin-bottom: 0.5rem;
+}
+
+.margin-b-1{
+    margin-bottom: 1rem;
+}
 .flex80px{
     flex: 0 1 calc(100% - 80px);
+}
+
+//內距
+
+.padding0 {
+    padding: 0  !important;
+}
+.paddingleft1 {
+    padding: 1rem;
+}
+
+.padding-l1 {
+    padding-left: 1rem;
 }
 
 /** End of 大小、邊距等 相關 */

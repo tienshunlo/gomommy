@@ -1,21 +1,12 @@
-<% content_for :show_sidebar do %>
-	<!-- 看同縣市的醫生 -->
-	<%= render 'doctors/side_bar' %>
-<% end %>
-
-<% content_for :sidebar do %>
-	<!-- 醫生資訊 -->
-	<%= render 'doctors/doctor_show_sidebar' %>
-<% end %>
-
-
-<% content_for :profile_headbar do %>
+<% content_for :show_headbar do %>
 	<!-- 個別醫生的照片與孕期篩選器 -->
-	<%= render 'doctors/doctor_show_headbar' %>
+	<%= render 'doctors/show_headbar' %>
 <% end %>
 
 
-
+<div class="section">
+	<%= render 'shared/flex_filterbar' %>
+</div>
 <div class="section">
 	<header class="header_cate">
 		<span class="header_cate_title">
@@ -27,7 +18,7 @@
 			<h5> 有甚麼想分享、想問的嗎？ 成為第一個留言的人</h5>
 		<% else %>
 			<% @posts.each do |post| %>
-				<div class="wrapper__box--medium">
+				<div class="wrapper__box--small">
 					<%= render 'posts/posts_box', post: post  %>
 				</div>	
 			<% end %>
@@ -50,5 +41,6 @@
 		</ul>	
 	</div>
 </div>
+
 
 

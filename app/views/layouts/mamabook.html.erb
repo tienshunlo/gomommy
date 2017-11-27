@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gomommy</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  </head>
+  <body>
+    <header>
+      <%= render 'shared/application_header' %>
+    </header>  
+    <main>
+      <div class="container-post primary-bg">
+        <div class="wrapper--row MaxWidth1000">
+          <%= render 'dashboard/mamabook/mamabook_headbar' %>
+        </div>
+      </div>
+      <div class="container-post primary-bg">
+        <div class="wrapper--row MaxWidth1000">
+          <%= render 'dashboard/mamabook/mamabook_section__action' %>
+        </div>
+      </div>
+      <div class="container-post secondary-bg">
+        <div class="wrapper--column MaxWidth1000">
+          <%= yield %>
+          <%= will_paginate @paginate if @paginate %>
+        </div>
+      </div>
+    </main> 
+    <div class="flex-bottom-nav show-on-small hide-on-med-and-up">
+      <%= render 'shared/application_mobile_footer_nav' %>
+    </div>
+    <footer class="page-footer hide-on-small-only">
+       <%= render 'shared/application_footer' %>
+    </footer>
+    <script>
+  	
+  	$(document).ready(function(){
+      $('.collapsible').collapsible();
+      $(".dropdown-button").dropdown();
+      $(".button-collapse").sideNav();
+      $('select').material_select(); // materializeCSS的select要發揮作用，一定要有這行
+      $('.modal').modal(); // 跳出視窗
+    });
+     </script>
+  </body>
+</html>

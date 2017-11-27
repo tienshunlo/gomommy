@@ -1,53 +1,29 @@
-<% if @filter_anchor %><%#= 孕期 徵狀 篩選器 %>
-    <div class="profile-header-right">
-        <div class='wrapper__filter'>
-        	<div class='flex-filter-title'>
-        		<i class="material-icons"><%= @flex_filter_icon %></i>
-        		<span><%= @flex_filter_title %></span>
-        	</div>
-        	<div class="flex-filter-section">
-            	<ul>
-          			<% @filter_anchor.each do |filter_anchor| %>
-        				<li>
-        					<%= link_to filter_anchor.title, {:anchor => filter_anchor.title},{class:"chip-filter"} %>
-        				</li>
-        	    	<% end %>
-            	</ul>
-        	</div>
-    	</div>
-    </div>
-<% elsif @citys %><%#= 首頁醫生 篩選器 %>
-    <div class='wrapper__filter'>
-        <div class='flex-filter-title'>
-        	<i class="material-icons"><%= @flex_filter_icon %></i>
-        	<span><%= @flex_filter_title %></span>
-        </div>
-        <div class="flex-filter-section">
-            <ul>
-                <li><%= link_to "全部城市", doctors_path(city: nil), class:"chip-filter" %></li>
-          		<% @citys.each do |city| %>
-        			<li>
-        				<%= link_to city.name, doctors_path(city: city.name), { class:"chip-filter"} %>
-        			</li>
-        	    <% end %>
-            </ul>
-        </div>
-    </div> 
-<% else %><%#= 醫生show page/profile 孕期 篩選器 %>
-    <div class='wrapper__filter'>
-        <div class='flex-filter-title'>
-        	<i class="material-icons"><%= @flex_filter_icon %></i>
-        	<span><%= @flex_filter_title %></span>
-        </div>
-        <div class="flex-filter-section">
-            <ul>
-                <li><%= link_to "ALL", doctor_path(@doctor), {class:"chip-filter"} %></li>
-          		<% @phases.each do |phase| %>
-        		    <li>
-        				<%= link_to phase.title, doctor_path(@doctor, phase: phase ), class: "chip-filter" %>
-        			</li>
-        	    <% end %>
-            </ul>
-        </div>
-    </div>
+<div class='wrapper__filter'>
+	<div class='flex-filter-title'>
+		<i class="material-icons"><%= @flex_filter_icon %></i>
+		<span><%= @flex_filter_title %></span>
+	</div>
+	<div class="flex-filter-section">
+    	<ul>
+    	    <%= filter_helper %>
+    	</ul>
+	</div>
+</div>
+
+<% if false %>
+    <% if @filter_anchor %><%#= 孕期 徵狀 篩選器 %>
+  		<% @filter_anchor.each do |filter_anchor| %>
+			<li><%= link_to filter_anchor.title, {:anchor => filter_anchor.title},{class:"chip-filter"} %></li>
+    	<% end %>
+    <% elsif @citys %><%#= 首頁醫生 篩選器 %>
+	    <li><%= link_to "全部城市", doctors_path(city: nil), class:"chip-filter" %></li>
+  		<% @citys.each do |city| %>
+			<li><%= link_to city.name, doctors_path(city: city.name), { class:"chip-filter"} %></li>
+	    <% end %>
+    <% else %>
+	    <li><%= link_to "ALL", doctor_path(@doctor), {class:"chip-filter"} %></li>
+  		<% @phases.each do |phase| %>
+		    <li><%= link_to phase.title, doctor_path(@doctor, phase: phase ), class: "chip-filter" %></li>
+	    <% end %>
+    <% end %>
 <% end %>

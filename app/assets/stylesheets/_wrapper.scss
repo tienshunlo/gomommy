@@ -1,6 +1,23 @@
 
 
+.wrapper--basic{
+    display: flex;
+    padding: 2rem 0rem;
+    margin: 0 auto;
+    width: 100%;
+}
 
+.wrapper--column{
+    @extend .wrapper--basic;
+    flex-direction: column;
+    
+}
+
+.wrapper--row{
+    @extend .wrapper--basic;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 /* Beginning of Post View */  
 
@@ -10,11 +27,7 @@
 }
 
 .wrapper__post{
-    display: flex;
-    flex-direction: column;
-    padding: 2rem 0rem;
-    margin: 0 auto;
-    width: 100%;
+    @extend .wrapper--column;
 }
 
 
@@ -28,36 +41,29 @@
 }
 
 .wrapper__doctor{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 2rem 0rem;
-    margin: 0px auto;
-    width: 100%;
-    @media only screen and (max-width: 600px) {
+    @extend .wrapper--row;
+    @media only screen and (max-width: 767px) {
         margin: 0 auto;
         padding: 0px;
         width: 100%;
         flex-wrap: wrap;
     }
-    @media only screen and (min-width: 600px) and (max-width: 992px) {
-        width: 85%;
-        flex-wrap: wrap;
-    }
-    @media only screen and (min-width: 993px) and (max-width: 1199px) {
-        width: 70%;
-        flex-wrap: wrap;
-    }
-    @media only screen and (min-width: 1200px) {
-        width: 70%;
-    }
+    //@media only screen and (min-width: 600px) and (max-width: 992px) {
+       // width: 85%;
+        //flex-wrap: wrap;
+    //}
+    //@media only screen and (min-width: 993px) and (max-width: 1199px) {
+        //width: 70%;
+        //flex-wrap: wrap;
+    //}
+    //@media only screen and (min-width: 1200px) {
+        //width: 70%;
+    //}
 }
 
 .wrapper__header--right {
-    flex: 0 1 calc(100% - 325px);
     display: flex;
     flex-direction: column;
-    align-self: flex-end;
     overflow: hidden;
     margin-bottom: 30px;
     @media only screen and (max-width: 1199px) {
@@ -103,7 +109,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
-    @media only screen and (max-width: 1199px) {
+    @media only screen and (max-width: 767px) {
         flex: 1 1 100%;
         justify-content: center !important;
     }
@@ -118,25 +124,13 @@
     overflow: hidden;
 }
 
-.wrapper__box--300Max {
-    @extend .wrapper__box;
-    width: 100%;
-    max-width: 300px;
-    padding: 0.5rem 0.5rem;
-    @media only screen and (max-width: 600px) {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-}
+
 
 .wrapper__box--small {
     @extend .wrapper__box;
     width: 33.3333%;
     padding: 0.5rem 0.5rem;
     //flex: 0 1 calc(33% - 8px);
-    @media only screen and (max-width: 600px) {
-        width: 100%;
-    }
 }
 
 
@@ -145,9 +139,6 @@
     width: 50%;
     padding: 0.5rem 0.625rem;
     //flex: 0 1 calc(50% - 8px);
-    @media only screen and (max-width: 600px) {
-        flex: 1 1 100%;
-    }
 }
 
 .wrapper__box--large {
@@ -156,8 +147,16 @@
     padding: 0rem 1.5rem;
     //flex: 0 1 calc(33% - 8px);
     margin: 0 auto 30px;
-    @media only screen and (max-width: 600px) {
+}
+
+.wrapper__box--300Max {
+    @extend .wrapper__box;
+    width: 100%;
+    max-width: 300px;
+    padding: 0.5rem 0.5rem;
+    @media only screen and (max-width: 767px) {
         flex: 1 1 100%;
+        max-width: 100%;
     }
 }
 
