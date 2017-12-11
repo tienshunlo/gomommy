@@ -5,7 +5,7 @@
 				<div class="box__post flex-row">
 					<div class="section__poster flex-colunm">
 						<div class="poster-avatar">
-							<%= link_to image_tag(post.doctor.doctor_img.url(:thumb), class: 'poster-avatar-img size6x6'), post.doctor %>
+							<#= link_to image_tag(post.doctor.doctor_img.url(:thumb), class: 'poster-avatar-img size6x6'), post.doctor %>
 						</div>
 					</div>
 					<div class="section__content flex-colunm Width100 padding-l1">
@@ -27,10 +27,10 @@
 			<div class="box__post">
 				<div class="section__poster">
 					<div class="poster-avatar">
-						<%= image_tag "yuna.jpg", class:"poster-avatar-img size3x3" %>
+						<%= poster_img_helper("small-poster", post) %>
 					</div>
 					<div class="poster-name">
-						<%= link_to "#{post.doctor.name}",doctor_path(post.doctor), {class:"name"} %><br>
+						<%= link_to "#{User.find(post.user_id).nickname}","#", {class:"name"} %><br>
 						<span class="time-ago-in-words"><%= time_ago_in_words(post.created_at) %> ago</span>
 					</div>
 				</div>

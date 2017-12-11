@@ -1,29 +1,18 @@
 <div class="section__avatar">
-    <%= background_img_helper("index", doctor) %>
-    <% if false %>
-        <%= link_to doctor_path(doctor) do %>
-            <%= background_image_helper("div", doctor, "medium","100%", "180px", "0px") %>
-        <% end %>
-    <% end %>
-    <% if false %>
-    <%= link_to doctor_path(doctor) do %>
-        <div style="background-image: url('<%= doctor.doctor_img.url%>'); height: 180px; background-size: cover; background-position: 50% 50% !important;"> 
-        </div>
-    <% end %>
-    <% end %>
+    <%= doctor_img_helper("index", doctor) %>
     <ul>
         <li>
             <span class="profile-name"><%= link_to "#{doctor.name} 醫生", doctor %></span>
         </li>
         <% if false %>
-        <li>
-            <!-- New Post Modal Trigger -->
-            <%= link_to "#modal-new-post_#{doctor.id}", class:"btn-custom btn-custom-white" do %> 
-	            <i class="material-icons">mode_edit</i>
-	            <span><%= "留言" %></span>
-            <% end %>
-        </li>
-         <% end %>
+            <li>
+                <!-- New Post Modal Trigger -->
+                <%= link_to "#modal-new-post_#{doctor.id}", class:"btn-custom btn-custom-white" do %> 
+    	            <i class="material-icons">mode_edit</i>
+    	            <span><%= "留言" %></span>
+                <% end %>
+            </li>
+        <% end %>
     </ul>
 </div>
 

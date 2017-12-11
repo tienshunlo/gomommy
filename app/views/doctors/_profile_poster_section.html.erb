@@ -1,12 +1,9 @@
 <% if !doctor.post.blank? %>
   <div class="poster-avatar">
-    <%= background_img_helper("small-poster", doctor) %>
-    <% if false %>
-      <%= image_tag "yuna.jpg", class:"poster-avatar-img size3x3" %>
-    <% end %>
+    <%= poster_img_helper("small-poster", doctor.post.last) %>
   </div>
   <div class="poster-name">
-	  <%= link_to "#{doctor.name}",doctor_path(doctor), {class:"name"} %><br>
+	  <%= link_to "#{User.find(doctor.post.last.user_id).nickname}","#", {class:"name"} %><br>
 		<span class="time-ago-in-words"><%= time_ago_in_words(doctor.post.last.created_at) %> ago</span>
   </div>
 <% else %>

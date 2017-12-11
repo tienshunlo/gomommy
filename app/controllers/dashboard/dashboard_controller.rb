@@ -1,10 +1,4 @@
 class Dashboard::DashboardController < ApplicationController
+  before_action :authenticate_user!
   layout "dashboard"
-  def posts
-    @posts = @paginate = Post.includes(:doctor).paginate(:page => params[:page], :per_page => 5)
-  end
-  
-  def doctors
-    @doctors =@paginate = Doctor.paginate(:page => params[:page], :per_page => 5)
-  end
 end

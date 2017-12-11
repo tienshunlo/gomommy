@@ -33,21 +33,7 @@ module ApplicationHelper
     end
     
     def background_img_helper(layout, avatar)
-        if layout == "index"
-            link_to "", "#{doctor_path(avatar)}", { class: "u-block", 
-                                                    style: "background-image: url('#{avatar.doctor_img.url(:medium)}'); 
-                                                            height: 10rem;"
-                                                    } 
-            
-        elsif layout == "profile"
-            link_to "", "#{doctor_path(avatar)}", { class: "u-block size10x10 radius100", 
-                                                    style: "background-image: url('#{avatar.doctor_img.url(:medium)}');"
-                                                    }
-        elsif layout == "small-poster"
-            link_to "", "#{doctor_path(avatar)}", { class: "u-block size3x3 radius100", 
-                                                    style: "background-image: url('#{avatar.doctor_img.url(:medium)}');" 
-                                                    }
-        elsif layout == "big-poster"
+        if layout ==  "big-poster"
             content_tag("a", 
                         nil, 
                         href:  "#{doctor_path(avatar)}",
@@ -58,6 +44,55 @@ module ApplicationHelper
         end
     end
     
+    def doctor_img_helper(layout, doctor)
+        doctor_image = doctor.doctor_img.url(:medium)
+        if layout == "index"
+            link_to "", "#{doctor_path(doctor)}", { class: "u-block", 
+                                                    style: "background-image: url('#{doctor_image}'); 
+                                                            height: 10rem;"
+                                                    } 
+            
+        elsif layout == "show"
+            link_to "", "#{doctor_path(doctor)}", { class: "u-block size10x10 radius100", 
+                                                    style: "background-image: url('#{doctor_image}');"
+                                                    }
+                                                    
+        elsif layout == "dashboard"
+            link_to "", "#{doctor_path(doctor)}", { class: "u-block size6x6 radius100", 
+                                                    style: "background-image: url('#{doctor_image}');"
+                                                    }
+        
+        elsif layout == "small-poster"
+            link_to "", "#", { class: "u-block size3x3 radius100", 
+                                                    style: "background-image: url('#{doctor_image}');" 
+                                                    }
+        end
+    end
     
+    def poster_img_helper(layout, post)
+        poster_image = User.find(post.user_id).profile.profile_img.url(:medium)
+        if layout == "small-poster"
+            link_to "", "#", { class: "u-block size3x3 radius100", 
+                                                    style: "background-image: url('#{poster_image}')" 
+                                                    }
+        elsif layout == "big-poster"
+            link_to "", "#", { class: "u-block size375x375 radius100", 
+                                                    style: "background-image: url('#{poster_image}')"
+                                                    }
+        end
+    end
+    
+    def user_img_helper(layout, current_user)
+        user_image = current_user.profile.profile_img.url(:medium)
+        if layout == "small-poster"
+            link_to "", "#", { class: "u-block size3x3 radius100", 
+                                                    style: "background-image: url('#{user_image}')" 
+                                                    }
+        elsif layout == "big-poster"
+            link_to "", "#", { class: "u-block size7x7 radius100", 
+                                                    style: "background-image: url('#{user_image}')"
+                                                    }
+        end
+    end
 end
 

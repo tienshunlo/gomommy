@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127055438) do
+ActiveRecord::Schema.define(version: 20171207050529) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20171127055438) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
+
+  add_index "comments", ["user_id", "post_id"], name: "index_comments_on_user_id_and_post_id", unique: true, using: :btree
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -136,7 +138,23 @@ ActiveRecord::Schema.define(version: 20171127055438) do
     t.integer  "comment_count", limit: 4,     default: 0
     t.integer  "phase_id",      limit: 4
     t.integer  "issue_id",      limit: 4
+    t.integer  "user_id",       limit: 4,                 null: false
   end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "profiles", id: false, force: :cascade do |t|
+    t.integer  "user_id",                  limit: 4
+    t.string   "location",                 limit: 255
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.string   "profile_img_file_name",    limit: 255
+    t.string   "profile_img_content_type", limit: 255
+    t.integer  "profile_img_file_size",    limit: 4
+    t.datetime "profile_img_updated_at"
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -152,9 +170,11 @@ ActiveRecord::Schema.define(version: 20171127055438) do
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "nickname",               limit: 255
+    t.integer  "status",                 limit: 4,   default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "profiles", "users"
 end

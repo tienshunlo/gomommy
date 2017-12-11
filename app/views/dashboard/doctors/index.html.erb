@@ -1,10 +1,15 @@
 <% @doctors.each do |doctor| %>
 	<div class="wrapper__box--large MaxWidth740">
+		<header class="header_cate">
+	  		<span class="header_cate_title">
+	  			關注的醫生
+	  		</span>
+	  	</header>
 		<div class="wrapper__box--inner">
 			<div class="box__post flex-row">
 				<div class="section__poster flex-colunm">
 					<div class="poster-avatar">
-						<%= link_to image_tag(doctor.doctor_img.url(:thumb), class: 'poster-avatar-img size6x6'), doctor %>
+						<%= doctor_img_helper("dashboard", doctor) %>
 					</div>
 				</div>
 				<div class="section__content flex-colunm Width100 padding-l1">

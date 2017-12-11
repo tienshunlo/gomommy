@@ -1,17 +1,20 @@
-<div class="section">
-	<%= render(partial: 'posts/list',locals: { posts: @posts }) %>
-</div>    
 
 <% @posts.each do |post| %>
+	
 	<div class="wrapper__box--large MaxWidth640">
+		<header class="header_cate">
+	  		<span class="header_cate_title">
+	  			發表過的文章
+	  		</span>
+	  	</header>
 		<div class="wrapper__box--inner basic-shadow">
 			<div class="box__post">
 				<div class="section__poster">
 					<div class="poster-avatar">
-						<%= image_tag "yuna.jpg", class:"poster-avatar-img size3x3" %>
+						<%= user_img_helper("small-poster", current_user) %>
 					</div>
 					<div class="poster-name">
-						<%= link_to "#{post.doctor.name}",doctor_path(post.doctor), {class:"name"} %><br>
+						<%= link_to "#{current_user.nickname}","#", {class:"name"} %><br>
 						<span class="time-ago-in-words"><%= time_ago_in_words(post.created_at) %> ago</span>
 					</div>
 				</div>
