@@ -1,0 +1,14 @@
+<div class="wrapper__box--large flex-row MaxWidth740">
+	<div class="section__poster Width100">
+		<div class="poster-name">
+  			<H1 class="post-title FontSize2 MarginTop1"><%= link_to "#{current_user.nickname}", {}, class:"name" %></H1>
+		</div>
+		<div class="poster-avatar">
+			<% if @profile.profile_img %>
+				<%= user_img_helper("big-poster", current_user) %>
+			<% else %>
+				<%= image_tag "yuna.jpg", class:"poster-avatar-img  size7x7" %>
+			<% end %>
+		</div>
+	</div>
+</div>

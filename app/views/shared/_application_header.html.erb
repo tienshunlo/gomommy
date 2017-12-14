@@ -10,8 +10,14 @@
         <li><%= link_to "全台醫生", doctors_path(city: nil) %></li>
         <!-- Dropdown Trigger -->
         <li><a class="dropdown-button" href="#!" data-activates="dropdown-discussion">全站討論區分類<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><%= link_to "註冊", doctors_path(city: nil), class:"btn-flat btn-flat-custom white-border" %></li>
-        <li><%= link_to "登入", doctors_path(city: nil), class:"btn-flat btn-flat-custom white-border" %></li>
+        <% if current_user %>
+          <li><%= link_to "個人後台", dashboard_posts_path, class:"btn-flat btn-flat-custom white-border" %></li>
+          <li><%= link_to "登出", destroy_user_session_path, method: :delete, class:"btn-flat btn-flat-custom white-border" %></li>
+        <% else %>
+          <li><%= link_to "註冊", new_user_registration_path, class:"btn-flat btn-flat-custom white-border" %></li>
+          <li><%= link_to "登入", new_user_session_path, class:"btn-flat btn-flat-custom white-border" %></li>
+        <% end %>
+        
       </ul>
       </div>
     </div>

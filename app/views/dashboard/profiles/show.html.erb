@@ -1,0 +1,5 @@
+<div class="wrapper__box--large MaxWidth740">
+    <%= link_to  "更新資料", edit_dashboard_profile_path, class:"button" %>
+    <%= image_tag @profile.profile_img.url(:medium), class:"poster-avatar-img  size7x7" if @profile.profile_img? %>
+    居住城市：<%= @city %>
+</div>

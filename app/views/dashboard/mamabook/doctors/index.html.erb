@@ -9,7 +9,7 @@
 			<div class="box__post flex-row">
 				<div class="section__poster flex-colunm">
 					<div class="poster-avatar">
-						<%= link_to image_tag(doctor.doctor_img.url(:thumb), class: 'poster-avatar-img size6x6'), doctor %>
+						<%= doctor_img_helper("dashboard", doctor) %>
 					</div>
 				</div>
 				<div class="section__content flex-colunm Width100 padding-l1">

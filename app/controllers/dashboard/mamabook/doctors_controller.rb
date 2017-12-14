@@ -45,12 +45,8 @@ class Dashboard::Mamabook::DoctorsController < Dashboard::Mamabook::MamabookCont
 
   private
   
-  def doctor_params
-		params.require(:doctor).permit(:name, :specialty, :experience, :doctor_img)
-	end
-	
   def find_doctor
-    @doctor = Doctor.find(params[:id])
+    @doctor = Doctor.friendly.find(params[:id])
   end
   def doctor_params
     params.require(:doctor).permit( :name,

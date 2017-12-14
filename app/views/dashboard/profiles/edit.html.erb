@@ -1,0 +1,19 @@
+<div class="wrapper__box--large MaxWidth740">
+    <header class="header_cate">
+		<span class="header_cate_title">
+			修改個資
+		</span>
+	</header>
+    <%= form_for @profile, url: dashboard_profile_path, method: :patch, html: { multipart: true } do |f| %>
+        <%= image_tag @profile.profile_img.url(:medium), class:"poster-avatar-img  size7x7" if @profile.profile_img? %>
+        <%= f.file_field :profile_img %>
+        
+        <div class="input-field col s6">
+    		<span>居住城市：</span><%= f.collection_select(:location, City.order(:id), :id, :name) %>
+    	</div>
+        
+        <button class="btn waves-effect waves-light" type="submit" name="action">
+    		<span>送出</span>
+    	</button>
+    <% end %>
+</div>
