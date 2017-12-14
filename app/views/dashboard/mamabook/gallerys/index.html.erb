@@ -1,0 +1,6 @@
+<div class="box__post flex-row">
+	<%=link_to "New", new_dashboard_mamabook_gallery_path, class:"button" %>
+</div>
+<% @gallerys.each do |f| %>
+    <%= image_tag f.gallery_img.url(:medium), class:"poster-avatar-img  size7x7" %>
+<% end %>

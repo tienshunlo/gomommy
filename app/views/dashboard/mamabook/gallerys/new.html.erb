@@ -1,0 +1,6 @@
+<%= form_for @gallery, url: dashboard_mamabook_gallerys_path, html: { multipart: true } do |f| %>
+    <%= f.file_field :gallery_img %>
+    <button class="btn waves-effect waves-light" type="submit" name="action">
+		<span>送出</span>
+	</button>
+<% end %>
