@@ -1,56 +1,12 @@
-<% if false %>
-	<% @posts.each do |post| %>
-		<div class="wrapper__box--large MaxWidth740">
-			<div class="wrapper__box--inner">
-				<div class="box__post flex-row">
-					<div class="section__poster flex-colunm">
-						<div class="poster-avatar">
-							<#= link_to image_tag(post.doctor.doctor_img.url(:thumb), class: 'poster-avatar-img size6x6'), post.doctor %>
-						</div>
-					</div>
-					<div class="section__content flex-colunm Width100 padding-l1">
-	                    <%= link_to doctor_post_path(post.doctor, post) do %> 
-							<h2 class="post-title MarginTop05"> <%= post.title %> </h2>
-							<div class="section__content flex-colunm">
-								<%= simple_format post.description, class:"post-description MarginTop15 FontSize1" %> 
-							</div>
-						<% end %>
-	                </div>
-				</div>
-			</div>
-		</div>
-	<% end %> 
-<% end %> 
+<div class="wrapper__box--large MaxWidth740">
+	<header class="header_cate">
+		<span class="header_cate_title">
+		  留言
+		</span>
+	</header>
+</div>
 <% @posts.each do |post| %>
-	<div class="wrapper__box--large MaxWidth640">
-		<div class="wrapper__box--inner basic-shadow">
-			<div class="box__post">
-				<div class="section__poster">
-					<div class="poster-avatar">
-						<%= poster_img_helper("small-poster", post) %>
-					</div>
-					<div class="poster-name">
-						<%= link_to "#{User.find(post.user_id).nickname}","#", {class:"name"} %><br>
-						<span class="time-ago-in-words"><%= time_ago_in_words(post.created_at) %> ago</span>
-					</div>
-				</div>
-				<div class="section__content">
-					<%= link_to doctor_post_path(post.doctor, post) do %> 
-						<h2 class="post-title MarginTop05"><%= post.title %></h2>
-						<%= simple_format post.description, class:"post-description FontSize12 MarginTop15" %>
-					<% end %>
-				</div>
-			</div>
-		</div>
-		<div class="section__action">
-			<ul class="no-border transparent-bg">
-				<li>
-					<%=link_to "Edit", edit_dashboard_mamabook_post_path(post), class:"button" %>
-				</li>
-				<li>
-					<%=link_to "Delete", dashboard_mamabook_post_path(post), method: :delete, data: {confirm: 'Are You sure?'}, class:"button"  %>
-				</li>
-			</ul>
-		</div>
-	</div>
+	<%= render partial: 'shared/posts_box', locals: {posts: post, user: post.user} %>
 <% end %> 
+
+

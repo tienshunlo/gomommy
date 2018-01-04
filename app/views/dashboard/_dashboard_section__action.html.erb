@@ -2,10 +2,7 @@
 	<div class="box__post flex-row padding0">
 		<div class="section__action Width100 padding0">
 			<ul class="no-border">
-				<li><%= link_to "修改個資", edit_dashboard_profile_path, class: "button" %></li>
-				<li><%= link_to "更新帳密", edit_registration_dashboard_profile_path, class: "button" %></li>
-				<li><%= link_to "關注的醫生", dashboard_doctors_path, class: "button" %></li>
-				<li><%= link_to "發表的文章", dashboard_posts_path,  class: "button" %></li>
+				<%= dashboard_nav(dashboard_nav_items, "button") %>
 			</ul>
 		</div>
 	</div>

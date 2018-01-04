@@ -1,0 +1,25 @@
+
+<div class="wrapper__box--large MaxWidth740">
+    <header class="header_cate">
+  		<span class="header_cate_title">
+  			相簿
+  		</span>
+	</header>
+	<div class="box__post flex-row">
+        <%= link_to "新增照片", new_dashboard_mamabook_album_path, class: "button" %>
+	</div>
+</div>
+<div class="wrapper__box--large MaxWidth740">
+    <div class="wrapper-doctor-index">
+        <% @albums.each do |album|%>
+            <div class="wrapper__box--small align-center">
+                <%= image_tag album.album_img.url(:medium), class: "poster-avatar-img  size7x7" %>
+                <%= label_tag 'category', album.category, class: "name" %>
+                <div>
+                    <%= link_to "醫生", toggle_category_dashboard_mamabook_album_path(album.id, :category => "doctor" ), class: "button MarginTop05 #{active_category? "doctor", album.category}" %>
+                    <%= link_to "用戶", toggle_category_dashboard_mamabook_album_path(album.id, :category => "user" ), class: "button MarginTop05  #{active_category? "user", album.category}" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

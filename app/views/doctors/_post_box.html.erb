@@ -1,6 +1,11 @@
-<div class="section__content"> 
-    <%= render partial: "doctors/profile_title_section", locals: {doctor: doctor} %>
-</div>
-<div class="section__poster FixedBottom05">
-    <%= render partial: "doctors/profile_poster_section", locals: {doctor: doctor} %>
-</div>
+<% if doctor.post.last %>
+    <div class="section__content"> 
+        <%= render partial: "doctors/profile_title_section", locals: {doctor: doctor} %>
+    </div>
+    <div class="section__poster FixedBottom05">
+        <%= render partial: "doctors/profile_poster_section", locals: {doctor: doctor} %>
+    </div>
+<% else %>
+	<h2 class="index-post-title"> 有甚麼想分享、想問的嗎？ 成為第一個留言的人</h5>
+	<%= login_post_button(current_user, doctor, "button MarginTop1 Width100") %>
+<% end %>

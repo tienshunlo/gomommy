@@ -73,16 +73,12 @@ class DoctorsController < ApplicationController
 	
 	def show
 
-		
-
 		@page_title = @doctor.name
-		
 
 		@doctor = Doctor.friendly.includes(:post).find(params[:id])
 
 		@flex_filter_title = "按孕期排序"
         @flex_filter_icon = "pregnant_woman"
-        
         
         if params[:phase].blank?
         	@post_cate = "全部留言"
@@ -115,16 +111,16 @@ class DoctorsController < ApplicationController
 		
 		#按孕期
 		if params[:period].blank?
-			@posts = @paginate = @doctor.post.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
+			@posts = @paginate = @doctor.post.order('id DESC').paginate(:page => params[:page], :per_page => 5)
 		else
 			@posts = @paginate = @doctor.post.where(:period => params[:period][1]).order('id DESC').paginate(:page => params[:page], :per_page => 5)
 		end
 		
 		#按孕期
 		if params[:phase].blank?
-			@posts = @paginate = @doctor.post.includes(:phase, :issue).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+			@posts = @paginate = @doctor.post.includes(:phase, :issue, :user).order('id DESC').paginate(:page => params[:page], :per_page => 6)
 		else
-			@posts = @paginate = @doctor.post.includes(:phase, :issue).where(:phase => params[:phase]).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+			@posts = @paginate = @doctor.post.includes(:phase, :issue, :user).where(:phase => params[:phase]).order('id DESC').paginate(:page => params[:page], :per_page => 6)
 		end
 		
 		

@@ -1,10 +1,12 @@
+<div class="wrapper__box--large MaxWidth740">
+	<header class="header_cate">
+  		<span class="header_cate_title">
+  			關注的醫生
+  		</span>
+  	</header>
+</div>
 <% @doctors.each do |doctor| %>
 	<div class="wrapper__box--large MaxWidth740">
-		<header class="header_cate">
-	  		<span class="header_cate_title">
-	  			關注的醫生
-	  		</span>
-	  	</header>
 		<div class="wrapper__box--inner">
 			<div class="box__post flex-row">
 				<div class="section__poster flex-colunm">
@@ -31,19 +33,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="section__action">
-			<ul class="no-border transparent-bg">
-				<li>
-					<%= link_to doctor.status.capitalize, toggle_status_dashboard_mamabook_doctor_path(doctor), class:"button" %>
-				</li>
-				<li>
-					<%=link_to "Edit", edit_dashboard_mamabook_doctor_path(doctor), class:"button" %>
-				</li>
-				<li>
-					<%=link_to "Delete", dashboard_mamabook_doctor_path(doctor), method: :delete, data: {confirm: 'Are You sure?'}, class:"button"  %>
-				</li>
-			</ul>
 		</div>
 	</div>
 <% end %> 

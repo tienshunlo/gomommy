@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
     before_action :find_doctor, except: [:index, :posts_phase, :posts_issue, :phase_issue]
     before_action :find_post, only: [:show, :edit, :update, :destroy]
-   
+    before_action :find_issues_and_phases, only: [:new, :create, :edit]
     layout "posts"
     
     def index
-        
+        @flex_filter_icon ="dvr"
         #filterrific版本
 		@filterrific = initialize_filterrific(
 			Post.includes(:phase, :issue),
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     		default_filter_params: {},
     		#available_filters: [],
     		) or return
-    		@posts = @filterrific.find.page(params[:page])
+    		@posts = @paginate = @filterrific.find.paginate(:page => params[:page], :per_page => 6)
     		#@title = @posts.first.phase.title || @posts.first.issue.title
 			respond_to do |format|
 				format.html
@@ -49,10 +49,10 @@ class PostsController < ApplicationController
         #按孕期與症狀的細項分類
         @phases = Phase.all
         if params[:phase]
-            @posts = Post.all.includes(:phase, :issue, :doctor).where(:phase_id => params[:phase]).order('id DESC')
+            @posts = @paginate = Post.all.includes(:phase, :issue, :doctor).where(:phase_id => params[:phase]).order('id DESC').paginate(:page => params[:page], :per_page => 6)
             @title = Phase.find_by(:id => params[:phase]).title
         elsif params[:issue]
-            @posts = Post.all.includes(:phase, :issue, :doctor).where(:issue_id => params[:issue]).order('id DESC')
+            @posts = @paginate = Post.all.includes(:phase, :issue, :doctor).where(:issue_id => params[:issue]).order('id DESC').paginate(:page => params[:page], :per_page => 6)
             @title = Issue.find_by(:id => params[:issue]).title
         else
             render 'index'
@@ -61,25 +61,16 @@ class PostsController < ApplicationController
     
     def new
         @post = Post.new
-        
-        @issues = Issue.all
-        @issue_1 = @issues.select{|t| t.phase_id == 1}  #檢查相關
-        @issue_2 = @issues.select{|t| t.phase_id == 2} #孕婦注意事項
-        @issue_3 = @issues.select{|t| t.phase_id == 3} #生產相關
-        @issue_4 = @issues.select{|t| t.phase_id == 4} #產後注意事項
-        
-        @phases = Phase.all
-        @phase_1 = @phases.select{|t| t.phasecate_id == 1} #懷孕期間
-        @phase_2 = @phases.select{|t| t.phasecate_id == 2} #生產過後後
     end
     
     def create
         @post = Post.new(post_params)
         @post.doctor_id = @doctor.id
+        @post.user_id = current_user.id
         if @post.save
 			redirect_to doctor_post_path(@doctor, @post)
 		else
-			render 'new'
+			render "new"
 		end
     end
     
@@ -109,7 +100,7 @@ class PostsController < ApplicationController
     
     private
     def post_params
-        params.require(:post).permit(:title, :description, :doctor_id, :subject, :period, :kind, :phase_id, :issue_id)
+        params.require(:post).permit(:title, :description, :subject, :phase_id, :issue_id, :doctor_id, :user_id)
     end
     
 	def find_doctor
@@ -117,5 +108,16 @@ class PostsController < ApplicationController
 	end
 	def find_post
 	    @post = Post.find(params[:id])
+	end
+	def find_issues_and_phases
+	    @issues = Issue.all
+        @issue_1 = @issues.select{|t| t.phase_id == 1}  #檢查相關
+        @issue_2 = @issues.select{|t| t.phase_id == 2} #孕婦注意事項
+        @issue_3 = @issues.select{|t| t.phase_id == 3} #生產相關
+        @issue_4 = @issues.select{|t| t.phase_id == 4} #產後注意事項
+        
+        @phases = Phase.all
+        @phase_1 = @phases.select{|t| t.phasecate_id == 1} #懷孕期間
+        @phase_2 = @phases.select{|t| t.phasecate_id == 2} #生產過後後
 	end
 end

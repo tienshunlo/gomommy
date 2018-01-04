@@ -4,8 +4,14 @@ class Post < ActiveRecord::Base
     has_many :comment, dependent: :destroy
     belongs_to :phase
     belongs_to :issue
+    belongs_to :user
     validates_length_of :title, :maximum => 90 
-    validates_presence_of :title, :description, :message => "請記得輸入標題跟內文" 
+    validates_presence_of :subject, :message => "請記得輸入"
+    validates_presence_of :title, :message => "請記得輸入" 
+    validates_presence_of :description, :message => "請記得輸入" 
+    validates_presence_of :phase_id, :message => "請記得選擇"
+    validates_presence_of :issue_id, :message => "請記得選擇"
+
     
     
     

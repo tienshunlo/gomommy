@@ -1,47 +1,43 @@
 <div class="wrapper__box--large MaxWidth740">
     <header class="header_cate">
-  		<span class="header_cate_title">
-  			更新帳密
-  		</span>
+        <span class="header_cate_title">
+  			  更新帳密
+  		  </span>
   	</header>
-
     <%= form_for(current_user, as: current_user, url: registration_path(current_user), html: { method: :put }) do |f| %>
-    
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true %>
-      </div>
-      <div class="field">
-        <%= f.label :nickname %><br />
-        <%= f.text_field :nickname %>
-      </div>
-    
-    
-      <div class="field">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "off" %>
-        <% if @minimum_password_length %>
-          <br />
-          <em><%= @minimum_password_length %> characters minimum</em>
-        <% end %>
-      </div>
-    
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
-      </div>
-    
-      <div class="field">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "off" %>
-      </div>
-    
-      <div class="actions">
-        <%= f.submit "Update" %>
-      </div>
+        
+        <div class="section__form align-center" >
+		        <span class="form__label Width35 ">暱稱</span> 
+		        <span class="flexauto "><%= f.text_field :nickname %></span> 
+        </div>
+        <div class="section__form align-center" >
+		        <span class="form__label Width35 ">信箱</span> 
+		        <span class="flexauto "><%= f.email_field :email, autofocus: true %></span> 
+        </div>
+        <div class="section__form align-center" >
+		        <span class="form__label Width35 ">既有的密碼<br /><i>(必填)</i></span> 
+		        <span class="flexauto "><%= f.password_field :current_password, autocomplete: "off" %></span> 
+        </div>
+        <header class="header_cate">
+            <span class="header_cate_title">
+      			 * 以下若不變更，請留白
+      		  </span>
+      	</header>
+        <div class="section__form align-center" >
+		        <span class="form__label Width35 ">新密碼</span>
+		        <span class="flexauto "><%= f.password_field :password, autocomplete: "off" %></span> 
+		        <% if @minimum_password_length %>
+              <br />
+              <em>最少<%= @minimum_password_length %>字</em>
+            <% end %>
+        </div>
+        <div class="section__form align-center" >
+		        <span class="form__label Width35 ">確認新密碼</span> 
+		        <span class="flexauto "><%= f.password_field :password_confirmation, autocomplete: "off" %></span> 
+        </div>
+      <button class="button" type="submit" name="action">
+    		<span>確定更新</span>
+    	</button>
     <% end %>
     
-    
-    
-    <%= link_to "Back", :back %>
 </div>

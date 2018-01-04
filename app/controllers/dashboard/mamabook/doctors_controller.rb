@@ -7,6 +7,10 @@ class Dashboard::Mamabook::DoctorsController < Dashboard::Mamabook::MamabookCont
   
   def new
     @doctor = Doctor.new
+    @albums = Album.all
+    @citys = City.all
+    @districts = District.all
+    @hospitals = Hospital.all
   end
   
   def create
@@ -19,6 +23,9 @@ class Dashboard::Mamabook::DoctorsController < Dashboard::Mamabook::MamabookCont
   end
   
   def edit
+    @citys = City.all
+    @districts = District.all
+    @hospitals = Hospital.all
   end
   
   def update

@@ -1,14 +1,15 @@
 <div class="wrapper__box--large flex-row MaxWidth740">
 	<div class="section__poster Width100">
 		<div class="poster-name">
-  			<H1 class="post-title FontSize2 MarginTop1"><%= link_to "#{current_user.nickname}", {}, class:"name" %></H1>
+  			<H1 class="post-title FontSize2 MarginTop1"><%= link_to current_user.nickname, {}, class:"name" %></H1>
+			<div class="post-title MarginTop05 FontSize11">小寶貝暱稱:</div>
+			<div class="section__content post-description MarginTop05"> 
+				<%= simple_format current_user.profile.nickname_of_baby %>
+			</div>
 		</div>
 		<div class="poster-avatar">
-			<% if @profile.profile_img %>
-				<%= user_img_helper("big-poster", current_user) %>
-			<% else %>
-				<%= image_tag "yuna.jpg", class:"poster-avatar-img  size7x7" %>
-			<% end %>
+			<%= user_img_helper("big-poster", current_user) %>
+			<%= user_album_button(current_user) %>
 		</div>
 	</div>
 </div>

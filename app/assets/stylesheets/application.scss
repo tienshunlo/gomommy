@@ -36,6 +36,7 @@
 @import "bottom_nav";
 @import "flex_filter";
 @import "header";
+@import "article_content";
 
 
 //客製化原本的CSS設定
@@ -51,16 +52,24 @@
 @import url(//fonts.googleapis.com/earlyaccess/cwtexyen.css);
 
 
-
+$main-font: 'Helvetica Neue', 'PingFang TC', 'Heiti TC', '微軟正黑體', sans-serif;
+$title-font: 'Helvetica Neue', 'PingFang TC', 'Heiti TC', 'Adobe 繁黑體 Std', 'AdobeFanHeitiStd-Bold', '微軟正黑體', sans-serif;
+$special-font: medium-ui-sans-serif-text-font,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
 
 //materializeCSS 改
+
+html, body {
+  font-size: 16px !important;
+  font-family: $main-font;
+  line-height: 1.75;
+}
+
 html {
     //黑體
     //font-family: Verdana,'cwTeXHei', sans-serif;
     //圓體
     //font-family: 'cwTeXYen', sans-serif;
-    font-family: medium-ui-sans-serif-text-font,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
-    font-size: 16px !important;
+   
 }
 
 body {

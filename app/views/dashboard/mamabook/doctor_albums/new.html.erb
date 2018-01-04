@@ -1,0 +1,14 @@
+<div class="wrapper__box--large MaxWidth740">
+	<header class="header_cate">
+  		<span class="header_cate_title">
+  			變更醫生照片
+  		</span>
+	</header>
+    <div class="wrapper-doctor-index">
+		<% @albums.each do |album| %>
+			<div class="wrapper__box--small align-center">
+		    	<%= link_to image_tag(album.album_img.url(:medium), class:"poster-avatar-img  size7x7"), dashboard_mamabook_doctor_doctor_albums_path(album_id: album.id), method: :post %>
+			</div>
+		<% end %>
+	</div>
+</div>

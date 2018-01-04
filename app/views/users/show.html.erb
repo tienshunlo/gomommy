@@ -1,0 +1,28 @@
+<%#= _dashboard_headbar.html%>
+<div class="wrapper__box--large flex-row MaxWidth740">
+	<div class="section__poster Width100">
+		<div class="poster-name">
+  			<H1 class="post-title FontSize2 MarginTop1"><%= link_to "#{@user.nickname}", user_path, class: "name" %></H1>
+			<div class="post-title MarginTop05 FontSize11">小寶貝暱稱:</div>
+			<div class="section__content post-description MarginTop05"> 
+				<%= simple_format @user.profile.nickname_of_baby %>
+			</div>
+		</div>
+		<div class="poster-avatar">
+			<%= user_img_helper("big-poster", @user) %>
+		</div>
+	</div>
+</div>
+
+<%#= dashboard/post/index.html.erb%>
+<div class="wrapper__box--large MaxWidth740">
+	<header class="header_cate">
+		<span class="header_cate_title">
+		  發表過的文章
+		</span>
+	</header>
+</div>
+
+<% @posts.each do |post| %>
+	<%= render partial: 'shared/posts_box', locals: {posts: post, user: @user} %>
+<% end %> 

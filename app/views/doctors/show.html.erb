@@ -3,44 +3,29 @@
 	<%= render 'doctors/show_headbar' %>
 <% end %>
 
-
-<div class="section">
-	<%= render 'shared/flex_filterbar' %>
-</div>
-<div class="section">
-	<header class="header_cate">
-		<span class="header_cate_title">
-			<%= @post_cate %>
-		</span>
-	</header>
-	<div class="wrapper-post-index">
-		<% if @posts.blank? %>
-			<h5> 有甚麼想分享、想問的嗎？ 成為第一個留言的人</h5>
-		<% else %>
-			<% @posts.each do |post| %>
-				<div class="wrapper__box--small">
-					<%= render 'posts/posts_box', post: post  %>
-				</div>	
-			<% end %>
-		<% end %>
+<div class="wrapper__box--large">
+	<div class="section">
+		<%= render 'shared/flex_filterbar' %>
 	</div>
-</div>
-
-<div class="row">
-	<div class="flex-post-box-btn">
-		<ul>
-			<li>
-				<!-- New Post Modal Trigger -->
-				<%= link_to "#modal-new-post_#{@doctor.id}", class:"btn-custom btn-custom-primary" do %> 
-					<i class="material-icons">mode_edit</i>
-					<span><%= "留言" %></span>
+	<div class="section">
+		<header class="header_cate">
+			<span class="header_cate_title">
+				<%= @post_cate %>
+			</span>
+		</header>
+		<div class="wrapper-post-index">
+			<% if @posts.blank? %>
+				<h5> 有甚麼想分享、想問的嗎？ 成為第一個留言的人</h5>
+			<% else %>
+				<% @posts.each do |post| %>
+					<div class="wrapper__box--small">
+						<%= render 'posts/posts_box', post: post  %>
+					</div>	
 				<% end %>
-			</li>
-			<!-- New Post Modal Structure -->
-			<%= render 'posts/new_post_modal', doctor: @doctor %>
-		</ul>	
+			<% end %>
+		</div>
+		<div class="modal-footer new-post-modal-footer">
+			<%= login_post_button(current_user, @doctor, "MarginTop1" ) %> 
+		</div>
 	</div>
 </div>
-
-
-

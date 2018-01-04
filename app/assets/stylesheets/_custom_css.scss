@@ -11,23 +11,5 @@ textarea {
     padding: 5px;
 }
 
-//2. Radio Button 改成 Button。按下不會直接送出
-[type="radio"] + label:before, [type="radio"] + label:after {
-    content: none;
-}
 
-[type="radio"]:not(:checked) + label, [type="radio"]:checked + label {
-    position: relative;
-    padding: 0 12px;
-    cursor: pointer;
-    display: inline-block;
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-    font-size: 13px;
-    transition: .28s ease;
-    -khtml-user-select: none;
-    user-select: none;
-    
-}
 

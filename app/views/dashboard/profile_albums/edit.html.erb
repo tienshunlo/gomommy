@@ -1,0 +1,14 @@
+<div class="wrapper__box--large MaxWidth740">
+	<header class="header_cate">
+  		<span class="header_cate_title">
+  			更新個人照片
+  		</span>
+	</header>
+    <div class="wrapper-doctor-index">
+		<% @albums.each do |album| %>
+			<div class="wrapper__box--xs align-center">
+	    		<%= link_to image_tag(album.album_img.url(:medium), class:"poster-avatar-img  size7x7"), dashboard_profile_profile_album_path(album_id: album.id), method: :patch %>
+			</div>
+		<% end %>
+	</div>
+</div>

@@ -38,8 +38,6 @@
     //height: 100% !important;
     //width: 100%;
     padding: 0 1rem;
-    
-    
     box-shadow: none;
     cursor: pointer;
     transition: background-color .2s;
@@ -66,7 +64,7 @@
     display: inline-block;
     position: relative;
     box-sizing: border-box;
-    padding: 0 18px;
+    padding: 0 15px;
     height: 37px;
     line-height: 35px;
     color: rgba(0,0,0,.45) !important;
@@ -86,9 +84,14 @@
     &:focus {
         border-color: rgba(0,0,0,.68);
         color: rgba(0,0,0,.68) !important;
+        background-color: rgba(0,0,0,.15) !important;
     }
     &:hover {
         border-color: rgba(0,0,0,.68);
         color: rgba(0,0,0,.68) !important;
+    }
+    &.active {
+        background: rgba(0,0,0,.15) !important;
+        color: rgba(0,0,0,.45) !important;
     }
 }   

@@ -1,0 +1,14 @@
+zh-TW:
+  activerecord:
+    attributes:
+      post:
+        title: "標題"
+        description: "內容"
+        subject: "主題"
+        phase_id: "目前所處階段"
+        issue_id: "相關徵狀"
+      user:
+        nickname: "暱稱"
+        email: "信箱"
+        password: "密碼"
+        password_confirmation: "重覆密碼"

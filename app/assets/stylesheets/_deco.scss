@@ -44,6 +44,10 @@
     border: none !important;
 }
 
+.bottom-border {
+    border-bottom: $basic-border !important;
+}
+
 .radius100{
     border-radius: 100%;
 }
@@ -52,73 +56,6 @@
 }
 
 /** End of Border 相關 */
-
-
-/** Beginning of 文字 相關 */
-.post-title {
-    color: rgba(0,0,0,.84) !important;
-    margin: 0;
-    font-size: 1.3125rem;
-    font-weight: 600 !important;
-    line-height: 1.4 !important;
-    letter-spacing: 0.1em !important;
-}
-
-.post-description{
-    color: rgba(0,0,0,.54)!important;
-    margin: 0;
-    font-size: 1.0rem;
-    font-weight: 500 !important;
-    line-height: 1.2 !important;
-    letter-spacing: 0.1em !important;
-    p {
-        display: block !important;
-        -webkit-margin-before: -0.5em;
-        -webkit-margin-after: 0.5em;
-        -webkit-margin-start: 0px;
-        -webkit-margin-end: 0px;
-    }
-}
-
-.poster-name {
-    flex: 0 1 calc(100% - 60px);
-    font-size: 1.0rem;
-}
-
-.profile-name {
-    font-size: 1.25rem;
-    font-weight: 700;
-}
-
-a.name {
-    color: rgba(0,0,0,.84)!important;
-    font-weight: 700;
-}
-.time-ago-in-words{
-    color: rgba(0,0,0,.54)!important;
-    font-size: 0.8rem;
-}
-//字體的大小
-
-.FontSize1{
-    font-size: 1.0rem;
-}
-.FontSize11{
-    font-size: 1.1rem;
-}
-.FontSize12{
-    font-size: 1.2rem;
-}
-.FontSize2{
-    font-size: 2.0rem;
-}
-.FontSize3{
-    font-size: 3.0rem;
-}
-
-
-
-/** End of 文字 相關 */
 
 
 
@@ -142,6 +79,17 @@ a.name {
     width: 100px !important;
 }
 
+.Width300px{
+    width: 300px !important;
+}
+
+.Width35{
+    width: 35% !important;
+}
+
+.Width40{
+    width: 40% !important;
+}
 
 .Width100{
     width: 100% !important;
@@ -177,6 +125,8 @@ a.name {
     width: calc(100% - 1rem);
 }
 
+
+
 //邊距
 .margin0{
     margin: 0 auto !important;
@@ -206,11 +156,23 @@ a.name {
     margin-bottom: 0.5rem;
 }
 
+.MarginBottom5{
+    margin-bottom: 5rem;
+}
+
 .margin-b-1{
     margin-bottom: 1rem;
 }
+
+.margin-r-1{
+    margin-right: 0.5rem;
+}
 .flex80px{
-    flex: 0 1 calc(100% - 80px);
+    flex: 0 1 calc(100% - 80px) !important;
+}
+
+.flexauto{
+    flex: 1 0 auto;
 }
 
 //內距
@@ -218,8 +180,8 @@ a.name {
 .padding0 {
     padding: 0  !important;
 }
-.paddingleft1 {
-    padding: 1rem;
+.padding2 {
+    padding: 2rem !important;
 }
 
 .padding-l1 {
@@ -227,3 +189,65 @@ a.name {
 }
 
 /** End of 大小、邊距等 相關 */
+
+//flexbox
+
+.align-center {
+    align-items: center;
+}
+.justify-around {
+    justify-content: space-around;
+}
+
+/** End of 大小、邊距等 相關 */
+
+#error_explanation{
+    border: 1px solid #eed3d7;
+    padding: 30px;
+    color: #b94a48;
+    background-color: #f2dede;
+    border-radius: 5px;
+    font-size: 1.2em;
+    ul{
+        margin: 0;
+    }
+}
+
+/*flash*/
+.alert {
+    padding: 30px;    
+    font-size: 1.2em;
+    border-radius: 5px;
+    ul{
+        margin: 0;
+    }
+}
+
+.alert-error {
+    @extend .alert;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }

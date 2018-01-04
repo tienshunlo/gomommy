@@ -4,15 +4,28 @@
 			修改個資
 		</span>
 	</header>
-    <%= form_for @profile, url: dashboard_profile_path, method: :patch, html: { multipart: true } do |f| %>
-        <%= image_tag @profile.profile_img.url(:medium), class:"poster-avatar-img  size7x7" if @profile.profile_img? %>
-        <%= f.file_field :profile_img %>
-        
-        <div class="input-field col s6">
-    		<span>居住城市：</span><%= f.collection_select(:location, City.order(:id), :id, :name) %>
+    <%= form_for @profile, url: dashboard_profile_path, method: :PATCH, html: { multipart: true } do |f| %>
+        <div class="section__form align-center" >
+    		<span class="form__label Width40 ">居住城市</span> 
+    		<span class="flexauto "><%= f.select :location, @citys.collect {|p| [ p.name, p.id ] }, {}, {class: "browser-default"} %></span>
     	</div>
-        
-        <button class="btn waves-effect waves-light" type="submit" name="action">
+    	<div class="section__form align-center" >
+    		<span class="form__label Width40 ">有幾個小寶貝</span> 
+    		<span class="flexauto "><%= f.select :number_of_baby, Profile::NUMBER_OF_BABY, {}, {class: "browser-default"} %></span>
+    	</div>
+    	<div class="section__form align-center" >
+    		<span class="form__label Width40 ">小寶貝暱稱</span> 
+    		<span class="flexauto "><%= f.text_field :nickname_of_baby, class: "browser-default" %></span>
+    	</div>
+    	<div class="section__form align-center" >
+    		<span class="form__label Width40 ">小寶貝性別</span>
+    		<span class="flexauto "><%= f.select :gender_of_baby , Profile::GENDER_OF_BABY, {}, {class: "browser-default"} %></span>
+    	</div>
+    	<div class="section__form align-center" >
+    		<span class="form__label Width40 ">預產期或生日</span>
+    		<span class="flexauto "><%= f.date_select :birthday_of_baby, {:start_year => Time.now.year - 10}, {class: "browser-default"} %></span>
+    	</div>
+        <button class="button" type="submit" name="action">
     		<span>送出</span>
     	</button>
     <% end %>

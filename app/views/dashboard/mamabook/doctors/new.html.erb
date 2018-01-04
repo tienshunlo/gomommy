@@ -1,11 +1,12 @@
-<div class="wrapper--column MaxWidth1000">
-	<div class="wrapper__box--large flex-column MaxWidth740">
-		<span>新增醫生資料</span>
-		<div class="discussion-form">
-			<%= form_for @doctor, url: dashboard_mamabook_doctors_path, html: { multipart: true } do |doctor| %>
-				<%= render partial: 'form',  locals: { f: doctor } %>
-			<% end %>
-		</div>
-	 </div>
-	 <a href='<%= doctors_path %>' class='btn waves-effect eaves-light' name='action'>回到上一頁</a>
-</div>
+<div class="wrapper__box--large flex-column MaxWidth740">
+	<header class="header_cate">
+  		<span class="header_cate_title">
+  			新增醫生
+  		</span>
+	</header>
+	<div class="discussion-form">
+		<%= form_for @doctor, url: dashboard_mamabook_doctors_path, html: { multipart: true } do |doctor| %>
+			<%= render partial: 'form',  locals: { f: doctor } %>
+		<% end %>
+	</div>
+ </div>
