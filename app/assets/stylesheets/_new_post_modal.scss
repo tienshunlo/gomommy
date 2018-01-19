@@ -11,6 +11,21 @@
     }
 }
 
+// form label
+.form__label { 
+    color: #777777;
+    line-height: 30px;
+    border-left: 5px solid #d9d9d9;
+    padding-left: 10px;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    font-size: 1.2em;
+    margin-right: 0.5rem;
+    @media only screen and (max-width: 767px){
+        font-size: 1.0em;
+    }
+    
+}  
 
 // New Post Modals 相關
 
@@ -40,10 +55,11 @@
 }
 
 .new-post-bar {
+    margin-top: 1.5rem;
     padding: 5px;
     background-color: #e6e6e6;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.2em;
 } 
 
 .new-post-select {
@@ -112,18 +128,27 @@
   //}
 }
 
-[type="radio"] + label:before, [type="radio"] + label:after {
- content: none !important;
- }
+
  
- [type="radio"]:not(:checked) + label, [type="radio"]:checked + label {
+
+ 
+ //2. Radio Button 改成 Button。按下不會直接送出
+[type="radio"] + label:before, [type="radio"] + label:after {
+    content: none !important;
+}
+
+[type="radio"]:not(:checked) + label, [type="radio"]:checked + label {
     position: relative;
-    padding: 0 12px;
+    padding: 0 !important;
     cursor: pointer;
-     display: inline-block;
-    line-height: 32px;
-    font-size: 13px;
+    display: inline-block;
+    width: 100%;
+    height: 3rem !important;
+    line-height: 3rem !important;
+    font-size: 1.2rem;
     transition: .28s ease;
     -khtml-user-select: none;
     user-select: none;
- }
+    
+}
+

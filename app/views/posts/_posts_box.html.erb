@@ -3,17 +3,9 @@
         <div class="section__tag">
             <%= render partial: "posts/post_tag_section", locals: {post: post} %>
         </div>
-        <div class="section__content">
+        <div class="section__content article-content">
             <%= render partial: "posts/post_content_section", locals: {post: post} %>
         </div>
-        <% if false %>
-            <div class="section__title">
-                <%= render partial: "posts/post_title_section", locals: {post: post} %>
-            </div>
-            <div class="section__description">
-                <%= render partial: "posts/post_description_section", locals: {post: post} %>
-            </div>
-        <% end %>
         <div class="section__poster Height4 FixedBottom05">
             <%= render partial: "posts/post_poster_section", locals: {post: post} %>
         </div>

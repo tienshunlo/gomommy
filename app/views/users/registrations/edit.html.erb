@@ -1,47 +1,41 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-  <div class="field">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<div class="wrapper__box--large MaxWidth740">
+    <header class="header_cate">
+        <span class="header_cate_title">
+  			    更新帳密
+  		  </span>
+  	</header>
+  	<div class="wrapper__box--inner">
+        <div class="box__post padding2">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                <%= devise_error_messages! %>
+                <%= render 'layouts/messages' %>
+                <div class="section__form align-center" >
+                    <span class="form__label Width35 ">暱稱</span> 
+                    <span class="flexauto "><%= f.text_field :nickname %></span> 
+                </div>
+                <div class="section__form align-center" >
+                    <span class="form__label Width35 ">信箱</span> 
+                    <span class="flexauto "><%= f.email_field :email, autofocus: true %></span> 
+                </div>
+                <div class="section__form align-center" >
+                    <span class="form__label Width35 ">密碼<br /><i>(必填)</i></span> 
+                    <span class="flexauto "><%= f.password_field :current_password, autocomplete: "off", placeholder:" 請填入原始密碼" %></span> 
+                </div>
+                <div class="new-post-bar">以下若不變更，請留白</div>
+                <div class="section__form align-center" >
+                    <span class="form__label Width35 ">新密碼</span>
+                    <span class="flexauto "><%= f.password_field :password, autocomplete: "off", placeholder:" 最少 #{@minimum_password_length} 字" %></span> 
+                </div>
+                <div class="section__form align-center" >
+                    <span class="form__label Width35 ">確認</span> 
+                    <span class="flexauto "><%= f.password_field :password_confirmation, autocomplete: "off", placeholder:" 請重新輸入一次新密碼" %></span> 
+                </div>
+                <div class="section__form align-center justify-evenly" >
+                    <button class="button  Width50" type="submit" name="action">
+                        <span>確定更新</span>
+                    </button>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="wrapper__box--large MaxWidth740">
+	<header class="header_cate">
+  		<span class="header_cate_title">
+  			新增照片
+  		</span>
+	</header>
+	<div class="discussion-form">
+		<%= form_for @album, url: dashboard_mamabook_albums_path, html: { multipart: true } do |f| %>
+			<div class="input-field col s8">
+				<%= f.file_field :album_img %>
+			</div>
+			<div class="input-field col s12 right-align">
+				<button class="button" type="submit" name="action">
+					<span>送出</span>
+				</button>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+

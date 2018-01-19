@@ -10,9 +10,7 @@ class CommentsController < ApplicationController
     def create
         @post = Post.find(params[:post_id])
         @comment = @post.comment.create(comment_params)
-		
-		
-
+        @comment.user_id = current_user.id
 		if @comment.save
 			redirect_to doctor_post_path(@doctor, @post)
 		else
@@ -45,7 +43,7 @@ class CommentsController < ApplicationController
         params.require(:comment).permit(:content)
     end
     def find_doctor
-		@doctor = Doctor.find(params[:doctor_id])
+		@doctor = Doctor.friendly.find(params[:doctor_id])
 	end
 	def find_post
 	    @post = Post.find(params[:post_id])

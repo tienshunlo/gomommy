@@ -1,20 +1,20 @@
+<div class="section__poster margin-b-1">
+	 <%= link_to "回醫生頁面", doctor_path(@doctor), { class:"button" } %><br>
+</div>
 <div class="section__poster Height4">
 	<div class="poster-avatar">
-		<%= poster_img_helper("big-poster", post) %>
-		<% if false %>
-		<%= image_tag "yuna.jpg", class:"poster-avatar-img  size375x375" %>
-		<% end %>
+		<%= user_img_helper("show-poster", post.user) %>
 	</div>
 	<div class="poster-name flex80px">
-		<%= link_to "#{User.find(post.user_id).nickname}",doctor_path(post.doctor), {class:"name"} %><br>
+		<%= link_to post.user.nickname, user_path(post.user), { class:"name" } %><br>
   		<span class="time-ago-in-words"><%= time_ago_in_words(post.created_at) %> ago</span>
 	</div>
 </div>
-<div class="section__content flex-colunm margin-b-1"> 
-	<h1 class="post-title FontSize2 MarginTop1"> 
+<div class="section__content flex-colunm margin-b-1 article-content"> 
+	<h1> 
 		<%= post.title %> 
 	</h1>
-	<%= simple_format post.description, class:"post-description MarginTop15 FontSize12" %>
+	<%= simple_format post.description %>
 </div>
 
 

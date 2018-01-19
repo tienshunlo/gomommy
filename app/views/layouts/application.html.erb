@@ -19,20 +19,8 @@
       <div class="container-doctor">
         <div class="wrapper__doctor flex-colunm MaxWidth1000">
           <%= yield %>
+          <%= will_paginate @paginate if @paginate %>
         </div>
-        <% if false %>
-          <div class="container">
-            <div class="row">
-              <div class="col s12 m12 l3 xl3">
-                <%= yield :sidebar %>
-              </div>
-              <div class="col s12 m12 l9 xl9">
-                <%= yield %>
-                <%= will_paginate @paginate if @paginate %>
-              </div>
-            </div>
-          </div>
-        <% end %>
       </div>
     </main> 
     <div class="flex-bottom-nav show-on-small hide-on-med-and-up">
@@ -49,7 +37,7 @@
       $(".dropdown-button").dropdown();
       $(".button-collapse").sideNav();
       $('select').material_select(); // materializeCSS的select要發揮作用，一定要有這行
-      $('.modal').modal(); // 跳出視窗
+      $('.modal').modal();
     });
   	 
 
@@ -105,8 +93,7 @@
       });
     }
     
-    
-    
+   
      
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>

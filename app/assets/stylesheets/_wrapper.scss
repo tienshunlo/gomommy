@@ -1,11 +1,6 @@
 
 
-.wrapper--basic{
-    display: flex;
-    padding: 2rem 0rem;
-    margin: 0 auto;
-    width: 100%;
-}
+
 
 .wrapper--column{
     @extend .wrapper--basic;
@@ -99,6 +94,25 @@
     }
 }
 
+.wrapper__filterrific {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    width: 95%;
+    /* overflow-x: scroll; */
+    /* overflow-y: hidden; */
+    /* height: 50px; */
+    margin: 0 auto; 
+    -webkit-overflow-scrolling: touch;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+     @media only screen and (max-width: 1199px) {
+        margin: 0 10px;
+  }
+   
+}
+
 /* End of Filter */
 
 
@@ -131,6 +145,16 @@
     width: 33.3333%;
     padding: 0.5rem 0.5rem;
     //flex: 0 1 calc(33% - 8px);
+}
+
+.wrapper__box--xs {
+    @extend .wrapper__box;
+    width: 33.3333%;
+    padding: 0.5rem 0.5rem;
+    //flex: 0 1 calc(33% - 8px);
+    @media only screen and (max-width: 767px) {
+        //flex: none;
+    }
 }
 
 

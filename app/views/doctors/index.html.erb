@@ -1,7 +1,6 @@
 <div class="section">
 	<%= render 'shared/flex_filterbar' %>
 </div>
-
 <div class="section">
 	<header class="header_cate">
 		<span class="header_cate_title">
@@ -10,23 +9,18 @@
 	</header>
 	<div class="row">
 		<div class="wrapper-doctor-index">
-  		<% @doctors.each do |doctor| %>
-    		<div class="wrapper__box--small">
-    			<div class="wrapper__box--inner">
-	    			<div class="box__doctor">
-	    				<%= render partial: "doctors/profile_box", locals: {doctor: doctor} %>
-	    			</div>
-	    			<div class="box__post BoxHeight10">
-	    				<% if doctor.post.last %>
-	    					<%= render partial: "doctors/post_box", locals: {doctor: doctor} %>
-	    				<% else %>
-	    					<h2 class="post-title"> 有甚麼想分享、想問的嗎？ 成為第一個留言的人</h5>
-	    				<% end %>
-	    			</div>
-	    		    <%= render 'posts/new_post_modal', doctor: doctor %>
-    		    </div>
-			</div>
-		<% end %> 
+	  		<% @doctors.each do |doctor| %>
+	    		<div class="wrapper__box--small">
+	    			<div class="wrapper__box--inner">
+		    			<div class="box__doctor">
+		    				<%= render partial: "doctors/profile_box", locals: {doctor: doctor} %>
+		    			</div>
+		    			<div class="box__post BoxHeight10">
+		    				<%= render partial: "doctors/post_box", locals: {doctor: doctor} %>
+		    			</div>
+	    		    </div>
+				</div>
+			<% end %> 
     	</div>
 	</div>
 </div>

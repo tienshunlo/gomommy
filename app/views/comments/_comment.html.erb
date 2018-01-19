@@ -1,16 +1,13 @@
 <% @comments.each_with_index do |comment, comment_item_index| %>
 	<div class="wrapper__box--large MaxWidth640">
 		<div class="wrapper__box--inner basic-shadow">
-			<div class="box__post">
+			<div class="box__post padding2">
 				<div class="section__poster">
 					<div class="poster-avatar">
-						<%= doctor_img_helper("small-poster", @doctor) %>
-						<% if false %>
-						<%= image_tag "yuna.jpg", class:"poster-avatar-img size3x3" %>
-						<% end %>
+						<%= user_img_helper("small-poster", comment.user) %>
 					</div>
 					<div class="poster-name">
-						<%= link_to "#{@doctor.name}",doctor_path(@doctor), {class:"name"} %><br>
+						<%= link_to "#{comment.user.nickname}", user_path(comment.user), { class:"name" } %><br>
 						<span class="time-ago-in-words"><%= time_ago_in_words(@post.created_at) %> ago</span>
 					</div>
 				</div>
@@ -19,6 +16,7 @@
 				</div>
 			</div>
 		</div>
+		<% if current_user == comment.user %>
 		<div class="section__action">
 			<ul class="no-border transparent-bg">
 				<li>
@@ -28,15 +26,6 @@
 					<%=link_to "Delete", doctor_post_comment_path(@doctor, @post,comment), :confirm => "Are you sure?", :method => :delete, class:"button"  %>
 				</li>
 			</ul>
-			<% if false %>
-			<div  class="circle chip-action">
-				<%= link_to '<i class="material-icons">delete</i>'.html_safe, doctor_post_comment_path(@doctor, @post,comment), :confirm => "Are you sure?", :method => :delete, class:'white-text' %>
-			</div>	
-			<div  class="circle chip-action">
-				<!-- Edit Comment Modal Trigger -->
-				<%= link_to '<i class="material-icons">mode_edit</i>'.html_safe, "#modal-edit-comment_#{comment_item_index}", class:'white-text' %>			
-			</div>
-			<% end %>
 			<!-- Edit Comment Modal Structure -->
 			<div id="modal-edit-comment_<%= comment_item_index %>" class="modal modal-fixed-footer modal-post">
 				<div class="modal-content modal-content-post">
@@ -55,5 +44,6 @@
 				</div>
 			</div>
 		</div>
+		<% end %>
 	</div>
 <% end %>

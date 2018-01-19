@@ -1,26 +1,40 @@
-<h2>登入</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="section__wrapper">
+    <div class="wrapper__box--large MaxWidth640">
+        <header class="header_cate">
+            <span class="header_cate_title">
+      			  登入
+      		  </span>
+      	</header>
+        <div class="wrapper__box--inner">
+            <div class="box__post padding2">
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                    <%= render 'layouts/messages' %>
+                    <div class="section__form align-center" >
+                        <span class="form__label Width40 ">信箱</span> 
+                    </div>
+                    <div>
+                        <%= f.email_field :email, autofocus: true %>
+                    </div>
+                    <div class="section__form align-center" >
+                        <span class="form__label Width40 ">密碼 </span>
+                    </div>
+                    <div>
+                        <%= f.password_field :password, autocomplete: "off" %>
+                    </div>
+                    <% if devise_mapping.rememberable? %>
+                        <div class="section__form align-center justify-evenly" >    
+                            <%= f.check_box :remember_me %>
+                            <%= f.label :remember_me %>
+                        </div>
+                    <% end %>
+                    <div class="section__form align-center justify-evenly" >
+                        <button class="button Width50" type="submit" name="action">
+                      	    <span>登入</span>
+                      	</button> 
+                    </div>
+                <% end %>
+                <%= render "users/shared/links" %>
+            </div>
+        </div>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

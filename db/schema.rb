@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214045614) do
+ActiveRecord::Schema.define(version: 20171226050330) do
+
+  create_table "albums", force: :cascade do |t|
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.string   "album_img_file_name",    limit: 255
+    t.string   "album_img_content_type", limit: 255
+    t.integer  "album_img_file_size",    limit: 4
+    t.datetime "album_img_updated_at"
+    t.integer  "category",               limit: 4,   default: 0
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -27,14 +37,22 @@ ActiveRecord::Schema.define(version: 20171214045614) do
     t.datetime "updated_at",               null: false
   end
 
-  add_index "comments", ["user_id", "post_id"], name: "index_comments_on_user_id_and_post_id", unique: true, using: :btree
-
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.integer  "city_id",    limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "doctor_albums", force: :cascade do |t|
+    t.integer  "doctor_id",  limit: 4
+    t.integer  "album_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "doctor_albums", ["album_id"], name: "index_doctor_albums_on_album_id", using: :btree
+  add_index "doctor_albums", ["doctor_id"], name: "index_doctor_albums_on_doctor_id", using: :btree
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name",                    limit: 255
@@ -143,15 +161,29 @@ ActiveRecord::Schema.define(version: 20171214045614) do
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
+  create_table "profile_albums", force: :cascade do |t|
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "profile_id", limit: 4
+    t.integer  "album_id",   limit: 4
+  end
+
+  add_index "profile_albums", ["album_id"], name: "fk_rails_60c19a63ff", using: :btree
+  add_index "profile_albums", ["profile_id"], name: "fk_rails_1cb35e0476", using: :btree
+
   create_table "profiles", id: false, force: :cascade do |t|
     t.integer  "user_id",                  limit: 4
     t.string   "location",                 limit: 255
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.string   "profile_img_file_name",    limit: 255
     t.string   "profile_img_content_type", limit: 255
     t.integer  "profile_img_file_size",    limit: 4
     t.datetime "profile_img_updated_at"
+    t.integer  "number_of_baby",           limit: 4,   default: 0
+    t.string   "nickname_of_baby",         limit: 255
+    t.integer  "gender_of_baby",           limit: 4,   default: 0
+    t.datetime "birthday_of_baby"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -176,5 +208,9 @@ ActiveRecord::Schema.define(version: 20171214045614) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "doctor_albums", "albums"
+  add_foreign_key "doctor_albums", "doctors"
+  add_foreign_key "profile_albums", "albums"
+  add_foreign_key "profile_albums", "profiles", primary_key: "user_id"
   add_foreign_key "profiles", "users"
 end

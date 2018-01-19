@@ -1,0 +1,122 @@
+.article-content {
+    color: #666;
+    line-height: 1.75;
+    font-size: 18px;
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 1em;
+        margin-bottom: .6em;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.7rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+    
+    p {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    hr {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    pre {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+}
+
+
+/** Beginning of 文字 相關 */
+.index-post-title {
+    color: rgba(0,0,0,.84) !important;
+    margin: 0;
+    font-size: 1.3125em !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.1em !important;
+}
+
+
+.post-title {
+    color: rgba(0,0,0,.84) !important;
+    font-weight: 600 !important;
+}
+
+.post-description{
+    color: #666 !important;
+    font-size: 1.0rem;
+    p {
+        display: block !important;
+        -webkit-margin-before: -0.5em;
+        -webkit-margin-after: 0.5em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+    }
+}
+
+.poster-name {
+    flex: 0 1 calc(100% - 60px);
+    font-size: 1.0rem;
+}
+
+.profile-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+a.name {
+    color: rgba(0,0,0,.84)!important;
+    font-weight: 700;
+}
+.time-ago-in-words{
+    color: rgba(0,0,0,.54)!important;
+    font-size: 0.8rem;
+}
+//字體的大小
+
+.FontSize1{
+    font-size: 1.0rem;
+}
+.FontSize11{
+    font-size: 1.1rem;
+}
+.FontSize12{
+    font-size: 1.2rem;
+}
+
+.fontsize12 {
+    font-size: 1.2em;
+}
+
+
+.FontSize2{
+    font-size: 2.0rem;
+}
+.FontSize3{
+    font-size: 3.0rem;
+}
+
+/** End of 文字 相關 */

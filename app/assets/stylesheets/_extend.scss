@@ -1,3 +1,8 @@
+/* 最大的區塊叫做container */
+/* 第二大的區塊叫做wrapper */
+/* 然後用來分區的區塊叫做section */
+/* 跟功能有關的叫做box */
+/* 最小的應該叫做part (我現在好像是用section) */
 
 /* Beginning of container */ 
 .container--basic{
@@ -6,6 +11,14 @@
     padding: 0px 0px;
 }
 /* End of container */
+
+.wrapper--basic{
+    display: flex;
+    padding: 2rem 0rem;
+    margin: 0 auto;
+    width: 100%;
+}
+
 
 /* Beginning of flexbox：所有flex - box的基礎 */ 
 .flex-box{

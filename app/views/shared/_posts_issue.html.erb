@@ -1,17 +1,17 @@
 <div class="profile-header-right">
-        <div class='flex-filter'>
-        	<div class='flex-filter-title'>
-        		<i class="material-icons"><%= @flex_filter_icon %></i>
-        		<span><%= @flex_filter_title %></span>
-        	</div>
-        	<div class="flex-filter-section">
-            	<ul>
-          			<% @filter_anchor.each do |filter_anchor| %>
-        				<li>
-        					<%= link_to filter_anchor.title, {:anchor => filter_anchor.title},{class:"chip-filter"} %>
-        				</li>
-        	    	<% end %>
-            	</ul>
-        	</div>
-    	</div>
-    </div>
+    <div class='flex-filter'>
+	<div class='flex-filter-title'>
+             <i class="material-icons"><%= @flex_filter_icon %></i>
+             <span><%= @flex_filter_title %></span>
+	</div>
+	<div class="flex-filter-section">
+    	    <ul>
+  		<% @filter_anchor.each do |filter_anchor| %>
+		    <li>
+			<%= link_to filter_anchor.title, {:anchor => filter_anchor.title},{class:"chip-filter"} %>
+		    </li>
+	    	<% end %>
+    	    </ul>
+	</div>
+   </div>
+</div>

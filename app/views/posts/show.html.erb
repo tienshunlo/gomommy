@@ -1,18 +1,25 @@
-<div class="wrapper__box--large MaxWidth740">
-	<%= render 'posts/posts_box_showpage', post: @post  %>
-	<header class="header_cate">
-		<span class="header_cate_title">
-			<% if @comments.blank? %>
-				成為第一個回覆的人
+<div class="section__wrapper">
+	<div class="wrapper__box--large MaxWidth740">
+		<%= render 'posts/posts_box_showpage', post: @post  %>
+		<header class="header_cate">
+			<span class="header_cate_title">
+				<% if @comments.blank? %>
+					成為第一個回覆的人
+				<% else %>
+					參加討論
+				<% end %>
+			</span>
+		</header>
+		<div>
+			<% if current_user %>
+				<%= render 'comments/form' %>
 			<% else %>
-				參加討論
+				<%=link_to "登入留言", new_user_session_path, class: "button" %>
 			<% end %>
-		</span>
-	</header>
-	<div>
-		<%= render 'comments/form' %>
+		</div>
 	</div>
 </div>
+
 
 <% content_for :comment_section do %>
 	<!-- 回覆區 -->

@@ -1,6 +1,11 @@
 <div class="wrapper__box--large MaxWidth740">
+	<header class="header_cate">
+  		<span class="header_cate_title">
+  			醫生
+  		</span>
+	</header>
 	<div class="box__post flex-row">
-		<%=link_to "New", new_dashboard_mamabook_doctor_path, class:"button" %>
+		<%=link_to "新增醫生", new_dashboard_mamabook_doctor_path, class:"button" %>
 	</div>
 </div>
 <% @doctors.each do |doctor| %>
@@ -10,6 +15,7 @@
 				<div class="section__poster flex-colunm">
 					<div class="poster-avatar">
 						<%= doctor_img_helper("dashboard", doctor) %>
+						<%= doctor_album_button(doctor) %>
 					</div>
 				</div>
 				<div class="section__content flex-colunm Width100 padding-l1">

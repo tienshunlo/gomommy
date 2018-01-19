@@ -1,14 +1,20 @@
 class Doctor < ActiveRecord::Base
   enum status: { draft: 0, published: 1 }
+	
 	is_impressionable :counter_cache => true, :column_name => :impressions_count
 	has_attached_file :doctor_img, styles: { :original => ['200x200#' , :jpg], medium: "300x300>", thumb: "100x100>" }, default_url: ":style/missing.png"
 	validates_attachment_content_type :doctor_img, content_type: /\Aimage\/.*\z/
+	
 	extend FriendlyId
   friendly_id :name, use: :slugged
+	
 	belongs_to :hospital
 	belongs_to :city
 	belongs_to :district
-	has_many :post, dependent: :destroy
+	has_many :post
+
+	has_one :album, through: :doctor_album
+  has_one :doctor_album
 	
 	GENDER = [['女性' , 0],['男性' , 1]]
 	scope :doctor_city, -> (city_id) { where city_id: city_id }
@@ -16,6 +22,10 @@ class Doctor < ActiveRecord::Base
 	#原本是input.to_s.parameterize，但是parameterize只支援英文跟數字，所以改用babosa的to_slug
 	def normalize_friendly_id(input)
 	  input.to_s.to_slug.normalize.to_s
+  end
+  
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
   end
 	
 	# filterrific gem 開始

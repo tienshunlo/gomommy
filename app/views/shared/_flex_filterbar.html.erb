@@ -9,21 +9,3 @@
     	</ul>
 	</div>
 </div>
-
-<% if false %>
-    <% if @filter_anchor %><%#= 孕期 徵狀 篩選器 %>
-  		<% @filter_anchor.each do |filter_anchor| %>
-			<li><%= link_to filter_anchor.title, {:anchor => filter_anchor.title},{class:"chip-filter"} %></li>
-    	<% end %>
-    <% elsif @citys %><%#= 首頁醫生 篩選器 %>
-	    <li><%= link_to "全部城市", doctors_path(city: nil), class:"chip-filter" %></li>
-  		<% @citys.each do |city| %>
-			<li><%= link_to city.name, doctors_path(city: city.name), { class:"chip-filter"} %></li>
-	    <% end %>
-    <% else %>
-	    <li><%= link_to "ALL", doctor_path(@doctor), {class:"chip-filter"} %></li>
-  		<% @phases.each do |phase| %>
-		    <li><%= link_to phase.title, doctor_path(@doctor, phase: phase ), class: "chip-filter" %></li>
-	    <% end %>
-    <% end %>
-<% end %>

@@ -1,5 +1,4 @@
-
-	<%= link_to doctor_post_path(post.doctor, post) do %> 
-	<h2 class="post-title MarginTop05"> <%= truncate("#{post.title}", length: 22)  %> </h2>
-		<p class="post-description MarginTop05"> <%= truncate("#{post.description}", length: 30)  %> </p>
-	<% end %>
+<%= link_to doctor_post_path(post.doctor, post) do %> 
+	<h5 class="post-title"> <%= truncate("#{post.title}", length: 22)  %> </h5>
+	<p class="post-description"> <%= truncate("#{post.description}", length: 30)  %> </p>
+<% end %>

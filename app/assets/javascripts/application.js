@@ -18,4 +18,3 @@
 
 //= require filterrific/filterrific-jquery
 //= require ckeditor/init
-

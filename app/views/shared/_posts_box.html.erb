@@ -1,0 +1,22 @@
+<div class="wrapper__box--large MaxWidth740">
+    <div class="wrapper__box--inner basic-shadow">
+      	<div class="box__post padding2">
+        		<div class="section__poster">
+          			<div class="poster-avatar">
+          				  <%= user_img_helper("small-poster", user) %>
+          			</div>
+          			<div class="poster-name">
+            				<%= link_to user.nickname,user_path(user), { class: "name" } %><br>
+            				<span class="time-ago-in-words"><%= time_ago_in_words(posts.created_at) %> ago</span>
+          			</div>
+        		</div>
+        		<div class="section__content article-content">
+          			<%= link_to doctor_post_path(posts.doctor, posts) do %> 
+            				<h3 class="post-title"><%= posts.title %></h3>
+            				<%= simple_format posts.description, class:"post-description fontsize12" %>
+          			<% end %>
+        		</div>
+      	</div>
+    </div>
+</div>
+

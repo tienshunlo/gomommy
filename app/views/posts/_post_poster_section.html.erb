@@ -1,7 +1,7 @@
 <div class="poster-avatar">
-	<%= poster_img_helper("small-poster", post) %>
+	<%= user_img_helper("small-poster", post.user) %>
 </div>
 <div class="poster-name">
-	<%= link_to "#{User.find(post.user_id).nickname}",doctor_path(post.doctor), {class:"name"} %><br>
+	<%= link_to "#{post.user.nickname}", user_path(post.user), {class:"name"} %><br>
   	<span class="time-ago-in-words"><%= time_ago_in_words(post.created_at) %> ago</span>
 </div>
