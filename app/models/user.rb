@@ -2,9 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, password_length: 6..128
   validates_presence_of :nickname, :message => "請記得輸入"
-  validates :password, length: {minimum: 6, message: "密碼最少六位"}
   has_many :post, dependent: :destroy
   has_many :comment, dependent: :destroy
   has_one :profile, dependent: :destroy

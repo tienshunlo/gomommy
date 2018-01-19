@@ -5,8 +5,18 @@
   			相簿
   		</span>
 	</header>
+	<% if false %>
 	<div class="box__post flex-row">
         <%= link_to "新增照片", new_dashboard_mamabook_album_path, class: "button" %>
+    </div>
+    <% end %>
+    <div class="box__post flex-row">
+        <%= form_for @album, url: dashboard_mamabook_albums_path, html: { multipart: true } do |f| %>
+				<%= f.file_field :album_img %>
+				<button class="button" type="submit" name="action">
+					<span>新增照片</span>
+				</button>
+		<% end %>
 	</div>
 </div>
 <div class="wrapper__box--large MaxWidth740">
@@ -16,8 +26,9 @@
                 <%= image_tag album.album_img.url(:medium), class: "poster-avatar-img  size7x7" %>
                 <%= label_tag 'category', album.category, class: "name" %>
                 <div>
-                    <%= link_to "醫生", toggle_category_dashboard_mamabook_album_path(album.id, :category => "doctor" ), class: "button MarginTop05 #{active_category? "doctor", album.category}" %>
-                    <%= link_to "用戶", toggle_category_dashboard_mamabook_album_path(album.id, :category => "user" ), class: "button MarginTop05  #{active_category? "user", album.category}" %>
+                    <%= link_to "醫生", toggle_category_dashboard_mamabook_album_path(album.id, :category => "cat_doctor" ), class: "button MarginTop05 #{active_category? "cat_doctor", album.category}" %>
+                    <%= link_to "用戶", toggle_category_dashboard_mamabook_album_path(album.id, :category => "cat_user" ), class: "button MarginTop05  #{active_category? "cat_user", album.category}" %>
+                    <%= link_to "庫存", toggle_category_dashboard_mamabook_album_path(album.id, :category => "cat_mamabook" ), class: "button MarginTop05  #{active_category? "cat_mamabook", album.category}" %>
                 </div>
             </div>
         <% end %>

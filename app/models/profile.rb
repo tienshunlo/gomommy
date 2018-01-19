@@ -10,7 +10,7 @@ class Profile < ActiveRecord::Base
   after_create :set_default_album
   after_save :check_profile
   # 註冊用after_create可以通過，可是後來更改地點的時候，after_create就不會更新到published
-  # 註冊用after_save 會太深，可是如果更改地點會更新成published，改成update_all可以避免掉call_back
+  # 註冊用after_save 會太深，可是如果更改地點會更新成published，改成update_all可以避免掉callback
   
   NUMBER_OF_BABY = [['保密' , 0],['一個' , 1],['二個' , 2],['三個' , 3],['四個以上' , 4]]
   GENDER_OF_BABY = [['保密' , 0],['女寶寶' , 1],['男寶寶' , 2]]

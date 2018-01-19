@@ -1,7 +1,7 @@
 class Dashboard::ProfileAlbumsController < Dashboard::DashboardController
   
   def new
-    @albums = Album.all
+    @albums = Album.cat_user
     @profile_album = ProfileAlbum.new
     @profile = Profile.find(current_user.id)
   end
@@ -15,7 +15,7 @@ class Dashboard::ProfileAlbumsController < Dashboard::DashboardController
   end
   
   def edit
-    @albums = Album.all
+    @albums = Album.cat_user
     @profile = Profile.find(current_user.id)
     @profile_album = @profile.profile_album
   end

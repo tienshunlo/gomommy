@@ -1,7 +1,7 @@
 class Dashboard::Mamabook::DoctorAlbumsController < Dashboard::Mamabook::MamabookController
   
   def new
-    @albums = Album.all
+    @albums = Album.cat_doctor
     @doctoralbum = DoctorAlbum.new
   end
   
@@ -14,7 +14,7 @@ class Dashboard::Mamabook::DoctorAlbumsController < Dashboard::Mamabook::Mamaboo
   end
   
   def edit
-    @albums = Album.all
+    @albums = Album.cat_doctor
     
     @doctor = Doctor.find(params[:doctor_id])
     @doctoralbum = DoctorAlbum.find_by(params[:id])

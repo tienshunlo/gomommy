@@ -25,7 +25,7 @@
 			<% end %>
 		</div>
 		<div class="modal-footer new-post-modal-footer">
-			<%= login_post_button(current_user, @doctor, "MarginTop1" ) %> 
+			<%=link_to "留言", new_doctor_post_path(@doctor), class: "button MarginTop1"  %> 
 		</div>
 	</div>
 </div>

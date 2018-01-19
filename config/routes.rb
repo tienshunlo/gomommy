@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users, :controllers => {:sessions => "users/sessions"}, path: "", path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'register'}
+  devise_for :users, :controllers => {:sessions => "users/sessions", :registrations => "users/registrations"}, path: "", path_names: {sign_up: 'register', sign_in: 'login', sign_out: 'logout'}
   root 'doctors#index'
-  
   namespace :dashboard do
     #get "posts", to: "dashboard#posts"
     #get "doctors", to: "dashboard#doctors"
     resources :posts, only: [:index]
     resources :doctors, only: [:index]
     resource :profile do
-      get :edit_registration
       resources :profile_albums
     end
     namespace :mamabook do

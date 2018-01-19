@@ -1,6 +1,7 @@
 class Dashboard::Mamabook::AlbumsController < Dashboard::Mamabook::MamabookController
   def index
     @albums = Album.all
+     @album = Album.new
   end
   
   def new

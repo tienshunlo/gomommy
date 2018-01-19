@@ -28,12 +28,6 @@ class Dashboard::ProfilesController < Dashboard::DashboardController
         end
     end
     
-    def edit_registration
-        @profile = Profile.find(current_user.id)
-    end
-    
-
-    
     private
     
     def profile_params

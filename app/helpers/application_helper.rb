@@ -1,5 +1,15 @@
 module ApplicationHelper
+    def resource_name
+        :user
+    end
     
+    def resource
+        @resource ||= User.new
+    end
+ 
+    def devise_mapping
+        @devise_mapping ||= Devise.mappings[:user]
+    end
     def login_helper style = ''
         if current_user
           (link_to "個人後台", dashboard_posts_path, class:style) +
@@ -160,7 +170,7 @@ module ApplicationHelper
                 title: "修改個資"
             },
             {
-                url: edit_registration_dashboard_profile_path,
+                url: edit_user_registration_path,
                 title: "更新帳密"
             },
             {
