@@ -14,7 +14,7 @@
 			<% if current_user %>
 				<%= render 'comments/form' %>
 			<% else %>
-				<%=link_to "登入留言", new_user_session_path, class: "button" %>
+				<%= link_to "登入留言", new_user_session_path, class: "button" %>
 			<% end %>
 		</div>
 	</div>

@@ -27,22 +27,29 @@ Rails.application.routes.draw do
       #get "posts", to: "mamabook#posts"
     end
   end
+  
   resources :users, only: [:show]
 
   resources :doctors do
     resources :posts do 
       resources :comments
+      member do
+        put "like", to: "posts#upvote"
+        put "dislike", to: "posts#downvote"
+      end
     end
     collection do
       get :most_posts
     end
   end
+  
   resources :posts, except: [:new, :create, :edit, :update, :show, :destroy] do
     collection do
       get :posts_phase
       get :posts_issue
       get :phase_issue
     end
+    
   end
 
 end

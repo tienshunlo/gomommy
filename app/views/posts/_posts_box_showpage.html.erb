@@ -14,6 +14,16 @@
 	<h1> 
 		<%= post.title %> 
 	</h1>
+	<div>
+	<%=link_to like_doctor_post_path(@doctor,@post), method: :put, class: 'button no-border' do %>
+		<i class="material-icons">thumb_up</i>
+		<%=@post.get_upvotes.size%></td>
+	<% end %>
+	<%=link_to dislike_doctor_post_path(@doctor,@post), method: :put, class: 'button no-border' do %>
+		<i class="material-icons">thumb_down</i>
+		<%=@post.get_downvotes.size%></td>
+	<% end %>
+	</div>
 	<%= simple_format post.description %>
 </div>
 
