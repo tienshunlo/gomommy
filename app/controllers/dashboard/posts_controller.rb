@@ -5,4 +5,8 @@ class Dashboard::PostsController < Dashboard::DashboardController
         @profile = current_user.profile
     end
     
+    def visited_pages
+        @visited = current_user.profile.setting[:visited]
+    end
+    
 end

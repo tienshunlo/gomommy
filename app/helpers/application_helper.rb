@@ -181,6 +181,10 @@ module ApplicationHelper
                 url: dashboard_posts_path,
                 title: "發表的文章"
             },
+            {
+                url: visited_pages_dashboard_posts_path,
+                title: "瀏覽過的文章"
+            },
         ]
     end
     

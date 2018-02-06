@@ -3,7 +3,6 @@ class PostsController < ApplicationController
     before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
     before_action :find_issues_and_phases, only: [:new, :create, :edit]
     layout "posts"
-    
     def index
         @flex_filter_icon ="dvr"
         #filterrific版本
@@ -77,6 +76,17 @@ class PostsController < ApplicationController
     
     def show
         @comments =  @post.comment.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
+        if current_user
+            if current_user.profile.setting[:visited].nil?
+                current_user.profile.setting[:visited] = []
+                current_user.profile.setting[:visited] << params[:id]
+            else
+                current_user.profile.setting[:visited] << params[:id]
+            end
+            current_user.profile.setting[:visited].uniq!
+            current_user.profile.setting[:visited].delete_at(0) if current_user.profile.setting[:visited].size >= 6
+            current_user.profile.save
+        end
     end
     
     def edit
@@ -110,6 +120,9 @@ class PostsController < ApplicationController
     end
     
     private
+    
+    
+    
     def post_params
         params.require(:post).permit(:title, :description, :subject, :phase_id, :issue_id, :doctor_id, :user_id)
     end

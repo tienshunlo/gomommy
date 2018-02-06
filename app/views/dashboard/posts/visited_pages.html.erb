@@ -1,0 +1,29 @@
+<div class="wrapper__box--large MaxWidth740">
+	<header class="header_cate">
+		<span class="header_cate_title">
+		  瀏覽過的文章
+		</span>
+	</header>
+</div>
+<% if !current_user.profile.visited.nil? %>
+	<%= @visited.each do |post| %>
+		<div class="wrapper__box--large MaxWidth740">
+			<div class="wrapper__box--inner no-border transparent-bg bottom-border">
+				<div class="box__post">
+					<div class="section__poster">
+						<div class="poster-name">
+						</div>
+					</div>
+					<div class="section__content article-content">
+						<%= link_to doctor_post_path(Post.find(post).doctor, post) do %> 
+							<h4 class="post-title"><%= Post.find(post).title %></h4>
+							<%= simple_format Post.find(post).description, class:"post-description" %>
+						<% end %>
+					</div>
+					<div class="section__action align-center MarginTop1 Width300px">
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+<% end %>

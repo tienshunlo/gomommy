@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   namespace :dashboard do
     #get "posts", to: "dashboard#posts"
     #get "doctors", to: "dashboard#doctors"
-    resources :posts, only: [:index]
+    resources :posts, only: [:index] do
+      collection do
+        get :visited_pages
+      end
+    end
     resources :doctors, only: [:index]
     resource :profile do
       resources :profile_albums

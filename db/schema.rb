@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127012907) do
+ActiveRecord::Schema.define(version: 20180205024901) do
 
   create_table "albums", force: :cascade do |t|
     t.datetime "created_at",                                     null: false
@@ -174,16 +174,17 @@ ActiveRecord::Schema.define(version: 20180127012907) do
   create_table "profiles", id: false, force: :cascade do |t|
     t.integer  "user_id",                  limit: 4
     t.string   "location",                 limit: 255
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
     t.string   "profile_img_file_name",    limit: 255
     t.string   "profile_img_content_type", limit: 255
     t.integer  "profile_img_file_size",    limit: 4
     t.datetime "profile_img_updated_at"
-    t.integer  "number_of_baby",           limit: 4,   default: 0
+    t.integer  "number_of_baby",           limit: 4,     default: 0
     t.string   "nickname_of_baby",         limit: 255
-    t.integer  "gender_of_baby",           limit: 4,   default: 0
+    t.integer  "gender_of_baby",           limit: 4,     default: 0
     t.datetime "birthday_of_baby"
+    t.text     "setting",                  limit: 65535
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
