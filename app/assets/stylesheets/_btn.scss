@@ -94,4 +94,20 @@
         background: rgba(0,0,0,.15) !important;
         color: rgba(0,0,0,.45) !important;
     }
-}   
+}
+
+.button--visibility {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    padding-top: 15px;
+    padding-left: 15px;
+    position: absolute;
+    top: 140px;
+    background-color: white;
+    &.active {
+        background: white !important;
+        color: green !important;
+        border-color: green !important;
+    }
+}

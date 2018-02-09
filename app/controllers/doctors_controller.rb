@@ -1,5 +1,5 @@
 class DoctorsController < ApplicationController
-	before_action :find_doctor, only: [:show]
+	before_action :find_doctor, only: [:show, :upvote]
 	#impressionist only: [:show, :index]
 	def index
 		
@@ -163,6 +163,11 @@ class DoctorsController < ApplicationController
 	#		end
 	
 	end
+	def upvote
+	    @doctor.upvote_by current_user
+	    redirect_to doctor_path(@doctor)
+    end
+    
 
 
 	private

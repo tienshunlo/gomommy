@@ -174,7 +174,7 @@ module ApplicationHelper
                 title: "更新帳密"
             },
             {
-                url: dashboard_doctors_path,
+                url: up_voted_doctors_dashboard_doctors_path,
                 title: "關注的醫生"
             },
             {
@@ -184,6 +184,10 @@ module ApplicationHelper
             {
                 url: visited_pages_dashboard_posts_path,
                 title: "瀏覽過的文章"
+            },
+            {
+                url: up_voted_items_dashboard_posts_path,
+                title: "按讚的文章"
             },
         ]
     end

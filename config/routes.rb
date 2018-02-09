@@ -4,14 +4,17 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:sessions => "users/sessions", :registrations => "users/registrations"}, path: "", path_names: {sign_up: 'register', sign_in: 'login', sign_out: 'logout'}
   root 'doctors#index'
   namespace :dashboard do
-    #get "posts", to: "dashboard#posts"
-    #get "doctors", to: "dashboard#doctors"
     resources :posts, only: [:index] do
       collection do
         get :visited_pages
+        get :up_voted_items
       end
     end
-    resources :doctors, only: [:index]
+    resources :doctors, only: [:index] do
+      collection do
+        get :up_voted_doctors
+      end
+    end
     resource :profile do
       resources :profile_albums
     end
@@ -35,6 +38,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :doctors do
+     member do
+        put "like", to: "doctors#upvote"
+    end
     resources :posts do 
       resources :comments
       member do

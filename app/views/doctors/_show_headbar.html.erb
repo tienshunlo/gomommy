@@ -5,6 +5,15 @@
 				<div class="section__poster flex-colunm">
 					<div class="poster-avatar">
 						<%= doctor_img_helper("show", @doctor) %>
+						<% if current_user && current_user.voted_for?(@doctor) %>
+							<%= link_to like_doctor_path(@doctor), method: :put, class: 'button button--visibility active' do %>
+								<i class="material-icons">visibility</i>
+							<% end %>
+						<% else %>
+							<%= link_to like_doctor_path(@doctor), method: :put, class: 'button button--visibility' do %>
+								<i class="material-icons">visibility</i>
+							<% end %>
+						<% end %>
     				</div>
 				</div>
 				<div class="section__content flex-colunm Width100 padding-l1">
