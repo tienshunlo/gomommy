@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
     acts_as_votable
+    act_as_bookmarkee
     belongs_to :doctor, counter_cache: :post_count
     has_many :comment, dependent: :destroy
     belongs_to :phase

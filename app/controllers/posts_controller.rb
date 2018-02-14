@@ -2,6 +2,7 @@ class PostsController < ApplicationController
     before_action :find_doctor, except: [:index, :posts_phase, :posts_issue, :phase_issue]
     before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
     before_action :find_issues_and_phases, only: [:new, :create, :edit]
+    before_action :authenticate_user!, only: [:bookmark]
     layout "posts"
     def index
         @flex_filter_icon ="dvr"
@@ -117,6 +118,12 @@ class PostsController < ApplicationController
         @doctor = Doctor.friendly.find(params[:doctor_id])
         @post.downvote_by current_user
         redirect_to doctor_post_path(@doctor, @post)
+    end
+    
+    def bookmark
+        post = Post.find(params[:id])
+        current_user.toggle_bookmark(post)
+        redirect_to doctor_post_path(@doctor, :id => params[:id])
     end
     
     private

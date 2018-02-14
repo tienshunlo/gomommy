@@ -167,7 +167,11 @@ class DoctorsController < ApplicationController
 	    @doctor.upvote_by current_user
 	    redirect_to doctor_path(@doctor)
     end
-    
+    def bookmark
+        doctor = Doctor.friendly.find(params[:id])
+        current_user.bookmark(doctor)
+        redirect_to doctor_path(:id => params[:id])
+    end
 
 
 	private

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205024901) do
+ActiveRecord::Schema.define(version: 20180211113104) do
 
   create_table "albums", force: :cascade do |t|
     t.datetime "created_at",                                     null: false
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(version: 20180205024901) do
     t.datetime "album_img_updated_at"
     t.integer  "category",               limit: 4,   default: 0
   end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer  "bookmarkee_id",   limit: 4
+    t.string   "bookmarkee_type", limit: 255
+    t.integer  "bookmarker_id",   limit: 4
+    t.string   "bookmarker_type", limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "bookmarks", ["bookmarkee_id", "bookmarkee_type", "bookmarker_id", "bookmarker_type"], name: "bookmarks_bookmarkee_bookmarker_idx", unique: true, using: :btree
+  add_index "bookmarks", ["bookmarkee_id", "bookmarkee_type"], name: "bookmarks_bookmarkee_idx", using: :btree
+  add_index "bookmarks", ["bookmarker_id", "bookmarker_type"], name: "bookmarks_bookmarker_idx", using: :btree
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255

@@ -13,7 +13,8 @@
   <body>
     <header>
       <%= render 'shared/application_header' %>
-    </header>  
+    </header> 
+      <%= yield :show_sidebar %>
     <main>
       <%= yield :show_headbar %>
       <div class="container-doctor">
