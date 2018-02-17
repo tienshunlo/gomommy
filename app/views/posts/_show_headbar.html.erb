@@ -1,0 +1,23 @@
+<div class="container-doctor primary-bg">
+	<div class="wrapper__doctor flex-colunm MaxWidth740">
+		<div class="wrapper__box--inner no-border">
+			<div class="box__post">
+			    <div class="section__poster margin-b-1">
+                	 <%= link_to doctor_path(@doctor), class: 'button fixed_icons' do %>
+                		<i class="material-icons">person_pin</i>
+                		<span>&nbsp;&nbsp;回醫生頁面</span>
+                	<% end %>
+                </div>
+                <div class="section__poster Height4">
+                	<div class="poster-avatar">
+                		<%= user_img_helper("show-poster", post.user) %>
+                	</div>
+                	<div class="poster-name flex80px">
+                		<%= link_to post.user.nickname, user_path(post.user), { class:"name" } %><br>
+                  		<span class="time-ago-in-words"><%= time_ago_in_words(post.created_at) %> ago</span>
+                	</div>
+                </div>
+		    </div>
+	    </div>
+    </div>
+</div>

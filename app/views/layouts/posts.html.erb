@@ -13,9 +13,11 @@
     <header>
       <%= render 'shared/application_header' %>
     </header>  
-    <%= yield :button_menu %>
     <main>
-      
+      <% if false %>
+        <%= yield :button_menu %>
+      <% end %>
+      <%= yield :show_headbar %>
       <div class="container-post">
         <div class="wrapper__post MaxWidth1000">
           <%= yield :headbar %>
@@ -35,40 +37,6 @@
     </footer>
 
   <script>
-  	$(document).ready(function(){
-  var headerHeight = $('header').outerHeight();
-  var footerHeight = $('footer').outerHeight();
-  var wrapperHeight = $('#wrapper').outerHeight();
-  var scrollStart = headerHeight;
-  var bodyHeight = $('body').height();
-  var sidebarHeight = $('#sidebar').height();
-  var scrollStop = (wrapperHeight - sidebarHeight) + 40;
-  $(window).on('resize scroll',function(){
-    var windowHeight = $(window).height();
-    var sidebarOuterHeight = $('#sidebar').outerHeight();
-    var noScroll = (sidebarOuterHeight+40);
-    var scrollPosition = $(window).scrollTop();
-    var newTop = (scrollPosition - scrollStart);
-    if (scrollPosition >= scrollStart) {
-      $('#sidebar').css('top',newTop);
-    }
-    else {
-      $('#sidebar').css('top','0px');
-    }
-    if (scrollPosition >= scrollStop){
-      $('#sidebar').addClass('bottom-locked')
-    }
-    else {
-      $('#sidebar').removeClass('bottom-locked');
-    }
-    if (noScroll > windowHeight) {
-      $('#sidebar').addClass('top-locked');
-    }
-    else {
-      $('#sidebar').removeClass('top-locked');
-    }
-  });
-});
   	$(document).ready(function(){
       $('.collapsible').collapsible();
       $(".dropdown-button").dropdown();

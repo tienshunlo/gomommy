@@ -13,8 +13,8 @@
   <body>
     <header>
       <%= render 'shared/application_header' %>
-    </header> 
-      <%= yield :show_sidebar %>
+    </header>
+    <%= yield :show_sidebar %>
     <main>
       <%= yield :show_headbar %>
       <div class="container-doctor">
@@ -30,74 +30,107 @@
     <footer class="page-footer hide-on-small-only">
        <%= render 'shared/application_footer' %>
     </footer>
-
-  <script>
-  	
-  	$(document).ready(function(){
-      $('.collapsible').collapsible();
-      $(".dropdown-button").dropdown();
-      $(".button-collapse").sideNav();
-      $('select').material_select(); // materializeCSS的select要發揮作用，一定要有這行
-      $('.modal').modal();
-    });
-  	 
-
-    // dynamic selection的jQuery寫法，'select'要寫在最後。
-    // 先選擇城市，然後區域可以隨之變動
-    
-    //如果selectedCityCategory這個變數不是空的，#doctor_district_id這個id的html就要變成districtOptions這個變數
-    //districtOptions這個變數，是districts這個變數，去filter這個 optgroup變數後的html
-    //是districts這個變數是#doctor_district_id這個id下的html內容
-    //optgroup (meaning “options group”).
-    // optgroup變數，設定為帶有標題的清單項目
-    //http://jsgears.com/thread-63-1-1.html
-    $(function(){
-        filterCityList()
-      })
-    function filterCityList(){
-      var districts = $('#doctor_district_id').html();
-      var hospitals = $('#doctor_hospital_id').html();
-      $('#doctor_city_id').change(function(){
-        var selectedCityCategory = $('#doctor_city_id :selected').text();
-        var optgroup = "optgroup[label='"+ selectedCityCategory + "']";
-        var districtOptions = $(districts).filter(optgroup).html();
-        if(selectedCityCategory != ''){
-          $('#doctor_district_id').html(districtOptions);
-        }
-        $('#doctor_district_id').change(function(){
-          var selectedDistrictCategory = $('#doctor_district_id :selected').text();
-          var optgroup = "optgroup[label='"+ selectedDistrictCategory + "']";
-          var hospitalOptions = $(hospitals).filter(optgroup).html();
-          if(selectedDistrictCategory != ''){
-            $('#doctor_hospital_id').html(hospitalOptions);
+    <script>
+    	$(document).ready(function(){
+    	  var headerHeight = $('header').outerHeight();
+    	  var doctorHeight = $('.container-doctor').outerHeight();
+    	  var footerHeight = $('footer').outerHeight();
+    	  var wrapperHeight = $('#wrapper__sidebar').outerHeight();
+    	  var scrollStart = doctorHeight + headerHeight;
+    	  var bodyHeight = $('body').height();
+    	  var sidebarHeight = $('#sidebar').height();
+    	  var scrollStop = (doctorHeight - sidebarHeight) + 40;
+    	  $(window).on('resize scroll',function(){
+    	    var windowHeight = $(window).height();
+    	    var sidebarOuterHeight = $('#sidebar').outerHeight();
+    	    var noScroll = (sidebarOuterHeight+40);
+    	    var scrollPosition = $(window).scrollTop();
+    	    var newTop = (scrollPosition + headerHeight);
+    	    if (scrollPosition >= doctorHeight) {
+    	      $('#wrapper__sidebar > #sidebar').css('top',newTop);
+    	    }
+    	    else {
+    	      $('#wrapper__sidebar > #sidebar').css('top',scrollStart);
+    	    }
+    	    if (scrollPosition >= scrollStop){
+    	      $('#sidebar').addClass('bottom-locked');
+    	    }
+    	    else {
+    	      $('#sidebar').removeClass('bottom-locked');
+    	    }
+    	    if (noScroll > windowHeight) {
+    	      $('#sidebar').addClass('top-locked');
+    	    }
+    	    else {
+    	      $('#sidebar').removeClass('top-locked');
+    	    }
+    	  });
+    	});
+    	
+    </script>
+    <script>
+    	
+    	$(document).ready(function(){
+        $('.collapsible').collapsible();
+        $(".dropdown-button").dropdown();
+        $(".button-collapse").sideNav();
+        $('select').material_select(); // materializeCSS的select要發揮作用，一定要有這行
+        $('.modal').modal();
+      });
+    	 
+  
+      // dynamic selection的jQuery寫法，'select'要寫在最後。
+      // 先選擇城市，然後區域可以隨之變動
+      
+      //如果selectedCityCategory這個變數不是空的，#doctor_district_id這個id的html就要變成districtOptions這個變數
+      //districtOptions這個變數，是districts這個變數，去filter這個 optgroup變數後的html
+      //是districts這個變數是#doctor_district_id這個id下的html內容
+      //optgroup (meaning “options group”).
+      // optgroup變數，設定為帶有標題的清單項目
+      //http://jsgears.com/thread-63-1-1.html
+      $(function(){
+          filterCityList()
+        })
+      function filterCityList(){
+        var districts = $('#doctor_district_id').html();
+        var hospitals = $('#doctor_hospital_id').html();
+        $('#doctor_city_id').change(function(){
+          var selectedCityCategory = $('#doctor_city_id :selected').text();
+          var optgroup = "optgroup[label='"+ selectedCityCategory + "']";
+          var districtOptions = $(districts).filter(optgroup).html();
+          if(selectedCityCategory != ''){
+            $('#doctor_district_id').html(districtOptions);
+          }
+          $('#doctor_district_id').change(function(){
+            var selectedDistrictCategory = $('#doctor_district_id :selected').text();
+            var optgroup = "optgroup[label='"+ selectedDistrictCategory + "']";
+            var hospitalOptions = $(hospitals).filter(optgroup).html();
+            if(selectedDistrictCategory != ''){
+              $('#doctor_hospital_id').html(hospitalOptions);
+            }
+            $('select').material_select();
+          });
+          $('select').material_select();
+        });
+      }
+      
+      $(function(){
+          filterPhaseList()
+        })
+      function filterPhaseList(){
+        var issues = $('#post_issue_id').html();
+        
+        $('#post_phase_id').change(function(){
+          var selectedPhaseCategory = $('#post_phase_id :selected').text();
+          var optgroup = "optgroup[label='"+ selectedPhaseCategory + "']";
+          var issueOptions = $(issues).filter(optgroup).html();
+          if(selectedPhaseCategory != ''){
+            $('#post_issue_id').html(issueOptions);
           }
           $('select').material_select();
         });
-        $('select').material_select();
-      });
-    }
-    
-    $(function(){
-        filterPhaseList()
-      })
-    function filterPhaseList(){
-      var issues = $('#post_issue_id').html();
-      
-      $('#post_phase_id').change(function(){
-        var selectedPhaseCategory = $('#post_phase_id :selected').text();
-        var optgroup = "optgroup[label='"+ selectedPhaseCategory + "']";
-        var issueOptions = $(issues).filter(optgroup).html();
-        if(selectedPhaseCategory != ''){
-          $('#post_issue_id').html(issueOptions);
-        }
-        $('select').material_select();
-      });
-    }
-    
-   
-     
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-
+      }
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   </body>
 </html>

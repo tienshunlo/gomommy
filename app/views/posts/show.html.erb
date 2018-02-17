@@ -1,4 +1,46 @@
+<% content_for :show_headbar do %>
+	<%= render 'posts/show_headbar', post: @post %>
+<% end %>
+
 <div class="section__wrapper">
+	<div  id="wrapper" class="MaxWidth1000 hide-on-small-only" >
+		<div id="s" class="sidebar__menu">
+			<ul class="Width100 flex-colunm no-border">
+				<li>
+					<!-- 回醫生頁面 -->
+					<%= link_to doctor_path(@doctor), class: 'button no-border' do %>
+						<i class="small material-icons">person_pin</i>
+					<% end %>	
+				</li>
+				<li>
+					<!-- 按讚 -->
+					<% if current_user && current_user.voted_up_on?(@post) %>
+						<%= link_to like_doctor_post_path(@doctor,@post), method: :put, class: 'button no-border' do %>
+							<i class="small  material-icons">favorite</i>
+							<%= @post.get_upvotes.size%></td>
+						<% end %>
+					<% else %>
+						<%= link_to like_doctor_post_path(@doctor,@post), method: :put, class: 'button no-border' do %>
+							<i class="small material-icons">favorite_border</i>
+							<%= @post.get_upvotes.size%></td>
+						<% end %>
+					<% end %>	
+				</li>
+				<li>
+					<!-- 加入收藏 -->
+					<% if current_user && @post.bookmarked_by?(current_user) %>
+						<%= link_to bookmark_doctor_post_path(@doctor, @post), method: :put, class: 'button no-border' do %>
+							<i class="small material-icons">bookmark</i>
+						<% end %>
+					<% else %>
+						<%= link_to bookmark_doctor_post_path(@doctor, @post), method: :put, class: 'button no-border' do %>
+							<i class="small material-icons">bookmark_border</i>
+						<% end %>
+					<% end %>
+				</li>
+			</ul>
+		</div>
+	</div>	
 	<div class="wrapper__box--large MaxWidth740">
 		<%= render 'posts/posts_box_showpage', post: @post  %>
 		<header class="header_cate">
@@ -31,3 +73,39 @@
 <% end %>
 
 
+<script>
+	$(document).ready(function(){
+	  var headerHeight = $('header').outerHeight();
+	  var footerHeight = $('footer').outerHeight();
+	  var wrapperHeight = $('#wrapper').outerHeight();
+	  var scrollStart = headerHeight;
+	  var bodyHeight = $('body').height();
+	  var sidebarHeight = $('#sidebar').height();
+	  var scrollStop = (wrapperHeight - sidebarHeight) + 40;
+	  $(window).on('resize scroll',function(){
+	    var windowHeight = $(window).height();
+	    var sidebarOuterHeight = $('#sidebar').outerHeight();
+	    var noScroll = (sidebarOuterHeight+40);
+	    var scrollPosition = $(window).scrollTop();
+	    var newTop = (scrollPosition - scrollStart);
+	    if (scrollPosition >= scrollStart) {
+	      $('#sidebar').css('top',newTop);
+	    }
+	    else {
+	      $('#sidebar').css('top','0px');
+	    }
+	    if (scrollPosition >= scrollStop){
+	      $('#sidebar').addClass('bottom-locked')
+	    }
+	    else {
+	      $('#sidebar').removeClass('bottom-locked');
+	    }
+	    if (noScroll > windowHeight) {
+	      $('#sidebar').addClass('top-locked');
+	    }
+	    else {
+	      $('#sidebar').removeClass('top-locked');
+	    }
+	  });
+	});
+</script>
