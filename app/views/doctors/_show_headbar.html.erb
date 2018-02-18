@@ -53,7 +53,9 @@
 				</div>
 				<div class="section__content flex-colunm Width100 padding-l1">
 					<div class="section__content flex-colunm"> 
-						<h2 class="profile-name MarginTop05 MarginBottom05"><%= link_to "#{@doctor.name} 醫生", @doctor, class:"name" %></h2> 
+						<h2 class="profile-name MarginTop05 MarginBottom05">
+							<%= link_to "#{@doctor.name} 醫生", @doctor, class:"name" %>
+						</h2> 
 						<% if @doctor.post.any? %>
 							<span>留言：<%= @doctor.post.count  %>  篇</span>
 						<% else %>

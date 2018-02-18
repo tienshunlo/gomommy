@@ -1,0 +1,37 @@
+<div id="wrapper__sidebar--posts" class="hide-on-small-only" >
+	<div id="sidebar--posts">
+	    <ul class="Width100 flex-colunm no-border">
+	        <li>
+	        	<!-- 回醫生頁面 -->
+				<%= link_to doctor_path(@doctor), class: 'button no-border' do %>
+					<i class="small material-icons">person_pin</i>
+				<% end %>
+	        </li>
+	        <li>
+	        	<!-- 按讚 -->
+				<% if current_user && current_user.voted_up_on?(@post) %>
+					<%= link_to like_doctor_post_path(@doctor,@post), method: :put, class: 'button no-border' do %>
+						<i class="small material-icons">favorite</i>
+					<% end %>
+				<% else %>
+					<%= link_to like_doctor_post_path(@doctor,@post), method: :put, class: 'button no-border' do %>
+						<i class="small material-icons">favorite_border</i>
+						<%= @post.get_upvotes.size%></td>
+					<% end %>
+				<% end %>
+	        </li>
+	        <li>
+	        	<!-- 加入收藏 -->
+				<% if current_user && @post.bookmarked_by?(current_user) %>
+					<%= link_to bookmark_doctor_post_path(@doctor, @post), method: :put, class: 'button no-border' do %>
+						<i class="small material-icons">bookmark</i>
+					<% end %>
+				<% else %>
+					<%= link_to bookmark_doctor_post_path(@doctor, @post), method: :put, class: 'button no-border' do %>
+						<i class="small material-icons">bookmark_border</i>
+					<% end %>
+				<% end %>
+	        </li>
+	    </ul>
+    </div>
+</div>

@@ -220,3 +220,40 @@
         }
     }
 }
+
+
+#wrapper__sidebar--posts {
+    height: 0px;
+    width: 100%;
+    //overflow: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    ul {
+        height: 100%;
+        display: flex;
+        margin: 0px;
+        justify-content: space-between;
+    }
+    li {
+        display: flex;
+        justify-content: center;
+    }
+    > #sidebar--posts {
+        top: 373px;
+        background-color: white;
+        width: 80px;
+        height: 200px;
+        border: 1px solid #d9d9d9;
+        padding: 20px;
+        position: relative;
+        border-radius: 5px;
+        &.bottom-locked {
+          position: absolute;
+          bottom: 20px;
+          top: auto !important;
+        }
+        &.top-locked {
+          top: 0 !important;
+        }
+    }
+}

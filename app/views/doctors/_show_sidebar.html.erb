@@ -1,38 +1,38 @@
-	<div id="wrapper__sidebar" class="hide-on-small-only" >
-    	<div id="sidebar">
-    	    <ul class="Width100 flex-colunm no-border">
-    	        <li>
-    	        	<!-- 留言 -->
-    				<%= link_to new_doctor_post_path(@doctor), class: 'button no-border' do %>
-    					<i class="small material-icons">chat_bubble_outline</i>
-    				<% end %>
-    	        </li>
-    	        <li>
-    	        	<!-- 按讚 -->
-    	        	<% if current_user && current_user.voted_up_on?(@doctor) %>
-    					<%= link_to like_doctor_paremove_red_eyeethod: :put, class: 'button no-border' do %>
-    						<i class="small material-icons">favorite</i>
-    					<% end %>
-    				<% else %>
-    					<%= link_to like_doctor_path(@doctor), method: :put, class: 'button no-border' do %>
-    						<i class="small material-icons">favorite_border</i>
-    					<% end %>
-    				<% end %>
-    	        </li>
-    	        <li>
-    	        	<!-- 加入收藏 -->
-    	        	<% if current_user && @doctor.bookmarked_by?(current_user) %>			
-    					<%= link_to bookmark_doctor_path(@doctor), method: :put, class: 'button no-border' do %>
-    						<i class="small material-icons">bookmark</i>
-    					<% end %>
-    				<% else %>
-    					<%= link_to bookmark_doctor_path(@doctor), method: :put, class: 'button no-border' do %>
-    						<i class="small material-icons">bookmark_border</i>
-    					<% end %>
-    				<% end %>
-    	        </li>
-    	    </ul>
-        </div>
+<div id="wrapper__sidebar" class="hide-on-small-only" >
+	<div id="sidebar">
+	    <ul class="Width100 flex-colunm no-border">
+	        <li>
+	        	<!-- 留言 -->
+				<%= link_to new_doctor_post_path(@doctor), class: 'button no-border' do %>
+					<i class="small material-icons">chat_bubble_outline</i>
+				<% end %>
+	        </li>
+	        <li>
+	        	<!-- 按讚 -->
+	        	<% if current_user && current_user.voted_up_on?(@doctor) %>
+					<%= link_to like_doctor_paremove_red_eyeethod: :put, class: 'button no-border' do %>
+						<i class="small material-icons">favorite</i>
+					<% end %>
+				<% else %>
+					<%= link_to like_doctor_path(@doctor), method: :put, class: 'button no-border' do %>
+						<i class="small material-icons">favorite_border</i>
+					<% end %>
+				<% end %>
+	        </li>
+	        <li>
+	        	<!-- 加入收藏 -->
+	        	<% if current_user && @doctor.bookmarked_by?(current_user) %>			
+					<%= link_to bookmark_doctor_path(@doctor), method: :put, class: 'button no-border' do %>
+						<i class="small material-icons">bookmark</i>
+					<% end %>
+				<% else %>
+					<%= link_to bookmark_doctor_path(@doctor), method: :put, class: 'button no-border' do %>
+						<i class="small material-icons">bookmark_border</i>
+					<% end %>
+				<% end %>
+	        </li>
+	    </ul>
     </div>
+</div>
 
 

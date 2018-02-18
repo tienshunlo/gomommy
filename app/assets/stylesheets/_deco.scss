@@ -146,7 +146,7 @@
 }
 
 .MarginTop00{
-    margin-top: 0.0rem;
+    margin-top: 0rem !important;
 }
 
 .MarginTop05{
@@ -188,15 +188,20 @@
 //內距
 
 .padding0 {
-    padding: 0  !important;
+    padding: 0 !important;
 }
 .padding2 {
     padding: 2rem !important;
 }
 
-.padding-l1 {
-    padding-left: 1rem;
+.padding-t0 {
+    padding-top: 0rem !important;
 }
+
+.padding-b0 {
+    padding-bottom: 0rem;
+}
+
 
 /** End of 大小、邊距等 相關 */
 
