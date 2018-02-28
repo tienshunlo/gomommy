@@ -1,4 +1,4 @@
-<div id="wrapper__sidebar--posts" class="hide-on-small-only" >
+<div id="wrapper__sidebar--posts" class="MaxWidth1000 hide-on-small-only" >
 	<div id="sidebar--posts">
 	    <ul class="Width100 flex-colunm no-border">
 	        <li>
@@ -11,12 +11,11 @@
 	        	<!-- 按讚 -->
 				<% if current_user && current_user.voted_up_on?(@post) %>
 					<%= link_to like_doctor_post_path(@doctor,@post), method: :put, class: 'button no-border' do %>
-						<i class="small material-icons">favorite</i>
+						<i class="small material-icons">exposure_plus_1</i>
 					<% end %>
 				<% else %>
 					<%= link_to like_doctor_post_path(@doctor,@post), method: :put, class: 'button no-border' do %>
-						<i class="small material-icons">favorite_border</i>
-						<%= @post.get_upvotes.size%></td>
+						<i class="small material-icons">exposure_plus_1</i>
 					<% end %>
 				<% end %>
 	        </li>

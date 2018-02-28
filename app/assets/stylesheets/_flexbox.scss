@@ -1,0 +1,30 @@
+
+.flex-colunm {
+    flex-direction: column !important;
+}
+
+.flex-row {
+    flex-direction: row !important;
+}
+
+
+.flex80px{
+    flex: 0 1 calc(100% - 80px) !important;
+}
+
+.flexauto{
+    flex: 1 0 auto;
+}
+
+
+.align-center {
+    align-items: center;
+}
+.justify-around {
+    justify-content: space-around;
+}
+.justify-evenly {
+    justify-content: space-evenly;
+}
+
+

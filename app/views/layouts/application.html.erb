@@ -30,46 +30,8 @@
     <footer class="page-footer hide-on-small-only">
        <%= render 'shared/application_footer' %>
     </footer>
+    <%= yield :javascript %>
     <script>
-    	$(document).ready(function(){
-    	  var headerHeight = $('header').outerHeight();
-    	  var doctorHeight = $('.container-doctor').outerHeight();
-    	  var footerHeight = $('footer').outerHeight();
-    	  var wrapperHeight = $('#wrapper__sidebar').outerHeight();
-    	  var scrollStart = doctorHeight + headerHeight;
-    	  var bodyHeight = $('body').height();
-    	  var sidebarHeight = $('#sidebar').height();
-    	  var scrollStop = (doctorHeight - sidebarHeight) + 40;
-    	  $(window).on('resize scroll',function(){
-    	    var windowHeight = $(window).height();
-    	    var sidebarOuterHeight = $('#sidebar').outerHeight();
-    	    var noScroll = (sidebarOuterHeight+40);
-    	    var scrollPosition = $(window).scrollTop();
-    	    var newTop = (scrollPosition + headerHeight);
-    	    if (scrollPosition >= doctorHeight) {
-    	      $('#wrapper__sidebar > #sidebar').css('top',newTop);
-    	    }
-    	    else {
-    	      $('#wrapper__sidebar > #sidebar').css('top',scrollStart);
-    	    }
-    	    if (scrollPosition >= scrollStop){
-    	      $('#sidebar').addClass('bottom-locked');
-    	    }
-    	    else {
-    	      $('#sidebar').removeClass('bottom-locked');
-    	    }
-    	    if (noScroll > windowHeight) {
-    	      $('#sidebar').addClass('top-locked');
-    	    }
-    	    else {
-    	      $('#sidebar').removeClass('top-locked');
-    	    }
-    	  });
-    	});
-    	
-    </script>
-    <script>
-    	
     	$(document).ready(function(){
         $('.collapsible').collapsible();
         $(".dropdown-button").dropdown();
@@ -131,6 +93,6 @@
         });
       }
       </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   </body>
 </html>

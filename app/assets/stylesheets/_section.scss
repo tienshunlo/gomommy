@@ -10,6 +10,10 @@
     padding-top: 1rem;
 }
 
+.section__post {
+    @extend .section--basic;
+}
+
 .section__poster {
     @extend .section--basic;
     justify-content: space-between;

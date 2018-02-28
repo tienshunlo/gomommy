@@ -1,6 +1,22 @@
-<div class="section__content flex-colunm margin-b-1 article-content"> 
-	<h1 class="MarginTop00"> 
-		<%= post.title %> 
-	</h1>
+<div class="section__post flex-colunm margin-b-1"> 
+	<div class="article--topic">
+		<div class="sidebar--chip">
+			<span class="lineheight"><%= post.get_upvotes.size%></span>
+			<span class="chip-icon">同感<i class="small material-icons FontSize1">exposure_plus_1</i></span>
+		</div>
+		<h1 class="MarginTop00 flex80px"> 
+			<%= post.title %> 
+		</h1>
+	</div>
+</div>
+<div class="section__tag">
+	<div class="chip truncate">
+		<%= post.phase.title %>
+	</div>
+	<div class="chip truncate">
+		<%= post.issue.title %>
+	</div>
+</div>
+<div class="section__content flex-colunm margin-b-1 article-content MinHeight34"> 
 	<%= simple_format post.description %>
 </div>

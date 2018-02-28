@@ -1,0 +1,62 @@
+.wrapper__sidebar {
+    height: 0px;
+    width: 100%;
+    //overflow: auto;
+    //max-width: 1200px;
+    margin: 0 auto;
+    ul {
+        height: 100%;
+        display: flex;
+        margin: 0px;
+        justify-content: space-between;
+    }
+    li {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.sidebar {
+        top: 373px;
+        background-color: white;
+        width: 80px;
+        height: 200px;
+        border: 1px solid #d9d9d9;
+        padding: 20px;
+        position: relative;
+        border-radius: 5px;
+        &.bottom-locked {
+          position: absolute;
+          top: auto !important;
+        }
+        &.top-locked {
+          top: 0 !important;
+        }
+    }
+    
+    
+#wrapper__sidebar--doctors {
+    @extend .wrapper__sidebar;
+    > #sidebar--doctors {
+        top: 373px;
+        @extend .sidebar;
+        &.bottom-locked {
+          bottom: 20px;
+        }
+    }
+}
+
+#wrapper__sidebar--posts {
+    @extend .wrapper__sidebar;
+    > #sidebar--posts {
+        //display: none;
+        top: 245px;
+        @extend .sidebar;
+        &.showed {
+            display: block;
+        }
+        &.bottom-locked {
+            bottom: 0px;
+        }
+    }
+}

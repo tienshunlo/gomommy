@@ -1,7 +1,17 @@
+.article--topic{
+    display: flex;
+    justify-content: space-around;
+     h1 {
+        font-size: 2.7rem;
+    }
+}
+
+
 .article-content {
     color: #666;
     line-height: 1.75;
     font-size: 18px;
+    //min-height: 34rem;
 
     h1, h2, h3, h4, h5, h6 {
         margin-top: 1em;
@@ -98,7 +108,7 @@ a.name {
 //字體的大小
 
 .FontSize1{
-    font-size: 1.0rem;
+    font-size: 1.0rem !important;
 }
 .FontSize11{
     font-size: 1.1rem;
@@ -120,3 +130,16 @@ a.name {
 }
 
 /** End of 文字 相關 */
+
+.lineheight {
+    line-height: 1.5rem;
+}
+
+.chip-icon {
+    font-size: 0.7rem;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    color: #8c8c8c;
+}

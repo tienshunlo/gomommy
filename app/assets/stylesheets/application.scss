@@ -18,8 +18,13 @@
 @import "color_variables";
 @import 'materialize';
 @import "extend";
-@import "deco";
-
+@import "flexbox";
+@import "bg";
+@import "border";
+@import "heightxwidth";
+@import "margin";
+@import "padding";
+@import "position";
 
 //component
 @import "image";
@@ -29,6 +34,7 @@
 @import "pagination";
 @import "btn";
 @import "dropdown";
+@import "stickysidebar";
 
 //Layout
 @import "container";

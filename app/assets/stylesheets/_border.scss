@@ -1,0 +1,23 @@
+
+/** Beginning of Border 相關 */
+.basic-border {
+    border: $basic-border;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.bottom-border {
+    border-bottom: $basic-border !important;
+}
+
+.radius100{
+    border-radius: 100%;
+}
+.basic-shadow {
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+
+/** End of Border 相關 */
+
