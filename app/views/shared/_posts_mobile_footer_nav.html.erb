@@ -1,0 +1,46 @@
+<div class="flex-bottom-nav show-on-small hide-on-med-and-up">
+	<ul>
+	    <li>
+	        <%= link_to root_path do %> 
+	            <div class='horizontal-icon'><i class="material-icons">home</i></div>
+	            <span>首頁</span>
+	        <% end %>
+	    </li>
+	    <li>
+	       <!-- 回醫生頁面 -->
+			<%= link_to doctor_path(@doctor) do %>
+				<div class='horizontal-icon'><i class="material-icons">person_pin</i></div>
+				<span>醫生</span>
+			<% end %>
+	    </li>
+	    <li>
+	        <!-- 按讚 -->
+			<% if current_user && current_user.voted_up_on?(@post) %>
+				<%= link_to like_doctor_post_path(@doctor,@post), method: :put do %>
+					<div class='horizontal-icon'><i class="material-icons">exposure_plus_1</i></div>
+					<span>同感</span>
+				<% end %>
+			<% else %>
+				<%= link_to like_doctor_post_path(@doctor,@post), method: :put do %>
+					<div class='horizontal-icon'><i class="material-icons">exposure_plus_1</i></div>
+					<span>同感</span>
+				<% end %>
+			<% end %>
+	    </li>
+	    <li>
+	        <!-- 加入收藏 -->
+			<% if current_user && @post.bookmarked_by?(current_user) %>
+				<%= link_to bookmark_doctor_post_path(@doctor, @post), method: :put do %>
+					<div class='horizontal-icon'><i class="material-icons">bookmark</i></div>
+					<span>收藏</span>
+				<% end %>
+			<% else %>
+				<%= link_to bookmark_doctor_post_path(@doctor, @post), method: :put do %>
+					<div class='horizontal-icon'><i class="material-icons">bookmark_border</i></div>
+					<span>收藏</span>
+				<% end %>
+			<% end %>
+	    </li>
+	</ul>
+</div>
+     

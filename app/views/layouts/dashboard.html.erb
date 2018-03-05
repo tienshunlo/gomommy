@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gomommy</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <%= render 'shared/application_head' %>
   </head>
   <body>
     <header>
@@ -19,7 +13,7 @@
           <%= render 'dashboard/dashboard_headbar' %>
         </div>
       </div>
-      <div class="container-post primary-bg">
+      <div class="container-post primary-bg bottom-border">
         <div class="wrapper--row MaxWidth1000">
           <%= render 'dashboard/dashboard_section__action' %>
         </div>
@@ -38,14 +32,13 @@
        <%= render 'shared/application_footer' %>
     </footer>
     <script>
-  	
-  	$(document).ready(function(){
-      $('.collapsible').collapsible();
-      $(".dropdown-button").dropdown();
-      $(".button-collapse").sideNav();
-      $('select').material_select(); // materializeCSS的select要發揮作用，一定要有這行
-      $('.modal').modal(); // 跳出視窗
-    });
+    	$(document).ready(function(){
+        $('.collapsible').collapsible();
+        $(".dropdown-button").dropdown();
+        $(".button-collapse").sideNav();
+        $('select').material_select(); // materializeCSS的select要發揮作用，一定要有這行
+        $('.modal').modal(); // 跳出視窗
+      });
      </script>
   </body>
 </html>

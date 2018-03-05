@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     before_action :find_doctor, except: [:index, :posts_phase, :posts_issue, :phase_issue]
     before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
     before_action :find_issues_and_phases, only: [:new, :create, :edit]
-    before_action :authenticate_user!, only: [:bookmark]
+    before_action :authenticate_user!, only: [:new, :upvote, :bookmark]
     layout "posts"
     def index
         @flex_filter_icon ="dvr"
@@ -60,7 +60,6 @@ class PostsController < ApplicationController
     end
     
     def new
-        redirect_to new_user_session_path if !current_user
         @post = Post.new
     end
     

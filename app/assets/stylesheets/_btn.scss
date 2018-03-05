@@ -61,30 +61,25 @@
 
 
 .button {
-    display: inline-block;
-    position: relative;
-    box-sizing: border-box;
-    padding: 0 15px;
-    height: 37px;
-    line-height: 35px;
-    color: rgba(0,0,0,.45) !important;
-    background: rgba(0,0,0,0);
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: 4px;
-    transition: .1s background-color,.1s border-color,.1s color,.1s fill;
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    vertical-align: bottom;
-    white-space: nowrap;
-    letter-spacing: 0;
-    font-weight: 400;
-    font-style: normal;
+    @extend .btn--basic;
     &:focus {
         border-color: rgba(0,0,0,.68);
         color: rgba(0,0,0,.68) !important;
         background-color: rgba(0,0,0,.15) !important;
+    }
+    &:hover {
+        border-color: rgba(0,0,0,.68);
+        color: rgba(0,0,0,.68) !important;
+    }
+    &.active {
+        background: rgba(0,0,0,.15) !important;
+        color: rgba(0,0,0,.45) !important;
+    }
+}
+
+.button--stickysidebar {
+    @extend .btn--basic;
+    &:focus {
     }
     &:hover {
         border-color: rgba(0,0,0,.68);

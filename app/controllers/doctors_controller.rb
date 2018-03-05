@@ -1,5 +1,6 @@
 class DoctorsController < ApplicationController
 	before_action :find_doctor, only: [:show, :upvote]
+	before_action :authenticate_user!, only: [:upvote, :bookmark]
 	#impressionist only: [:show, :index]
 	def index
 		
@@ -128,8 +129,6 @@ class DoctorsController < ApplicationController
 		
 		@phases = Phase.all
 		@issues = Issue.all
-		
-		
 		
         @issue_1 = @issues.select{|t| t.phase_id == 1} #檢查相關
         @issue_2 = @issues.select{|t| t.phase_id == 2} #孕婦注意事項
