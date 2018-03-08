@@ -9,26 +9,26 @@
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
                 <%= devise_error_messages! %>
                 <%= render 'layouts/messages' %>
-                <div class="section__form align-center" >
-                    <span class="form__label Width35 ">暱稱</span> 
-                    <span class="flexauto "><%= f.text_field :nickname %></span> 
+                <div class="section__form--login" >
+                    <i class="material-icons input--icons">face</i>
+                    <%= f.text_field :nickname %> 
                 </div>
-                <div class="section__form align-center" >
-                    <span class="form__label Width35 ">信箱</span> 
-                    <span class="flexauto "><%= f.email_field :email, autofocus: true %></span> 
+                <div class="section__form--login" >
+                    <i class="material-icons input--icons">mail_outline</i> 
+                    <%= f.email_field :email, autofocus: true %>
                 </div>
-                <div class="section__form align-center" >
-                    <span class="form__label Width35 ">密碼<br /><i>(必填)</i></span> 
-                    <span class="flexauto "><%= f.password_field :current_password, autocomplete: "off", placeholder:" 請填入原始密碼" %></span> 
+                <div class="section__form--login" >
+                    <i class="material-icons input--icons">lock</i> 
+                    <%= f.password_field :current_password, autocomplete: "off", placeholder:" 必填，請輸入原始密碼" %> 
                 </div>
                 <div class="new-post-bar">以下若不變更，請留白</div>
-                <div class="section__form align-center" >
-                    <span class="form__label Width35 ">新密碼</span>
-                    <span class="flexauto "><%= f.password_field :password, autocomplete: "off", placeholder:" 最少 #{@minimum_password_length} 字" %></span> 
+                <div class="section__form--login" >
+                    <i class="material-icons input--icons">lock_outline</i>
+                    <%= f.password_field :password, autocomplete: "off", placeholder:" 新密碼，最少 #{@minimum_password_length} 字" %> 
                 </div>
-                <div class="section__form align-center" >
-                    <span class="form__label Width35 ">確認</span> 
-                    <span class="flexauto "><%= f.password_field :password_confirmation, autocomplete: "off", placeholder:" 請重新輸入一次新密碼" %></span> 
+                <div class="section__form--login" >
+                    <i class="material-icons input--icons">lock_outline</i>
+                    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:" 新密碼，請重新輸入一次以做確認" %> 
                 </div>
                 <div class="section__form align-center justify-evenly" >
                     <button class="button  Width50" type="submit" name="action">

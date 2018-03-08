@@ -18,15 +18,18 @@
 @import "color_variables";
 @import 'materialize';
 @import "extend";
-@import "flexbox";
+
+//Style
+@import "align";
 @import "bg";
 @import "border";
 @import "heightxwidth";
+@import "flexbox";
 @import "margin";
 @import "padding";
 @import "position";
 
-//component
+//Component
 @import "image";
 @import "boxes";
 @import "section";
@@ -45,11 +48,6 @@
 @import "article_content";
 @import "alert";
 
-
-//客製化原本的CSS設定
-@import "custom_css";
-@import "new_post_modal";
-
 @import "materialize/components/forms/forms";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import url(//fonts.googleapis.com/earlyaccess/cwtexfangsong.css);
@@ -58,6 +56,10 @@
 @import url(//fonts.googleapis.com/earlyaccess/cwtexming.css);
 @import url(//fonts.googleapis.com/earlyaccess/cwtexyen.css);
 
+//客製化原本的CSS設定
+@import "custom_css";
+@import "new_post_modal";
+@import "icons";
 
 $main-font: 'Helvetica Neue', 'PingFang TC', 'Heiti TC', '微軟正黑體', sans-serif;
 $title-font: 'Helvetica Neue', 'PingFang TC', 'Heiti TC', 'Adobe 繁黑體 Std', 'AdobeFanHeitiStd-Bold', '微軟正黑體', sans-serif;

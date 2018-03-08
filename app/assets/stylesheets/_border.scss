@@ -4,6 +4,13 @@
     border: $basic-border;
 }
 
+.border--form {
+    border: 1px solid black;
+    width: 100%;
+    text-indent: 60px;
+    line-height: 48px;
+}
+
 .no-border {
     border: none !important;
 }

@@ -4,6 +4,6 @@ class Dashboard::DoctorsController < Dashboard::DashboardController
 	    @profile = current_user.profile
 	end
 	def up_voted_doctors
-    	@doctors = current_user.get_up_voted Doctor
+    	@doctors = current_user.get_up_voted(Doctor)
     end
 end

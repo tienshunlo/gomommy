@@ -1,11 +1,16 @@
 <div class="wrapper__box--large MaxWidth740">
 	<header class="header_cate">
 		<span class="header_cate_title">
-		  按讚的文章
+		  有同感的文章
 		</span>
 	</header>
 </div>
-<% @up_voted_items.each do |page| %>
+<% if @up_voted_items.empty? %>
+	<div class="wrapper__box--large MaxWidth740">
+		<span class="align--center">尚未找到有同感的文章</span>
+	</div>
+<% else %>
+	<% @up_voted_items.each do |page| %>
 		<div class="wrapper__box--large MaxWidth740">
 			<div class="wrapper__box--inner no-border transparent-bg bottom-border">
 				<div class="box__post">
@@ -25,3 +30,4 @@
 			</div>
 		</div>
 	<% end %>
+<% end %>

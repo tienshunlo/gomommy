@@ -16,7 +16,9 @@ class Dashboard::ProfilesController < Dashboard::DashboardController
     end
     
     def edit
-        @citys = City.all
+        @citys = City.all.collect {|p| [ p.name, p.id ] }.prepend(['請輸入居住城市', -1])
+        @number_of_baby = Profile::NUMBER_OF_BABY
+        @gender_of_baby = Profile::GENDER_OF_BABY
     end
     
     def update

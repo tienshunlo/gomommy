@@ -9,7 +9,7 @@ $(document).ready(function(){
   var scrollStart = headerHeight + doctorHeight;
   var bodyHeight = $('body').height();
   var sidebarHeight = $('#sidebar--posts').height();
-  var scrollStop = (headerHeight + doctorHeight + postHeight - sidebarHeight) - 200;
+  var scrollStop = (headerHeight + doctorHeight + postHeight - sidebarHeight) - 300;
   $(window).on('resize scroll',function(){
     var windowHeight = $(window).height();
     var sidebarOuterHeight = $('#sidebar--posts').outerHeight();
@@ -30,7 +30,6 @@ $(document).ready(function(){
     }
     else {
       $('#wrapper__sidebar--posts > #sidebar--posts').removeClass('bottom-locked');
-      console.log(scrollStop);
     }
     if (noScroll > windowHeight) {
       $('#wrapper__sidebar--posts > #sidebar--posts').addClass('top-locked');

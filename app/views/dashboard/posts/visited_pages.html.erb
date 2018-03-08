@@ -5,7 +5,11 @@
 		</span>
 	</header>
 </div>
-<% if !current_user.profile.visited.nil? %>
+<% if @visited_page.nil? %>
+	<div class="wrapper__box--large MaxWidth740">
+		<span class="align--center">尚未瀏覽任何文章</span>
+	</div>
+<% else %>
 	<% @visited_page.each do |post| %>
 		<div class="wrapper__box--large MaxWidth740">
 			<div class="wrapper__box--inner no-border transparent-bg bottom-border">

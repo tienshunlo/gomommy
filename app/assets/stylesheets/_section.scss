@@ -10,6 +10,12 @@
     padding-top: 1rem;
 }
 
+.section__form--login {
+    @extend .section--basic;
+    padding-top: 1rem;
+    position: relative;
+}
+
 .section__post {
     @extend .section--basic;
 }

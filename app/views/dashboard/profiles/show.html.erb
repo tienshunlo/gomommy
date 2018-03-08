@@ -6,36 +6,44 @@
 	</header>
 	<div class="wrapper__box--inner">
         <div class="box__post padding2">
-    		<div class="section__form align-center lineheight4" >
-				<span class="form__label Width40 ">居住城市</span> 
+    		<div class="section__form--login" >
+                <i class="material-icons input--icons">home</i> 
 				<% if current_user.profile.location %>
-					<span class="flexauto "><%= @city %></span>
+					<div class="border--form "><%= @city %></div>
 				<% else %>
-					<%= link_to "新增城市", edit_dashboard_profile_path, class:"button" %>
+					<div class="border--form "><%= link_to "新增城市", edit_dashboard_profile_path %></div>
 				<% end %>
 		    </div>
-    		<div class="section__form align-center lineheight4" >
-				<span class="form__label Width40 ">有幾個小寶貝</span> 
-				<span class="flexauto "><%= Profile::NUMBER_OF_BABY[current_user.profile.number_of_baby][0] %></span>
+    		<div class="section__form--login" >
+    			<i class="material-icons input--icons">child_friendly</i>
+    			<% if current_user.profile.number_of_baby.nil? %>
+					<div class="border--form "><%= Profile::NUMBER_OF_BABY[current_user.profile.number_of_baby][0] %></div>
+				<% else %>
+					<div class="border--form "><%= link_to "有幾個小寶貝", edit_dashboard_profile_path %></div>
+				<% end %>
     		</div>
-    		<div class="section__form align-center lineheight4" >
-				<span class="form__label Width40 ">小寶貝暱稱</span> 
-				<% if current_user.profile.nickname_of_baby.nil? %>
-					<span class="flexauto "><%= current_user.profile.nickname_of_baby %></span>
+    		<div class="section__form--login" >
+            	<i class="material-icons input--icons">child_care</i> 
+				<% if current_user.profile.nickname_of_baby? && !current_user.profile.nickname_of_baby.nil? %>
+					<div class="border--form "><%= current_user.profile.nickname_of_baby %></div>
 				<% else %>
-					<%= link_to "新增暱稱", edit_dashboard_profile_path, class:"button" %>
+					<div class="border--form "><%= link_to "新增小寶貝暱稱", edit_dashboard_profile_path %></div>
 				<% end %>
 		    </div>
-    		<div class="section__form align-center lineheight4" >
-				<span class="form__label Width40 ">小寶貝性別</span> 
-				<span class="flexauto "><%= Profile::GENDER_OF_BABY[current_user.profile.gender_of_baby][0] %></span>
-		    </div>
-    		<div class="section__form align-center lineheight4" >
-				<span class="form__label Width40 ">小寶貝生日</span> 
-				<% if current_user.profile.birthday_of_baby %>
-					<span class="flexauto "><%= current_user.profile.birthday_of_baby.strftime("%Y/%m/%d") %></span>
+    		<div class="section__form--login" >
+    			<i class="material-icons input--icons">pregnant_woman</i>
+    			<% if current_user.profile.gender_of_baby.nil? %>
+					<div class="border--form "><%= Profile::GENDER_OF_BABY[current_user.profile.gender_of_baby][0] %></div>
 				<% else %>
-					<%= link_to "新增生日", edit_dashboard_profile_path, class:"button" %>
+					<div class="border--form "><%= link_to "請輸入小寶貝性別", edit_dashboard_profile_path %></div>
+				<% end %>	
+		    </div>
+    		<div class="section__form--login" >
+            		<i class="material-icons input--icons">cake</i> 
+				<% if current_user.profile.birthday_of_baby %>
+					<div class="border--form "><%= current_user.profile.birthday_of_baby.strftime("%Y/%m/%d") %></div>
+				<% else %>
+					<div class="border--form "><%= link_to "新增生日", edit_dashboard_profile_path %></div>
 				<% end %>
 		    </div>
 		</div>

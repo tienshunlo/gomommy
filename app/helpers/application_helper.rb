@@ -12,8 +12,17 @@ module ApplicationHelper
     end
     def login_helper style = ''
         if current_user
+            if current_user.profile.album
+                user_image = current_user.profile.album.album_img.url(:medium) 
+            else
+                user_image = current_user.profile.profile_img.url(:medium)
+            end
           (link_to "個人後台", dashboard_posts_path, class:style) +
-          (link_to "登出", destroy_user_session_path, method: :delete, class:style)
+          (link_to "登出", destroy_user_session_path, method: :delete, class:style) +
+          (link_to "", "#!", { class: "u-block size3x3 radius100 dropdown-button", 
+                                style: "background-image: url('#{user_image}')",
+                                :data => {:activates => "dropdown-discussion"}
+                                })
         else
           (link_to "註冊", new_user_registration_path, class:style) +
           (link_to "登入", new_user_session_path, class:style)
@@ -122,6 +131,11 @@ module ApplicationHelper
             link_to "", user_path(user), { class: "u-block size375x375 radius100", 
                                             style: "background-image: url('#{user_image}')"
                                             }
+        elsif layout == "avatar"
+            link_to "", "#!", { class: "u-block size3x3 radius100 dropdown-button", 
+                                style: "background-image: url('#{user_image}')",
+                                :data => {:activates => "dropdown-discussion"}
+                                }
         end
     end
     
@@ -175,7 +189,7 @@ module ApplicationHelper
             },
             {
                 url: up_voted_doctors_dashboard_doctors_path,
-                title: "關注的醫生"
+                title: "按讚的醫生"
             },
             {
                 url: dashboard_posts_path,

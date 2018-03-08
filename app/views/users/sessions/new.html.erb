@@ -9,17 +9,14 @@
             <div class="box__post padding2">
                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                     <%= render 'layouts/messages' %>
-                    <div class="section__form align-center" >
-                        <span class="form__label Width40 ">信箱</span> 
+                    
+                    <div class="section__form--login">
+                        <i class="material-icons input--icons">mail_outline</i>
+                        <%= f.email_field :email, autofocus: true, placeholder:"電子信箱" %>
                     </div>
-                    <div>
-                        <%= f.email_field :email, autofocus: true %>
-                    </div>
-                    <div class="section__form align-center" >
-                        <span class="form__label Width40 ">密碼 </span>
-                    </div>
-                    <div>
-                        <%= f.password_field :password, autocomplete: "off" %>
+                    <div class="section__form--login">
+                        <i class="material-icons input--icons">lock</i>
+                        <%= f.password_field :password, autocomplete: "off", placeholder:"密碼" %>
                     </div>
                     <% if devise_mapping.rememberable? %>
                         <div class="section__form align-center justify-evenly" >    
