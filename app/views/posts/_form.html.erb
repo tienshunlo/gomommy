@@ -1,95 +1,98 @@
 <%= form_for ([doctor, post]) do |f| %>
-	<div class="section__form align-center" >
-    	<span class="form__label Width35 margin-r-1">請選擇主題</span>
-        <%= f.select :subject , Post::SUBJECT, {include_blank: false}, {class:"browser-default"} %>
+	<div class="section__form--login" >
+    	<i class="material-icons input--icons">notifications_active</i>
+        <%= f.select :subject , Post::SUBJECT, {include_blank: false, disabled: 0, selected: 0}, {class:"browser-default"} %>
     </div>
-    <div class="section__form align-center" >
-    	<span class="form__label Width35 margin-r-1">請輸入標題</span>
-        <%= f.text_field :title %>
+    <div class="section__form--login" >
+    	<i class="material-icons input--icons">title</i>
+        <%= f.text_field :title, placeholder:"請輸入標題", class:"indent__text69" %>
     </div>
-    <div class="new-post-section">
+    <div class="section__newpost">
         <div class="section__form align-center">
+            <i class="material-icons">looks_one</i>
             <span class="form__label">請選擇目前所處階段</span>
         </div>
-        <div>
+        <div class="section__option">
             <div class="new-post-bar">懷孕期間</div>
             <ul>
                 <% @phase_1.each do |phase| %>
                     <li>
                         <%= f.radio_button :phase_id, phase.id  %>
-                        <%= f.label "phase_id_#{phase.id}", phase.title, class:"new-post-select" %>
+                        <%= f.label "phase_id_#{phase.id}", phase.title %>
                     </li>
                 <% end %>
             </ul>
         </div>
-        <div>
+        <div class="section__option">
             <div class="new-post-bar">生產過後</div>
             <ul>
                 <% @phase_2.each do |phase| %>
                     <li>
                         <%= f.radio_button :phase_id, phase.id  %>
-                        <%= f.label "phase_id_#{phase.id}", phase.title, class:"new-post-select" %>
+                        <%= f.label "phase_id_#{phase.id}", phase.title %>
                     </li>
                 <% end %>
             </ul>
             
         </div>
     </div>
-    <div class="new-post-section">
+    <div class="section__newpost">
         <div class="section__form align-center">
+             <i class="material-icons">looks_two</i>
             <span class="form__label">請選擇相關徵狀</span>
         </div>
-        <div>
+        <div class="section__option">
             <div class="new-post-bar">檢查相關</div>
             <ul>
                 <% @issue_1.each do |issue| %>
                     <li>
                         <%= f.radio_button :issue_id, issue.id  %>
-                        <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-select" %>
+                        <%= f.label "issue_id_#{issue.id}", issue.title %>
                     </li>
                 <% end %>
             </ul>
         </div>
-        <div>
+        <div class="section__option">
             <div class="new-post-bar">孕婦注意事項</div>
             <ul>
                 <% @issue_2.each do |issue| %>
                     <li>
                         <%= f.radio_button :issue_id, issue.id  %>
-                        <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-select" %>
+                        <%= f.label "issue_id_#{issue.id}", issue.title %>
                     </li>
                 <% end %>
             </ul>
         </div>
-        <div>
+        <div class="section__option">
             <div class="new-post-bar">生產相關</div>
             <ul>
                 <% @issue_3.each do |issue| %>
                     <li>
                         <%= f.radio_button :issue_id, issue.id  %>
-                        <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-select" %>
+                        <%= f.label "issue_id_#{issue.id}", issue.title %>
                     </li>
                 <% end %>
             </ul>
         </div>
-        <div>
+        <div class="section__option">
             <div class="new-post-bar">產後注意事項</div>
             <ul>
                 <% @issue_4.each do |issue| %>
                     <li>
                         <%= f.radio_button :issue_id, issue.id  %>
-                        <%= f.label "issue_id_#{issue.id}", issue.title, class:"new-post-select" %>
+                        <%= f.label "issue_id_#{issue.id}", issue.title %>
                     </li>
                 <% end %>
             </ul>
         </div>
     </div>
-    <div class="section__form align-center">
+    <div class="section__form align-center MarginBottom15">
+         <i class="material-icons">looks_3</i>
         <span class="form__label Width100 ">內容</span>
         
     </div>
-    <%= f.text_area :description, class:"materialize-textarea" %>
-    <div>
+    <%= f.text_area :description, class:"materialize-textarea, indent__text0" %>
+    <div class="MarginTop1">
         <button class="button" type="submit" name="action">
             <span>送出</span>
         </button>

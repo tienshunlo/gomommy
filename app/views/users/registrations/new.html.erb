@@ -18,11 +18,11 @@
                         <%= f.text_field :nickname, placeholder:"暱稱" %>
                     </div>
                     <div class="section__form--login">
-                        <i class="material-icons input--icons">lock</i>
+                        <i class="material-icons input--icons">lock_outline</i>
                         <%= f.password_field :password, autocomplete: "off", placeholder:"密碼，最少 #{@minimum_password_length} 字" %>
                     </div>
                     <div class="section__form--login">
-                        <i class="material-icons input--icons">lock_outline</i>
+                        <i class="material-icons input--icons">lock</i>
                         <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:" 請重新輸入一次密碼" %>
                     </div>
                     <div class="section__form align-center justify-evenly" >

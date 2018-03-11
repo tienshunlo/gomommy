@@ -1,12 +1,14 @@
-<div class="section__post flex-colunm margin-b-1"> 
+<div class="section__post margin-b-1"> 
 	<div class="article--topic">
-		<div class="sidebar--chip">
+		<div class="chip--plusone">
 			<span class="lineheight"><%= post.get_upvotes.size%></span>
 			<span class="chip-icon">同感<i class="small material-icons FontSize1">exposure_plus_1</i></span>
 		</div>
-		<h1 class="MarginTop00 flex80px"> 
-			<%= post.title %> 
-		</h1>
+		<div class="flex11auto">
+			<h1 class="MarginTop00"> 
+				<%= post.title %> 
+			</h1>
+		</div>
 	</div>
 </div>
 <div class="section__tag">
