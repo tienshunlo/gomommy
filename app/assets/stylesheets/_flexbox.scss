@@ -9,6 +9,15 @@
     flex-direction: row !important;
 }
 
+.flex-rc {
+    flex-direction: row !important;
+    @media only screen and (max-width: 600px){
+        flex-direction: column !important;
+    }
+}
+.flex0{
+    flex: 0 !important;
+}
 
 .flex80px{
     flex: 0 1 calc(100% - 80px) !important;
@@ -28,6 +37,11 @@
 .justify-around {
     justify-content: space-around;
 }
+
+.justify-center {
+    justify-content: center;
+}
+
 .justify-evenly {
     justify-content: space-evenly;
 }
@@ -35,3 +49,4 @@
 .justify-between {
     justify-content: space-between;
 }
+

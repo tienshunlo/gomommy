@@ -8,24 +8,24 @@
         <div class="box__post padding2">
             <%= form_for @profile, url: dashboard_profile_path, method: :PATCH, html: { multipart: true } do |f| %>
                 <div class="section__form--login" >
-                    <i class="material-icons input--icons">home</i>
+                    <i class="material-icons icons--input">home</i>
             		<%= f.select :location, @citys, { disabled:-1}, {class: "browser-default"} %>
             	</div>
             	<div class="section__form--login" >
-            		<i class="material-icons input--icons">child_friendly</i>
+            		<i class="material-icons icons--input">child_friendly</i>
             		<%= f.select :number_of_baby, @number_of_baby, {disabled: 0}, {class: "browser-default"} %>
             	</div>
             	<div class="new-post-bar">小寶貝資料</div>
             	<div class="section__form--login">
-            		<i class="material-icons input--icons">child_care</i>
+            		<i class="material-icons icons--input">child_care</i>
             		<%= f.text_field :nickname_of_baby, placeholder:"暱稱", class: "margin0 indent__text69" %>
             	</div>
             	<div class="section__form--login" >
-            		<i class="material-icons input--icons">pregnant_woman</i>
+            		<i class="material-icons icons--input">pregnant_woman</i>
             		<%= f.select(:gender_of_baby , @gender_of_baby, {disabled: 0}, {class: "browser-default"}) %>
             	</div>
             	<div class="section__form--login justify-between" >
-            		<i class="material-icons input--icons">cake</i>
+            		<i class="material-icons icons--input">cake</i>
             		<%#= f.text_field :birthday_of_baby, placeholder:"預產期或生日", class: "datepicker" %>
             		<%= f.date_select :birthday_of_baby, {:start_year => Time.now.year - 10}, {class: "browser-default birthday"} %>
             	</div>

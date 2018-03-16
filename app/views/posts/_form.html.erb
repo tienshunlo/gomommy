@@ -1,10 +1,10 @@
 <%= form_for ([doctor, post]) do |f| %>
 	<div class="section__form--login" >
-    	<i class="material-icons input--icons">notifications_active</i>
+    	<i class="material-icons icons--input">notifications_active</i>
         <%= f.select :subject , Post::SUBJECT, {include_blank: false, disabled: 0, selected: 0}, {class:"browser-default"} %>
     </div>
     <div class="section__form--login" >
-    	<i class="material-icons input--icons">title</i>
+    	<i class="material-icons icons--input">title</i>
         <%= f.text_field :title, placeholder:"請輸入標題", class:"indent__text69" %>
     </div>
     <div class="section__newpost">

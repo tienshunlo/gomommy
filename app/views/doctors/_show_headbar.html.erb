@@ -1,15 +1,16 @@
 <div class="container-doctor primary-bg bottom-border">
 	<div class="wrapper__doctor flex-colunm MaxWidth1000">
 		<div class="wrapper__box--inner no-border">
-			<div class="box__post flex-row">
-				<div class="box__doctor">
+			<div class="box__post flex-rc">
+				<div class="box__doctor MinWidth240">
 					<div class="section__avatar">
 						<div class="poster-avatar">
 							<%= doctor_img_helper("show", @doctor) %>
 						</div>
 					</div>
-					<div class="section__action show-on-small hide-on-med-and-up">
-					    <ul class="Width100 flex-colunm  no-border">
+					<div class="section__action">
+						<% if false %>
+					    <ul class="Width100 no-border">
 					        <li>
 					        	<!-- 留言 -->
 								<%= link_to new_doctor_post_path(@doctor), class: 'button' do %>
@@ -49,9 +50,39 @@
 								<% end %>
 					        </li>
 					    </ul>
+					    <% end %>
+					    <ul class="justify-center Width100 no-border MarginTop15 MarginBottom15">
+					        <li class="flex0">
+								<div class="chip--square">
+									<span class="lineheight"><%= @doctor.post.count %></span>
+									<span class="icons--chip">
+										<span>留言</span>
+										<i class="small material-icons FontSize1">chat_bubble_outline</i>
+									</span>
+								</div>
+							</li>
+					        <li class="flex0">
+							    <div class="chip--square">
+									<span class="lineheight"><%= @doctor.get_upvotes.size %></span>
+									<span class="icons--chip">
+										<span>按讚</span>
+										<i class="small material-icons FontSize1">favorite_border</i>
+									</span>
+								</div>
+							</li>
+							<li class="flex0">
+								<div class="chip--square">
+									<span class="lineheight"><%= @doctor.bookmarkers_by(User).size %></span>
+									<span class="icons--chip">
+										<span>關注</span>
+										<i class="small material-icons FontSize1">bookmark_border</i>
+									</span>
+								</div>	
+							</li>
+						</ul>
     				</div>
 				</div>
-				<div class="section__content flex-colunm Width100 padding-l1">
+				<div class="section__content flex-colunm padding-l1">
 					<div class="section__content flex-colunm"> 
 						<h2 class="profile-name MarginTop05 MarginBottom05">
 							<%= link_to "#{@doctor.name} 醫生", @doctor, class:"name" %>

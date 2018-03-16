@@ -7,7 +7,7 @@
 	<div class="wrapper__box--inner">
         <div class="box__post padding2">
     		<div class="section__form--login">
-                <i class="material-icons input--icons">home</i> 
+                <i class="material-icons icons--input">home</i> 
 				<% if current_user.profile.location %>
 					<div class="border--form"><%= @city %></div>
 				<% else %>
@@ -15,7 +15,7 @@
 				<% end %>
 		    </div>
     		<div class="section__form--login">
-    			<i class="material-icons input--icons">child_friendly</i>
+    			<i class="material-icons icons--input">child_friendly</i>
     			<% if current_user.profile.number_of_baby? && !current_user.profile.number_of_baby.nil?  %>
 					<div class="border--form"><%= Profile::NUMBER_OF_BABY[current_user.profile.number_of_baby][0] %></div>
 				<% else %>
@@ -23,7 +23,7 @@
 				<% end %>
     		</div>
     		<div class="section__form--login">
-            	<i class="material-icons input--icons">child_care</i> 
+            	<i class="material-icons icons--input">child_care</i> 
 				<% if current_user.profile.nickname_of_baby? && !current_user.profile.nickname_of_baby.nil? %>
 					<div class="border--form"><%= current_user.profile.nickname_of_baby %></div>
 				<% else %>
@@ -31,7 +31,7 @@
 				<% end %>
 		    </div>
     		<div class="section__form--login">
-    			<i class="material-icons input--icons">pregnant_woman</i>
+    			<i class="material-icons icons--input">pregnant_woman</i>
     			<% if current_user.profile.number_of_baby? && !current_user.profile.gender_of_baby.nil? %>
 					<div class="border--form"><%= Profile::GENDER_OF_BABY[current_user.profile.gender_of_baby][0] %></div>
 				<% else %>
@@ -39,7 +39,7 @@
 				<% end %>	
 		    </div>
     		<div class="section__form--login">
-            		<i class="material-icons input--icons">cake</i> 
+            		<i class="material-icons icons--input">cake</i> 
 				<% if current_user.profile.birthday_of_baby %>
 					<div class="border--form"><%= current_user.profile.birthday_of_baby.strftime("%Y/%m/%d") %></div>
 				<% else %>

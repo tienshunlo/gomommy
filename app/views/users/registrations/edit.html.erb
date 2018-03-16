@@ -10,24 +10,24 @@
                 <%= devise_error_messages! %>
                 <%= render 'layouts/messages' %>
                 <div class="section__form--login" >
-                    <i class="material-icons input--icons">face</i>
+                    <i class="material-icons icons--input">face</i>
                     <%= f.text_field :nickname %> 
                 </div>
                 <div class="section__form--login" >
-                    <i class="material-icons input--icons">mail_outline</i> 
+                    <i class="material-icons icons--input">mail_outline</i> 
                     <%= f.email_field :email, autofocus: true %>
                 </div>
                 <div class="section__form--login" >
-                    <i class="material-icons input--icons">lock</i> 
+                    <i class="material-icons icons--input">lock</i> 
                     <%= f.password_field :current_password, autocomplete: "off", placeholder:" 必填，請輸入原始密碼" %> 
                 </div>
                 <div class="new-post-bar">以下若不變更，請留白</div>
                 <div class="section__form--login" >
-                    <i class="material-icons input--icons">lock</i>
+                    <i class="material-icons icons--input">lock</i>
                     <%= f.password_field :password, autocomplete: "off", placeholder:" 新密碼，最少 #{@minimum_password_length} 字" %> 
                 </div>
                 <div class="section__form--login" >
-                    <i class="material-icons input--icons">lock</i>
+                    <i class="material-icons icons--input">lock</i>
                     <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:" 新密碼，請重新輸入一次以做確認" %> 
                 </div>
                 <div class="section__form align-center justify-evenly" >

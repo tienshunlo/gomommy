@@ -91,12 +91,12 @@ module ApplicationHelper
             doctor_image = image_path("medium/missing.png")
         end
         if layout == "index"
-            link_to "", doctor_path(doctor), { class: "u-block", 
+            link_to "", doctor_path(doctor), { class: "u-block no-border", 
                                                 style: "background-image: url('#{doctor_image}'); 
                                                         height: 10rem;"
                                                 } 
         elsif layout == "show"
-            link_to "", doctor_path(doctor), { class: "u-block size10x10 radius100", 
+            link_to "", doctor_path(doctor), { class: "u-block size10x10 radius100 margin0", 
                                                 style: "background-image: url('#{doctor_image}');"
                                                 }
         elsif layout == "dashboard"
