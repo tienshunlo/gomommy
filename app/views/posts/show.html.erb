@@ -17,10 +17,11 @@
 	<!-- sticky sidebar menu -->
 	<%= javascript_include_tag 'stickysidebar' %>
 <% end %>
-
-<% content_for :mobile_footer_nav do %>
-	<!-- 手機版的底部NAV -->
-	<%= render 'shared/posts_mobile_footer_nav' %>
+<% if false %>
+	<% content_for :mobile_footer_nav do %>
+		<!-- 手機版的底部NAV -->
+		<%= render 'shared/mobile_footer_nav_posts' %>
+	<% end %>
 <% end %>
 
 

@@ -16,7 +16,7 @@
 
 .section__form--login {
     @extend .section--basic;
-    padding-top: 1rem;
+    padding-top: 1rem !important;
     position: relative;
 }
 

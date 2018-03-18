@@ -1,3 +1,4 @@
+<div class="section">
 <div class='wrapper__filterrific'>
     <div class='flex-filter-title'>
         <i class="material-icons"><%= @flex_filter_icon %></i>
@@ -5,6 +6,27 @@
     </div>
     <div class="filterrific-section">
         <%= form_for_filterrific @filterrific do |f| %>
+            <div class="section__form--login Width30 wrapper__box--small MarginBottom00 padding0" >
+                <i class="material-icons icons--input">pregnant_woman</i>
+        		<%= f.select :with_phase_id , @filterrific.select_options[:with_phase_id], {include_blank: '- 全部孕期留言 -'}, class:"browser-default" %>
+        	</div>
+        	<div class="section__form--login Width30 wrapper__box--small MarginBottom00 padding0" >
+                <i class="material-icons icons--input">child_care</i>
+        		<%= f.select :with_issue_id , @filterrific.select_options[:with_issue_id], {include_blank: '- 全部症狀留言 -'}, class:"browser-default" %>
+        	</div>
+        	<div class="section__form--login Width30 wrapper__box--small MarginBottom00 padding0" >
+                <i class="material-icons icons--input">sort</i>
+        		<%= f.select :sorted_by, @filterrific.select_options[:sorted_by],{}, class:"browser-default" %>
+        	</div>
+        <% end %>
+    </div>
+    <% if false %>
+    <div class="filterrific-section">
+        <%= form_for_filterrific @filterrific do |f| %>
+            <div class="section__form--login" >
+                <i class="material-icons icons--input">home</i>
+        		<%= f.select :with_phase_id , @filterrific.select_options[:with_phase_id], {include_blank: '- 全部孕期留言 -'}, class:"browser-default" %>
+        	</div>
             <ul>
                 <li><%= f.select :with_phase_id , @filterrific.select_options[:with_phase_id], {include_blank: '- 全部孕期留言 -'}, class:"browser-default" %></li>
                 <li><%= f.select :with_issue_id , @filterrific.select_options[:with_issue_id], {include_blank: '- 全部症狀留言 -'}, class:"browser-default" %></li>
@@ -12,5 +34,7 @@
             </ul>
         <% end %>
     </div>
+    <% end %>
+</div>
 </div>
 <%= render_filterrific_spinner %>

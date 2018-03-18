@@ -230,6 +230,22 @@ module ApplicationHelper
         end
         dashboard_nav.html_safe
     end
+    
+    def mobile_footer_nav_helper(controller_name)
+        if controller_name == "doctors"
+            if current_page?(action: 'index')
+                render 'shared/mobile_footer_nav_application'
+            else
+                render 'shared/mobile_footer_nav_doctor'
+            end 
+        elsif controller_name =="posts"
+            if current_page?(action: 'index' ) || current_page?(action: 'posts_issue' ) || current_page?(action: 'posts_phase')
+                render 'shared/mobile_footer_nav_application'
+            else
+                render 'shared/mobile_footer_nav_posts'
+            end
+        end
+    end
 						
 end
 

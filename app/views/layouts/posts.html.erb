@@ -19,7 +19,12 @@
       </div>
         <%= yield :comment_section %>
     </main>
-    <%= yield :mobile_footer_nav %>
+    <% if false %>
+      <%= yield :mobile_footer_nav %>
+    <% end %>
+    <div class="flex-bottom-nav show-on-small hide-on-med-and-up">
+        <%= mobile_footer_nav_helper(controller.controller_name) %>
+    </div>
     <footer class="page-footer hide-on-small-only">
        <%= render 'shared/application_footer' %>
     </footer>

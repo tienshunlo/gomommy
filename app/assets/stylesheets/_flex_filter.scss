@@ -75,6 +75,19 @@
     }
 }
 
+#filterrific_filter {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.filterrific-section {
+    padding-bottom: 1rem;
+    display: flex;
+    adjust-content: space-between;
+    
+}
 
 .filterrific-section ul {
     display: flex;

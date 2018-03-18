@@ -18,11 +18,7 @@
       </div>
     </main> 
     <div class="flex-bottom-nav show-on-small hide-on-med-and-up">
-      <% if current_page?(@doctor) %>
-        <%= render "shared/doctor_mobile_footer_nav" %>
-      <% else %>
-        <%= render 'shared/application_mobile_footer_nav' %>
-      <% end %>
+      <%= mobile_footer_nav_helper(controller.controller_name) %>
     </div>
     <footer class="page-footer hide-on-small-only">
        <%= render 'shared/application_footer' %>
