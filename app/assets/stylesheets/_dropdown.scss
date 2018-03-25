@@ -27,3 +27,32 @@
         }
     }
 }
+
+.dropdown-content{
+    width: 250px !important;
+    position: absolute;
+    top: 80px !important;
+    left: 256px;
+    opacity: 1;
+    display: none;
+    &.active {
+    //position: absolute;
+    top: 80px !important;
+    //left: 944px;
+    //opacity: 1;
+    //display: block;
+    @media #{$small-and-down} {
+            width: 95% !important;
+            right: -10px !important;
+            left: 10px !important;
+        }
+    }
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.6) !important;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+}

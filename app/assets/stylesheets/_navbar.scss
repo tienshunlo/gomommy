@@ -1,0 +1,21 @@
+nav .brand-name {
+    position: absolute;
+    color: #fff;
+    display: flex;
+    font-size: 1.5rem;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.login_user {
+    //width: 54px;
+    height: $navbar-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media #{$small-and-down}  {
+        height: $navbar-height-mobile;
+    }
+    
+}
+   

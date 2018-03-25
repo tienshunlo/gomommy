@@ -29,7 +29,7 @@ class DoctorsController < ApplicationController
         #@phase_2 = @phases.where(:id => (5..7)) #生產過後
 		
 		
-		if params[:city].blank?
+		if params[:city].blank? || params[:city] == "all_city"
 			@doctors = @paginate = Doctor.published.includes(:city, :hospital).paginate(:page => params[:page])
 			@city_name = "全部城市"
 			#@doctors = @paginate = Doctor

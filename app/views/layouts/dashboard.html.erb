@@ -24,10 +24,12 @@
           <%= will_paginate @paginate if @paginate %>
         </div>
       </div>
-    </main> 
+    </main>
+    <% if false %>
     <div class="flex-bottom-nav show-on-small hide-on-med-and-up">
       <%= render 'shared/application_mobile_footer_nav' %>
     </div>
+    <% end %>
     <footer class="page-footer hide-on-small-only">
        <%= render 'shared/application_footer' %>
     </footer>
