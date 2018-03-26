@@ -39,21 +39,27 @@
 </div>
 
 
-<!-- 下拉選單 -->
+<!-- 下拉選單 - 討論區 -->
 <!-- Dropdown Structure -->
 <ul id="dropdown-discussion" class="dropdown-content">
-    <%= dashboard_nav(dropdown_discussion_items,"") %>
+    <%= dropdown_nav(dropdown_discussion_items,"flex") %>
 </ul>
 
-
-<ul id="dashboard-menu" class="dropdown-content">
-    <%= dashboard_nav(dashboard_menu_account_items,"") %>
+<!-- 下拉選單 -  使用者後台 -->
+<!-- Dropdown Structure -->
+<ul id="dropdown-dashboard" class="dropdown-content">
+    <%= dropdown_nav(dashboard_nav_items[0],"flex") %>
     <li class="divider"></li>
-    <%= dashboard_nav(dashboard_menu_doctor_items,"") %>
+    <%= dropdown_nav(dashboard_nav_items[1],"flex") %>
     <li class="divider"></li>
-    <%= dashboard_nav(dashboard_menu_post_items,"") %>
+    <%= dropdown_nav(dashboard_nav_items[2],"flex") %>
     <li class="divider"></li>
-    <li><%= link_to "登出", destroy_user_session_path, method: :delete %></li>
+    <li>
+        <%= link_to  destroy_user_session_path, method: :delete, class:"flex" do %> 
+        	<i class="material-icons">exit_to_app</i>
+        	<span class="margin-l-05">登出</span>
+        <% end %>
+    </li>
 </ul>
 
 

@@ -33,7 +33,7 @@ module ApplicationHelper
             else
                 user_image = current_user.profile.profile_img.url(:medium)
             end 
-            link_to " ", "#", { class: "dropdown-button u-block size2 radius100 no-border margin-l-1", style: "background-image: url(#{user_image})", :data => {:activates => "dashboard-menu"}}
+            link_to " ", "#", { class: "dropdown-button u-block size2 radius100 no-border margin-l-1", style: "background-image: url(#{user_image})", :data => {:activates => "dropdown-dashboard"}}
         else
             link_to "登入", new_user_session_path, class: "btn-flat btn-flat-custom white-border"
         end
@@ -205,92 +205,65 @@ module ApplicationHelper
         [
             {
                 url: posts_path,
-                title: "總討論區"
+                title: "總討論區",
+                material_icons:"dvr"
             },
             {
                 url: posts_phase_posts_path,
-                title: "按孕期分類"
+                title: "按孕期分類",
+                material_icons:"pregnant_woman"
             },
             {
                 url: posts_issue_posts_path,
-                title: "按症狀分類"
-            },
-        ]
-    end
-    
-    def dashboard_menu_account_items
-        [
-            {
-                url: dashboard_profile_path,
-                title: "個人資料"
-            },
-            {
-                url: edit_dashboard_profile_path,
-                title: "修改個資"
-            },
-            {
-                url: edit_user_registration_path,
-                title: "更新帳密"
-            },
-        ]
-    end
-    
-    def dashboard_menu_doctor_items
-        [
-            {
-                url: up_voted_doctors_dashboard_doctors_path,
-                title: "按讚的醫生"
-            },
-        ]
-    end
-    
-     def dashboard_menu_post_items
-        [
-            {
-                url: dashboard_posts_path,
-                title: "發表的文章"
-            },
-            {
-                url: visited_pages_dashboard_posts_path,
-                title: "瀏覽過的文章"
-            },
-            {
-                url: up_voted_items_dashboard_posts_path,
-                title: "按讚的文章"
+                title: "按症狀分類",
+                material_icons:"child_care"
             },
         ]
     end
     
     def dashboard_nav_items
         [
-            {
-                url: dashboard_profile_path,
-                title: "個人資料"
-            },
-            {
-                url: edit_dashboard_profile_path,
-                title: "修改個資"
-            },
-            {
-                url: edit_user_registration_path,
-                title: "更新帳密"
-            },
-            {
-                url: up_voted_doctors_dashboard_doctors_path,
-                title: "按讚的醫生"
-            },
-            {
-                url: dashboard_posts_path,
-                title: "發表的文章"
-            },
-            {
-                url: visited_pages_dashboard_posts_path,
-                title: "瀏覽過的文章"
-            },
-            {
-                url: up_voted_items_dashboard_posts_path,
-                title: "按讚的文章"
-            },
+            [
+                {
+                    url: dashboard_profile_path,
+                    title: "個人資料",
+                    material_icons:"account_box"
+                },
+                {
+                    url: edit_dashboard_profile_path,
+                    title: "修改個資",
+                    material_icons:"settings"
+                },
+                {
+                    url: edit_user_registration_path,
+                    title: "更新帳密",
+                    material_icons:"enhanced_encryption"
+                },
+            ],
+            [
+                {
+                    url: up_voted_doctors_dashboard_doctors_path,
+                    title: "按讚的醫生",
+                    material_icons:"favorite"
+                },
+            ],
+            [
+                {
+                    url: dashboard_posts_path,
+                    title: "發表的文章",
+                    material_icons:"add_circle"
+                },
+                {
+                    url: visited_pages_dashboard_posts_path,
+                    title: "瀏覽過的文章",
+                    material_icons:"search"
+                },
+                {
+                    url: up_voted_items_dashboard_posts_path,
+                    title: "按讚的文章",
+                    material_icons:"plus_one"
+                },
+            ]
         ]
     end
     
@@ -311,28 +284,32 @@ module ApplicationHelper
         ]
     end
     
-    def dashboard_nav(items, style="")
+    def dropdown_nav(items, style="")
         dashboard_nav = ""
         items.each do |item|
-            dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
+            dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'><i class="'material-icons'"> #{item[:material_icons]}</i><span class="'margin-l-05'"> #{item[:title]}</span> </a></li>"
         end
         dashboard_nav.html_safe
     end
     
-    def dashboard_nav_d(controller_name, items, style="")
+    def dashboard_nav(controller_name, items, style="")
         dashboard_nav = ""
         if controller_name == "profiles" || controller_name == "registrations"
-            items[0..2].each do |item|
+            items[0].each do |item|
                 dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
             end
         elsif controller_name == "doctors"
-            items[3..3].each do |item|
+            items[1].each do |item|
                 dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
             end
         elsif controller_name == "posts"
-            items[4..6].each do |item|
+            items[2].each do |item|
                 dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
             end
+        elsif controller_name == "mamabook"
+            items.each do |item|
+                dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
+            end 
         end
         dashboard_nav.html_safe
     end
