@@ -8,11 +8,13 @@ Rails.application.routes.draw do
       collection do
         get :visited_pages
         get :up_voted_items
+        get :bookmarked_posts
       end
     end
     resources :doctors, only: [:index] do
       collection do
         get :up_voted_doctors
+        get :bookmarked_doctors
       end
     end
     resource :profile do

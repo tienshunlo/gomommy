@@ -4,11 +4,11 @@
 	        <li>
 	        	<!-- 回醫生頁面 -->
 				<%= link_to doctor_path(@doctor), class: 'button--stickysidebar no-border' do %>
-					<i class="small material-icons">person_pin</i>
+					<i class="small material-icons">local_hospital</i>
 				<% end %>
 	        </li>
 	        <li>
-	        	<!-- 按讚 -->
+	        	<!-- 有同感 -->
 				<% if current_user && current_user.voted_up_on?(@post) %>
 					<%= link_to like_doctor_post_path(@doctor,@post), method: :put, class: 'button--stickysidebar no-border' do %>
 						<i class="small material-icons">exposure_plus_1</i>

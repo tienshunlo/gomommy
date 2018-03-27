@@ -68,7 +68,7 @@ module ApplicationHelper
                 render 'shared/mobile_footer_nav_doctor'
             end 
         elsif controller_name =="posts"
-            if current_page?(action: 'index' ) || current_page?(action: 'posts_issue' ) || current_page?(action: 'posts_phase') || params[:phase] || params[:issue]
+            if current_page?(action: 'index' ) || current_page?(action: 'new' ) || current_page?(action: 'posts_issue' ) || current_page?(action: 'posts_phase') || params[:phase] || params[:issue]
                 render 'shared/mobile_footer_nav_application'
             else
                 render 'shared/mobile_footer_nav_posts'
@@ -246,6 +246,11 @@ module ApplicationHelper
                     title: "按讚的醫生",
                     material_icons:"favorite"
                 },
+                {
+                    url: bookmarked_doctors_dashboard_doctors_path,
+                    title: "追蹤的醫生",
+                    material_icons:"bookmark"
+                },
             ],
             [
                 {
@@ -260,8 +265,13 @@ module ApplicationHelper
                 },
                 {
                     url: up_voted_items_dashboard_posts_path,
-                    title: "按讚的文章",
+                    title: "有同感的文章",
                     material_icons:"plus_one"
+                },
+                {
+                    url: bookmarked_posts_dashboard_posts_path,
+                    title: "收藏的文章",
+                    material_icons:"bookmark"
                 },
             ]
         ]
