@@ -41,15 +41,16 @@ Rails.application.routes.draw do
 
   resources :doctors do
      member do
-        put "like", to: "doctors#upvote"
-        put "bookmark", to: "doctors#bookmark"
+        put "like", to: "doctors#like"
+        put "unlike", to: "doctors#unlike"
+        get "bookmark", to: "doctors#bookmark"
     end
     resources :posts do 
       resources :comments
       member do
-        put "like", to: "posts#upvote"
-        put "dislike", to: "posts#downvote"
-        put "bookmark", to: "posts#bookmark"
+        put "like", to: "posts#like"
+        put "unlike", to: "posts#unlike"
+        get "bookmark", to: "posts#bookmark"
       end
     end
     collection do

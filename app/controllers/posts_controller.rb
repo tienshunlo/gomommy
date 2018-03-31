@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
     before_action :find_doctor, except: [:index, :posts_phase, :posts_issue, :phase_issue]
-    before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+    before_action :find_post, only: [:show, :edit, :update, :destroy, :like, :unlike]
     before_action :find_issues_and_phases, only: [:new, :create, :edit]
     before_action :authenticate_user!, only: [:new, :upvote, :bookmark]
-    layout "posts"
+    layout "posts" 
     def index
         @flex_filter_icon ="dvr"
         #filterrific版本
@@ -107,15 +107,13 @@ class PostsController < ApplicationController
 		redirect_to doctor_path(@doctor)
 	end
 	
-	def upvote
-	    @doctor = Doctor.friendly.find(params[:doctor_id])
-	    @post.upvote_by current_user
+	def like
+	    @post.liked_by current_user
 	    redirect_to doctor_post_path(@doctor, @post)
     end
     
-    def downvote
-        @doctor = Doctor.friendly.find(params[:doctor_id])
-        @post.downvote_by current_user
+    def unlike
+        @post.unliked_by current_user
         redirect_to doctor_post_path(@doctor, @post)
     end
     

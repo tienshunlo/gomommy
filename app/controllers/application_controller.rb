@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
   include DeviseWhitelist
   
   before_action :store_user_location!, if: :storable_location?
+  before_action :set_copyright
+  
+  def set_copyright
+    @copyright = MamabookViewTool::Renderer.copyright "Mamabook", "All rights reserved"
+  end
 
   private
     def storable_location?
@@ -16,4 +21,12 @@ class ApplicationController < ActionController::Base
       # :user is the scope we are authenticating
       store_location_for(:user, request.fullpath)
     end
+end
+
+module MamabookViewTool
+  class Renderer
+    def self.copyright name, msg
+      "&copy: #{Time.now.year} | <b>#{name}</b> #{msg}".html_safe
+    end
+  end
 end

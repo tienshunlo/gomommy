@@ -67,8 +67,10 @@ module ApplicationHelper
             else
                 render 'shared/mobile_footer_nav_doctor'
             end 
-        elsif controller_name =="posts"
-            if current_page?(action: 'index' ) || current_page?(action: 'new' ) || current_page?(action: 'posts_issue' ) || current_page?(action: 'posts_phase') || params[:phase] || params[:issue]
+        elsif controller_name == "posts"
+            if current_page?(action: 'index' ) ||  current_page?(controller: 'posts', action: 'posts_issue' ) || current_page?(action: 'posts_phase') || params[:phase] || params[:issue]
+                render 'shared/mobile_footer_nav_application'
+            elsif current_page?(action: 'new' ) 
                 render 'shared/mobile_footer_nav_application'
             else
                 render 'shared/mobile_footer_nav_posts'

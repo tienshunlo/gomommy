@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
-	before_action :find_doctor, only: [:show, :upvote]
-	before_action :authenticate_user!, only: [:upvote, :bookmark]
+	before_action :find_doctor, only: [:show, :like, :unlike]
+	before_action :authenticate_user!, only: [:like, :unlike, :bookmark]
 	#impressionist only: [:show, :index]
 	def index
 		
@@ -162,13 +162,18 @@ class DoctorsController < ApplicationController
 	#		end
 	
 	end
-	def upvote
-	    @doctor.upvote_by current_user
+	def like
+	    @doctor.liked_by current_user
 	    redirect_to doctor_path(@doctor)
     end
+    def unlike
+	    @doctor.unliked_by current_user
+	    redirect_to doctor_path(@doctor)
+    end
+    
     def bookmark
         doctor = Doctor.friendly.find(params[:id])
-        current_user.bookmark(doctor)
+        current_user.toggle_bookmark(doctor)
         redirect_to doctor_path(:id => params[:id])
     end
 

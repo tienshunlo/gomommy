@@ -10,23 +10,23 @@
 	        <li>
 	        	<!-- 有同感 -->
 				<% if current_user && current_user.voted_up_on?(@post) %>
-					<%= link_to like_doctor_post_path(@doctor,@post), method: :put, class: 'button--stickysidebar no-border' do %>
-						<i class="small material-icons">exposure_plus_1</i>
+					<%= link_to unlike_doctor_post_path(@doctor,@post), method: :put, class: 'button--stickysidebar no-border' do %>
+						<i class="small material-icons plus_one active">exposure_plus_1</i>
 					<% end %>
 				<% else %>
 					<%= link_to like_doctor_post_path(@doctor,@post), method: :put, class: 'button--stickysidebar no-border' do %>
-						<i class="small material-icons">exposure_plus_1</i>
+						<i class="small material-icons plus_one inactive">exposure_plus_1</i>
 					<% end %>
 				<% end %>
 	        </li>
 	        <li>
 	        	<!-- 加入收藏 -->
 				<% if current_user && @post.bookmarked_by?(current_user) %>
-					<%= link_to bookmark_doctor_post_path(@doctor, @post), method: :put, class: 'button--stickysidebar no-border' do %>
+					<%= link_to bookmark_doctor_post_path(@doctor, @post), class: 'button--stickysidebar no-border' do %>
 						<i class="small material-icons">bookmark</i>
 					<% end %>
 				<% else %>
-					<%= link_to bookmark_doctor_post_path(@doctor, @post), method: :put, class: 'button--stickysidebar no-border' do %>
+					<%= link_to bookmark_doctor_post_path(@doctor, @post), class: 'button--stickysidebar no-border' do %>
 						<i class="small material-icons">bookmark_border</i>
 					<% end %>
 				<% end %>
