@@ -32,8 +32,8 @@ class PostsController < ApplicationController
         #按孕期的大項分類
         @flex_filter_title = "按孕期排序"
         @flex_filter_icon ="pregnant_woman"
-        @filter_anchor = @post_cates = @phases = Phase.all
-        @posts_tag = Post.all.includes(:phase, :issue).includes(:doctor).order('id DESC')
+        @filter_anchor = @post_cates = @phases = Phase.with_posts
+        @posts_tag = Post.where(phase_id: @phases).includes(:phase, :issue, :user, :doctor).order('id DESC')
     end
     
     
@@ -75,7 +75,7 @@ class PostsController < ApplicationController
     end
     
     def show
-        @comments =  @post.comment.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
+        @comments =  @post.comment.includes(:user).order('id DESC').paginate(:page => params[:page], :per_page => 5)
         if current_user
             if current_user.profile.setting[:visited].nil?
                 current_user.profile.setting[:visited] = []
