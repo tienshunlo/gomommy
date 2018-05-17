@@ -22,5 +22,14 @@
 				</div>	
 			<% end %>
 		</div>
+		<% if false %>
+			<div class="wrapper-post-index">
+				<% phase.post.first(3).each do |post| %>
+					<div class="wrapper__box--small">
+						<%= render 'posts/posts_box', post: post  %>
+					</div>	
+				<% end %>
+			</div>
+		<% end %>
 	<% end %>
 </div>

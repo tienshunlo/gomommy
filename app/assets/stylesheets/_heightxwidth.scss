@@ -1,0 +1,96 @@
+
+/** Beginning of 大小、邊距等 相關 */
+
+//寬度
+.MinWidth240{
+    min-width: 240px !important;
+}
+.MaxWidth1200{
+    max-width: 1200px !important;
+}
+.MaxWidth1000{
+    max-width: 1000px !important;
+}
+
+.MaxWidth740{
+    max-width: 740px !important;
+}
+
+.MaxWidth640{
+    max-width: 640px !important;
+}
+
+.Width100px{
+    width: 100px !important;
+}
+
+.Width300px{
+    width: 300px !important;
+}
+
+.Width30{
+    width: 30% !important;
+}
+
+.Width35{
+    width: 35% !important;
+}
+
+.Width40{
+    width: 40% !important;
+}
+
+.Width50{
+    width: 50% !important;
+}
+
+.Width100{
+    width: 100% !important;
+}
+//高度
+
+.Height4 {
+    height: 4.0rem;
+} 
+
+.Height100{
+    height: 100%;
+}
+
+.BoxHeight9{
+    height: 9rem;
+}
+
+.BoxHeight10{
+    height: 10rem;
+}
+.BoxHeight16{
+    height: 16rem;
+}
+.MinHeight4{
+    min-height: 4rem;
+}
+
+.MinHeight34{
+    min-height: 34rem;
+}
+
+//line height
+.lineheight4 {
+    line-height: 4rem;
+}
+
+.lineheight {
+    line-height: 1.5rem;
+}
+
+
+//
+.FixedBottom05{
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0;
+    width: calc(100% - 1rem);
+}
+
+

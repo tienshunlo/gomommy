@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gomommy</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <%= render 'shared/application_head' %>
   </head>
   <body>
     <header>
       <%= render 'shared/application_header' %>
-    </header>  
+    </header> 
+    <%= yield :show_sidebar %>
     <main>
+      <%= yield :show_headbar %>
       <div class="container-post">
         <div class="wrapper__post MaxWidth1000">
-          <%= yield :headbar %>
+          <%= yield :index_headbar_filter %>
           <%= yield %>
           <%= will_paginate @paginate if @paginate %>
         </div>
       </div>
-      <% if !@comments.blank? %>
         <%= yield :comment_section %>
-      <% end %>
-    </main> 
+    </main>
+    <% if false %>
+      <%= yield :mobile_footer_nav %>
+    <% end %>
     <div class="flex-bottom-nav show-on-small hide-on-med-and-up">
-      <%= render 'shared/application_mobile_footer_nav' %>
+        <%= mobile_footer_nav_helper(controller.controller_name) %>
     </div>
     <footer class="page-footer hide-on-small-only">
        <%= render 'shared/application_footer' %>
     </footer>
-
-  <script>
-  	
+    <%= yield :javascript %>
+    <script>
   	$(document).ready(function(){
       $('.collapsible').collapsible();
       $(".dropdown-button").dropdown();
@@ -100,6 +96,5 @@
      
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-
   </body>
 </html>

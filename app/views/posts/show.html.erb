@@ -1,33 +1,36 @@
-<div class="section__wrapper">
-	<div class="wrapper__box--large MaxWidth740">
-		<%= render 'posts/posts_box_showpage', post: @post  %>
-		<header class="header_cate">
-			<span class="header_cate_title">
-				<% if @comments.blank? %>
-					成為第一個回覆的人
-				<% else %>
-					參加討論
-				<% end %>
-			</span>
-		</header>
-		<div>
-			<% if current_user %>
-				<%= render 'comments/form' %>
-			<% else %>
-				<%=link_to "登入留言", new_user_session_path, class: "button" %>
-			<% end %>
-		</div>
-	</div>
-</div>
-
+<% content_for :show_headbar do %>
+	<!-- Po文者的照片 -->
+	<%= render 'posts/show_headbar', post: @post %>
+<% end %>
 
 <% content_for :comment_section do %>
 	<!-- 回覆區 -->
-	<div class="container-comment">
-    	<div class="wrapper__post MaxWidth1000">
-	    	<%= render 'comments/comment', collection: @comments %>
-	    </div>
-	</div>
+	<%= render 'posts/show_comment' %>
+	<%#= render @post.comment %>
+<% end %>
+
+<% content_for :show_sidebar do %>
+	<!-- sticky sidebar menu -->
+	<%= render 'posts/show_sidebar' %>
+<% end %>
+
+<% content_for :javascript do %>
+	<!-- sticky sidebar menu -->
+	<%= javascript_include_tag 'stickysidebar' %>
+<% end %>
+<% if false %>
+	<% content_for :mobile_footer_nav do %>
+		<!-- 手機版的底部NAV -->
+		<%= render 'shared/mobile_footer_nav_posts' %>
+	<% end %>
 <% end %>
 
 
+
+<div class="section__wrapper padding-t0">
+	<div class="wrapper__box--large MaxWidth740 ">
+		<div class="wrapper__box--inner padding2">
+		<%= render 'posts/posts_box_showpage', post: @post  %>
+		</div>
+	</div>
+</div>

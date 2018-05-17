@@ -1,0 +1,34 @@
+
+/** Beginning of Border 相關 */
+.basic-border {
+    border: $basic-border;
+}
+
+.border--form {
+    border: 1px solid black;
+    width: 100%;
+    text-indent: 60px;
+    line-height: 48px;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.bottom-border {
+    border-bottom: $basic-border !important;
+}
+
+.top-border {
+    border-top: $basic-border !important;
+}
+
+.radius100{
+    border-radius: 100%;
+}
+.basic-shadow {
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+
+/** End of Border 相關 */
+

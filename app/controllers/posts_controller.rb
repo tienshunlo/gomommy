@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
     before_action :find_doctor, except: [:index, :posts_phase, :posts_issue, :phase_issue]
-    before_action :find_post, only: [:show, :edit, :update, :destroy]
+    before_action :find_post, only: [:show, :edit, :update, :destroy, :like, :unlike]
     before_action :find_issues_and_phases, only: [:new, :create, :edit]
-    layout "posts"
-    
+    before_action :authenticate_user!, only: [:new, :upvote, :bookmark]
+    layout "posts" 
     def index
         @flex_filter_icon ="dvr"
         #filterrific版本
@@ -32,8 +32,8 @@ class PostsController < ApplicationController
         #按孕期的大項分類
         @flex_filter_title = "按孕期排序"
         @flex_filter_icon ="pregnant_woman"
-        @filter_anchor = @post_cates = @phases = Phase.all
-        @posts_tag = Post.all.includes(:phase, :issue).includes(:doctor).order('id DESC')
+        @filter_anchor = @post_cates = @phases = Phase.with_posts
+        @posts_tag = Post.where(phase_id: @phases).includes(:phase, :issue, :user, :doctor).order('id DESC')
     end
     
     
@@ -60,7 +60,6 @@ class PostsController < ApplicationController
     end
     
     def new
-        redirect_to new_user_session_path if !current_user
         @post = Post.new
     end
     
@@ -76,7 +75,18 @@ class PostsController < ApplicationController
     end
     
     def show
-        @comments =  @post.comment.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
+        @comments =  @post.comment.includes(:user).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+        if current_user
+            if current_user.profile.setting[:visited].nil?
+                current_user.profile.setting[:visited] = []
+                current_user.profile.setting[:visited] << params[:id]
+            else
+                current_user.profile.setting[:visited] << params[:id]
+            end
+            current_user.profile.setting[:visited].uniq!
+            current_user.profile.setting[:visited].delete_at(0) if current_user.profile.setting[:visited].size >= 6
+            current_user.profile.save
+        end
     end
     
     def edit
@@ -97,9 +107,26 @@ class PostsController < ApplicationController
 		redirect_to doctor_path(@doctor)
 	end
 	
-	
+	def like
+	    @post.liked_by current_user
+	    redirect_to doctor_post_path(@doctor, @post)
+    end
+    
+    def unlike
+        @post.unliked_by current_user
+        redirect_to doctor_post_path(@doctor, @post)
+    end
+    
+    def bookmark
+        post = Post.find(params[:id])
+        current_user.toggle_bookmark(post)
+        redirect_to doctor_post_path(@doctor, :id => params[:id])
+    end
     
     private
+    
+    
+    
     def post_params
         params.require(:post).permit(:title, :description, :subject, :phase_id, :issue_id, :doctor_id, :user_id)
     end

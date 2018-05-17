@@ -10,6 +10,20 @@
     padding-top: 1rem;
 }
 
+.section__option {
+    margin: 1rem 2rem;
+}
+
+.section__form--login {
+    @extend .section--basic;
+    padding-top: 1rem !important;
+    position: relative;
+}
+
+.section__post {
+    @extend .section--basic;
+}
+
 .section__poster {
     @extend .section--basic;
     justify-content: space-between;

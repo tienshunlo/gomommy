@@ -1,0 +1,44 @@
+<ul>
+    <li>
+        <%= link_to root_path do %> 
+            <div class='horizontal-icon'><i class="material-icons">home</i></div>
+            <span>首頁</span>
+        <% end %>
+    </li>
+    <li>
+        <!-- 留言 -->
+		<%= link_to new_doctor_post_path(@doctor) do %>
+		    <div class='horizontal-icon'><i class="material-icons">chat_bubble_outline</i></div>
+            <span>留言</span>
+		<% end %>
+    </li>
+    <li>
+        <!-- 按讚 -->
+    	<% if current_user && current_user.voted_up_on?(@doctor) %>
+			<%= link_to like_doctor_path(@doctor), method: :put do %>
+			    <div class='horizontal-icon'><i class="material-icons">favorite</i></div>
+                <span>按讚</span>
+			<% end %>
+		<% else %>
+			<%= link_to like_doctor_path(@doctor), method: :put do %>
+			    <div class='horizontal-icon'><i class="material-icons">favorite_border</i></div>
+                <span>按讚</span>
+			<% end %>
+		<% end %>
+    </li>
+    <li>
+       	<!-- 加入收藏 -->
+    	<% if current_user && @doctor.bookmarked_by?(current_user) %>			
+			<%= link_to bookmark_doctor_path(@doctor), method: :put do %>
+				<div class='horizontal-icon'><i class="material-icons">bookmark</i></div>
+                <span>收藏</span>
+			<% end %>
+		<% else %>
+			<%= link_to bookmark_doctor_path(@doctor), method: :put do %>
+			    <div class='horizontal-icon'><i class="material-icons">bookmark_border</i></div>
+                <span>收藏</span>
+			<% end %>
+		<% end %>
+    </li>
+</ul>
+      

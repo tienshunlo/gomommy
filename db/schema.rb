@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171226050330) do
+ActiveRecord::Schema.define(version: 20180211113104) do
 
   create_table "albums", force: :cascade do |t|
     t.datetime "created_at",                                     null: false
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(version: 20171226050330) do
     t.datetime "album_img_updated_at"
     t.integer  "category",               limit: 4,   default: 0
   end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer  "bookmarkee_id",   limit: 4
+    t.string   "bookmarkee_type", limit: 255
+    t.integer  "bookmarker_id",   limit: 4
+    t.string   "bookmarker_type", limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "bookmarks", ["bookmarkee_id", "bookmarkee_type", "bookmarker_id", "bookmarker_type"], name: "bookmarks_bookmarkee_bookmarker_idx", unique: true, using: :btree
+  add_index "bookmarks", ["bookmarkee_id", "bookmarkee_type"], name: "bookmarks_bookmarkee_idx", using: :btree
+  add_index "bookmarks", ["bookmarker_id", "bookmarker_type"], name: "bookmarks_bookmarker_idx", using: :btree
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -174,16 +187,17 @@ ActiveRecord::Schema.define(version: 20171226050330) do
   create_table "profiles", id: false, force: :cascade do |t|
     t.integer  "user_id",                  limit: 4
     t.string   "location",                 limit: 255
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
     t.string   "profile_img_file_name",    limit: 255
     t.string   "profile_img_content_type", limit: 255
     t.integer  "profile_img_file_size",    limit: 4
     t.datetime "profile_img_updated_at"
-    t.integer  "number_of_baby",           limit: 4,   default: 0
+    t.integer  "number_of_baby",           limit: 4,     default: 0
     t.string   "nickname_of_baby",         limit: 255
-    t.integer  "gender_of_baby",           limit: 4,   default: 0
+    t.integer  "gender_of_baby",           limit: 4,     default: 0
     t.datetime "birthday_of_baby"
+    t.text     "setting",                  limit: 65535
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -207,6 +221,21 @@ ActiveRecord::Schema.define(version: 20171226050330) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "votable_id",   limit: 4
+    t.string   "votable_type", limit: 255
+    t.integer  "voter_id",     limit: 4
+    t.string   "voter_type",   limit: 255
+    t.boolean  "vote_flag"
+    t.string   "vote_scope",   limit: 255
+    t.integer  "vote_weight",  limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
   add_foreign_key "doctor_albums", "albums"
   add_foreign_key "doctor_albums", "doctors"

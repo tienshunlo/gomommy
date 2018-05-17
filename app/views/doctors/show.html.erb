@@ -1,10 +1,24 @@
 <% content_for :show_headbar do %>
-	<!-- 個別醫生的照片與孕期篩選器 -->
+	<!-- 個別醫生的照片 -->
 	<%= render 'doctors/show_headbar' %>
 <% end %>
 
+<% content_for :show_sidebar do %>
+	<!-- sticky sidebar menu -->
+	<%= render 'doctors/show_sidebar' %>
+<% end %>
+
+<% content_for :javascript do %>
+	<!-- sticky sidebar menu -->
+	<%= javascript_include_tag 'stickysidebar' %>
+<% end %>
+
+
+
+
 <div class="wrapper__box--large">
 	<div class="section">
+		<!-- 孕期篩選器 -->
 		<%= render 'shared/flex_filterbar' %>
 	</div>
 	<div class="section">
@@ -29,3 +43,4 @@
 		</div>
 	</div>
 </div>
+

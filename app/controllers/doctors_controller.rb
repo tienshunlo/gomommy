@@ -1,5 +1,6 @@
 class DoctorsController < ApplicationController
-	before_action :find_doctor, only: [:show]
+	before_action :find_doctor, only: [:show, :like, :unlike]
+	before_action :authenticate_user!, only: [:like, :unlike, :bookmark]
 	#impressionist only: [:show, :index]
 	def index
 		
@@ -28,7 +29,7 @@ class DoctorsController < ApplicationController
         #@phase_2 = @phases.where(:id => (5..7)) #生產過後
 		
 		
-		if params[:city].blank?
+		if params[:city].blank? || params[:city] == "all_city"
 			@doctors = @paginate = Doctor.published.includes(:city, :hospital).paginate(:page => params[:page])
 			@city_name = "全部城市"
 			#@doctors = @paginate = Doctor
@@ -129,8 +130,6 @@ class DoctorsController < ApplicationController
 		@phases = Phase.all
 		@issues = Issue.all
 		
-		
-		
         @issue_1 = @issues.select{|t| t.phase_id == 1} #檢查相關
         @issue_2 = @issues.select{|t| t.phase_id == 2} #孕婦注意事項
         @issue_3 = @issues.select{|t| t.phase_id == 3} #生產相關
@@ -163,6 +162,20 @@ class DoctorsController < ApplicationController
 	#		end
 	
 	end
+	def like
+	    @doctor.liked_by current_user
+	    redirect_to doctor_path(@doctor)
+    end
+    def unlike
+	    @doctor.unliked_by current_user
+	    redirect_to doctor_path(@doctor)
+    end
+    
+    def bookmark
+        doctor = Doctor.friendly.find(params[:id])
+        current_user.toggle_bookmark(doctor)
+        redirect_to doctor_path(:id => params[:id])
+    end
 
 
 	private

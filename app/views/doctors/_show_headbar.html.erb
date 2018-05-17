@@ -1,15 +1,92 @@
-<div class="container-doctor primary-bg">
+<div class="container-doctor primary-bg bottom-border">
 	<div class="wrapper__doctor flex-colunm MaxWidth1000">
 		<div class="wrapper__box--inner no-border">
-			<div class="box__post flex-row">
-				<div class="section__poster flex-colunm">
-					<div class="poster-avatar">
-						<%= doctor_img_helper("show", @doctor) %>
+			<div class="box__post flex-rc">
+				<div class="box__doctor MinWidth240">
+					<div class="section__avatar">
+						<div class="poster-avatar">
+							<%= doctor_img_helper("show", @doctor) %>
+						</div>
+					</div>
+					<div class="section__action">
+						<% if false %>
+					    <ul class="Width100 no-border">
+					        <li>
+					        	<!-- 留言 -->
+								<%= link_to new_doctor_post_path(@doctor), class: 'button' do %>
+									<i class="material-icons">chat_bubble_outline</i>
+									<span>留言&nbsp;X  <%= @doctor.post.count  %></span>
+								<% end %>
+					        </li>
+					        <li>
+					        	<!-- 按讚 -->
+					        	<% if current_user && current_user.voted_up_on?(@doctor) %>
+									<%= link_to like_doctor_paremove_red_eyeethod: :put, class: 'button' do %>
+										<i class="material-icons">favorite</i>
+										<span>&nbsp;X <%= @doctor.get_upvotes.size %></span>
+									<% end %>
+								<% else %>
+									<%= link_to like_doctor_path(@doctor), method: :put, class: 'button' do %>
+										<i class="material-icons">favorite_border</i>
+										<span>按讚</span>
+										<span>&nbsp;X <%= @doctor.get_upvotes.size %></span>
+									<% end %>
+								<% end %>
+					        </li>
+					        <li>
+					        	<!-- 加入收藏 -->
+					        	<% if current_user && @doctor.bookmarked_by?(current_user) %>			
+									<%= link_to bookmark_doctor_path(@doctor), method: :put, class: 'button' do %>
+										<i class="material-icons">bookmark</i>
+										<span>關注</span>
+										<span>&nbsp;X <%= @doctor.bookmarkers_by(User).size %></span>
+									<% end %>
+								<% else %>
+									<%= link_to bookmark_doctor_path(@doctor), method: :put, class: 'button' do %>
+										<i class="material-icons">bookmark_border</i>
+										<span>關注</span>
+										<span>&nbsp;X <%= @doctor.bookmarkers_by(User).size %></span>
+									<% end %>
+								<% end %>
+					        </li>
+					    </ul>
+					    <% end %>
+					    <ul class="justify-center Width100 no-border MarginTop15 MarginBottom15">
+					        <li class="flex0">
+								<div class="chip--square">
+									<span class="lineheight"><%= @doctor.post.count %></span>
+									<span class="icons--chip">
+										<span>留言</span>
+										<i class="small material-icons FontSize1">chat_bubble_outline</i>
+									</span>
+								</div>
+							</li>
+					        <li class="flex0">
+							    <div class="chip--square">
+									<span class="lineheight"><%= @doctor.get_upvotes.size %></span>
+									<span class="icons--chip">
+										<span>按讚</span>
+										<i class="small material-icons FontSize1">favorite_border</i>
+									</span>
+								</div>
+							</li>
+							<li class="flex0">
+								<div class="chip--square">
+									<span class="lineheight"><%= @doctor.bookmarkers_by(User).size %></span>
+									<span class="icons--chip">
+										<span>關注</span>
+										<i class="small material-icons FontSize1">bookmark_border</i>
+									</span>
+								</div>	
+							</li>
+						</ul>
     				</div>
 				</div>
-				<div class="section__content flex-colunm Width100 padding-l1">
+				<div class="section__content flex-colunm padding-l1">
 					<div class="section__content flex-colunm"> 
-						<h2 class="profile-name MarginTop05 MarginBottom05"><%= link_to "#{@doctor.name} 醫生", @doctor, class:"name" %></h2> 
+						<h2 class="profile-name MarginTop05 MarginBottom05">
+							<%= link_to "#{@doctor.name} 醫生", @doctor, class:"name" %>
+						</h2> 
 						<% if @doctor.post.any? %>
 							<span>留言：<%= @doctor.post.count  %>  篇</span>
 						<% else %>

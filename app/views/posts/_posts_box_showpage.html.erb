@@ -1,20 +1,27 @@
-<div class="section__poster margin-b-1">
-	 <%= link_to "回醫生頁面", doctor_path(@doctor), { class:"button" } %><br>
-</div>
-<div class="section__poster Height4">
-	<div class="poster-avatar">
-		<%= user_img_helper("show-poster", post.user) %>
+<div class="section__post margin-b-1"> 
+	<div class="article--topic">
+		<div class="chip--plusone">
+			<span class="lineheight"><%= post.get_upvotes.size %></span>
+			<span class="icons--chip">
+				<span>同感</span>
+				<i class="small material-icons FontSize1">exposure_plus_1</i>
+			</span>
+		</div>
+		<div class="flex11auto">
+			<h1 class="MarginTop00"> 
+				<%= post.title %> 
+			</h1>
+		</div>
 	</div>
-	<div class="poster-name flex80px">
-		<%= link_to post.user.nickname, user_path(post.user), { class:"name" } %><br>
-  		<span class="time-ago-in-words"><%= time_ago_in_words(post.created_at) %> ago</span>
+</div>
+<div class="section__tag">
+	<div class="chip truncate">
+		<%= post.phase.title %>
+	</div>
+	<div class="chip truncate">
+		<%= post.issue.title %>
 	</div>
 </div>
-<div class="section__content flex-colunm margin-b-1 article-content"> 
-	<h1> 
-		<%= post.title %> 
-	</h1>
+<div class="section__content flex-colunm margin-b-1 article-content MinHeight34"> 
 	<%= simple_format post.description %>
 </div>
-
-

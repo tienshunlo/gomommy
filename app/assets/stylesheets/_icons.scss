@@ -1,0 +1,33 @@
+.icons--chip {
+    font-size: 0.7rem;
+    width: 100%;
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+    color: #8c8c8c;
+}
+
+.icons--input {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    width: 20px;
+    text-align: center;
+}
+
+.plus_one {
+    border: 1px solid #8f8f8f;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: 1.4rem !important;
+    &.active{
+        background-color: #8f8f8f;
+        color: white;
+        font-size: 1.4rem !important;
+    }
+    &.inactive{
+        background-color: transparent;
+        color: #8f8f8f;
+        padding: 3px;
+    }
+}

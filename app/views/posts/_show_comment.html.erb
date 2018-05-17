@@ -1,0 +1,27 @@
+<div class="container-comment top-border">
+	<div class="section__wrapper">
+		<div class="wrapper__box--large MaxWidth740 ">
+			<header class="header_cate">
+				<span class="header_cate_title">
+					<% if @comments.blank? %>
+						成為第一個回覆的人
+					<% else %>
+						參加討論
+					<% end %>
+				</span>
+			</header>
+			<div>
+				<% if current_user %>
+					<%= render 'comments/form' %>
+				<% else %>
+					<%= link_to "登入留言", new_user_session_path, class: "button" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<% if !@comments.blank? %>
+        <div class="wrapper__post MaxWidth1000">
+	    	<%= render 'comments/comment', collection: @comments %>
+	    </div>
+	<% end %>
+</div>

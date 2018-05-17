@@ -12,11 +12,30 @@ module ApplicationHelper
     end
     def login_helper style = ''
         if current_user
+            if current_user.profile.album
+                user_image = current_user.profile.album.album_img.url(:medium) 
+            else
+                user_image = current_user.profile.profile_img.url(:medium)
+            end
           (link_to "個人後台", dashboard_posts_path, class:style) +
           (link_to "登出", destroy_user_session_path, method: :delete, class:style)
         else
           (link_to "註冊", new_user_registration_path, class:style) +
           (link_to "登入", new_user_session_path, class:style)
+        end
+    end
+    
+    
+    def login_user_helper
+        if current_user
+            if current_user.profile.album
+                user_image = current_user.profile.album.album_img.url(:medium) 
+            else
+                user_image = current_user.profile.profile_img.url(:medium)
+            end 
+            link_to " ", "#", { class: "dropdown-button u-block size2 radius100 no-border margin-l-1", style: "background-image: url(#{user_image})", :data => {:activates => "dropdown-dashboard"}}
+        else
+            link_to "登入", new_user_session_path, class: "btn-flat btn-flat-custom white-border"
         end
     end
     
@@ -28,7 +47,7 @@ module ApplicationHelper
                 filter_link << "<li><a href='##{filter_anchor.title}' class='#{style}' >#{filter_anchor.title}</a></li>"
             end
         elsif @citys
-            filter_link << "<li><a href='#{doctors_path(city: nil)}' class='#{style}' >全部城市</a></li>"
+            filter_link << "<li><a href='#{doctors_path(city: "all_city")}' class='#{style}' >全部城市</a></li>"
             @citys.each do |city|
                 filter_link << "<li><a href='#{doctors_path(city: city.name)}' class='#{style}' >#{city.name}</a></li>"
             end
@@ -39,6 +58,24 @@ module ApplicationHelper
             end
         end
         filter_link.html_safe
+    end
+    
+    def mobile_footer_nav_helper(controller_name)
+        if controller_name == "doctors"
+            if current_page?(action: 'index') || params[:city]
+                render 'shared/mobile_footer_nav_application'
+            else
+                render 'shared/mobile_footer_nav_doctor'
+            end 
+        elsif controller_name == "posts"
+            if current_page?(action: 'index' ) ||  current_page?(controller: 'posts', action: 'posts_issue' ) || current_page?(action: 'posts_phase') || params[:phase] || params[:issue]
+                render 'shared/mobile_footer_nav_application'
+            elsif current_page?(action: 'new' ) 
+                render 'shared/mobile_footer_nav_application'
+            else
+                render 'shared/mobile_footer_nav_posts'
+            end
+        end
     end
     
     def background_image_helper(tag_type, doctor, size, width, height, radius)
@@ -59,8 +96,7 @@ module ApplicationHelper
                         nil, 
                         href:  "#{doctor_path(avatar)}",
                         class: "u-block size375x375 radius100", 
-                        style: "background-image: url('#{avatar.doctor_img.url(:medium)}'); 
-                                " 
+                        style: "background-image: url('#{avatar.doctor_img.url(:medium)}'); " 
                         )
         end
     end
@@ -81,22 +117,24 @@ module ApplicationHelper
         else
             doctor_image = image_path("medium/missing.png")
         end
+        background_image = "background-image: url('#{doctor_image}')"
+        
         if layout == "index"
-            link_to "", doctor_path(doctor), { class: "u-block", 
-                                                style: "background-image: url('#{doctor_image}'); 
+            link_to "", doctor_path(doctor), { class: "u-block no-border", 
+                                                style: "#{background_image}; 
                                                         height: 10rem;"
                                                 } 
         elsif layout == "show"
-            link_to "", doctor_path(doctor), { class: "u-block size10x10 radius100", 
-                                                style: "background-image: url('#{doctor_image}');"
+            link_to "", doctor_path(doctor), { class: "u-block size10x10 radius100 margin0", 
+                                                style: "#{background_image};"
                                                 }
         elsif layout == "dashboard"
             link_to "", doctor_path(doctor), { class: "u-block size6x6 radius100", 
-                                                style: "background-image: url('#{doctor_image}');"
+                                                style: "#{background_image};"
                                                 }
         elsif layout == "small-poster"
             link_to "", "#", { class: "u-block size3x3 radius100", 
-                                style: "background-image: url('#{doctor_image}');" 
+                                style: "#{background_image};" 
                                 }
         end
     end
@@ -109,19 +147,25 @@ module ApplicationHelper
         else
             user_image = user.profile.profile_img.url(:medium)
         end
+        background_image = "background-image: url('#{user_image}')"
         
         if layout == "small-poster"
             link_to "", user_path(user), { class: "u-block size3x3 radius100", 
-                                            style: "background-image: url('#{user_image}')" 
+                                            style: "#{background_image};" 
                                             }
         elsif layout == "big-poster"
             link_to "", user_path(user), { class: "u-block size7x7 radius100", 
-                                            style: "background-image: url('#{user_image}')"
+                                            style: "#{background_image};"
                                             }
         elsif layout == "show-poster"
             link_to "", user_path(user), { class: "u-block size375x375 radius100", 
-                                            style: "background-image: url('#{user_image}')"
+                                            style: "#{background_image};"
                                             }
+        elsif layout == "avatar"
+            link_to "", "#!", { class: "u-block size3x3 radius100 dropdown-button", 
+                                style: "#{background_image};",
+                                :data => {:activates => "dropdown-discussion"}
+                                }
         end
     end
     
@@ -159,28 +203,79 @@ module ApplicationHelper
         "active" if current_page? path
     end
     
-    def dashboard_nav_items
+    def dropdown_discussion_items
         [
             {
-                url: dashboard_profile_path,
-                title: "個人資料"
+                url: posts_path,
+                title: "總討論區",
+                material_icons:"dvr"
             },
             {
-                url: edit_dashboard_profile_path,
-                title: "修改個資"
+                url: posts_phase_posts_path,
+                title: "按孕期分類",
+                material_icons:"pregnant_woman"
             },
             {
-                url: edit_user_registration_path,
-                title: "更新帳密"
+                url: posts_issue_posts_path,
+                title: "按症狀分類",
+                material_icons:"child_care"
             },
-            {
-                url: dashboard_doctors_path,
-                title: "關注的醫生"
-            },
-            {
-                url: dashboard_posts_path,
-                title: "發表的文章"
-            },
+        ]
+    end
+    
+    def dashboard_nav_items
+        [
+            [
+                {
+                    url: dashboard_profile_path,
+                    title: "個人資料",
+                    material_icons:"account_box"
+                },
+                {
+                    url: edit_dashboard_profile_path,
+                    title: "修改個資",
+                    material_icons:"settings"
+                },
+                {
+                    url: edit_user_registration_path,
+                    title: "更新帳密",
+                    material_icons:"enhanced_encryption"
+                },
+            ],
+            [
+                {
+                    url: up_voted_doctors_dashboard_doctors_path,
+                    title: "按讚的醫生",
+                    material_icons:"favorite"
+                },
+                {
+                    url: bookmarked_doctors_dashboard_doctors_path,
+                    title: "追蹤的醫生",
+                    material_icons:"bookmark"
+                },
+            ],
+            [
+                {
+                    url: dashboard_posts_path,
+                    title: "發表的文章",
+                    material_icons:"add_circle"
+                },
+                {
+                    url: visited_pages_dashboard_posts_path,
+                    title: "瀏覽過的文章",
+                    material_icons:"search"
+                },
+                {
+                    url: up_voted_items_dashboard_posts_path,
+                    title: "有同感的文章",
+                    material_icons:"plus_one"
+                },
+                {
+                    url: bookmarked_posts_dashboard_posts_path,
+                    title: "收藏的文章",
+                    material_icons:"bookmark"
+                },
+            ]
         ]
     end
     
@@ -201,13 +296,37 @@ module ApplicationHelper
         ]
     end
     
-    def dashboard_nav(items, style)
+    def dropdown_nav(items, style="")
         dashboard_nav = ""
         items.each do |item|
-            dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
+            dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'><i class="'material-icons'"> #{item[:material_icons]}</i><span class="'margin-l-05'"> #{item[:title]}</span> </a></li>"
         end
         dashboard_nav.html_safe
     end
+    
+    def dashboard_nav(controller_name, items, style="")
+        dashboard_nav = ""
+        if controller_name == "profiles" || controller_name == "registrations"
+            items[0].each do |item|
+                dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
+            end
+        elsif controller_name == "doctors"
+            items[1].each do |item|
+                dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
+            end
+        elsif controller_name == "posts"
+            items[2].each do |item|
+                dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
+            end
+        elsif controller_name == "mamabook"
+            items.each do |item|
+                dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
+            end 
+        end
+        dashboard_nav.html_safe
+    end
+    
+    
 						
 end
 

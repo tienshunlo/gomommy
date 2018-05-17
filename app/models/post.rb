@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
-    
+    acts_as_votable
+    act_as_bookmarkee
     belongs_to :doctor, counter_cache: :post_count
     has_many :comment, dependent: :destroy
     belongs_to :phase
@@ -81,17 +82,8 @@ class Post < ActiveRecord::Base
     #		:with_kind,
     #		]
     #)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    SUBJECT = [['其他' , 0],['心得分享' , 1],['疑問求解' , 2]]
+
+    SUBJECT = [['請輸入主題', 0],['其他' , 1],['心得分享' , 2],['疑問求解' , 3]]
     PERIOD = [['其他' , 0],['第12週以前' , 1],['第12 - 20週' , 2],['第21 - 28週' , 3],['第29 - 40週' , 4],['新生兒' , 5]]
     KIND = [
         ['其他' , 0],

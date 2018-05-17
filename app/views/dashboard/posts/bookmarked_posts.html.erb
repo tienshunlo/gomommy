@@ -1,0 +1,33 @@
+<div class="wrapper__box--large MaxWidth740">
+	<header class="header_cate">
+		<span class="header_cate_title">
+		  收藏的文章
+		</span>
+	</header>
+</div>
+<% if @bookmarked_posts.empty? %>
+	<div class="wrapper__box--large MaxWidth740">
+		<span class="align--center">尚未收藏任何的文章</span>
+	</div>
+<% else %>
+	<% @bookmarked_posts.each do |page| %>
+		<div class="wrapper__box--large MaxWidth740">
+			<div class="wrapper__box--inner no-border transparent-bg bottom-border">
+				<div class="box__post">
+					<div class="section__poster">
+						<div class="poster-name">
+						</div>
+					</div>
+					<div class="section__content article-content">
+						<%= link_to doctor_post_path(Post.find(page).doctor, page) do %> 
+							<h4 class="post-title"><%= Post.find(page).title %></h4>
+							<%= simple_format Post.find(page).description, class:"post-description" %>
+						<% end %>
+					</div>
+					<div class="section__action align-center MarginTop1 Width300px">
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+<% end %>
