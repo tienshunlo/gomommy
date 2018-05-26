@@ -1,49 +1,49 @@
-<% @comments.each_with_index do |comment, comment_item_index| %>
-	<div class="wrapper__box--large MaxWidth640">
-		<div class="wrapper__box--inner basic-shadow">
-			<div class="box__post padding2">
-				<div class="section__poster">
-					<div class="poster-avatar">
-						<%= user_img_helper("small-poster", comment.user) %>
-					</div>
-					<div class="poster-name">
-						<%= link_to "#{comment.user.nickname}", user_path(comment.user), { class:"name" } %><br>
-						<span class="time-ago-in-words"><%= time_ago_in_words(@post.created_at) %> ago</span>
-					</div>
+<div class="wrapper__box--large MaxWidth640">
+	<div class="wrapper__box--inner basic-shadow">
+		<div class="box__post padding2">
+			<div class="section__poster">
+				<div class="poster-avatar">
+					<%= user_img_helper("small-poster", comment.user) %>
 				</div>
-				<div class="section__content flex-colunm">
-					<%= simple_format(comment.content, class:"post-description FontSize12 MarginTop15") %>
+				<div class="poster-name">
+					<%= link_to "#{comment.user.nickname}", user_path(comment.user), { class:"name" } %><br>
+					<span class="time-ago-in-words"><%= time_ago_in_words(@post.created_at) %> ago</span>
 				</div>
 			</div>
+			<div class="section__content flex-colunm">
+				<%= simple_format(comment.content, class:"post-description FontSize12 MarginTop15") %>
+			</div>
 		</div>
-		<% if current_user == comment.user %>
+	</div>
+	<% if current_user == comment.user %>
 		<div class="section__action">
 			<ul class="no-border transparent-bg">
 				<li>
-					<%=link_to "Edit", "#modal-edit-comment_#{comment_item_index}", class:"button" %>
+					<%=link_to "Edit", "#edit-modal", :remote => true, class:"button" %>
 				</li>
 				<li>
 					<%=link_to "Delete", doctor_post_comment_path(@doctor, @post,comment), :confirm => "Are you sure?", :method => :delete, class:"button"  %>
 				</li>
 			</ul>
-			<!-- Edit Comment Modal Structure -->
-			<div id="modal-edit-comment_<%= comment_item_index %>" class="modal modal-fixed-footer modal-post">
-				<div class="modal-content modal-content-post">
-					<%= form_for ([@doctor, @post, comment])  do |f| %>
-    					<div class="row">
-    			    		<div class="input-field col s12">
-          						<%= f.text_area :content, :placeholder => "回覆", class:"materialize-textarea" %>
-          					</div>
-          					<div class="input-field col s12 right-align">
-    	      					<button class="btn waves-effect waves-light" type="submit" name="action">
-    	      						<span>送出</span>
-    							</button>
-    						</div>
-    					</div>
-			    	<% end %>
-				</div>
-			</div>
 		</div>
-		<% end %>
+	<% end %>
+</div>
+<!-- Edit Comment Modal Structure -->
+<div id="edit-modal" class="modal modal-post">
+	<div id="modal-edit-comment_<%= comment.id %>">
+		<div class="modal-content modal-content-post">
+			<%= form_for ([@doctor, @post, comment])  do |f| %>
+				<div class="row">
+		    		<div class="input-field col s12">
+  						<%= f.text_area :content, :placeholder => "回覆", class:"materialize-textarea" %>
+  					</div>
+  					<div class="input-field col s12 right-align">
+      					<button class="btn waves-effect waves-light" type="submit" name="action">
+      						<span>送出</span>
+						</button>
+					</div>
+				</div>
+	    	<% end %>
+		</div>
 	</div>
-<% end %>
+</div>

@@ -8,14 +8,25 @@ class CommentsController < ApplicationController
     end
     
     def create
-        @post = Post.find(params[:post_id])
         @comment = @post.comment.create(comment_params)
         @comment.user_id = current_user.id
-		if @comment.save
-			redirect_to doctor_post_path(@doctor, @post)
-		else
-			render 'new'
-		end
+        
+        respond_to do |format|
+          if @comment.save
+            format.html { redirect_to doctor_post_path(@doctor, @post) }
+            format.js   { }
+          else
+            format.html { render :new }
+            format.json { render json: @comment.errors, status: :unprocessable_entity }
+          end
+        end
+        
+        
+		#if @comment.save
+		#	redirect_to doctor_post_path(@doctor, @post)
+		#else
+		#	render 'new'
+		#end
     end
     def edit
         @post = Post.find(params[:post_id])
