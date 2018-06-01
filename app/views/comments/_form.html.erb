@@ -1,19 +1,4 @@
-<% if false %>
-	<%= form_for ([@doctor, @post, @post.comment.build]) do |f| %>
-		<div class="row">
-	    	<div class="input-field col s12 ">
-	      		<%= f.text_area :content, :placeholder => "回覆" %>
-	      	</div>
-	      	<div class="input-field col s12 right-align">
-		      	<button class="button" type="submit" name="action">
-					<span>送出</span>
-				</button>
-			</div>
-		</div>
-	<% end %>
-<% end %>
-
-<%= form_for [@doctor, @post, @post.comment.build], :remote => true do |f| %>
+<%= form_for [@doctor, @post, @comment], :remote => true do |f| %>
 	<div class="row">
     	<div class="input-field col s12 ">
       		<%= f.text_area :content, :placeholder => "回覆" %>

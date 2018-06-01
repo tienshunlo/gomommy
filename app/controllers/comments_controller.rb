@@ -8,9 +8,8 @@ class CommentsController < ApplicationController
     end
     
     def create
-        @comment = @post.comment.create(comment_params)
+        @comment = @post.comment.build(comment_params)
         @comment.user_id = current_user.id
-        
         respond_to do |format|
           if @comment.save
             format.html { redirect_to doctor_post_path(@doctor, @post) }
@@ -29,23 +28,31 @@ class CommentsController < ApplicationController
 		#end
     end
     def edit
-        @post = Post.find(params[:post_id])
-        @comments = @post.comment.all
-        
+
     end
     
     def update
+      @comment.update(comment_params)
+    end
+    
+    
+    def update
         @post = Post.find(params[:post_id])
-        if @comment.update(comment_params)
-            redirect_to doctor_post_path(@doctor, @post)
-        else
-            render 'edit'
+        @comment.update(comment_params)
+        respond_to do |format|
+            format.html { redirect_to doctor_post_path(@doctor, @post) }
+            format.js { }
         end
+        
+        #if @comment.update(comment_params)
+        #   redirect_to doctor_post_path(@doctor, @post)
+        #else
+        #    render 'edit'
+        #end
     end
     
     def destroy
         @comment.destroy
-        redirect_to doctor_post_path(@doctor, @post), notice: 'Comment was removed.'
     end
     
     private
