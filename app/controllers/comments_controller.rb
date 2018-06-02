@@ -31,13 +31,10 @@ class CommentsController < ApplicationController
 
     end
     
-    def update
-      @comment.update(comment_params)
-    end
+   
     
     
     def update
-        @post = Post.find(params[:post_id])
         @comment.update(comment_params)
         respond_to do |format|
             format.html { redirect_to doctor_post_path(@doctor, @post) }
