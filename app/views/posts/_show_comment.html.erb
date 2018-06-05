@@ -12,7 +12,26 @@
 			</header>
 			<div>
 				<% if current_user %>
-					<%= render 'comments/form' %>
+					<div class="wrapper__post MaxWidth1000">
+						<div class="wrapper__box--large MaxWidth640">
+							<div class="wrapper__box--inner basic-shadow">
+								<div class="box__post padding2">
+									<div class="section__poster">
+										<div class="poster-avatar">
+											<%= user_img_helper("small-poster", current_user) %>
+										</div>
+										<div class="poster-name">
+											<%= link_to "#{current_user.nickname}", user_path(current_user), { class:"name" } %><br>
+										</div>
+									</div>
+									<div class="section__content flex-colunm">
+										<%= render 'comments/form' %>
+									</div>
+								</div>
+							</div>
+						
+						</div>
+					</div>
 				<% else %>
 					<%= link_to "登入留言", new_user_session_path, class: "button" %>
 				<% end %>

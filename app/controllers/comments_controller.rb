@@ -3,10 +3,6 @@ class CommentsController < ApplicationController
     before_action :find_post
     before_action :find_comment, only: [:show, :edit, :update, :destroy]
 
-    def new
-        @comment = Comment.new
-    end
-    
     def create
         @comment = @post.comment.build(comment_params)
         @comment.user_id = current_user.id
@@ -16,36 +12,19 @@ class CommentsController < ApplicationController
             format.js   { }
           else
             format.html { render :new }
+            format.js # call create.js.erb on save errors
             format.json { render json: @comment.errors, status: :unprocessable_entity }
           end
         end
-        
-        
-		#if @comment.save
-		#	redirect_to doctor_post_path(@doctor, @post)
-		#else
-		#	render 'new'
-		#end
     end
     def edit
-
     end
-    
-   
-    
-    
     def update
         @comment.update(comment_params)
         respond_to do |format|
             format.html { redirect_to doctor_post_path(@doctor, @post) }
             format.js { }
         end
-        
-        #if @comment.update(comment_params)
-        #   redirect_to doctor_post_path(@doctor, @post)
-        #else
-        #    render 'edit'
-        #end
     end
     
     def destroy
