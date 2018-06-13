@@ -10,6 +10,16 @@
     }
 }
 
+/*error_message for new comment - ujs*/
+
+.error__comment-new{
+    border: none !important;
+    padding: 10px 10px 0px 15px !important;
+    color: #b94a48;
+    background-color: white !important;
+    font-size: 1.2em;
+}
+
 /*flash*/
 .alert {
     padding: 30px;    

@@ -1,13 +1,4 @@
 <div class="wrapper__box--large MaxWidth740">
-    <% if @post.errors.any? %>
-        <div id="error_explanation">
-            <ul>
-                <% @post.errors.full_messages.each do |msg| %>
-                  <li><%= t(msg) %></li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
     <header class="header_cate">
     	<span class="header_cate_title">留言</span>
     </header>

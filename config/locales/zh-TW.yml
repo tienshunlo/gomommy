@@ -16,3 +16,5 @@ zh-TW:
         email: "信箱"
         password: "密碼"
         password_confirmation: "重覆密碼"
+      comment:
+        content: "內容"
