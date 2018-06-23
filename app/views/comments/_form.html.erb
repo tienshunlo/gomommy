@@ -1,4 +1,6 @@
-<%= form_for ([@doctor, @post, @post.comment.build]) do |f| %>
+
+
+<%= form_for [@doctor, @post, @comment], :remote => true do |f| %>
 	<div class="row">
     	<div class="input-field col s12 ">
       		<%= f.text_area :content, :placeholder => "回覆" %>
@@ -10,7 +12,4 @@
 		</div>
 	</div>
 <% end %>
-
-
-
 

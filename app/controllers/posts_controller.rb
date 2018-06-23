@@ -75,7 +75,8 @@ class PostsController < ApplicationController
     end
     
     def show
-        @comments =  @post.comment.includes(:user).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+        @comments = @comment_paginate = @post.comment.includes(:user).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+        @comment = @post.comment.build
         if current_user
             if current_user.profile.setting[:visited].nil?
                 current_user.profile.setting[:visited] = []
