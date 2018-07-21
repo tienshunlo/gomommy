@@ -275,6 +275,13 @@ module ApplicationHelper
                     title: "收藏的文章",
                     material_icons:"bookmark"
                 },
+            ],
+            [
+                {
+                    url: dashboard_conversations_path,
+                    title: "留言板（收信匣）",
+                    material_icons:"favorite"
+                },
             ]
         ]
     end
@@ -304,29 +311,23 @@ module ApplicationHelper
         dashboard_nav.html_safe
     end
     
-    def dashboard_nav(controller_name, items, style="")
+    def dashboard_nav(controller_name, dashboard_nav_items, style="")
         dashboard_nav = ""
         if controller_name == "profiles" || controller_name == "registrations"
-            items[0].each do |item|
-                dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
-            end
+            items = dashboard_nav_items[0]
         elsif controller_name == "doctors"
-            items[1].each do |item|
-                dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
-            end
+            items = dashboard_nav_items[1]
         elsif controller_name == "posts"
-            items[2].each do |item|
-                dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
-            end
+            items = dashboard_nav_items[2]
+        elsif controller_name == "conversations"
+            items = dashboard_nav_items[3]
         elsif controller_name == "mamabook"
-            items.each do |item|
-                dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
-            end 
+            items = dashboard_nav_items
+        end
+        items.each do |item|
+            dashboard_nav << "<li><a href='#{item[:url]}' class='#{style} #{active_nav? item[:url]}'> #{item[:title]} </a></li>"
         end
         dashboard_nav.html_safe
     end
-    
-    
-						
 end
 

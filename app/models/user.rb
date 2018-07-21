@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates_presence_of :nickname, :message => "請記得輸入"
   has_many :post, dependent: :destroy
   has_many :comment, dependent: :destroy
+  has_many :sent_conversation, :class_name => 'Conversation', :foreign_key => 'sender_id'
+  has_many :received_conversation, :class_name => 'Conversation', :foreign_key => 'recipient_id'
   has_one :profile, dependent: :destroy
   enum status: { draft: 0, published: 1 }
   

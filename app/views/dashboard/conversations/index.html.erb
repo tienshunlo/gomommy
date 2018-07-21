@@ -1,0 +1,34 @@
+<div class="wrapper__box--large MaxWidth740">
+	<header class="header_cate">
+  		<span class="header_cate_title">
+  			留言
+  		</span>
+  	</header>
+</div>
+<% if @conversations.empty? %>
+	<div class="wrapper__box--large MaxWidth740">
+		<span class="align--center">尚未有任何留言</span>
+	</div>
+<% else %>
+	<% @conversations.each do |c| %>
+		<div class="wrapper__box--large MaxWidth740">
+			<div class="wrapper__box--inner">
+				<div class="box__post flex-row">
+					<div class="section__poster flex-colunm">
+						<div class="poster-avatar">
+							<%= user_img_helper("small-poster", User.find(c.sender_id)) %>
+						</div>
+					</div>
+					<div class="section__content flex-colunm Width100 padding-l1">
+						<div class="section__content flex-colunm"> 
+							<h2 class="profile-name MarginTop00 MarginBottom05"><%= link_to User.find(c.sender_id).nickname, user_path(c.sender_id), class:"name" %></h2> 
+						</div>
+						<div class="section__content">
+							<div class="post-description"><%= c.content %></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %> 
+<% end %>
