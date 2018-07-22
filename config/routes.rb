@@ -4,8 +4,13 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:sessions => "users/sessions", :registrations => "users/registrations"}, path: "", path_names: {sign_up: 'register', sign_in: 'login', sign_out: 'logout'}
   root 'doctors#index'
   namespace :dashboard do
-    resources :conversations, only: [:index]
-    resources :doctors, only: [:index] do
+    resources :conversations, only: [:show] do
+      collection do
+        get :inbox
+        get :outbox
+      end
+    end
+    resources :doctors, only: [] do
       collection do
         get :up_voted_doctors
         get :bookmarked_doctors

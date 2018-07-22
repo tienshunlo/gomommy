@@ -278,9 +278,14 @@ module ApplicationHelper
             ],
             [
                 {
-                    url: dashboard_conversations_path,
-                    title: "留言板（收信匣）",
-                    material_icons:"favorite"
+                    url: inbox_dashboard_conversations_path,
+                    title: "收件匣",
+                    material_icons:"call_received"
+                },
+                {
+                    url: outbox_dashboard_conversations_path,
+                    title: "寄件匣",
+                    material_icons:"call_made"
                 },
             ]
         ]
