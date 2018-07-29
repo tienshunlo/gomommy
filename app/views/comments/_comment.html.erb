@@ -1,6 +1,6 @@
 <div class="wrapper__box--large MaxWidth640" id="edit-comment_<%= comment.id %>" >
 	<div class="wrapper__box--inner basic-shadow">
-		<div class="box__post padding2">
+		<div class="box__post padding15">
 			<div class="section__poster">
 				<div class="poster-avatar">
 					<%= user_img_helper("small-poster", comment.user) %>
@@ -11,7 +11,7 @@
 				</div>
 			</div>
 			<div class="section__content flex-colunm"   id="modal-edit-comment_<%= comment.id %>">
-				<%= simple_format(comment.content, class:"post-description FontSize12 MarginTop15") %>
+				<%= simple_format(comment.content, class:"post-description FontSize12 MarginTop1 MarginBottom00") %>
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 class Dashboard::ConversationsController < Dashboard::DashboardController
-	
+	layout "dashboard", :except => :show
 	def show
 	    @conversation = Conversation.find_by(:id => params[:id])
 	    if @conversation.sender == current_user || @conversation.recipient == current_user

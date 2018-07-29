@@ -1,25 +1,46 @@
 <% if false %>
-<% content_for :show_headbar do %>
-	<!-- Po文者的照片 -->
-	<%= render 'posts/show_headbar', post: @post %>
+	<% content_for :show_headbar do %>
+		<!-- Po文者的照片 -->
+		<%= render 'posts/show_headbar', post: @post %>
+	<% end %>
+	
+	<% content_for :comment_section do %>
+		<!-- 回覆區 -->
+		<%= render 'posts/show_comment' %>
+		<%#= render @post.comment %>
+	<% end %>
 <% end %>
-
-<% content_for :comment_section do %>
-	<!-- 回覆區 -->
-	<%= render 'posts/show_comment' %>
-	<%#= render @post.comment %>
-<% end %>
-
-<% end %>
-
-
-
-<div class="section__wrapper padding-t0">
-	<div class="wrapper__box--large MaxWidth740 ">
-		<div class="wrapper__box--inner padding2">
-		<div class="section__content flex-colunm margin-b-1 article-content MinHeight34"> 
-			<%= simple_format @conversation.content %>
-		</div>
+<div class="container-doctor primary-bg transparent-bg">
+	<div class="wrapper__doctor flex-colunm MaxWidth740 padding-b0">
+		<div class="wrapper__box--inner no-border transparent-bg">
+			<div class="box__post padding15">
+				<div class="section__poster margin-b-1">
+					<%= link_to :back, class: 'button fixed_icons' do %>
+						<i class="material-icons">chevron_left</i>
+						<span>&nbsp;&nbsp;BACK</span>
+					<% end %>
+				</div>
+			</div>
+	    </div>
+    </div>
+</div>
+<div class="wrapper__box--large MaxWidth740">
+	<div class="wrapper__box--inner">
+		<div class="box__post flex-row">
+			<div class="section__poster flex-colunm">
+				<div class="poster-avatar">
+					<%= user_img_helper("small-poster", @conversation.sender) %>
+				</div>
+			</div>
+			<div class="section__content flex-colunm Width100 padding-l1">
+				<div class="section__content flex-colunm"> 
+					<h2 class="profile-name MarginTop00 MarginBottom05"><%= link_to @conversation.sender.nickname, user_path(@conversation.sender), class:"name" %></h2> 
+				</div>
+				<span class="time-ago-in-words"><%= time_ago_in_words(@conversation.created_at) %>前</span>
+				<div class="section__content">
+					<div class="post-description"><%= @conversation.content %></div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

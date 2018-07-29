@@ -12,23 +12,26 @@
 <% else %>
 	<% @conversations.each do |c| %>
 		<div class="wrapper__box--large MaxWidth740">
-			<div class="wrapper__box--inner">
-				<div class="box__post flex-row">
-					<div class="section__poster flex-colunm">
-						<div class="poster-avatar">
-							<%= user_img_helper("small-poster", User.find(c.sender_id)) %>
+			<%= link_to dashboard_conversation_path(c) do %>
+				<div class="wrapper__box--inner">
+					<div class="box__post flex-row">
+						<div class="section__poster flex-colunm">
+							<div class="poster-avatar">
+								<%= image_tag(c.sender.profile.album.album_img.url(:medium), { class: "u-block size3x3 radius100" }) %>
+							</div>
 						</div>
-					</div>
-					<div class="section__content flex-colunm Width100 padding-l1">
-						<div class="section__content flex-colunm"> 
-							<h2 class="profile-name MarginTop00 MarginBottom05"><%= link_to User.find(c.sender_id).nickname, user_path(c.sender_id), class:"name" %></h2> 
-						</div>
-						<div class="section__content">
-							<div class="post-description"><%= link_to c.content, dashboard_conversation_path(c.id) %></div>
+						<div class="section__content flex-colunm Width100 padding-l1">
+							<div class="section__content flex-colunm"> 
+								<h2 class="profile-name MarginTop00 MarginBottom05"><%= c.sender.nickname %></h2> 
+							</div>
+							<span class="time-ago-in-words"><%= c.created_at.strftime("%Y-%m-%d") %></span>
+							<div class="section__content">
+								<div class="post-description"><%= c.content %></div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			<% end %>
 		</div>
 	<% end %> 
 <% end %>
