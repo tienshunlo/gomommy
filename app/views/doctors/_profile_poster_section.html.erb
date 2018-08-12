@@ -4,7 +4,7 @@
   </div>
   <div class="poster-name">
 	  <%= link_to "#{doctor.post.last.user.nickname}", user_path(doctor.post.last.user), {class:"name"} %><br>
-		<span class="time-ago-in-words"><%= time_ago_in_words(doctor.post.last.created_at) %> ago</span>
+		<span class="time-ago-in-words"><%= time_ago_in_words(doctor.post.last.created_at) %>前</span>
   </div>
 <% else %>
   <div class="valign-wrapper">

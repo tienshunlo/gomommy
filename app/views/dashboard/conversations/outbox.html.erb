@@ -1,7 +1,7 @@
 <div class="wrapper__box--large MaxWidth740">
 	<header class="header_cate">
   		<span class="header_cate_title">
-  			訊息
+  			收件人
   		</span>
   	</header>
 </div>
@@ -13,24 +13,24 @@
 	<% @conversations.each do |c| %>
 		<div class="wrapper__box--large MaxWidth740">
 			<%= link_to dashboard_conversation_path(c) do %>
-			<div class="wrapper__box--inner">
-				<div class="box__post flex-row">
-					<div class="section__poster flex-colunm">
-						<div class="poster-avatar">
-							<%= image_tag(c.recipient.profile.album.album_img.url(:medium), { class: "u-block size3x3 radius100" }) %>
+				<div class="wrapper__box--inner">
+					<div class="box__post flex-row">
+						<div class="section__poster flex-colunm">
+							<div class="poster-avatar">
+								<%= image_tag(c.recipient.profile.album.album_img.url(:medium), { class: "u-block size3x3 radius100" }) %>
+							</div>
 						</div>
-					</div>
-					<div class="section__content flex-colunm Width100 padding-l1">
-						<div class="section__content flex-colunm"> 
-							<h2 class="profile-name MarginTop00 MarginBottom05"><%= c.recipient.nickname %></h2> 
-						</div>
-						<span class="time-ago-in-words"><%= c.created_at.strftime("%Y-%m-%d") %></span>
-						<div class="section__content">
-							<div class="post-description"><%= c.content %></div>
+						<div class="section__content flex-colunm Width100 padding-l1">
+							<div class="section__content flex-colunm"> 
+								<h2 class="profile-name MarginTop00 MarginBottom05"><%= c.recipient.nickname %></h2> 
+							</div>
+							<span class="time-ago-in-words"><%= c.created_at.strftime("%Y-%m-%d") %></span>
+							<div class="section__content">
+								<div class="post-description"><%= c.content %></div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 			<% end %>
 		</div>
 	<% end %> 

@@ -7,7 +7,7 @@
           			</div>
           			<div class="poster-name">
             				<%= link_to user.nickname,user_path(user), { class: "name" } %><br>
-            				<span class="time-ago-in-words"><%= time_ago_in_words(posts.created_at) %> ago</span>
+            				<span class="time-ago-in-words"><%= time_ago_in_words(posts.created_at) %>前</span>
           			</div>
         		</div>
         		<div class="section__content article-content">

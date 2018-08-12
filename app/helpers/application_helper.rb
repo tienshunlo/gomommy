@@ -181,7 +181,7 @@ module ApplicationHelper
         if user.profile.album 
             link_to "更新圖片", edit_dashboard_profile_profile_album_path(current_user.profile.profile_album), class: "#{style}"
 		else 
-			link_to "更新圖片", new_dashboard_profile_profile_album_path, class: "#{style}"
+			link_to "新增圖片", new_dashboard_profile_profile_album_path, class: "#{style}"
 	    end 
 	end
 	

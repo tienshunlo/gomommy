@@ -2,8 +2,10 @@ class Dashboard::ConversationsController < Dashboard::DashboardController
 	layout "dashboard", :except => :show
 	def show
 	    @conversation = Conversation.find_by(:id => params[:id])
-	    if @conversation.sender == current_user || @conversation.recipient == current_user
-	        render 'show'
+	    if @conversation.sender == current_user
+	        @user = @conversation.recipient
+	    elsif @conversation.recipient == current_user
+	        @user = @conversation.sender
 	    else
 	        redirect_to root_path
 	    end

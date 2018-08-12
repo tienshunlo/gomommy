@@ -5,6 +5,6 @@
 <% else %>
     $('.add_comment').prepend('<%= j render partial: 'comments/comment', locals: { comment: @comment } %>');
     $('#comment_content').val('');
-    alert("Comment created");
+    alert("已新增留言");
 <% end %>
 

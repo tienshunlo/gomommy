@@ -14,14 +14,16 @@
 		</div>
 	</div>
 </div>
-<div class="section__tag">
-	<div class="chip truncate">
-		<%= post.phase.title %>
+<div class="wrapper__box--inner padding2 secondary-bg">
+	<div class="section__tag">
+		<div class="chip truncate">
+			<%= post.phase.title %>
+		</div>
+		<div class="chip truncate">
+			<%= post.issue.title %>
+		</div>
 	</div>
-	<div class="chip truncate">
-		<%= post.issue.title %>
+	<div class="section__content flex-colunm margin-b-1 article-content MinHeight34"> 
+		<%= simple_format post.description %>
 	</div>
-</div>
-<div class="section__content flex-colunm margin-b-1 article-content MinHeight34"> 
-	<%= simple_format post.description %>
 </div>

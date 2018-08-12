@@ -4,5 +4,6 @@ class UsersController < ApplicationController
     @posts = @user.post
     @profile = @user.profile
     @city = City.find(@profile.location).name
+    @conversation = Conversation.new
   end
 end

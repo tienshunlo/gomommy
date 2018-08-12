@@ -18,7 +18,7 @@
 	<% if current_user == comment.user %>
 		<div class="section__action">
 			<ul class="no-border transparent-bg">
-				<li><%=link_to "Edit", edit_doctor_post_comment_path(@doctor, @post, comment), :remote => true, class:"button" %></li>
+				<li><%=link_to "Edit", edit_doctor_post_comment_path(@doctor, @post, comment), :remote => true, class: "button" %></li>
 				<li><%=link_to "Delete", doctor_post_comment_path(@doctor, @post, comment), remote: true, :confirm => "Are you sure?", :method => :delete, class:"button"  %></li>
 			</ul>
 		</div>
