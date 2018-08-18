@@ -44,3 +44,80 @@
 		</div>
 	</div>
 </div>
+<div class="wrapper__box--large MaxWidth740">
+<%= link_to "JS", "#", :id => "myBtn", class: "button MarginTop1 Width100" %>
+</div>
+<% if @conversation.message %>
+	<% @messages.each do |m| %>
+		<div class="wrapper__box--large MaxWidth740">
+			<div class="wrapper__box--inner">
+				<div class="box__post flex-row">
+					<div class="section__poster flex-colunm">
+						<div class="poster-avatar">
+							<%= user_img_helper("small-poster", m.sender) %>
+						</div>
+					</div>
+					<div class="section__content flex-colunm Width100 padding-l1">
+						<div class="section__content flex-colunm"> 
+							<h2 class="profile-name MarginTop00 MarginBottom05"><%= link_to m.sender.nickname, user_path(m.sender), class:"name" %></h2> 
+						</div>
+						<span class="time-ago-in-words"><%= time_ago_in_words(m.created_at) %>前</span>
+						<div class="section__content">
+							<div class="post-description"><%= m.content %></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+<% else %>
+	<span>開始交談</span>
+<% end %>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+	<%= form_for [@conversation,@message], url: dashboard_conversation_messages_path(@conversation,@message), :recipient => params[:id] do |f| %>
+		<div class="row">
+	    	<div class="input-field col s12 ">
+	      		<%= f.text_area :content, :placeholder => "傳訊息" %>
+	      	</div>
+	      	<div class="input-field col s12 right-align">
+		      	<button class="button" type="submit" name="action">
+					<span>送出</span>
+				</button>
+			</div>
+		</div>
+	<% end %>
+	</div>
+</div>
+
+<script>
+	// Get the modal
+	var modal = document.getElementById('myModal');
+	
+	// Get the button that opens the modal
+	var btn = document.getElementById("myBtn");
+	
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+	
+	// When the user clicks on the button, open the modal 
+	btn.onclick = function() {
+	    modal.style.display = "block";
+	}
+	
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	    modal.style.display = "none";
+	}
+	
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	    if (event.target == modal) {
+	        modal.style.display = "none";
+	    }
+	}
+</script>

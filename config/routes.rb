@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         get :inbox
         get :outbox
       end
+      resources :messages
     end
     resources :doctors, only: [] do
       collection do

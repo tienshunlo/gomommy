@@ -13,7 +13,7 @@ class ConversationsController < ApplicationController
         @conversation.recipient_id = session[:recipient_id]
         respond_to do |format|
           if @conversation.save
-            format.html { redirect_to outbox_dashboard_conversations_path }
+            format.html { redirect_to dashboard_conversation_path }
             format.js   { }
           else
             format.html { render :new }

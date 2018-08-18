@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :comment, dependent: :destroy
   has_many :sent_conversation, :class_name => 'Conversation', :foreign_key => 'sender_id'
   has_many :received_conversation, :class_name => 'Conversation', :foreign_key => 'recipient_id'
+  has_many :sent_message, :class_name => 'Message', :foreign_key => 'sender_id'
+  has_many :received_message, :class_name => 'Message', :foreign_key => 'recipient_id'
   has_one :profile, dependent: :destroy
   enum status: { draft: 0, published: 1 }
   

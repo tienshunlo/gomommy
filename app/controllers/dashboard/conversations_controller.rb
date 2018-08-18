@@ -1,7 +1,9 @@
 class Dashboard::ConversationsController < Dashboard::DashboardController
 	layout "dashboard", :except => :show
 	def show
-	    @conversation = Conversation.find_by(:id => params[:id])
+	    @conversation = Conversation.find(params[:id])
+	    @messages = @conversation.message.includes(:recipient).includes(:sender)
+	    @message = @conversation.message.build
 	    if @conversation.sender == current_user
 	        @user = @conversation.recipient
 	    elsif @conversation.recipient == current_user
