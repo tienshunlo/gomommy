@@ -2,7 +2,7 @@ class Dashboard::ConversationsController < Dashboard::DashboardController
 	layout "dashboard", :except => :show
 	def show
 	    @conversation = Conversation.find(params[:id])
-	    @messages = @conversation.message.includes(:recipient).includes(:sender)
+	    @messages  = @messages_paginate = @conversation.message.includes(:recipient).includes(:sender).order('id DESC').paginate(:page => params[:page], :per_page => 5)
 	    @message = @conversation.message.build
 	    if @conversation.sender == current_user
 	        @user = @conversation.recipient

@@ -1,0 +1,11 @@
+<% if @message.errors.any? %>
+    <!-- alert("ERROR(S): <%#= j @comment.errors.full_messages.join('; ') %>") -->
+    $('#newMessage').prepend('<%= j render partial: 'dashboard/messages/error_messages', locals: { comment: @comment } %>');
+    $('#error_explanation').fadeOut(3000);
+<% else %>
+    $('.add_essage').prepend('<%= j render partial: 'dashboard/messages/message', locals: { message: @message } %>');
+    $('#newMessage').hide();
+    $('#message_content').val('');
+    alert("已新增對話");
+<% end %>
+
