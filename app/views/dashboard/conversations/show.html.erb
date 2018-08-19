@@ -64,7 +64,7 @@
 	<!-- Modal content -->
 	<div class="modal-content">
 		<span class="close">&times;</span>
-		<%= form_for [@conversation,@message], url: dashboard_conversation_messages_path(@conversation,@message), :recipient => params[:id], :remote => true do |f| %>
+		<%= form_for [@conversation,@message], url: dashboard_conversation_messages_path(@conversation,@message), :recipient => params[:id], format: :json do |f| %>
 			<div class="row">
 		    	<div class="input-field col s12 ">
 		      		<%= f.text_area :content, :placeholder => "傳訊息" %>
@@ -105,4 +105,24 @@
 	        modal.style.display = "none";
 	    }
 	}
+	
+	
+	$("#newMessage").on("click", function(event) {
+		event.preventDefault();
+		$.ajax({
+			url: "20/messages",
+			method: "POST",
+			dataType: "json",
+			data: { 
+				message: { 
+					content: $("#message_content").val()
+				}
+			},
+			success: function(response) {
+				$('.add_message').prepend(response);
+				modal.style.display = "none";
+				$('#message_content').val('');
+			}
+		});
+	});
 </script>

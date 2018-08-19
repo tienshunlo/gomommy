@@ -1,6 +1,4 @@
-class Dashboard::MessagesController < Dashboard::DashboardController
-	
-	
+class MessagesController < ApplicationController	
 	def create
 	    @conversation = Conversation.find_by(:id => params[:conversation_id])
 	    @message = @conversation.message.build(message_params)
@@ -10,7 +8,7 @@ class Dashboard::MessagesController < Dashboard::DashboardController
           if @message.save
             #format.html { redirect_to dashboard_conversation_path(@conversation) }
             #format.js   { }
-            format.json { render json: {}, status: :ok }
+            format.json   { }
           else
             format.html { render :new }
             format.js # call create.js.erb on save errors

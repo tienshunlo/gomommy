@@ -46,7 +46,6 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show]
   resources :conversations
-
   resources :doctors do
      member do
         put "like", to: "doctors#like"
