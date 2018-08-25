@@ -6,9 +6,9 @@ class MessagesController < ApplicationController
         @message.recipient_id = session[:recipient_id]
         respond_to do |format|
           if @message.save
-            #format.html { redirect_to dashboard_conversation_path(@conversation) }
-            #format.js   { }
-            format.json   { }
+            format.html { render 'dashboard/conversations/show'}
+            format.js   { }
+            format.json { render :json => @message }
           else
             format.html { render :new }
             format.js # call create.js.erb on save errors

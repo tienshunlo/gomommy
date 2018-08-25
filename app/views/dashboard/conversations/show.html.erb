@@ -47,8 +47,8 @@
 <div class="wrapper__box--large MaxWidth740">
 	<%= link_to "JS", "#", :id => "newMessageBtn", class: "button MarginTop1 Width100" %>
 </div>
-<% if @conversation.message %>
-	<div class="add_message">
+<% if !@conversation.message.blank? %>
+	<div class="wrapper__post MaxWidth1000 add_message">
 		<% @messages.each do |message| %>
 			<%= render partial: 'dashboard/messages/message', locals: {message: message } %>
 		<% end %>
@@ -64,10 +64,11 @@
 	<!-- Modal content -->
 	<div class="modal-content">
 		<span class="close">&times;</span>
-		<%= form_for [@conversation,@message], url: dashboard_conversation_messages_path(@conversation,@message), :recipient => params[:id], format: :json do |f| %>
+		<%= form_for [@conversation,@conversation.message.build], url: dashboard_conversation_messages_path(@conversation,@conversation.message.build), data: {conversation_id: @conversation.id} , format: :json do |f| %>
 			<div class="row">
 		    	<div class="input-field col s12 ">
 		      		<%= f.text_area :content, :placeholder => "傳訊息" %>
+		      		<%= f.hidden_field :conversation_id, :value => params[:id] %>
 		      	</div>
 		      	<div class="input-field col s12 right-align">
 			      	<button class="button" type="submit" name="action">
@@ -89,6 +90,8 @@
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close")[0];
 	
+	var addMessage = document.getElementsByClassName("add_message");
+	
 	// When the user clicks on the button, open the modal 
 	btn.onclick = function() {
 	    modal.style.display = "block";
@@ -105,12 +108,12 @@
 	        modal.style.display = "none";
 	    }
 	}
-	
-	
-	$("#newMessage").on("click", function(event) {
+
+	$("#newMessage").on("submit", function(event) {
 		event.preventDefault();
+		var conversation_id = document.getElementById("new_message").getAttribute('data-conversation-id');
 		$.ajax({
-			url: "20/messages",
+			url: conversation_id + "/messages",
 			method: "POST",
 			dataType: "json",
 			data: { 
@@ -118,10 +121,14 @@
 					content: $("#message_content").val()
 				}
 			},
-			success: function(response) {
-				$('.add_message').prepend(response);
+			success: function(response, status) {
+				console.log(response);
+				$('.add_message').prepend('<%= j render partial: 'dashboard/messages/message', locals: {message: @message } %>');
 				modal.style.display = "none";
 				$('#message_content').val('');
+			},
+			error: function(response, status) {
+				console.log(status);
 			}
 		});
 	});

@@ -38,7 +38,7 @@
 		</div>
 	</div>
 	<% if !@comments.blank? %>
-        <div class="wrapper__post MaxWidth1000  add_comment">
+        <div class="wrapper__post MaxWidth1000 add_comment">
         	<% @comments.each do |comment| %>
 	    		<%= render partial: 'comments/comment', locals: {comment: comment } %>
 	    	<% end %>

@@ -1,9 +1,9 @@
 class Dashboard::ConversationsController < Dashboard::DashboardController
 	layout "dashboard", :except => :show
+	
 	def show
 	    @conversation = Conversation.find(params[:id])
 	    @messages  = @messages_paginate = @conversation.message.includes(:recipient).includes(:sender).order('id DESC').paginate(:page => params[:page], :per_page => 5)
-	    @message = @conversation.message.build
 	    if @conversation.sender == current_user
 	        @user = @conversation.recipient
 	    elsif @conversation.recipient == current_user
@@ -18,5 +18,6 @@ class Dashboard::ConversationsController < Dashboard::DashboardController
     def outbox
     	@conversations = @paginate = current_user.sent_conversation.paginate(:page => params[:page], :per_page => 5).order('id DESC')
     end
+    
 	
 end
