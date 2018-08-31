@@ -60,10 +60,11 @@
 
 
 <!-- The Modal -->
-<div id="newMessage" class="modal">
+<div id="newMessage" class="modal-box">
 	<!-- Modal content -->
 	<div class="modal-content">
 		<span class="close">&times;</span>
+		<div class="modal-msg"></div>
 		<%= form_for [@conversation,@conversation.message.build], url: dashboard_conversation_messages_path(@conversation,@conversation.message.build), data: {conversation_id: @conversation.id} , format: :json do |f| %>
 			<div class="row">
 		    	<div class="input-field col s12 ">
@@ -113,7 +114,7 @@
 		event.preventDefault();
 		var conversation_id = document.getElementById("new_message").getAttribute('data-conversation-id');
 		$.ajax({
-			url: conversation_id + "/messages",
+			url: conversation_id + "/messages.json", //加上.json，可以確保回到create action的時候由format.json所接收
 			method: "POST",
 			dataType: "json",
 			data: { 
@@ -121,15 +122,23 @@
 					content: $("#message_content").val()
 				}
 			},
-			success: function(response, status) {
-				console.log(response);
-				$('.add_message').prepend('<%= j render partial: 'dashboard/messages/message', locals: {message: @message } %>');
+			success: function(response, status, xhr) {
+				//console.log(response);
+				$('.add_message').prepend(response['html_data']);
+				$('.add_message').prepend('<%#= j render partial: "dashboard/messages/message", locals: {message: @message } %>');
 				modal.style.display = "none";
 				$('#message_content').val('');
 			},
-			error: function(response, status) {
-				console.log(status);
-			}
+			error: function(response, status, xhr) {
+				//console.log(response);
+				var modalMsg = document.getElementsByClassName("modal-msg")[0];
+				modalMsg.setAttribute("id", "error_explanation");
+				$(".modal-msg").attr("class", "error__comment-new");
+				//modalMsg.setAttribute("class", "error__comment-new");
+				for (var key in response.responseJSON) {
+					$("#error_explanation").prepend("<p>"+response.responseJSON[key]+"</p>");				
+				}
+			},
 		});
 	});
 </script>

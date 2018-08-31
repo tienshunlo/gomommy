@@ -3,9 +3,9 @@
     $('#newMessage').prepend('<%= j render partial: 'dashboard/messages/error_messages', locals: { message: @message } %>');
     $('#error_explanation').fadeOut(3000);
 <% else %>
-    $('.add_essage').prepend('<%= j render partial: 'dashboard/messages/message', locals: { message: @message } %>');
+    $('.add_message').prepend('<%= j render partial: 'dashboard/messages/message', locals: { message: @message } %>');
     $('#newMessage').hide();
     $('#message_content').val('');
-    alert("已新增對話");
+    alert("已新增XX");
 <% end %>
 
