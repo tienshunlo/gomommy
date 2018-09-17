@@ -12,14 +12,19 @@
 			<%= user_img_helper("big-poster", @user) %>
 			<% if @user != current_user %>
 				<%= link_to "傳訊息", new_conversation_path, :remote => true, class: "button MarginTop1 Width100" %>
+				<%#= link_to "私訊", new_conversation_path, :id => "ajax-load", class: "button MarginTop1 Width100" %>
 			<% end %>
 		</div>
 	</div>
 </div>
 <div class="wrapper__box--large flex-row MaxWidth740">
-<div id="conversation_area" style="width:100%">
-	
+	<% flash.each do |key, value| %>
+  		<div class="alert alert-conversation alert-<%= key %>"><%= value %></div>
+	<% end %>
 </div>
+<div class="wrapper__box--large flex-row MaxWidth740">
+	<div id="conversation_area" class="Width100" style="display:none">
+	</div>
 </div>
 <%#= dashboard/post/index.html.erb%>
 <div class="wrapper__box--large MaxWidth740">
@@ -35,7 +40,14 @@
 	</div>
 <% else %>
 	<% @posts.each do |post| %>
-		<%= render partial: 'shared/posts_box', locals: {posts: post, user: @user} %>
+		<%= render partial: 'shared/posts_box', locals: { posts: post, user: @user } %>
 	<% end %>
 <% end %> 
+
+<script>
+	$('#ajax-load').click( function(e){
+	  e.preventDefault();
+	  $("#conversation_area").toggle();
+	})
+</script>
 

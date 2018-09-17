@@ -7,11 +7,7 @@ class ApplicationController < ActionController::Base
   
   before_action :store_user_location!, if: :storable_location?
   before_action :set_copyright
-  before_action :set_recipient
   
-  def set_recipient
-    session[:recipient_id] = params[:id] if params[:id]
-  end
   
   def set_copyright
     @copyright = MamabookViewTool::Renderer.copyright "Mamabook", "All rights reserved"

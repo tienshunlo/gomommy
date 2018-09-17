@@ -30,6 +30,11 @@
     }
 }
 
+.alert-conversation {
+     @extend .alert;
+     padding: 5px 10px !important;    
+}
+
 .alert-error {
     @extend .alert;
     background-color: #f2dede;

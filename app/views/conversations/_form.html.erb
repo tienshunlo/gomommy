@@ -1,0 +1,21 @@
+<%= form_for @conversation, url: conversations_path(@user), :recipient_id => params[:id] do |f| %>
+	<% if @conversation.errors.any? %>
+	    <div id="error_explanation" class="error__comment-new">
+	        <ul>
+	            <% @conversation.errors.full_messages.each do |msg| %>
+	              <li><%= t(msg) %></li>
+	            <% end %>
+	        </ul>
+	    </div>
+	<% end %>
+	<div class="row">
+    	<div class="input-field col s12 ">
+      		<%= f.text_area :content, :placeholder => "傳訊息" %>
+      	</div>
+      	<div class="input-field col s12 right-align">
+	      	<button class="button" type="submit" name="action">
+				<span>送出</span>
+			</button>
+		</div>
+	</div>
+<% end %>

@@ -1,7 +1,7 @@
 <%= form_for [@doctor, @post, @comment], :remote => true do |f| %>
 	<div class="row">
     	<div class="input-field col s12 ">
-      		<%= f.text_area :content, :placeholder => "回覆" %>
+      		<%= f.text_area :content, :placeholder => "分享自己的經驗" %>
       	</div>
       	<div class="input-field col s12 right-align">
 	      	<button class="button" type="submit" name="action">

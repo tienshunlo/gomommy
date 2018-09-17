@@ -1,0 +1,5 @@
+<% if @conversation.errors.any? %>
+    <!-- alert("ERROR(S): <%#= j @comment.errors.full_messages.join('; ') %>") -->
+    $('#conversation_area').prepend('<%= j render partial: 'conversations/error_messages', locals: { conversation: @conversation } %>');
+    $('#error_explanation').fadeOut(3000);
+<% end %>

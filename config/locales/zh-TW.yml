@@ -18,3 +18,5 @@ zh-TW:
         password_confirmation: "重覆密碼"
       comment:
         content: "內容"
+      conversation:
+        content: "內容"

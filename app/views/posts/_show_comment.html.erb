@@ -37,12 +37,13 @@
 			</div>
 		</div>
 	</div>
-	<% if !@comments.blank? %>
-        <div class="wrapper__post MaxWidth1000 add_comment">
+    <div id="comments-list" class="wrapper__post MaxWidth1000">
+    	<% if !@comments.blank? %>
         	<% @comments.each do |comment| %>
 	    		<%= render partial: 'comments/comment', locals: {comment: comment } %>
 	    	<% end %>
-	    	<%= will_paginate @comment_paginate if @comment_paginate %>
-	    </div>
-	<% end %>
+    	<%= will_paginate @comment_paginate if @comment_paginate %>
+    	<% end %>
+    </div>
 </div>
+

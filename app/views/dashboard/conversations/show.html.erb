@@ -47,17 +47,16 @@
 <div class="wrapper__box--large MaxWidth740">
 	<%= link_to "JS", "#", :id => "newMessageBtn", class: "button MarginTop1 Width100" %>
 </div>
-<% if !@conversation.message.blank? %>
-	<div class="wrapper__post MaxWidth1000 add_message">
+<div class="wrapper__post MaxWidth1000 add_message">
+	<% if !@conversation.message.blank? %>
 		<% @messages.each do |message| %>
 			<%= render partial: 'dashboard/messages/message', locals: {message: message } %>
 		<% end %>
 		<%= will_paginate @messages_paginate if @messages_paginate %>
-	</div>
-<% else %>
-	<span>開始交談</span>
-<% end %>
-
+	<% else %>
+		<span>開始交談</span>
+	<% end %>
+</div>
 
 <!-- The Modal -->
 <div id="newMessage" class="modal-box">
@@ -65,7 +64,9 @@
 	<div class="modal-content">
 		<span class="close">&times;</span>
 		<div class="modal-msg"></div>
-		<%= form_for [@conversation,@conversation.message.build], url: dashboard_conversation_messages_path(@conversation,@conversation.message.build), data: {conversation_id: @conversation.id} , format: :json do |f| %>
+		<%= form_for [@conversation,@conversation.message.build], 
+						url: dashboard_conversation_messages_path(@conversation,@conversation.message.build), 
+						:data => { :type => :json, :conversation_id => @conversation.id } do |f| %>
 			<div class="row">
 		    	<div class="input-field col s12 ">
 		      		<%= f.text_area :content, :placeholder => "傳訊息" %>
@@ -125,7 +126,7 @@
 			success: function(response, status, xhr) {
 				//console.log(response);
 				$('.add_message').prepend(response['html_data']);
-				$('.add_message').prepend('<%#= j render partial: "dashboard/messages/message", locals: {message: @message } %>');
+				//$('.add_message').prepend('<%#= j render partial: "dashboard/messages/message", locals: {message: @message } %>');
 				modal.style.display = "none";
 				$('#message_content').val('');
 			},
