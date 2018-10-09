@@ -4,7 +4,7 @@ class Dashboard::MessagesController < Dashboard::DashboardController
 	    @conversation = Conversation.find_by(:id => params[:conversation_id])
 	    @message = @conversation.message.build(message_params)
       @message.sender_id = current_user.id
-      @message.recipient_id = @conversation.recipient_id #這邊是錯的
+      @message.recipient_id = @conversation.recipient_id #這邊是錯的，收件夾裡面的訊息，寄件者會跟收件者一樣。
         
       respond_to do |format|
         if @message.save

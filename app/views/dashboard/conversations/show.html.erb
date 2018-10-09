@@ -45,7 +45,7 @@
 	</div>
 </div>
 <div class="wrapper__box--large MaxWidth740">
-	<%= link_to "JS", "#", :id => "newMessageBtn", class: "button MarginTop1 Width100" %>
+	<%= link_to "開始交談", "#", :id => "newMessageBtn", class: "button MarginTop1 Width100" %>
 </div>
 <div class="wrapper__post MaxWidth1000 add_message">
 	<% if !@conversation.message.blank? %>
@@ -54,7 +54,9 @@
 		<% end %>
 		<%= will_paginate @messages_paginate if @messages_paginate %>
 	<% else %>
-		<span>開始交談</span>
+		<div class="wrapper__box--large MaxWidth740">
+			<span>開始交談(如果用ajax新增，還是會出現，要重新整理之後才會消失)</span> 
+		</div>
 	<% end %>
 </div>
 
@@ -63,14 +65,14 @@
 	<!-- Modal content -->
 	<div class="modal-content">
 		<span class="close">&times;</span>
-		<div class="modal-msg"></div>
+		<div class="modal-error-msg"></div>
 		<%= form_for [@conversation,@conversation.message.build], 
 						url: dashboard_conversation_messages_path(@conversation,@conversation.message.build), 
 						:data => { :type => :json, :conversation_id => @conversation.id } do |f| %>
 			<div class="row">
 		    	<div class="input-field col s12 ">
 		      		<%= f.text_area :content, :placeholder => "傳訊息" %>
-		      		<%= f.hidden_field :conversation_id, :value => params[:id] %>
+		      		<%#= f.hidden_field :conversation_id, :value => params[:id] %>
 		      	</div>
 		      	<div class="input-field col s12 right-align">
 			      	<button class="button" type="submit" name="action">
@@ -83,37 +85,57 @@
 </div>
 
 <script>
+	// Begin of Javascript
 	// Get the modal
-	var modal = document.getElementById('newMessage');
+	//var modal = document.getElementById('newMessage');
 	
 	// Get the button that opens the modal
-	var btn = document.getElementById("newMessageBtn");
+	//var btn = document.getElementById("newMessageBtn");
 	
 	// Get the <span> element that closes the modal
-	var span = document.getElementsByClassName("close")[0];
+	//var span = document.getElementsByClassName("close")[0];
 	
-	var addMessage = document.getElementsByClassName("add_message");
-	
+
 	// When the user clicks on the button, open the modal 
-	btn.onclick = function() {
-	    modal.style.display = "block";
-	}
+	//btn.onclick = function() {
+	//    modal.style.display = "block";
+	//}
 	
 	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-	    modal.style.display = "none";
-	}
+	//span.onclick = function() {
+	//    modal.style.display = "none";
+	//}
 	
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-	    if (event.target == modal) {
-	        modal.style.display = "none";
+	//When the user clicks anywhere outside of the modal, close it
+	//window.onclick = function(event) {
+	//    if (event.target == modal) {
+	//        modal.style.display = "none";
+	//    }
+	//}
+	// End of Javascript
+	
+	$("#newMessageBtn").click(function(){
+		$("#newMessage").show();
+	});
+	
+	$(".close").click(function(){
+		$("#newMessage").hide();
+	});
+	
+	$(document).click(function(e) {
+		//console.log(e.target);
+		var newMessage = $("#newMessage");
+    	if (e.target == newMessage[0]) {
+    		newMessage.hide();
 	    }
-	}
+	});
+	
+	
 
 	$("#newMessage").on("submit", function(event) {
 		event.preventDefault();
-		var conversation_id = document.getElementById("new_message").getAttribute('data-conversation-id');
+		//var conversation_id = document.getElementById("new_message").getAttribute('data-conversation-id');
+		conversation_id = $("#new_message").attr("data-conversation-id")
 		$.ajax({
 			url: conversation_id + "/messages.json", //加上.json，可以確保回到create action的時候由format.json所接收
 			method: "POST",
@@ -127,15 +149,22 @@
 				//console.log(response);
 				$('.add_message').prepend(response['html_data']);
 				//$('.add_message').prepend('<%#= j render partial: "dashboard/messages/message", locals: {message: @message } %>');
-				modal.style.display = "none";
+				//modal.style.display = "none";
+				$('#newMessage').hide();
 				$('#message_content').val('');
 			},
 			error: function(response, status, xhr) {
 				//console.log(response);
-				var modalMsg = document.getElementsByClassName("modal-msg")[0];
-				modalMsg.setAttribute("id", "error_explanation");
-				$(".modal-msg").attr("class", "error__comment-new");
+				
+				//var modalMsg = document.getElementsByClassName("modal-error-msg")[0];
+				//modalMsg.setAttribute("id", "error_explanation");
 				//modalMsg.setAttribute("class", "error__comment-new");
+				
+				$(".modal-error-msg").attr("id","error_explanation")
+				$(".modal-error-msg").attr("class", "error__comment-new");
+				
+				//$(".modal-error-msg").addClass("error__comment-new")
+				
 				for (var key in response.responseJSON) {
 					$("#error_explanation").prepend("<p>"+response.responseJSON[key]+"</p>");				
 				}

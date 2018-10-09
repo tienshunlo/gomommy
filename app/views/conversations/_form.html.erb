@@ -1,4 +1,4 @@
-<%= form_for @conversation, url: conversations_path(@user), :recipient_id => params[:id] do |f| %>
+<%= form_for @conversation, :recipient => params[:id] do |f| %>
 	<% if @conversation.errors.any? %>
 	    <div id="error_explanation" class="error__comment-new">
 	        <ul>

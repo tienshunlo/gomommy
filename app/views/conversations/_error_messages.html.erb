@@ -1,9 +1,0 @@
-<% if conversation.errors.any? %>
-    <div id="error_explanation" class="error__comment-new">
-        <ul>
-            <% conversation.errors.full_messages.each do |msg| %>
-              <li><%= t(msg) %></li>
-            <% end %>
-        </ul>
-    </div>
-<% end %>
