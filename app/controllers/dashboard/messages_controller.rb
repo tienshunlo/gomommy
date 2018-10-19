@@ -3,18 +3,19 @@ class Dashboard::MessagesController < Dashboard::DashboardController
 	def create
 	    @conversation = Conversation.find_by(:id => params[:conversation_id])
 	    @message = @conversation.message.build(message_params)
-      @message.sender_id = current_user.id
-      @message.recipient_id = @conversation.recipient_id #這邊是錯的，收件夾裡面的訊息，寄件者會跟收件者一樣。
+	    @message.user_id = current_user.id
+      #@message.sender_id = current_user.id
+      #@message.recipient_id = @conversation.recipient_id #這邊是錯的，收件夾裡面的訊息，寄件者會跟收件者一樣。
         
       respond_to do |format|
         if @message.save
           #format.html { redirect_to dashboard_conversation_path(@conversation) }
-          #format.js   { }
-          format.json { 
-            render json:{
-              html_data: render_to_string(partial: 'dashboard/messages/message', :formats => [:html], locals: {message: @message})
-            }
-          }
+          format.js   { }
+          #format.json { 
+          #  render json:{
+          #    html_data: render_to_string(partial: 'dashboard/messages/message', :formats => [:html], locals: {message: @message})
+          #  }
+          #}
           #render json: {
             #html_data: render_to_string(partial: 'dashboard/messages/message', locals: { message: @message })
           #} //可用，但不必有respond_to do |format|

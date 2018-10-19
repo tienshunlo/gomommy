@@ -1,3 +1,4 @@
+<!-- 這個檔案沒用到;-->
 <% if @conversation.errors.any? %>
     <!-- alert("ERROR(S): <%#= j @comment.errors.full_messages.join('; ') %>") -->
     $('#conversation_area').prepend('<%= j render partial: 'conversations/error_messages', locals: { conversation: @conversation } %>');

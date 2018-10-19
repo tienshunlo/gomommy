@@ -3,7 +3,7 @@ class Dashboard::ConversationsController < Dashboard::DashboardController
 	
 	def show
 	    @conversation = Conversation.find(params[:id])
-	    @messages  = @messages_paginate = @conversation.message.includes(:recipient).includes(:sender).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+	    @messages  = @messages_paginate = @conversation.message.includes(:user).order('id DESC').paginate(:page => params[:page], :per_page => 5)
 	    if @conversation.sender == current_user
 	        @user = @conversation.recipient
 	    elsif @conversation.recipient == current_user

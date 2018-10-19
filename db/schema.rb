@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180812221700) do
+ActiveRecord::Schema.define(version: 20181009075036) do
 
   create_table "albums", force: :cascade do |t|
     t.datetime "created_at",                                     null: false
@@ -157,16 +157,14 @@ ActiveRecord::Schema.define(version: 20180812221700) do
 
   create_table "messages", force: :cascade do |t|
     t.string   "content",         limit: 255
-    t.integer  "recipient_id",    limit: 4
-    t.integer  "sender_id",       limit: 4
     t.integer  "conversation_id", limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "user_id",         limit: 4
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
-  add_index "messages", ["recipient_id"], name: "index_messages_on_recipient_id", using: :btree
-  add_index "messages", ["sender_id"], name: "index_messages_on_sender_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "phasecates", force: :cascade do |t|
     t.string   "title",      limit: 255
