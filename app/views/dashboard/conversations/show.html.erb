@@ -65,10 +65,7 @@
 		<%#= form_for [@conversation,@conversation.message.build], 
 						url: dashboard_conversation_messages_path(@conversation,@conversation.message.build), 
 						:data => { :type => :json, :conversation_id => @conversation.id } do |f| %>
-		<%= form_for [@conversation,@conversation.message.build], 
-						url: dashboard_conversation_messages_path(@conversation,@conversation.message.build),
-						:remote => true,
-						:data => { :conversation_id => @conversation.id } do |f| %>				
+		<%= form_for [:dashboard, @conversation,@conversation.message.build], :remote => true, :data => { :conversation_id => @conversation.id } do |f| %>				
 			<div class="row">
 		    	<div class="input-field col s12 ">
 		      		<%= f.text_area :content, :placeholder => "傳訊息" %>
