@@ -9,5 +9,5 @@
 			<%= render partial: 'form',  locals: { f: doctor } %>
 		<% end %>
 	</div>	
+  <a href='<%= doctor_path(@doctor) %>' class='button' name='action'>回到上一頁</a>
 </div>
-<a href='<%= doctor_path(@doctor) %>' class='btn waves-effect eaves-light' name='action'>回到上一頁</a>
