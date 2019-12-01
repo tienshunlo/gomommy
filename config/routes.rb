@@ -40,6 +40,7 @@ Rails.application.routes.draw do
         end
       end
       resources :posts
+      resources :cities
       #get "posts", to: "mamabook#posts"
     end
   end
