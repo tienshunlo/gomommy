@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 #gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 gem 'materialize-sass', '~> 0.97.8'
-gem "paperclip", "~> 5.0.0"
+gem "paperclip", "~> 5.2.0"
 gem 'spreadsheet', '~> 1.1', '>= 1.1.4'
 gem 'impressionist'
 gem 'pry', '~> 0.10.4'
