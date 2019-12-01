@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '5.0.1'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.13', '< 0.5'
 # Use SCSS for stylesheets
@@ -13,9 +13,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem 'filterrific', '4.0.0'
-gem 'will_paginate', '~> 3.1.0'
-gem 'ckeditor'
+gem 'filterrific', '~> 5.2.0'
+gem 'will_paginate', '~> 3.2.0'
+gem 'ckeditor', '4.2.4'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -33,10 +33,10 @@ gem 'pry', '~> 0.10.4'
 gem 'hirb', '~> 0.7.3'
 gem 'friendly_id', '~> 5.1'
 gem 'babosa', '~> 1.0', '>= 1.0.2'
-gem 'devise', '~> 4.2'
+gem 'devise', '~> 4.7.1'
 gem "rails-i18n"
 gem 'acts_as_votable', '~> 0.11.1'
-gem 'bookmark_system'
+gem 'bookmark_system', '~> 0.1.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

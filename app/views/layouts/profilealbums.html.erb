@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <%= render 'shared/application_head' %>
@@ -9,12 +10,12 @@
     <main>
       <div class="container-post primary-bg">
         <div class="wrapper--row MaxWidth1000">
-          <%= render 'dashboard/mamabook/mamabook_headbar' %>
+          <%= render 'dashboard/dashboard_headbar' %>
         </div>
       </div>
       <div class="container-post primary-bg">
         <div class="wrapper--row MaxWidth1000">
-          <%= render 'dashboard/mamabook/mamabook_section__action' %>
+          <%#= render 'dashboard/mamabook/mamabook_section__action' %>
         </div>
       </div>
       <div class="container-post secondary-bg">
@@ -33,7 +34,7 @@
        <%= render 'shared/application_footer' %>
     </footer>
     <script>
-    	$(document).ready(function(){
+      $(document).ready(function(){
         $('.collapsible').collapsible();
         $(".dropdown-button").dropdown();
         $(".button-collapse").sideNav();

@@ -35,7 +35,7 @@
     			<% if current_user.profile.number_of_baby? && !current_user.profile.gender_of_baby.nil? %>
 					<div class="border--form"><%= Profile::GENDER_OF_BABY[current_user.profile.gender_of_baby][0] %></div>
 				<% else %>
-					<div class="border--form"><%= link_to "請輸入小寶貝性別", edit_dashboard_profile_path %></div>
+					<div class="border--form"><%= link_to "新增小寶貝性別", edit_dashboard_profile_path %></div>
 				<% end %>	
 		    </div>
     		<div class="section__form--login">
@@ -43,7 +43,7 @@
 				<% if current_user.profile.birthday_of_baby %>
 					<div class="border--form"><%= current_user.profile.birthday_of_baby.strftime("%Y/%m/%d") %></div>
 				<% else %>
-					<div class="border--form"><%= link_to "新增生日", edit_dashboard_profile_path %></div>
+					<div class="border--form"><%= link_to "新增小寶貝生日", edit_dashboard_profile_path %></div>
 				<% end %>
 		    </div>
 		</div>

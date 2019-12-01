@@ -1,5 +1,5 @@
 class Dashboard::ProfileAlbumsController < Dashboard::DashboardController
-  
+  layout "profilealbums"
   def new
     @albums = Album.cat_user
     @profile_album = ProfileAlbum.new

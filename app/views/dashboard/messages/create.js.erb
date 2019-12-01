@@ -1,10 +1,10 @@
 <% if @message.errors.any? %>
-    $(".modal-error-msg").attr("id","error_explanation")			
+    $(".modal-error-msg").attr("id","error_explanation");			
     $(".modal-error-msg").addClass("error__comment-new");
     $('#error_explanation').prepend('<%= j render partial: 'dashboard/messages/error_messages', locals: { message: @message } %>');
     $('#error_explanation').fadeOut(3000);
 <% else %>
-    $('.add_message').prepend('<%= j render partial: 'dashboard/messages/message', locals: { message: @message } %>');;
+    $('.add_message').prepend('<%= j render partial: 'dashboard/messages/message', locals: { message: @message } %>');
     $('#newMessage').hide();
     $('#message_content').val('');
 <% end %>

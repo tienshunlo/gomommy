@@ -1,5 +1,4 @@
 class ConversationsController < ApplicationController
-    
     def new
         @conversation = Conversation.new
         respond_to do |format|
@@ -17,6 +16,7 @@ class ConversationsController < ApplicationController
             format.html { redirect_to dashboard_conversation_path(@conversation) }
             # format.js   { }
           else
+            # format.html { byebug }
             format.html { redirect_to user_path(@user), :flash => { :error => @conversation.errors.full_messages.join(', ') } }
             # 其實不需要這行也可以 @user = User.find(session[:recipient_id])
             # success: format.html { redirect_to :back, :flash => { :error => @conversation.errors.full_messages.join(', ') } }
