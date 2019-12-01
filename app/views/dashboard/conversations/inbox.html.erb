@@ -7,7 +7,7 @@
 </div>
 <% if @conversations.empty? %>
 	<div class="wrapper__box--large MaxWidth740">
-		<span class="align--center">尚未有任何訊息</span>
+		<span class="align--center">尚未收到任何訊息</span>
 	</div>
 <% else %>
 	<% @conversations.each do |c| %>
@@ -22,7 +22,7 @@
 						</div>
 						<div class="section__content flex-colunm Width100 padding-l1">
 							<div class="section__content flex-colunm"> 
-								<h2 class="profile-name MarginTop00 MarginBottom05"><%= c.sender.nickname %></h2> 
+								<h2 class="profile-name MarginTop00 MarginBottom05"><%= c.sender.nickname %> 傳給你的訊息 ：</h2> 
 							</div>
 							<span class="time-ago-in-words"><%= c.created_at.strftime("%Y-%m-%d") %></span>
 							<div class="section__content">

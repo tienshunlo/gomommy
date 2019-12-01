@@ -34,7 +34,7 @@
 			</div>
 			<div class="section__content flex-colunm Width100 padding-l1">
 				<div class="section__content flex-colunm"> 
-					<h2 class="profile-name MarginTop00 MarginBottom05"><%= link_to @user.nickname, user_path(@user), class:"name" %></h2> 
+					<h2 class="profile-name MarginTop00 MarginBottom05"><%= link_to @user.nickname, user_path(@user), class:"name" %><%=@text%></h2> 
 				</div>
 				<span class="time-ago-in-words"><%= time_ago_in_words(@conversation.created_at) %>前</span>
 				<div class="section__content">
@@ -73,7 +73,7 @@
 		      	</div>
 		      	<div class="input-field col s12 right-align">
 			      	<button class="button" type="submit" name="action">
-						<span>送出</span>
+						<span id="sentMessage">送出</span>
 					</button>
 				</div>
 			</div>

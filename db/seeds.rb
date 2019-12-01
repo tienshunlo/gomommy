@@ -12,7 +12,7 @@ create_doctors = for i in 1..20 do
     District.create!([name: " District no.#{i}", city_id:i])
     Hospital.create!([name: " Hospital no.#{i}", city_id:i, district_id:i])
     Phase.create!([title: " Phase no.#{i}"])
-    Issue.create!([title: " Issue no.#{i}", phase_id:i, district_id:i])
+    Issue.create!([title: " Issue no.#{i}", phase_id:i])
 end
 
 

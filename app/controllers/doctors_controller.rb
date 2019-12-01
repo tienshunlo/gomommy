@@ -70,7 +70,7 @@ class DoctorsController < ApplicationController
 	
 	def most_posts
 		@doctors = @paginate = Doctor.all.order('post_count DESC').paginate(:page => params[:page], :per_page => 5)
-    end
+  end
 	
 	def show
 
