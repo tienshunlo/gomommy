@@ -111,7 +111,7 @@ GEM
     nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
-    paperclip (5.0.0)
+    paperclip (5.2.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
@@ -222,7 +222,7 @@ DEPENDENCIES
   jquery-rails
   materialize-sass (~> 0.97.8)
   mysql2 (>= 0.3.13, < 0.5)
-  paperclip (~> 5.0.0)
+  paperclip (~> 5.2.0)
   pry (~> 0.10.4)
   rails (= 5.0.1)
   rails-i18n
