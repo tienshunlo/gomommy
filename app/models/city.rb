@@ -1,5 +1,5 @@
 class City < ActiveRecord::Base
-    has_many :district
+  has_many :district
 	has_many :hospital
 	has_many :doctor
 	has_many :profile
