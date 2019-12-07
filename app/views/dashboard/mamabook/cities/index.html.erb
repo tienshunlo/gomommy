@@ -1,5 +1,5 @@
 <% @cities.each do |city| %>
   <ul>
-    <li><%= city.name %><%=link_to "edit", edit_dashboard_mamabook_city_path(city), class:"button" %></li>
+    <li><%=link_to city.name, edit_dashboard_mamabook_city_path(city), class:"button" %></li>
   </ul>
 <% end %>

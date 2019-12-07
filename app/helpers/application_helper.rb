@@ -305,6 +305,10 @@ module ApplicationHelper
                 url: dashboard_mamabook_albums_path,
                 title: "相簿"
             },
+            {
+                url: dashboard_mamabook_cities_path,
+                title: "城市"
+            },
         ]
     end
     

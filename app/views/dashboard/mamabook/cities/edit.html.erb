@@ -1,1 +1,12 @@
-<%= @city.name %>
+<%= form_for(@city, url: dashboard_mamabook_city_path(@city), method: :put,) do |f| %>
+<h1 class="post-title FontSize2 MarginTop1"><%= f.text_field :name %></h1>
+<ul>
+  <%= f.fields_for :district do |district_form| %>
+     <ol><H2 class="post-description"><%= district_form.text_field :name %></H2></ol> 
+  <% end %>
+</ul>
+<button class="button  Width50" type="submit" name="action">
+  <span>確定更新</span>
+</button>
+<% end %>
+
