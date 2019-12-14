@@ -1,10 +1,14 @@
 class Dashboard::Mamabook::CitiesController < Dashboard::Mamabook::MamabookController
-  before_action :find_city, only:[:edit, :update]
+  before_action :find_city, only:[:edit, :update, :destroy]
   def index
     @cities = City.all
   end
   def edit
     @district = @city.district.all
+  end
+  def destroy
+    @city.destroy
+    redirect_to dashboard_mamabook_cities_path, notice: 'City was removed.'
   end
   def update
     if @city.update(city_params)

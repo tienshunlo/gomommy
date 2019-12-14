@@ -1,5 +1,36 @@
-<% @cities.each do |city| %>
-  <ul>
-    <li><%=link_to city.name, edit_dashboard_mamabook_city_path(city), class:"button" %></li>
-  </ul>
-<% end %>
+<div class="wrapper__box--large MaxWidth740">
+  <header class="header_cate">
+      <span class="header_cate_title">
+        城市
+      </span>
+  </header>
+  <div class="box__post flex-row">
+    <%=link_to "新增城市", new_dashboard_mamabook_doctor_path, class:"button" %>
+  </div>
+</div>
+
+
+<div class="wrapper__box--large MaxWidth740">
+  <div class="wrapper-doctor-index">
+  <% @cities.each do |city| %>
+    <div class="wrapper__box--small wrapper__box--inner  align-center">
+        <div class="box__post flex-row">
+          <div class="section__content  align-center flex-colunm Width100">
+            <div class="section__content flex-colunm"> 
+              <h2 class="profile-name MarginTop00 MarginBottom05"><%= city.name %></h2> 
+            </div>
+            <div class="post-description">醫院 X <%= city.hospital.length %></div>
+            <div class="post-description">區域 X <%= city.district.length %></div>
+          </div>
+        </div>
+        <div class="section__action">
+      <ul class="no-border transparent-bg">
+        <li><%=link_to "Edit", edit_dashboard_mamabook_city_path(city), class:"button"%></li>
+        <li><%=link_to "Delete", dashboard_mamabook_city_path(city), method: :delete, data: {confirm: 'Are You sure?'}, class:"button"  %></li>
+      </ul>
+    </div>
+    </div>
+    
+  <% end %>
+</div>
+</div>
